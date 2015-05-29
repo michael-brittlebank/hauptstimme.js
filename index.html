@@ -1,6 +1,6 @@
 <html>
 <head>
-    <script src="/libraries/chorus/chorus.min.js"></script>
+    <script src="chorus.min.js"></script>
 </head>
 <div class="bar" style="display:none;">
     hidden
@@ -8,8 +8,11 @@
 hello world
 <script>
     document.addEventListener("DOMContentLoaded", function(event) {
-        _chorus('.bar').show();
-//        console.log(_chorus.version());
+        console.log("set timeout");
+        _chorus.layout.html.timeout();
+    });
+    document.addEventListener("chorusLoaded", function(e) {
+        console.log(e.detail); // Prints "Example of an event"
     });
 </script>
 </html>
