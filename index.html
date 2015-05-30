@@ -1,15 +1,24 @@
 <html>
 <head>
-    <script src="chorus.min.js"></script>
+    <script src="_chorus.min.js"></script>
 </head>
-<div class="bar" style="display:none;">
+hello world
+<div class="init">
     hidden
 </div>
-hello world
+<div class="init">
+    hidden
+</div>
+<div class="init">
+    hidden
+</div>
+<div class="init">
+    hidden
+</div>
 <script>
     document.addEventListener("DOMContentLoaded", function(event) {
         console.log("set timeout");
-        _chorus.layout.html.timeout();
+        _chorus.init("init");
     });
     document.addEventListener("chorusLoaded", function(e) {
         console.log(e.detail); // Prints "Example of an event"
