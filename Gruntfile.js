@@ -4,19 +4,36 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         // CONFIG ===================================/
         watch: {
+            css: {
+                files: ['libraries/chorus/chorus.scss','libraries/chorus/scss/*.{scss,sass}'],
+                tasks: ['sass']
+            },
             js: {
-                files: ['libraries/chorus/**/*.js'],
+                files: ['libraries/chorus/chorus.js','libraries/chorus/js/*.js'],
                 tasks: ['uglify']
+            }
+        },
+        sass: {
+            all: {
+                files: {
+                    '_chorus.min.css': 'libraries/chorus/chorus.scss'
+                },
+                options: {
+                    style: 'compressed'
+                }
             }
         },
         uglify: {
             all: {
                 files: {
                     '_chorus.min.js': [
-                        'libraries/chorus/_chorus.js',
-                        'libraries/chorus/_chorus.events.js',
-                        'libraries/chorus/*'
+                        'libraries/chorus/chorus.js',
+                        'libraries/chorus/js/chorus.events.js',
+                        'libraries/chorus/js/*'
                     ]
+                },
+                options: {
+                    preserveComments: false
                 }
             }
         }
@@ -24,9 +41,10 @@ module.exports = function(grunt) {
 
     // DEPENDENT PLUGINS =========================/
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
     // TASKS =====================================/
-    grunt.registerTask('default', ['uglify' , 'watch']);
+    grunt.registerTask('default', ['watch']);
 
 };

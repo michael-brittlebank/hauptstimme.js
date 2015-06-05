@@ -1,6 +1,8 @@
 <html>
 <head>
     <script src="_chorus.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="_chorus.min.css">
+    <link rel="stylesheet" type="text/css" href="_chorus.min.css.map">
 </head>
 hello world
 <div class="init">
@@ -17,7 +19,6 @@ hello world
 </div>
 <script>
     document.addEventListener("DOMContentLoaded", function(event) {
-        console.log("set timeout");
         _chorus.init("init");
     });
     document.addEventListener("chorusLoaded", function(e) {
