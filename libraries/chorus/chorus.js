@@ -10,18 +10,18 @@ _chorus.init = _chorus.init || function(ele, config){
     if (config !== undefined) {
         for (var key in config) {
             if (config.hasOwnProperty(key) && _chorus.config.hasOwnProperty(key)) {
-                console.log(_chorus.config[key]);
                 _chorus.config[key] = config[key];
-                console.log(_chorus.config[key]);
             }
         }
     }
     if (ele !== undefined) {
         if (document.getElementById(ele) !== null) {
-            console.log("id");
+            _chorus.layout.init(document.getElementById(ele));
         }
         else if (document.getElementsByClassName(ele).length > 0) {
-            console.log("class");
+            [].forEach.call(document.getElementsByClassName(ele), function (el) {
+                _chorus.layout.init(el);
+            });
         }
         else {
             _chorus.messages.sendMessage("no elements found on page for init");
@@ -32,4 +32,7 @@ _chorus.init = _chorus.init || function(ele, config){
         _chorus.messages.sendMessage("no element defined in init");
         return false;
     }
+};
+_chorus.data = _chorus.data || {
+
 };

@@ -5,24 +5,22 @@
     <link rel="stylesheet" type="text/css" href="_chorus.min.css.map">
 </head>
 hello world
-<div class="init">
-    hidden
+<div class="class">
+    class
 </div>
-<div class="init">
-    hidden
+<div class="class">
+    class
 </div>
-<div class="init">
-    hidden
-</div>
-<div class="init">
-    hidden
+<div class="id">
+    id
 </div>
 <script>
     document.addEventListener("DOMContentLoaded", function(event) {
-        _chorus.init("init");
+        _chorus.init("class");
+        _chorus.init("id");
     });
     document.addEventListener("chorusLoaded", function(e) {
-        console.log(e.detail); // Prints "Example of an event"
+        console.log(e.detail);
     });
 </script>
 </html>
