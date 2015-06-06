@@ -1,7 +1,8 @@
 _chorus.layout = _chorus.layout || {
     init : function(ele){
         console.log(ele);
-        ele.innerHTML = _chorus.layout.html.string();
+        var prefix = _chorus.logic.helpers.generateRandomString(5);
+        ele.innerHTML = _chorus.layout.html.string(prefix, 1);
 
         //setTimeout(function(){
         //    _chorus.events.dispatchEvent("chorusLoaded","chorusJS has finished initialization");
@@ -10,8 +11,16 @@ _chorus.layout = _chorus.layout || {
 };
 
 _chorus.layout.html = _chorus.layout.html || {
-    string : function() {
-        return '<div class="string">string</div>';
+    string : function(prefix, root) {
+        var id;
+        var fret;
+        var output = '<div class="string">';
+        for(var i = 0; i < 12; i++){
+            id = prefix+"_"+root+"_"+i;
+            fret = _chorus.logic.notes.getNoteById((root+i));
+            output += '<div id="'+id+'" class="fret">'+fret+'</div>';
+        }
+        return output+'</div>';
     }
 };
 

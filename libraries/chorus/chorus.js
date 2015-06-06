@@ -36,3 +36,6 @@ _chorus.init = _chorus.init || function(ele, config){
 _chorus.data = _chorus.data || {
 
 };
+_chorus.logic = _chorus.logic || {
+
+};
