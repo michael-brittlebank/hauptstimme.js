@@ -46,7 +46,7 @@ _chorus.data.instruments = _chorus.data.instruments || {
         pedal_steel_guitar: "3,6,8,10,12,3,8,12,7,10",
         pedal_steel_guitar_alt: "4,9,1,4,8,11,1,4,8,6"
     },
-    alternate : {
+    alternateGuitar : {
         major_seconds : "4,6,8,10,11,2",
         minor_thirds : "4,7,10,1,4,7",
         major_thirds : "8,12,4,8,12,4",

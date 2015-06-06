@@ -4,9 +4,12 @@ _chorus.version = _chorus.version || {
     lastUpdated: new Date().toDateString()
 };
 _chorus.config = _chorus.config || {
+    //main
+    instrument:"main",
+    //settings
     messages:"console"
 };
-_chorus.init = _chorus.init || function(ele, config){
+_chorus.init = _chorus.init || function(element, config){
     if (config !== undefined) {
         for (var key in config) {
             if (config.hasOwnProperty(key) && _chorus.config.hasOwnProperty(key)) {
@@ -14,13 +17,13 @@ _chorus.init = _chorus.init || function(ele, config){
             }
         }
     }
-    if (ele !== undefined) {
-        if (document.getElementById(ele) !== null) {
-            _chorus.layout.init(document.getElementById(ele));
+    if (element !== undefined) {
+        if (document.getElementById(element) !== null) {
+            _chorus.layout.init(document.getElementById(element));
         }
-        else if (document.getElementsByClassName(ele).length > 0) {
-            [].forEach.call(document.getElementsByClassName(ele), function (el) {
-                _chorus.layout.init(el);
+        else if (document.getElementsByClassName(element).length > 0) {
+            [].forEach.call(document.getElementsByClassName(element), function (ele) {
+                _chorus.layout.init(ele);
             });
         }
         else {

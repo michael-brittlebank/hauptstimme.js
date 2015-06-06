@@ -1,22 +1,38 @@
 _chorus.layout = _chorus.layout || {
-    init : function(ele){
-        console.log(ele);
-        var prefix = _chorus.logic.helpers.generateRandomString(5);
-        ele.innerHTML = _chorus.layout.html.string(prefix, 1);
+    init : function(element){
+        var instrument = _chorus.config.instrument;
+        switch(instrument){
+            case "all":
 
-        //setTimeout(function(){
-        //    _chorus.events.dispatchEvent("chorusLoaded","chorusJS has finished initialization");
-        //}, 3000);
+                break;
+            case "main":
+
+                break;
+            default :
+                if (_chorus.data.instruments.main.hasOwnProperty(instrument)){
+                    _chorus.layout.html.instrument(element, instrument, _chorus.data.instruments.main[instrument]);
+                }
+                else if(_chorus.data.instruments.other.hasOwnProperty(instrument)){
+                    _chorus.layout.html.instrument(element, instrument, _chorus.data.instruments.other[instrument]);
+                }
+                break;
+        }
+        _chorus.events.dispatchEvent("chorusInitComplete","chorusJS has finished initialization");
     }
 };
 
 _chorus.layout.html = _chorus.layout.html || {
-    string : function(prefix, root) {
-        var id;
-        var fret;
+    instrument : function(element, instrumentName, instrumentTuning){
+        console.log(instrumentName);
+        console.log(instrumentTuning);
+        var prefix = _chorus.logic.helpers.generateRandomString(5);
+        //element.innerHTML = _chorus.layout.html.string(prefix, 1);
+    },
+    string : function(prefix, root, stringNumber) {
+        var id,fret;
         var output = '<div class="string">';
         for(var i = 0; i < 12; i++){
-            id = prefix+"_"+root+"_"+i;
+            id = prefix+"_"+stringNumber+"_"+root+"_"+i;
             fret = _chorus.logic.notes.getNoteById((root+i));
             output += '<div id="'+id+'" class="fret">'+fret+'</div>';
         }

@@ -16,10 +16,13 @@ hello world
 </div>
 <script>
     document.addEventListener("DOMContentLoaded", function(event) {
-        _chorus.init("class");
-        _chorus.init("id");
+        var config = {
+            instrument: "guitar"
+        };
+        _chorus.init("class", config);
+        _chorus.init("id", config);
     });
-    document.addEventListener("chorusLoaded", function(e) {
+    document.addEventListener("chorusInitComplete", function(e) {
         console.log(e.detail);
     });
 </script>
