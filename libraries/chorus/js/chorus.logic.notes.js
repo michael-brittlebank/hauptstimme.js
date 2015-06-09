@@ -1,7 +1,7 @@
 _chorus.logic.notes = _chorus.logic.notes || {
     getNoteById : function(noteId){
-        if (0 < noteId && noteId <= 12){
-            return _chorus.data.notes[noteId];
+        if (0 <= noteId && noteId < 12){
+            return String(_chorus.data.notes[noteId]);
         }
         else {
             return false;

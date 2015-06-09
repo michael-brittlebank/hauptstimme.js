@@ -17,9 +17,14 @@ hello world
 <script>
     document.addEventListener("DOMContentLoaded", function(event) {
         var config = {
-            instrument: "guitar"
+            instrument: "guitar",
+            hideHeadings:false,
+            headingElement:"h3"
         };
         _chorus.init("class", config);
+        config = {
+            instrument: "bass"
+        };
         _chorus.init("id", config);
     });
     document.addEventListener("chorusInitComplete", function(e) {

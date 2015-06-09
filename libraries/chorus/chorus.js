@@ -1,15 +1,21 @@
-var _chorus = _chorus || {};
+var _chorus = window.chorus = _chorus || window.chorus || {};
 _chorus.version = _chorus.version || {
-    version: 0.3,
+    version: "0.3.2",
     lastUpdated: new Date().toDateString()
 };
-_chorus.config = _chorus.config || {
+_chorus.defaultConfig = {
     //main
     instrument:"main",
+    hideHeadings: true,
+    headingElement:"h2",
     //settings
     messages:"console"
 };
+
+_chorus.config = {};
+
 _chorus.init = _chorus.init || function(element, config){
+    _chorus.config = _chorus.logic.helpers.extend(_chorus.defaultConfig);
     if (config !== undefined) {
         for (var key in config) {
             if (config.hasOwnProperty(key) && _chorus.config.hasOwnProperty(key)) {
