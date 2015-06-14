@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AAAA,KAAM,CACJ,OAAO,CAAE,YAAY",
+"mappings": "AAAA,KAAM,CACJ,OAAO,CAAE,YAAY,CACrB,mBAAe,CACb,KAAK,CAAC,KAAK,CAEb,eAAW,CACT,KAAK,CAAC,GAAG",
 "sources": ["libraries/chorus/scss/chorus.framework.scss"],
 "names": [],
 "file": "_chorus.min.css"

@@ -1,3 +1,9 @@
 .fret {
   display: inline-block;
+  &.fret-selected{
+    color:green;
+  }
+  &.fret-root{
+    color:red;
+  }
 }

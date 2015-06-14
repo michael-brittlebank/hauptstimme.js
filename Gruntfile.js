@@ -29,6 +29,7 @@ module.exports = function(grunt) {
                     '_chorus.min.js': [
                         'libraries/chorus/chorus.js',
                         'libraries/chorus/js/chorus.events.js',
+                        'libraries/chorus/js/chorus.layout.js',
                         'libraries/chorus/js/*'
                     ]
                 },
