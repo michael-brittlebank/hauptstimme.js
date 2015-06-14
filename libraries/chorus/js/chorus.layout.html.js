@@ -6,8 +6,8 @@ _chorus.layout.html = _chorus.layout.html || {
         for(var i = 0;i<strings.length;i++){
             stringContent = _chorus.layout.html.string(prefix, strings[i], i+1)+stringContent;
         }
-        if (_chorus.config.hideHeadings !== true){
-            var htmlElement = _chorus.config.headingElement;
+        if (Boolean(_chorus.config.hideHeadings) !== true){
+            var htmlElement = typeof _chorus.config.headingElement === "string"?_chorus.config.headingElement:_chorus.defaultConfig.headingElement;
             stringContent ="<"+htmlElement+">"+instrumentName.replace(/_/g," ")+"</"+htmlElement+">"+stringContent;
         }
         return stringContent;

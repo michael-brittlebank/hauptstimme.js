@@ -18,13 +18,13 @@ hello world
     document.addEventListener("DOMContentLoaded", function(e) {
         var config = {
             instrument: "guitar",
-            hideHeadings:false,
-            headingElement:"h3"
+            headingElement:"h3",
+            messages:"console"
         };
         _chorus.init("class", config);
         config = {
             instrument: ["main","violin"],
-            hideHeadings:false
+            messages:"console"
         };
         _chorus.init("id", config);
     });

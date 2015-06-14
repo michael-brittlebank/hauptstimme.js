@@ -6,10 +6,10 @@ _chorus.version = _chorus.version || {
 _chorus.defaultConfig = {
     //main
     instrument:"main",
-    hideHeadings: true,
+    hideHeadings: false,
     headingElement:"h2",
     //settings
-    messages:"console"
+    messages:"none"
 };
 
 _chorus.config = {};

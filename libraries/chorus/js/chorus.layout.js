@@ -12,7 +12,7 @@ _chorus.layout = _chorus.layout || {
             element.innerHTML = content;
         }
         else {
-            _chorus.events.messages.sendMessage("instrument paramter invalid");
+            _chorus.events.messages.sendMessage("instrument parameter invalid");
         }
     },
     selectInstrument: function(instrument){
