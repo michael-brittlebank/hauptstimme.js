@@ -15,7 +15,7 @@ hello world
     id
 </div>
 <script>
-    document.addEventListener("DOMContentLoaded", function(event) {
+    document.addEventListener("DOMContentLoaded", function(e) {
         var config = {
             instrument: "guitar",
             hideHeadings:false,
@@ -23,7 +23,7 @@ hello world
         };
         _chorus.init("class", config);
         config = {
-            instrument: "bass",
+            instrument: "main",
             hideHeadings:false
         };
         _chorus.init("id", config);

@@ -8,7 +8,7 @@ _chorus.layout.html = _chorus.layout.html || {
         }
         if (_chorus.config.hideHeadings !== true){
             var htmlElement = _chorus.config.headingElement;
-            stringContent ="<"+htmlElement+">"+instrumentName+"</"+htmlElement+">"+stringContent;
+            stringContent ="<"+htmlElement+">"+instrumentName.replace(/_/g," ")+"</"+htmlElement+">"+stringContent;
         }
         return stringContent;
     },
