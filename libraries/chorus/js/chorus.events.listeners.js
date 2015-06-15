@@ -14,22 +14,23 @@ _chorus.events.listeners = _chorus.events.listeners || {
     fretRightClickHandler: function(e){
         e.preventDefault();
         var element = e.target || e.srcElement;
-        element.classList.remove('fret-selected');
-        element.classList.remove('fret-root');
+        element.classList.remove(_chorus.data.dictionaries.fretClasses.selected);
+        element.classList.remove(_chorus.data.dictionaries.fretClasses.root);
     },
     fretLeftClickHandler: function(e){
         e.preventDefault();
         var element = e.target || e.srcElement;
-        console.log(element);
-        if (element.classList.contains('fret-selected')) {
-            element.classList.remove('fret-selected');
-            element.classList.add('fret-root');
+        var selected = _chorus.data.dictionaries.fretClasses.selected;
+        var root = _chorus.data.dictionaries.fretClasses.root;
+        if (element.classList.contains(selected)) {
+            element.classList.remove(selected);
+            element.classList.add(root);
         }
-        else if(element.classList.contains('fret-root')){
-            element.classList.remove('fret-root');
+        else if(element.classList.contains(root)){
+            element.classList.remove(root);
         }
         else {
-            element.classList.add('fret-selected');
+            element.classList.add(selected);
         }
     }
 };

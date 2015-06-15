@@ -16,5 +16,34 @@ _chorus.logic.notes = _chorus.logic.notes || {
             }
         }
         return false;
+    },
+    findSelectedNotes: function(containerId){
+        var element = document.getElementById(containerId);
+        var selectedNotes = [];
+        var rootNote = null;
+        if (element) {
+            for (var i = 0; i < element.childNodes.length; i++) {
+                if (element.childNodes[i].classList.contains(_chorus.data.dictionaries.fretClasses.string)) {
+                    if (element.childNodes[i]) {
+                        for (var j = 0; j < element.childNodes[i].childNodes.length; j++) {
+                            if (element.childNodes[i].childNodes[j].classList.contains(_chorus.data.dictionaries.fretClasses.selected)) {
+                                selectedNotes.push(element.childNodes[i].childNodes[j]);
+                            }
+                            if (element.childNodes[i].childNodes[j].classList.contains(_chorus.data.dictionaries.fretClasses.root)) {
+                                rootNote = element.childNodes[i].childNodes[j];
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        else {
+            _chorus.events.messages.sendMessage("no element found to search");
+        }
+        return {
+            containerId: containerId,
+            selectedNotes: selectedNotes,
+            rootNote: rootNote
+        }
     }
 };

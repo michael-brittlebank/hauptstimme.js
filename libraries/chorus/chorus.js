@@ -16,7 +16,7 @@ _chorus.config = {};
 
 _chorus.init = _chorus.init || function(element, config){
     _chorus.events.listeners.init();
-    _chorus.config = _chorus.logic.helpers.extend(_chorus.defaultConfig);
+    _chorus.config = _chorus.logic.helpers.cloneObject(_chorus.defaultConfig);
     if (config !== undefined) {
         for (var key in config) {
             if (config.hasOwnProperty(key) && _chorus.config.hasOwnProperty(key)) {

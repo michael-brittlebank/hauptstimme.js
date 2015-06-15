@@ -10,20 +10,20 @@ _chorus.layout.html = _chorus.layout.html || {
             var htmlElement = typeof _chorus.config.headingElement === "string"?_chorus.config.headingElement:_chorus.defaultConfig.headingElement;
             stringContent ="<"+htmlElement+">"+instrumentName.replace(/_/g," ")+"</"+htmlElement+">"+stringContent;
         }
-        return stringContent;
+        return '<div id="'+prefix+'_container" class="'+_chorus.data.dictionaries.fretClasses.instrument+'">'+stringContent+"</div>";
     },
     string : function(prefix, root, stringNumber) {
         var id,fret,note;
-        var output = '<div class="string">';
+        var output = '<div class="'+_chorus.data.dictionaries.fretClasses.string+'">';
         for(var i = 0; i <= 12; i++){
             note = (parseInt(root)+i)%12;
             id = prefix+"_"+stringNumber+"_"+note;
             fret = _chorus.logic.notes.getNoteById(note);
-            output += '<div id="'+id+'" class="fret">'+_chorus.layout.html.htmlFilter(fret)+'</div>';
+            output += '<div id="'+id+'" class="'+_chorus.data.dictionaries.fretClasses.fret+'">'+_chorus.layout.html.htmlFilter(fret)+'</div>';
         }
         return output+'</div>';
     },
     htmlFilter : function(note){
-        return note.replace(/\b#\b/g,"&#9839;").replace(/\bb\b/g,"&#9837;");
+        return note.replace(/#/g,"&#9839;").replace(/b/g,"&#9837;");
     }
 };

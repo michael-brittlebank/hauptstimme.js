@@ -1,10 +1,9 @@
 _chorus.events = _chorus.events || {
     sendChorusLoaded : function(){
-        document.dispatchEvent(new CustomEvent("chorusLoaded", {"detail": "chorusJS has finished initialization" }));
+        document.dispatchEvent(new CustomEvent("chorusLoaded", {"detail": "ChorusJS: finished initialization" }));
     },
     dispatchEvent : function (eventName, eventDetail){
         var event; // The custom event that will be created
-
         if (document.createEvent) {
             event = document.createEvent("HTMLEvents");
             event.initEvent(eventName, true, true);
@@ -14,9 +13,7 @@ _chorus.events = _chorus.events || {
             event.eventType = eventName;
             event.detail = eventDetail;
         }
-
         event.eventName = eventName;
-
         if (document.createEvent) {
             document.dispatchEvent(event);
         } else {
