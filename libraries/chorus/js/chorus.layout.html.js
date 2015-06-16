@@ -10,7 +10,9 @@ _chorus.layout.html = _chorus.layout.html || {
             var htmlElement = typeof _chorus.config.headingElement === "string"?_chorus.config.headingElement:_chorus.defaultConfig.headingElement;
             stringContent ="<"+htmlElement+">"+instrumentName.replace(/_/g," ")+"</"+htmlElement+">"+stringContent;
         }
-        return '<div id="'+prefix+'_container" class="'+_chorus.data.dictionaries.fretClasses.instrument+'">'+stringContent+"</div>";
+        return '<div id="'+prefix+_chorus.data.dictionaries.fretClasses.container+'" class="'+_chorus.data.dictionaries.fretClasses.instrument+'">'+
+            stringContent+
+            "</div>";
     },
     string : function(prefix, root, stringNumber) {
         var id,fret,note;
@@ -19,7 +21,10 @@ _chorus.layout.html = _chorus.layout.html || {
             note = (parseInt(root)+i)%12;
             id = prefix+"_"+stringNumber+"_"+note;
             fret = _chorus.logic.notes.getNoteById(note);
-            output += '<div id="'+id+'" class="'+_chorus.data.dictionaries.fretClasses.fret+'">'+_chorus.layout.html.htmlFilter(fret)+'</div>';
+            output +=
+                '<div id="'+id+'" class="'+_chorus.data.dictionaries.fretClasses.fret+'">'+
+                _chorus.layout.html.htmlFilter(fret)+
+                '</div>';
         }
         return output+'</div>';
     },

@@ -4,6 +4,7 @@ _chorus.data.dictionaries = _chorus.data.dictionaries || {
         root:"fret-root",
         string:"string",
         fret:"fret",
-        instrument: "chorus_instrument"
+        instrument: "chorus_instrument",
+        container: "_container"
     }
 };

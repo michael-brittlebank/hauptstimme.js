@@ -1,0 +1,32 @@
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin unselectable {
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  /* No support for these yet, use at own risk */
+  -o-user-select: none;
+  user-select: none;
+}
+
+@mixin opacity($opacity){
+  /* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$opacity*100+")";
+  /* IE 5-7 */
+  filter: alpha(opacity=$opacity*100);
+  /* Netscape */
+  -moz-opacity: $opacity;
+  /* Safari 1.x */
+  -khtml-opacity: $opacity;
+  /* Good browsers */
+  opacity: $opacity;
+}
+
+@mixin animate($element){
+  transition: $element 300ms ease-out;
+}

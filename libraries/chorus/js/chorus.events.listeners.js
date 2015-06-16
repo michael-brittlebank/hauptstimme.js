@@ -20,17 +20,23 @@ _chorus.events.listeners = _chorus.events.listeners || {
     fretLeftClickHandler: function(e){
         e.preventDefault();
         var element = e.target || e.srcElement;
-        var selected = _chorus.data.dictionaries.fretClasses.selected;
-        var root = _chorus.data.dictionaries.fretClasses.root;
-        if (element.classList.contains(selected)) {
-            element.classList.remove(selected);
-            element.classList.add(root);
+        var selectedClass = _chorus.data.dictionaries.fretClasses.selected;
+        var rootClass = _chorus.data.dictionaries.fretClasses.root;
+        var container = document.getElementById(element.id.substr(0,element.id.indexOf("_"))+_chorus.data.dictionaries.fretClasses.container);
+        var existingRoot = container.getElementsByClassName(rootClass);
+        if (element.classList.contains(selectedClass)) {
+            element.classList.remove(selectedClass);
+            if (existingRoot.length > 0){
+                existingRoot[0].classList.add(selectedClass);
+                existingRoot[0].classList.remove(rootClass);
+            }
+            element.classList.add(rootClass);
         }
-        else if(element.classList.contains(root)){
-            element.classList.remove(root);
+        else if(element.classList.contains(rootClass)){
+            element.classList.remove(rootClass);
         }
         else {
-            element.classList.add(selected);
+            element.classList.add(selectedClass);
         }
     }
 };
