@@ -12,7 +12,7 @@ _chorus.layout = _chorus.layout || {
             element.innerHTML = content;
         }
         else {
-            _chorus.events.messages.sendMessage("instrument parameter invalid");
+            _chorus.events.messages.sendMessage(_chorus.data.dictionaries.messages.type+"instrument config parameter");
         }
     },
     selectInstrument: function(instrument){

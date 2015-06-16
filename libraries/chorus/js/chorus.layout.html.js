@@ -2,6 +2,14 @@ _chorus.layout.html = _chorus.layout.html || {
     instrument : function(instrumentName, instrumentTuning){
         var prefix = _chorus.logic.helpers.generateRandomString(5);
         var strings = instrumentTuning.split(",");
+        if (typeof _chorus.config.stringOrder == "string"){
+            if (_chorus.config.stringOrder == "asc"){
+                strings.reverse();
+            }
+        }
+        else {
+            _chorus.events.messages.sendMessage(_chorus.data.dictionaries.messages.type+"string order config parameter");
+        }
         var stringContent = "";
         for(var i = 0;i<strings.length;i++){
             stringContent = _chorus.layout.html.string(prefix, strings[i], i+1)+stringContent;

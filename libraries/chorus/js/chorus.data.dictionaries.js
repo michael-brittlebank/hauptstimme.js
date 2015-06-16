@@ -6,5 +6,10 @@ _chorus.data.dictionaries = _chorus.data.dictionaries || {
         fret:"fret",
         instrument: "chorus_instrument",
         container: "_container"
+    },
+    messages: {
+        type:"[Error] Invalid type: ",
+        undefined:"[Error] Undefined: ",
+        notFound: "[Error] Not Found: "
     }
 };
