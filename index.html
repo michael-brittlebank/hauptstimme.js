@@ -20,17 +20,22 @@ hello world
         var config = {
             instrument: "guitar",
             headingElement:"h3",
-            messages:"console",
-            stringOrder:"asc"
+            debug:"console",
+            stringOrder:"asc",
+            scaleSearchText: "Search Scales2"
         };
         _chorus.init("class", config);
         config = {
             instrument: ["main","violin"],
-            messages:"console"
+            scaleSearchButton: false,
+            debug:"console"
         };
         _chorus.init("id", config);
     });
     document.addEventListener("chorusInitComplete", function(e) {
+        console.log(e.detail);
+    });
+    document.addEventListener("chorusScaleSearchComplete", function(e) {
         console.log(e.detail);
     });
 </script>

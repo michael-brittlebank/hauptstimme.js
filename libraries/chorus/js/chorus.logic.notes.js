@@ -38,7 +38,7 @@ _chorus.logic.notes = _chorus.logic.notes || {
             }
         }
         else {
-            _chorus.events.messages.sendMessage(_chorus.data.dictionaries.messages.notFound+"no element found to search");
+            _chorus.events.messages.sendMessage(_chorus.data.dictionaries.messages.errors.notFound+"no element found to search");
         }
         return {
             containerId: containerId,
