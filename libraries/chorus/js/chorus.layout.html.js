@@ -1,6 +1,5 @@
 _chorus.layout.html = _chorus.layout.html || {
-    instrument : function(instrumentName, instrumentTuning){
-        var prefix = _chorus.logic.helpers.generateRandomString(5);
+    instrument : function(instrumentName, instrumentTuning, prefix){
         var strings = instrumentTuning.split(",");
         if (typeof _chorus.config.stringOrder == "string"){
             if (_chorus.config.stringOrder == "asc"){

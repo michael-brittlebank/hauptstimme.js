@@ -1,9 +1,11 @@
 _chorus.data.instruments = _chorus.data.instruments || {
     main: {
+        length: 2,
         guitar : "8,1,6,11,3,8",
         bass : "8,1,6,11"
     },
     other : {
+        length: 41,
         violin: "11,6,1,8",
         violin_tenor: "11,6,1,8",
         mandolin: "11,6,1,8",
@@ -47,6 +49,7 @@ _chorus.data.instruments = _chorus.data.instruments || {
         pedal_steel_guitar_alt: "4,9,1,4,8,11,1,4,8,6"
     },
     alternateGuitar : {
+        length: 46,
         major_seconds : "4,6,8,10,11,2",
         minor_thirds : "4,7,10,1,4,7",
         major_thirds : "8,0,4,8,0,4",

@@ -9,6 +9,7 @@ _chorus.defaultConfig = {
     hideHeadings: false,
     headingElement:"h2",
     stringOrder:"desc",
+    containerId: "",
     scaleSearchButton: true,
     scaleSearchText: "Search Scales",
     scaleSearchCallback: "",
