@@ -1,2 +1,2 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900);*{font-family:"Lato",sans-serif;font-weight:400}.fret{display:inline-block;letter-spacing:-0.1em;padding:10px;width:30px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;-o-user-select:none;user-select:none}.fret.fret-selected{color:green}.fret.fret-root{color:red}
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900);*{font-family:"Lato",sans-serif;font-weight:400}.fret{display:inline-block;letter-spacing:-0.1em;padding:10px;width:30px;text-align:center;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;-o-user-select:none;user-select:none}.fret.fret-selected{color:green}.fret.fret-root{color:red}
 /*# sourceMappingURL=_chorus.min.css.map */

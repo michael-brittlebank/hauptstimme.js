@@ -2,7 +2,6 @@ _chorus.layout = _chorus.layout || {
     init : function(element){
         var instrument = _chorus.config.instrument;
         var prefix;
-        console.log(typeof instrument);
         if (typeof _chorus.config.containerId === "string" && _chorus.config.containerId.length > 0){
             prefix = _chorus.config.containerId;
         }
@@ -14,10 +13,10 @@ _chorus.layout = _chorus.layout || {
         }
         else if (Array.isArray(instrument)){
             var content = "";
-            var counter = 0;
+            var counter = 1;
             for(var i = 0; i < instrument.length; i++){
                 var increment = 0;
-                switch (instrument){
+                switch (instrument[i]){
                     case "all":
                         increment =  _chorus.data.instruments.all.length;
                         break;
@@ -29,7 +28,12 @@ _chorus.layout = _chorus.layout || {
                         break;
                 }
                 content += _chorus.layout.selectInstrument(instrument[i], prefix, counter);
-                counter += 1 + increment;
+                if (increment > 0){
+                    counter += increment;
+                }
+                else {
+                    counter += 1;
+                }
             }
             element.innerHTML = content;
         }
@@ -41,7 +45,7 @@ _chorus.layout = _chorus.layout || {
         var content = "";
         var key;
         if(!counter){
-            counter = "";
+            counter = 0;
         }
         switch (instrument) {
             case "all":
@@ -96,7 +100,7 @@ _chorus.layout = _chorus.layout || {
         return content;
     },
     prefixBuilder: function(prefix, counter){
-        if (counter.length > 0){
+        if (counter.length > 0 || counter > 0){
             return prefix +"-"+counter;
         }
         else {
