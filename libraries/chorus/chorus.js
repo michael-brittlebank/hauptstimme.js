@@ -3,8 +3,17 @@ _chorus.version = _chorus.version || {
     version: "0.4",
     lastUpdated: new Date().toDateString()
 };
+
+_chorus.searchResult = {
+    scales:{},
+    chords:{}
+};
+
 _chorus.defaultConfig = {
-    //settings
+    //functionality
+    //todo, offer callback function for scale search
+    //todo, offer global variable for storing search results
+    //layout
     instrument:"main",
     hideHeadings: false,
     headingElement:"h2",

@@ -1,34 +1,34 @@
 _chorus.data.scales = _chorus.data.scales || {
     main : {
-        Major_Ionian: "2212221",
-        Dorian: "2122212",
-        Phrygian: "1222122",
-        Lydian: "2221221",
-        Mixolydian: "2212212",
-        Minor_Aeolian: "2122122",
-        Locrian: "1221222"
+        major_ionian: "2212221",
+        dorian: "2122212",
+        phrygian: "1222122",
+        lydian: "2221221",
+        mixolydian: "2212212",
+        minor_aeolian: "2122122",
+        locrian: "1221222"
     },
     derivatives : {
-        Major_Pentatonic: "22323",
-        Minor_Pentatonic: "32232",
-        Harmonic_Minor: "2122131",
-        Melodic_Minor: "2122221",
-        Blues: "321132",
-        Mixo_Blues: "211111212"
+        major_pentatonic: "22323",
+        minor_pentatonic: "32232",
+        harmonic_minor: "2122131",
+        melodic_minor: "2122221",
+        blues: "321132",
+        mixo_blues: "211111212"
     },
     other : {
-        Diminished_Whole_Half: "21212121",
-        Diminished_Half_Whole: "12121212",
-        Whole_Tone: "222222",
-        Hungarian_Minor: "2131131",
-        Hungarian_Gypsy: "2131122",
-        Double_Harmonic: "1312131",
-        Enigmatic: "1322211",
-        Altered: "1212222",
-        Major_Neapolitan: "1222221",
-        Minor_Neapolitan: "1222131",
-        Persian: "1311231",
-        Ukranian_Dorian: "2131212",
-        Yo: "23223"
+        diminished_whole_half: "21212121",
+        diminished_half_whole: "12121212",
+        whole_tone: "222222",
+        hungarian_minor: "2131131",
+        hungarian_gypsy: "2131122",
+        double_harmonic: "1312131",
+        enigmatic: "1322211",
+        altered: "1212222",
+        major_neapolitan: "1222221",
+        minor_neapolitan: "1222131",
+        persian: "1311231",
+        ukranian_dorian: "2131212",
+        yo: "23223"
     }
 };

@@ -18,7 +18,7 @@ hello world
 <script>
     document.addEventListener("DOMContentLoaded", function(e) {
         var config = {
-            instrument: "guitar",
+            instrument: "ukulele_concert",
             headingElement:"h3",
             debug:"console",
             stringOrder:"asc",
@@ -38,6 +38,7 @@ hello world
     });
     document.addEventListener("chorusScaleSearchComplete", function(e) {
         console.log(e.detail);
+        console.log(_chorus.searchResult);
     });
 </script>
 </html>
