@@ -4,6 +4,9 @@
     <link rel="stylesheet" type="text/css" href="_chorus.min.css">
     <link rel="stylesheet" type="text/css" href="_chorus.min.css.map">
 </head>
+<div id="output">
+
+</div>
 hello world
 <div class="class">
     class
@@ -32,6 +35,7 @@ hello world
             containerId: "myId"
         };
         _chorus.init("id", config);
+        _chorus.logic.scales.compile.init();
     });
     document.addEventListener("chorusInitComplete", function(e) {
         console.log(e.detail);

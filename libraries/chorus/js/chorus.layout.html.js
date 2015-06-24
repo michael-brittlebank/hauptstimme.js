@@ -37,7 +37,7 @@ _chorus.layout.html = _chorus.layout.html || {
         for(var i = 0; i <= 12; i++){
             note = (parseInt(root)+i)%12;
             id = prefix+"_"+stringNumber+"_"+note;
-            fret = _chorus.logic.notes.getNoteById(note);
+            fret = _chorus.logic.notes.filterNoteValue(_chorus.logic.notes.getNoteById(note));
             output +=
                 '<div id="'+id+'" class="'+_chorus.data.dictionaries.fretClasses.fret+'">'+
                 _chorus.layout.html.htmlFilter(fret)+

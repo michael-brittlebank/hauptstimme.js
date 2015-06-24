@@ -45,5 +45,26 @@ _chorus.logic.notes = _chorus.logic.notes || {
             selectedNotes: selectedNotes,
             rootNote: rootNote
         }
+    },
+    filterNoteValue: function(note){
+        var data = note;
+        switch (note){
+            case "G#/Ab":
+                data = "Ab";
+                break;
+            case "A#/Bb":
+                data = "Bb";
+                break;
+            case "C#/Db":
+                data = "C#";
+                break;
+            case "D#/Eb":
+                data = "Eb";
+                break;
+            case "F#/Gb":
+                data = "Gb";
+                break;
+        }
+        return data;
     }
 };

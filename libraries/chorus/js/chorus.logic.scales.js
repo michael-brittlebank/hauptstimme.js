@@ -1,6 +1,35 @@
 _chorus.logic.scales = _chorus.logic.scales || {
-    compileScales: function(){
-        //todo, compile scale formulas and filter out theoreticals
+    compile:{
+        init: function(){
+            var firstNote = "";
+            var secondNote = "";
+            var allScales = {};
+            var scaleName;
+            var scaleValue;
+            var nonTheoreticalScales = {};
+            //first create all scale variations for seven note scales and convert to letter for theoretical testing
+            for (var i = 0; i < 1; i++){
+                firstNote = _chorus.data.notes[i];
+                console.log(firstNote);
+                if (firstNote.indexOf("/")!==-1){
+                    secondNote = firstNote.split("/")[1];
+                    firstNote = firstNote.split("/")[0];
+
+                }
+                else {
+
+                }
+            }
+            //filter out theoretical scales
+
+            //reconvert to int sequences
+
+            //loop through non seven note scales with the nice filter values
+
+            return nonTheoreticalScales;
+        },
+        construct: function (){
+        }
     }
 };
 
