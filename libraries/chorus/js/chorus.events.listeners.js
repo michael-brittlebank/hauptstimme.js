@@ -14,15 +14,15 @@ _chorus.events.listeners = _chorus.events.listeners || {
     fretRightClickHandler: function(e){
         e.preventDefault();
         var element = e.target || e.srcElement;
-        element.classList.remove(_chorus.data.dictionaries.fretClasses.selected);
-        element.classList.remove(_chorus.data.dictionaries.fretClasses.root);
+        element.classList.remove(_chorus.data.dictionary.class_selected);
+        element.classList.remove(_chorus.data.dictionary.class_root);
     },
     fretLeftClickHandler: function(e){
         e.preventDefault();
         var element = e.target || e.srcElement;
-        var selectedClass = _chorus.data.dictionaries.fretClasses.selected;
-        var rootClass = _chorus.data.dictionaries.fretClasses.root;
-        var container = document.getElementById(element.id.substr(0,element.id.indexOf("_"))+_chorus.data.dictionaries.fretClasses.container);
+        var selectedClass = _chorus.data.dictionary.class_selected;
+        var rootClass = _chorus.data.dictionary.class_root;
+        var container = document.getElementById(element.id.substr(0,element.id.indexOf("_"))+_chorus.data.dictionary.class_container);
         var existingRoot = container.getElementsByClassName(rootClass);
         if (element.classList.contains(selectedClass)) {
             element.classList.remove(selectedClass);

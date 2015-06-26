@@ -1,17 +1,11 @@
-_chorus.data.dictionaries = _chorus.data.dictionaries || {
-    fretClasses: {
-        selected:"fret-selected",
-        root:"fret-root",
-        string:"string",
-        fret:"fret",
-        instrument: "chorus_instrument",
-        container: "_container"
-    },
-    messages: {
-        errors: {
-            type:"[Error] Invalid type: ",
-            undefined:"[Error] Undefined: ",
-            notFound: "[Error] Not Found: "
-        }
-    }
+_chorus.data.dictionary = _chorus.data.dictionary || {
+    class_selected:"fret-selected",
+    class_root:"fret-root",
+    class_string:"string",
+    class_fret:"fret",
+    class_instrument: "chorus_instrument",
+    class_container: "_container",
+    error_type:"[Error] Invalid type: ",
+    error_undefined:"[Error] Undefined: ",
+    error_notFound: "[Error] Not Found: "
 };
