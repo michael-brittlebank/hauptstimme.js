@@ -29,24 +29,26 @@ _chorus.logic.notes = _chorus.logic.notes || {
         }
         return letter;
     },
-    //getNoteByToneForce: function(tone,letter) {
-    //
-    //    difference = tone - letter
-    //
-    //    if difference > 0:
-    //    for range(difference){
-    //        letter += "#";
-    //    }
-    //    elif
-    //    difference < 0
-    //    :
-    //    for range(difference){
-    //        letter += "b";
-    //    }
-    //
-    //    return letter;
-    //
-    //},
+    getNoteByToneForce: function(tone,note) {
+        var letter = note;
+        var difference = tone - _chorus.logic.notes.getToneByNote(note);
+        var start = 0;
+        if (difference > 0){
+            while (note.indexOf("#",start)!==-1){
+                start = note.indexOf("#",start);
+                letter += "#";
+            }
+        }
+        else if (difference < 0){
+            start = 0;
+            while (note.indexOf("b",start)!==-1){
+                start = note.indexOf("b",start);
+                letter += "b";
+            }
+        }
+        return letter;
+
+    },
     findSelectedNotes: function(containerId){
         var element = document.getElementById(containerId);
         var selectedNotes = [];

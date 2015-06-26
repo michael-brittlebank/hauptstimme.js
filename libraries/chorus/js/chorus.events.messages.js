@@ -1,6 +1,6 @@
 _chorus.events.messages = _chorus.events.messages || {
     sendMessage: function(message) {
-        var messageSystem = typeof _chorus.config.debug === "string"?_chorus.config.debug:_chorus.defaultConfig.messages;
+        var messageSystem = _chorus.logic.getConfigValue("debug");
         switch (messageSystem) {
             case "console":
                 console.log("ChorusJS: "+message);

@@ -63,5 +63,7 @@ _chorus.data = _chorus.data || {
 
 };
 _chorus.logic = _chorus.logic || {
-
+    getConfigValue: function(key){
+        return typeof _chorus.config[key] === typeof _chorus.defaultConfig?_chorus.config[key]:_chorus.defaultConfig[key];
+    }
 };
