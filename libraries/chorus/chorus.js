@@ -10,7 +10,7 @@ _chorus.searchResult = {
 };
 
 _chorus.defaultConfig = {
-    //functionality
+    //logic
     //todo, offer callback function for scale search
     //todo, offer global variable for storing search results
     //layout
@@ -63,7 +63,10 @@ _chorus.data = _chorus.data || {
 
 };
 _chorus.logic = _chorus.logic || {
-    getConfigValue: function(key){
-        return typeof _chorus.config[key] === typeof _chorus.defaultConfig?_chorus.config[key]:_chorus.defaultConfig[key];
-    }
+
+};
+String.prototype.capitalize = function(){
+    return this.toLowerCase().replace( /\b\w/g, function (m) {
+        return m.toUpperCase();
+    });
 };

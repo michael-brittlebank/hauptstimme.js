@@ -1,4 +1,8 @@
 _chorus.data.notes = {
+    count: {
+        tones: 12,
+        letters: 7
+    },
     tone: {
         0: "A",
         2: "B",

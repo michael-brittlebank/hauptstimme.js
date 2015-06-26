@@ -17,5 +17,20 @@ _chorus.logic.helpers = _chorus.logic.helpers || {
             to[name] = typeof to[name] == "undefined" ? _chorus.logic.helpers.cloneObject(from[name], null) : to[name];
         }
         return to;
+    },
+    getConfigValue: function(key){
+        if (typeof _chorus.config[key] !== typeof _chorus.defaultConfig[key]){
+            _chorus.events.messages.sendMessage(_chorus.data.dictionary.error_type+" "+key);
+        }
+        return typeof _chorus.config[key] === typeof _chorus.defaultConfig[key]?_chorus.config[key]:_chorus.defaultConfig[key];
+    },
+    getKeyFromValue: function(object, value){
+        for(var prop in object) {
+            if(object.hasOwnProperty(prop)) {
+                if(object[prop] === value) {
+                    return prop;
+                }
+            }
+        }
     }
 };

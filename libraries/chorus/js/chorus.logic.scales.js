@@ -1,6 +1,65 @@
 _chorus.logic.scales = _chorus.logic.scales || {
     compile:{
         init: function(){
+            var root,tones,tone,letters,scaleKey,scaleName,scaleArray,letterProgression;
+            var output = {};
+            for(var i = 0; i < _chorus.data.notes.count.tones-1; i++){
+                root = _chorus.logic.notes.getNoteByToneDefault(i);
+                for (scaleKey in _chorus.data.scales.main) {
+                    if (_chorus.data.scales.main.hasOwnProperty(scaleKey)) {
+                        scaleName = root + " " + scaleKey.replace(/_/g," ").capitalize();
+                        scaleArray = _chorus.data.scales.main[scaleKey];
+                        tones = [i];
+                        letters = [root];
+                        for (var j = 0; j < scaleArray.length-1; j++) {
+                            tone = (tones[j] + scaleArray[j]) % 12;
+                            tones.push(tone);
+                        }
+                        for (var k = 1; k < scaleArray.length; k++) {
+                            if (scaleArray.length == 7) {
+                                letterProgression = _chorus.logic.notes.getLetterProgression(root);
+                                letters.push(_chorus.logic.notes.getNoteByToneForce(tones[k], letterProgression[k]));
+                            }
+                            else {
+                                letters.push(_chorus.logic.notes.getNoteByToneDefault(tones[k]));
+                            }
+                        }
+                        output[scaleName] = {
+                            tones: tones,
+                            letters: letters
+                        };
+                    }
+                }
+            }
+            console.log(output);
+            return output;
+//            tartTone = getNoteByTone(root)
+//
+//            tones = [startTone]
+//            tone = startTone
+//
+//            for each step in list (of ints that represent scale type):
+//            #the list should not include the last step to get to starting point
+//            tone = (tone + step) % 12
+//            tones.append(tone)
+//
+//
+//            creates a list of the letters of the scale starting with the natural letter (first char) of root note
+//            input a : output abcdefg
+//            input d : output defgabc
+//
+//
+//            letters = []
+//
+//#you can have an if here that makes this only trigger if the length of the scale is 7
+//            for range(7):
+//
+//            getNoteByToneForce(tone[i],letters[i])
+//
+//
+//
+//            letter.append[root]
+//            tones.append[startTone]
 
             //first create all scale variations for seven note scales and convert to letter for theoretical testing
 

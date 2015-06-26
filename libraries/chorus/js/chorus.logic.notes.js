@@ -1,8 +1,8 @@
 _chorus.logic.notes = _chorus.logic.notes || {
     getToneByNote: function (note){
-        console.log(note);
         var tone = _chorus.data.notes.letter[note.substring(0,1)];
         var start = 0;
+        console.log(tone);
         while (note.indexOf("#",start)!==-1){
             start = note.indexOf("#",start);
             tone++;
@@ -12,6 +12,7 @@ _chorus.logic.notes = _chorus.logic.notes || {
             start = note.indexOf("b",start);
             tone--;
         }
+        console.log(tone);
         return (tone % 12);
     },
     getNoteByToneDefault: function(tone){
@@ -32,22 +33,21 @@ _chorus.logic.notes = _chorus.logic.notes || {
     getNoteByToneForce: function(tone,note) {
         var letter = note;
         var difference = tone - _chorus.logic.notes.getToneByNote(note);
-        var start = 0;
         if (difference > 0){
-            while (note.indexOf("#",start)!==-1){
-                start = note.indexOf("#",start);
+            for (var i = 0; i < difference; i++){
                 letter += "#";
             }
         }
         else if (difference < 0){
-            start = 0;
-            while (note.indexOf("b",start)!==-1){
-                start = note.indexOf("b",start);
+            for (var j = 0; j < difference; j++){
                 letter += "b";
             }
         }
         return letter;
-
+    },
+    getLetterProgression: function(letter){
+        var pieces = 'ABCDEFG'.split(letter.replace(/b/g,"").replace(/#/g,"").toUpperCase());
+        return [letter].concat(pieces[1].split(""),pieces[0].split(""));
     },
     findSelectedNotes: function(containerId){
         var element = document.getElementById(containerId);

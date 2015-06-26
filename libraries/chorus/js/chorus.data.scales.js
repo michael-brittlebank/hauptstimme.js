@@ -1,4 +1,9 @@
 _chorus.data.scales = _chorus.data.scales || {
+    count: {
+        main: 12,
+        derivatives: 12,
+        other: 12
+    },
     main : {
         major_ionian: [2,2,1,2,2,2,1],
         dorian: [2,1,2,2,2,1,2],

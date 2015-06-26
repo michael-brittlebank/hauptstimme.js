@@ -1,4 +1,10 @@
 _chorus.data.instruments = {
+    count: {
+        all: 89,
+        main: 2,
+        other: 41,
+        alternateGuitar: 46
+    },
     main: {
         guitar: [7,0,5,10,2,7],
         bass: [7,0,5,10]
