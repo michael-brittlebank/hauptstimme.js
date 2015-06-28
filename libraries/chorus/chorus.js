@@ -65,8 +65,3 @@ _chorus.data = _chorus.data || {
 _chorus.logic = _chorus.logic || {
 
 };
-String.prototype.capitalize = function(){
-    return this.toLowerCase().replace( /\b\w/g, function (m) {
-        return m.toUpperCase();
-    });
-};

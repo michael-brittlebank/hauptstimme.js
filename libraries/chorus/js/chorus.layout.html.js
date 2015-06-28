@@ -27,7 +27,7 @@ _chorus.layout.html = _chorus.layout.html || {
         for(var i = 0; i <= numberOfFrets; i++){
             note = (parseInt(root)+i)%_chorus.data.notes.count.tones;
             id = prefix+"_"+stringNumber+"_"+note;
-            fret = _chorus.logic.notes.getNoteByToneDefault(note);
+            fret = _chorus.logic.notes.getNoteByToneDisplay(note);
             output +=
                 '<div id="'+id+'" class="'+_chorus.data.dictionary.class_fret+'">'+
                 _chorus.layout.html.htmlFilter(fret)+

@@ -2,18 +2,32 @@ _chorus.logic.notes = _chorus.logic.notes || {
     getToneByNote: function (note){
         var tone = _chorus.data.notes.letter[note.substring(0,1)];
         var start = 0;
-        console.log(tone);
         while (note.indexOf("#",start)!==-1){
-            start = note.indexOf("#",start);
+            start = note.indexOf("#",start)+1;
             tone++;
         }
         start = 0;
         while (note.indexOf("b",start)!==-1){
-            start = note.indexOf("b",start);
+            start = note.indexOf("b",start)+1;
             tone--;
         }
-        console.log(tone);
         return (tone % 12);
+    },
+    getFlatNoteByTone: function(tone){
+        return _chorus.data.notes.tone[(tone + 1)%12] + "b";
+    },
+    getSharpNoteByTone: function(tone){
+        return _chorus.data.notes.tone[(tone - 1)%12] + "#";
+    },
+    getNoteByToneDisplay: function(tone){
+        var letter;
+        if (_chorus.data.notes.tone.hasOwnProperty(tone)) {
+            letter = _chorus.data.notes.tone[tone];
+        }
+        else {
+            letter = _chorus.logic.notes.getFlatNoteByTone(tone)+" / "+_chorus.logic.notes.getSharpNoteByTone(tone);
+        }
+        return letter;
     },
     getNoteByToneDefault: function(tone){
         var letter;
@@ -21,26 +35,31 @@ _chorus.logic.notes = _chorus.logic.notes || {
             letter = _chorus.data.notes.tone[tone];
         }
         else {
-            if (tone !== 4) {
-                letter = _chorus.data.notes.tone[(tone + 1)%12] + "b";
-            }
-            else {
-                letter = _chorus.data.notes.tone[(tone - 1)%12] + "#";
-            }
+            letter = _chorus.logic.notes.getSharpNoteByTone(tone);
         }
         return letter;
     },
-    getNoteByToneForce: function(tone,note) {
-        var letter = note;
-        var difference = tone - _chorus.logic.notes.getToneByNote(note);
-        if (difference > 0){
-            for (var i = 0; i < difference; i++){
-                letter += "#";
-            }
+    getNoteByToneForce: function(tone,letter) {
+        var difference = tone - _chorus.logic.notes.getToneByNote(letter);
+        if (difference > _chorus.data.notes.count.tones/2) {
+            difference -= _chorus.data.notes.count.tones;
         }
-        else if (difference < 0){
-            for (var j = 0; j < difference; j++){
-                letter += "b";
+        if (difference < _chorus.data.notes.count.tones/2*-1) {
+            difference += _chorus.data.notes.count.tones;
+        }
+        if (difference != 0) {
+            if (_chorus.data.notes.tone.hasOwnProperty(tone)){
+                return false
+            }
+            if (difference > 0) {
+                for (var i = 0; i < difference; i++) {
+                    letter += "#";
+                }
+            }
+            else if (difference < 0) {
+                for (var j = 0; j > difference; j--) {
+                    letter += "b";
+                }
             }
         }
         return letter;

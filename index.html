@@ -17,6 +17,9 @@ hello world
 <div id="id">
     id
 </div>
+<div id="compile">
+
+</div>
 <a onclick="_chorus.searchScales()">search all scales</a>
 <script>
     document.addEventListener("DOMContentLoaded", function(e) {
@@ -35,7 +38,7 @@ hello world
             containerId: "myId"
         };
         _chorus.init("id", config);
-//        _chorus.logic.scales.compile.init();
+//        document.getElementById("compile").innerHTML = _chorus.logic.scales.compile.init();
     });
     document.addEventListener("chorusInitComplete", function(e) {
         console.log(e.detail);

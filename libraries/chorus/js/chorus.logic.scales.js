@@ -1,75 +1,62 @@
 _chorus.logic.scales = _chorus.logic.scales || {
-    compile:{
-        init: function(){
-            var root,tones,tone,letters,scaleKey,scaleName,scaleArray,letterProgression;
-            var output = {};
-            for(var i = 0; i < _chorus.data.notes.count.tones-1; i++){
+    compile: {
+        init: function() {
+            var root, tones, tone, letters, scale, scaleKey, scaleName, scaleArray;
+            var output = {
+                main:{},
+                other: {}
+            };
+            for (var i = 0; i < _chorus.data.notes.count.tones; i++) {
                 root = _chorus.logic.notes.getNoteByToneDefault(i);
-                for (scaleKey in _chorus.data.scales.main) {
-                    if (_chorus.data.scales.main.hasOwnProperty(scaleKey)) {
-                        scaleName = root + " " + scaleKey.replace(/_/g," ").capitalize();
-                        scaleArray = _chorus.data.scales.main[scaleKey];
-                        tones = [i];
-                        letters = [root];
-                        for (var j = 0; j < scaleArray.length-1; j++) {
-                            tone = (tones[j] + scaleArray[j]) % 12;
-                            tones.push(tone);
-                        }
-                        for (var k = 1; k < scaleArray.length; k++) {
-                            if (scaleArray.length == 7) {
-                                letterProgression = _chorus.logic.notes.getLetterProgression(root);
-                                letters.push(_chorus.logic.notes.getNoteByToneForce(tones[k], letterProgression[k]));
+                for (scale in _chorus.data.scales){
+                    if (_chorus.data.scales.hasOwnProperty(scale) && scale !== "searchable" && scale !== "count") {
+                        for (scaleKey in _chorus.data.scales[scale]) {
+                            if (_chorus.data.scales[scale].hasOwnProperty(scaleKey)) {
+                                scaleArray = _chorus.data.scales[scale][scaleKey];
+                                tones = [i];
+                                for (var j = 0; j < scaleArray.length - 1; j++) {
+                                    tone = (tones[j] + scaleArray[j]) % 12;
+                                    tones.push(tone);
+                                }
+                                letters = _chorus.logic.scales.compile.getLetters(root, tones);
+                                if (letters !== false) {
+                                    scaleName = letters[0] + " " + _chorus.logic.helpers.capitalize(scaleKey.replace(/_/g, " "));
+                                    output[scale][scaleName] = {
+                                        tones: tones,
+                                        letters: letters
+                                    };
+                                }
                             }
-                            else {
-                                letters.push(_chorus.logic.notes.getNoteByToneDefault(tones[k]));
-                            }
                         }
-                        output[scaleName] = {
-                            tones: tones,
-                            letters: letters
-                        };
                     }
                 }
             }
-            console.log(output);
-            return output;
-//            tartTone = getNoteByTone(root)
-//
-//            tones = [startTone]
-//            tone = startTone
-//
-//            for each step in list (of ints that represent scale type):
-//            #the list should not include the last step to get to starting point
-//            tone = (tone + step) % 12
-//            tones.append(tone)
-//
-//
-//            creates a list of the letters of the scale starting with the natural letter (first char) of root note
-//            input a : output abcdefg
-//            input d : output defgabc
-//
-//
-//            letters = []
-//
-//#you can have an if here that makes this only trigger if the length of the scale is 7
-//            for range(7):
-//
-//            getNoteByToneForce(tone[i],letters[i])
-//
-//
-//
-//            letter.append[root]
-//            tones.append[startTone]
-
-            //first create all scale variations for seven note scales and convert to letter for theoretical testing
-
-            //filter out theoretical scales
-
-            //reconvert to int sequences
-
-            //loop through non seven note scales with the nice filter values
+            return JSON.stringify(output);
         },
-        construct: function (){
+        getLetters: function(root, tones){
+            var letters = [root];
+            var letterProgression = _chorus.logic.notes.getLetterProgression(root);
+            for (var k = 1; k < tones.length; k++) {
+                if (tones.length == 7) {
+                    var letter = _chorus.logic.notes.getNoteByToneForce(tones[k], letterProgression[k]);
+                    if (letter !== false){
+                        letters.push(letter);
+                    }
+                    else {
+                        if (root.indexOf("#") >= 0){
+                            letters = _chorus.logic.scales.compile.getLetters(letterProgression[1]+"b",tones);
+                            break;
+                        }
+                        else {
+                            return false;
+                        }
+                    }
+                }
+                else {
+                    letters.push(_chorus.logic.notes.getNoteByToneDefault(tones[k]));
+                }
+            }
+            return letters
         }
     }
 };

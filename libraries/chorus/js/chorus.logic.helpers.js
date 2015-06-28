@@ -32,5 +32,20 @@ _chorus.logic.helpers = _chorus.logic.helpers || {
                 }
             }
         }
+    },
+    countObjectLength: function(object){
+        var key;
+        var i = 0;
+        for(key in object){
+            if (object.hasOwnProperty(key)){
+                i++;
+            }
+        }
+        return i;
+    },
+    capitalize: function(string){
+        return string.toLowerCase().replace( /\b\w/g, function (m) {
+            return m.toUpperCase();
+        });
     }
 };

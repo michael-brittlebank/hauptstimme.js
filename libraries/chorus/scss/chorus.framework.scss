@@ -2,11 +2,14 @@
   font-family: $font-lato;
   font-weight:$font-weight-medium;
 }
+.string {
+  min-width: 1300px;
+}
 .fret {
   display: inline-block;
   letter-spacing: -0.1em;
   padding: 10px;
-  width: 30px;
+  width: 80px;
   text-align: center;
   @include unselectable;
   &.fret-selected{

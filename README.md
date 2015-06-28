@@ -15,4 +15,4 @@ A JavaScript library for visualizing music theory and practice
 ## API Reference
 
 ## Acknowledgements
-Special thanks to E. Clare
+Special thanks to E. Clare for always being logical
