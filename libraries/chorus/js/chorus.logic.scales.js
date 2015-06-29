@@ -64,7 +64,7 @@ _chorus.logic.scales = _chorus.logic.scales || {
 _chorus.logic.scales.searchScales = _chorus.searchScales = function(containerId){
     var data;
     if(containerId && containerId.length > 0){
-        var notes = _chorus.logic.notes.findSelectedNotes(containerId);
+        var notes = _chorus.logic.notes.findSelectedTones(containerId);
         console.log("containerid passed");
         data = _chorus.logic.scales.scaleDrill(notes);
     }
@@ -72,7 +72,7 @@ _chorus.logic.scales.searchScales = _chorus.searchScales = function(containerId)
         var instruments = document.getElementsByClassName(_chorus.data.dictionary.class_instrument);
         var results = [];
         for (var i = 0; i < instruments.length; i++){
-            results.push(_chorus.logic.notes.findSelectedNotes(instruments[i].id));
+            results.push(_chorus.logic.notes.findSelectedTones(instruments[i].id));
         }
         console.log("searching across page");
         console.log(results);

@@ -68,33 +68,45 @@ _chorus.logic.notes = _chorus.logic.notes || {
         var pieces = 'ABCDEFG'.split(letter.replace(/b/g,"").replace(/#/g,"").toUpperCase());
         return [letter].concat(pieces[1].split(""),pieces[0].split(""));
     },
-    findSelectedNotes: function(containerId){
-        var element = document.getElementById(containerId);
-        var selectedNotes = [];
-        var rootNote = null;
-        if (element) {
-            for (var i = 0; i < element.childNodes.length; i++) {
-                if (element.childNodes[i].classList.contains(_chorus.data.dictionary.class_string)) {
-                    if (element.childNodes[i]) {
-                        for (var j = 0; j < element.childNodes[i].childNodes.length; j++) {
-                            if (element.childNodes[i].childNodes[j].classList.contains(_chorus.data.dictionary.class_selected)) {
-                                selectedNotes.push(element.childNodes[i].childNodes[j]);
-                            }
-                            if (element.childNodes[i].childNodes[j].classList.contains(_chorus.data.dictionary.class_root)) {
-                                rootNote = element.childNodes[i].childNodes[j];
+    getToneByClass: function(s_class){
+        return s_class.substring(s_class.lastIndexOf(_chorus.data.dictionary.class_tone)+1);
+    }
+};
+_chorus.logic.notes.findSelectedTones = _chorus.findSelectedTones = function(containerId){
+    var classlist;
+    var element = document.getElementById(containerId);
+    var selectedTones = [];
+    var rootNote = null;
+    if (element) {
+        for (var i = 0; i < element.childNodes.length; i++) {
+            if (element.childNodes[i].classList.contains(_chorus.data.dictionary.class_string)) {
+                if (element.childNodes[i]) {
+                    for (var j = 0; j < element.childNodes[i].childNodes.length; j++) {
+                        classlist = element.childNodes[i].childNodes[j].classList;
+                        if (classlist.contains(_chorus.data.dictionary.class_selected) || classlist.contains(_chorus.data.dictionary.class_root)) {
+                            for (var k = 0; k < classlist.length; k++){
+                                if (classlist[k].indexOf(_chorus.dictionary.class_tone) !== -1){
+                                    if (classlist.contains(_chorus.data.dictionary.class_selected)){
+                                        selectedTones.push(_chorus.logic.notes.getToneByClass(classlist[k]));
+                                    }
+                                    else if (classlist.contains(_chorus.data.dictionary.class_root)){
+                                        rootNote = _chorus.logic.notes.getToneByClass(classlist[k]);
+                                    }
+                                    break;
+                                }
                             }
                         }
                     }
                 }
             }
         }
-        else {
-            _chorus.events.messages.sendMessage(_chorus.data.dictionary.error_notFound+"no element found to search");
-        }
-        return {
-            containerId: containerId,
-            selectedNotes: selectedNotes,
-            rootNote: rootNote
-        }
     }
-};
+    else {
+        _chorus.events.messages.sendMessage(_chorus.data.dictionary.error_notFound+"no element found to search");
+    }
+    return {
+        containerId: containerId,
+        selectedTones: selectedTones,
+        rootNote: rootNote
+    }
+}

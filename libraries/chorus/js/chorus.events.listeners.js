@@ -22,7 +22,7 @@ _chorus.events.listeners = _chorus.events.listeners || {
         var element = e.target || e.srcElement;
         var selectedClass = _chorus.data.dictionary.class_selected;
         var rootClass = _chorus.data.dictionary.class_root;
-        var container = document.getElementById(element.id.substr(0,element.id.indexOf("_"))+_chorus.data.dictionary.class_container);
+        var container = element.parentNode;
         var existingRoot = container.getElementsByClassName(rootClass);
         if (element.classList.contains(selectedClass)) {
             element.classList.remove(selectedClass);

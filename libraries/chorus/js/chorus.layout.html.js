@@ -6,7 +6,7 @@ _chorus.layout.html = _chorus.layout.html || {
         }
         var stringContent = "";
         for(var i = 0;i<instrumentTuning.length;i++){
-            stringContent = _chorus.layout.html.string(prefix, instrumentTuning[i], i+1)+stringContent;
+            stringContent = _chorus.layout.html.string(instrumentTuning[i])+stringContent;
         }
         if (Boolean(_chorus.config.hideHeadings) !== true){
             var htmlElement = _chorus.logic.helpers.getConfigValue("headingElement");
@@ -20,16 +20,15 @@ _chorus.layout.html = _chorus.layout.html || {
             stringContent+
             "</div>";
     },
-    string : function(prefix, root, stringNumber) {
-        var id,fret,note;
+    string : function(root) {
+        var fret,tone;
         var numberOfFrets = 12;
         var output = '<div class="'+_chorus.data.dictionary.class_string+'">';
         for(var i = 0; i <= numberOfFrets; i++){
-            note = (parseInt(root)+i)%_chorus.data.notes.count.tones;
-            id = prefix+"_"+stringNumber+"_"+note;
-            fret = _chorus.logic.notes.getNoteByToneDisplay(note);
+            tone = (parseInt(root)+i)%_chorus.data.notes.count.tones;
+            fret = _chorus.logic.notes.getNoteByToneDisplay(tone);
             output +=
-                '<div id="'+id+'" class="'+_chorus.data.dictionary.class_fret+'">'+
+                '<div class="'+_chorus.data.dictionary.class_fret+' '+_chorus.data.dictionary.class_tone+tone+'">'+
                 _chorus.layout.html.htmlFilter(fret)+
                 '</div>';
         }

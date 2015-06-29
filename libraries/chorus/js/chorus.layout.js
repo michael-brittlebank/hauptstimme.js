@@ -1,4 +1,4 @@
-_chorus.layout = _chorus.layout || {
+_chorus.layout = {
     init : function(element){
         var instrument = _chorus.config.instrument;
         var prefix;
@@ -7,7 +7,7 @@ _chorus.layout = _chorus.layout || {
             prefix = containerId;
         }
         else {
-            prefix = _chorus.logic.helpers.generateRandomString(5);
+            prefix = _chorus.layout.getRandomId();
         }
         if (typeof instrument === "string") {
             element.innerHTML = _chorus.layout.selectInstrument(instrument,prefix);
@@ -40,6 +40,16 @@ _chorus.layout = _chorus.layout || {
         }
         else {
             _chorus.events.messages.sendMessage(_chorus.data.dictionary.error_type+"instrument config parameter");
+        }
+    },
+    getRandomId: function(){
+        var id = _chorus.layout.prefixBuilder(_chorus.logic.helpers.generateRandomString(5));
+        var elementWithSameId = document.getElementById(id);
+        if (!elementWithSameId){
+            return id;
+        }
+        else {
+            return _chorus.layout.getRandomId();
         }
     },
     selectInstrument: function(instrument, prefix, counter){
@@ -101,7 +111,7 @@ _chorus.layout = _chorus.layout || {
         return content;
     },
     prefixBuilder: function(prefix, counter){
-        if (counter.length > 0 || counter > 0){
+        if (counter && (counter.length > 0 || counter > 0)){
             return prefix +"-"+counter;
         }
         else {
