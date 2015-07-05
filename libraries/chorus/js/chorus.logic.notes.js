@@ -75,7 +75,7 @@ _chorus.logic.notes = _chorus.logic.notes || {
 _chorus.logic.notes.findSelectedTones = _chorus.findSelectedTones = function(element){
     var classList;
     var selectedTones = [];
-    var rootNote = null;
+    var rootNote = "";
     if (element) {
         for (var i = 0; i < element.childNodes.length; i++) {
             if (element.childNodes[i].classList.contains(_chorus.data.dictionary.class_string)) {

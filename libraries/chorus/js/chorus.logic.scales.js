@@ -113,8 +113,6 @@ _chorus.logic.scales.searchScales = _chorus.searchScales = function(container){
     else if (!parameterError) {
         _chorus.events.messages.sendMessage(_chorus.data.dictionary.error_notFound + "no selected notes found");
     }
-    console.log("scale search result");
-    console.log(_chorus.searchResult.scales);
     _chorus.events.dispatchEvent("chorusScaleSearchComplete","chorusJS has finished searching scales");
 };
 
