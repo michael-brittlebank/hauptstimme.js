@@ -61,30 +61,68 @@ _chorus.logic.scales = _chorus.logic.scales || {
     }
 };
 
-_chorus.logic.scales.searchScales = _chorus.searchScales = function(containerId){
-    var data;
-    if(containerId && containerId.length > 0){
-        var notes = _chorus.logic.notes.findSelectedTones(containerId);
-        console.log("containerid passed");
-        data = _chorus.logic.scales.scaleDrill(notes);
+_chorus.logic.scales.searchScales = _chorus.searchScales = function(container){
+    var parameterError = false;
+    var noteData = [];
+    var notes = {
+        rootNote: "",
+        selectedTones:[],
+        containers: []
+    };
+    if(container && container.length > 0){
+        var containerById = document.getElementById(container);
+        var containerByClass = document.getElementsByClassName(container);
+        if (containerById){
+            noteData.push(_chorus.logic.notes.findSelectedTones(containerById));
+        }
+        else if (containerByClass){
+            for (var i = 0; i < containerByClass.length; i++){
+                noteData.push(_chorus.logic.notes.findSelectedTones(containerByClass[i]));
+            }
+        }
+        else {
+            parameterError = true;
+            _chorus.events.messages.sendMessage(_chorus.data.dictionary.error_notFound+"no container found with matching id or class");
+        }
     }
     else {
-        var instruments = document.getElementsByClassName(_chorus.data.dictionary.class_instrument);
-        var results = [];
-        for (var i = 0; i < instruments.length; i++){
-            results.push(_chorus.logic.notes.findSelectedTones(instruments[i].id));
+        var containerByDefaultClass = document.getElementsByClassName(_chorus.data.dictionary.class_instrument);
+        for (var j = 0; j < containerByDefaultClass.length; j++){
+            noteData.push(_chorus.logic.notes.findSelectedTones(containerByDefaultClass[j]));
         }
-        console.log("searching across page");
-        console.log(results);
     }
-    _chorus.searchResult.scales = data;
+    if (noteData.length > 0){
+        for (var k = 0; k < noteData.length; k++){
+            notes.containers.push(noteData[k].container);
+            if (noteData[k].rootNote.length > 0){
+                if (notes.rootNote.length < 1){
+                    notes.rootNote = noteData[k].rootNote;
+                }
+                else {
+                    _chorus.events.messages.sendMessage(_chorus.data.dictionary.warning_multipleRootNotes);
+                }
+            }
+            for (var l = 0; l < noteData[k].selectedTones.length; l++){
+                if (notes.selectedTones.indexOf(noteData[k].selectedTones[l]) == -1){
+                    notes.selectedTones.push(noteData[k].selectedTones[l]);
+                }
+            }
+        }
+        _chorus.searchResult.scales = _chorus.logic.scales.scaleDrill(notes);
+    }
+    else if (!parameterError) {
+        _chorus.events.messages.sendMessage(_chorus.data.dictionary.error_notFound + "no selected notes found");
+    }
+    console.log("scale search result");
+    console.log(_chorus.searchResult.scales);
     _chorus.events.dispatchEvent("chorusScaleSearchComplete","chorusJS has finished searching scales");
 };
 
 _chorus.logic.scales.scaleDrill = function(notes){
+    console.log("scale drill init");
     console.log(notes);
     var data = {
-        containerId: notes.containerId,
+        containers: notes.containers,
         scales: []
     };
     if (notes.hasOwnProperty("rootNote") && notes.rootNote){
@@ -92,7 +130,7 @@ _chorus.logic.scales.scaleDrill = function(notes){
     }
     else {
         console.log("doesn't have root note");
-        if (notes.hasOwnProperty("selectedNotes") && notes.selectedNotes){
+        if (notes.hasOwnProperty("selectedTones") && notes.selectedTones){
 
         }
     }

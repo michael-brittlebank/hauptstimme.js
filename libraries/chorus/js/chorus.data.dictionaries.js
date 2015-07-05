@@ -8,5 +8,6 @@ _chorus.data.dictionary = _chorus.data.dictionary || {
     class_tone: "chorus_tone_",
     error_type:"[Error] Invalid type: ",
     error_undefined:"[Error] Undefined: ",
-    error_notFound: "[Error] Not Found: "
+    error_notFound: "[Error] Not Found: ",
+    warning_multipleRootNotes: "[Warning] Multiple root notes detected"
 };

@@ -69,12 +69,11 @@ _chorus.logic.notes = _chorus.logic.notes || {
         return [letter].concat(pieces[1].split(""),pieces[0].split(""));
     },
     getToneByClass: function(s_class){
-        return s_class.substring(s_class.lastIndexOf(_chorus.data.dictionary.class_tone)+1);
+        return s_class.substring(_chorus.data.dictionary.class_tone.length);
     }
 };
-_chorus.logic.notes.findSelectedTones = _chorus.findSelectedTones = function(containerId){
-    var classlist;
-    var element = document.getElementById(containerId);
+_chorus.logic.notes.findSelectedTones = _chorus.findSelectedTones = function(element){
+    var classList;
     var selectedTones = [];
     var rootNote = null;
     if (element) {
@@ -82,15 +81,20 @@ _chorus.logic.notes.findSelectedTones = _chorus.findSelectedTones = function(con
             if (element.childNodes[i].classList.contains(_chorus.data.dictionary.class_string)) {
                 if (element.childNodes[i]) {
                     for (var j = 0; j < element.childNodes[i].childNodes.length; j++) {
-                        classlist = element.childNodes[i].childNodes[j].classList;
-                        if (classlist.contains(_chorus.data.dictionary.class_selected) || classlist.contains(_chorus.data.dictionary.class_root)) {
-                            for (var k = 0; k < classlist.length; k++){
-                                if (classlist[k].indexOf(_chorus.dictionary.class_tone) !== -1){
-                                    if (classlist.contains(_chorus.data.dictionary.class_selected)){
-                                        selectedTones.push(_chorus.logic.notes.getToneByClass(classlist[k]));
+                        classList = element.childNodes[i].childNodes[j].classList;
+                        console.log("full list: "+classList);
+                        if (classList.contains(_chorus.data.dictionary.class_selected) || classList.contains(_chorus.data.dictionary.class_root)) {
+                            for (var k = 0; k < classList.length; k++){
+                                console.log("in loop: "+classList[k]);
+                                if (classList[k].indexOf(_chorus.data.dictionary.class_tone) !== -1){
+                                    console.log("in if" + classList[k]);
+                                    if (classList.contains(_chorus.data.dictionary.class_selected)){
+                                        console.log("contains selected");
+                                        selectedTones.push(_chorus.logic.notes.getToneByClass(classList[k]));
+                                        console.log(selectedTones);
                                     }
-                                    else if (classlist.contains(_chorus.data.dictionary.class_root)){
-                                        rootNote = _chorus.logic.notes.getToneByClass(classlist[k]);
+                                    else if (classList.contains(_chorus.data.dictionary.class_root)){
+                                        rootNote = _chorus.logic.notes.getToneByClass(classList[k]);
                                     }
                                     break;
                                 }
@@ -104,9 +108,10 @@ _chorus.logic.notes.findSelectedTones = _chorus.findSelectedTones = function(con
     else {
         _chorus.events.messages.sendMessage(_chorus.data.dictionary.error_notFound+"no element found to search");
     }
+    console.log("return "+selectedTones);
     return {
-        containerId: containerId,
+        container: element,
         selectedTones: selectedTones,
         rootNote: rootNote
     }
-}
+};
