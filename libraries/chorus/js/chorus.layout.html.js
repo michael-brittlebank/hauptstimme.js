@@ -14,7 +14,8 @@ _chorus.layout.html = _chorus.layout.html || {
         }
         if (Boolean(_chorus.config.scaleSearchButton) === true){
             var title = _chorus.logic.helpers.getConfigValue("scaleSearchText");
-            stringContent += '<a class="searchButton" onclick="_chorus.searchScales(\''+prefix+_chorus.data.dictionary.class_container+'\')">'+title+'</a>';
+            var searchMode = _chorus.logic.helpers.getConfigValue("scaleSearchMode");
+            stringContent += '<a class="searchButton" onclick="_chorus.searchScales(\''+prefix+_chorus.data.dictionary.class_container+'\',\''+searchMode+'\')">'+title+'</a>';
         }
         return '<div id="'+prefix+_chorus.data.dictionary.class_container+'" class="'+_chorus.data.dictionary.class_instrument+'">'+
             stringContent+

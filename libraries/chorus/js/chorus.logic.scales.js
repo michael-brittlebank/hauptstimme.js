@@ -61,7 +61,7 @@ _chorus.logic.scales = _chorus.logic.scales || {
     }
 };
 
-_chorus.logic.scales.searchScales = _chorus.searchScales = function(container){
+_chorus.logic.scales.searchScales = _chorus.searchScales = function(container, scalesToSearch){
     var scaleKey,
         parameterError = false,
         noteData = [],
@@ -73,6 +73,10 @@ _chorus.logic.scales.searchScales = _chorus.searchScales = function(container){
             containers: [],
             scales: {}
         };
+    //default scales to search
+    if (scalesToSearch.length < 1){
+        scalesToSearch = _chorus.defaultConfig.scaleSearchMode;
+    }
     //search for selected notes by container id or class
     if(container && container.length > 0){
         var containerById = document.getElementById(container);
@@ -117,8 +121,7 @@ _chorus.logic.scales.searchScales = _chorus.searchScales = function(container){
             }
         }
         //search scales
-        //todo, offer main/other selector
-        if (true) {
+        if (scalesToSearch === "main" || scalesToSearch === "all") {
             for (scaleKey in _chorus.data.scales.searchable.main) {
                 if (_chorus.data.scales.searchable.main.hasOwnProperty(scaleKey)) {
                     if (_chorus.logic.scales.scaleContains(_chorus.data.scales.searchable.main[scaleKey], notes)) {
@@ -127,8 +130,7 @@ _chorus.logic.scales.searchScales = _chorus.searchScales = function(container){
                 }
             }
         }
-        //todo ""
-        if(true){
+        if(scalesToSearch === "other" || scalesToSearch === "all"){
             for (scaleKey in _chorus.data.scales.searchable.other) {
                 if (_chorus.data.scales.searchable.other.hasOwnProperty(scaleKey)) {
                     if (_chorus.logic.scales.scaleContains(_chorus.data.scales.searchable.other[scaleKey], notes)) {

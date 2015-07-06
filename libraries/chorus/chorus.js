@@ -22,6 +22,7 @@ _chorus.defaultConfig = {
     scaleSearchButton: true,
     scaleSearchText: "Search Scales",
     scaleSearchCallback: "",
+    scaleSearchMode: "all",
     //developer
     debug:"none"
 };
