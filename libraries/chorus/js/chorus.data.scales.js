@@ -2,7 +2,10 @@ _chorus.data.scales = _chorus.data.scales || {
     count: {
         main: 13,
         other: 13,
-        searchable: 250
+        searchable: {
+            main:142,
+            other:108
+        }
     },
     main: {
         major_ionian: [2,2,1,2,2,2,1],

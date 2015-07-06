@@ -62,13 +62,18 @@ _chorus.logic.scales = _chorus.logic.scales || {
 };
 
 _chorus.logic.scales.searchScales = _chorus.searchScales = function(container){
-    var parameterError = false;
-    var noteData = [];
-    var notes = {
-        rootNote: "",
-        selectedTones:[],
-        containers: []
-    };
+    var scaleKey,
+        parameterError = false,
+        noteData = [],
+        notes = {
+            rootNote: "",
+            selectedTones:[]
+        },
+        data = {
+            containers: [],
+            scales: {}
+        };
+    //search for selected notes by container id or class
     if(container && container.length > 0){
         var containerById = document.getElementById(container);
         var containerByClass = document.getElementsByClassName(container);
@@ -85,15 +90,18 @@ _chorus.logic.scales.searchScales = _chorus.searchScales = function(container){
             _chorus.events.messages.sendMessage(_chorus.data.dictionary.error_notFound+"no container found with matching id or class");
         }
     }
+    //get selected notes if no container parameter was passed
     else {
         var containerByDefaultClass = document.getElementsByClassName(_chorus.data.dictionary.class_instrument);
         for (var j = 0; j < containerByDefaultClass.length; j++){
             noteData.push(_chorus.logic.notes.findSelectedTones(containerByDefaultClass[j]));
         }
     }
+    //search for scales if there are selected notes
     if (noteData.length > 0){
+        //remove duplicates
         for (var k = 0; k < noteData.length; k++){
-            notes.containers.push(noteData[k].container);
+            data.containers.push(noteData[k].container);
             if (noteData[k].rootNote.length > 0){
                 if (notes.rootNote.length < 1){
                     notes.rootNote = noteData[k].rootNote;
@@ -108,7 +116,28 @@ _chorus.logic.scales.searchScales = _chorus.searchScales = function(container){
                 }
             }
         }
-        _chorus.searchResult.scales = _chorus.logic.scales.searchHelper(notes);
+        //search scales
+        //todo, offer main/other selector
+        if (true) {
+            for (scaleKey in _chorus.data.scales.searchable.main) {
+                if (_chorus.data.scales.searchable.main.hasOwnProperty(scaleKey)) {
+                    if (_chorus.logic.scales.scaleContains(_chorus.data.scales.searchable.main[scaleKey], notes)) {
+                        data.scales[scaleKey] = _chorus.data.scales.searchable.main[scaleKey];
+                    }
+                }
+            }
+        }
+        //todo ""
+        if(true){
+            for (scaleKey in _chorus.data.scales.searchable.other) {
+                if (_chorus.data.scales.searchable.other.hasOwnProperty(scaleKey)) {
+                    if (_chorus.logic.scales.scaleContains(_chorus.data.scales.searchable.other[scaleKey], notes)) {
+                        data.scales[scaleKey] = _chorus.data.scales.searchable.other[scaleKey];
+                    }
+                }
+            }
+        }
+        _chorus.searchResult.scales = data;
     }
     else if (!parameterError) {
         _chorus.events.messages.sendMessage(_chorus.data.dictionary.error_notFound + "no selected notes found");
@@ -116,22 +145,26 @@ _chorus.logic.scales.searchScales = _chorus.searchScales = function(container){
     _chorus.events.dispatchEvent("chorusScaleSearchComplete","chorusJS has finished searching scales");
 };
 
-_chorus.logic.scales.searchHelper = function(tones){
-    console.log("scale drill init");
-    console.log(tones);
-    var data = {
-        containers: tones.containers,
-        scales: []
-    };
-    if (tones.hasOwnProperty("rootNote") && tones.rootNote){
-        console.log("has root note");
-    }
-    else {
-        console.log("doesn't have root note");
-        if (tones.hasOwnProperty("selectedTones") && tones.selectedTones){
-
+_chorus.logic.scales.scaleContains = function(scale, notes){
+    if (notes.rootNote.length > 0){
+        if (scale.tones[0] == notes.rootNote){
+            return _chorus.logic.scales.tonesInScale(scale.tones,notes.selectedTones);
+        }
+        else {
+            return false;
         }
     }
-    return data;
+    else {
+        return _chorus.logic.scales.tonesInScale(scale.tones,notes.selectedTones);
+    }
+};
+
+_chorus.logic.scales.tonesInScale = function(scaleNotes,selectedNotes){
+    for(var i = 0; i < selectedNotes; i++){
+        if (scaleNotes.indexOf(selectedNotes[i]) === -1){
+            return false;
+        }
+    }
+    return true;
 };
 
