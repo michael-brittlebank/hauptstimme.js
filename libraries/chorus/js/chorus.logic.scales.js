@@ -108,7 +108,7 @@ _chorus.logic.scales.searchScales = _chorus.searchScales = function(container){
                 }
             }
         }
-        _chorus.searchResult.scales = _chorus.logic.scales.scaleDrill(notes);
+        _chorus.searchResult.scales = _chorus.logic.scales.searchHelper(notes);
     }
     else if (!parameterError) {
         _chorus.events.messages.sendMessage(_chorus.data.dictionary.error_notFound + "no selected notes found");
@@ -116,19 +116,19 @@ _chorus.logic.scales.searchScales = _chorus.searchScales = function(container){
     _chorus.events.dispatchEvent("chorusScaleSearchComplete","chorusJS has finished searching scales");
 };
 
-_chorus.logic.scales.scaleDrill = function(notes){
+_chorus.logic.scales.searchHelper = function(tones){
     console.log("scale drill init");
-    console.log(notes);
+    console.log(tones);
     var data = {
-        containers: notes.containers,
+        containers: tones.containers,
         scales: []
     };
-    if (notes.hasOwnProperty("rootNote") && notes.rootNote){
+    if (notes.hasOwnProperty("rootNote") && tones.rootNote){
         console.log("has root note");
     }
     else {
         console.log("doesn't have root note");
-        if (notes.hasOwnProperty("selectedTones") && notes.selectedTones){
+        if (tones.hasOwnProperty("selectedTones") && tones.selectedTones){
 
         }
     }
