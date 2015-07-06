@@ -123,7 +123,7 @@ _chorus.logic.scales.searchHelper = function(tones){
         containers: tones.containers,
         scales: []
     };
-    if (notes.hasOwnProperty("rootNote") && tones.rootNote){
+    if (tones.hasOwnProperty("rootNote") && tones.rootNote){
         console.log("has root note");
     }
     else {
