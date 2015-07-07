@@ -61,7 +61,7 @@ _chorus.logic.scales = _chorus.logic.scales || {
     }
 };
 
-_chorus.logic.scales.searchScales = _chorus.searchScales = function(container, scalesToSearch){
+_chorus.logic.scales.searchScales = _chorus.searchScales = function(container, scalesToSearch, callback){
     var scaleKey,
         parameterError = false,
         noteData = [],
@@ -145,6 +145,9 @@ _chorus.logic.scales.searchScales = _chorus.searchScales = function(container, s
         _chorus.events.messages.sendMessage(_chorus.data.dictionary.error_notFound + "no selected notes found");
     }
     _chorus.events.dispatchEvent("chorusScaleSearchComplete","chorusJS has finished searching scales");
+    if(callback && typeof callback !== "string"){
+         callback(data);
+    }
 };
 
 _chorus.logic.scales.scaleContains = function(scale, notes){

@@ -13,9 +13,10 @@ _chorus.layout.html = _chorus.layout.html || {
             stringContent ="<"+htmlElement+">"+instrumentName.replace(/_/g," ")+"</"+htmlElement+">"+stringContent;
         }
         if (_chorus.logic.helpers.getConfigValue("scaleSearchButton") === true){
-            var title = _chorus.logic.helpers.getConfigValue("scaleSearchText");
-            var searchMode = _chorus.logic.helpers.getConfigValue("scaleSearchMode");
-            stringContent += '<a class="searchButton" onclick="_chorus.searchScales(\''+prefix+_chorus.data.dictionary.class_container+'\',\''+searchMode+'\')">'+title+'</a>';
+            var title = _chorus.logic.helpers.getConfigValue("scaleSearchText"),
+                searchMode = _chorus.logic.helpers.getConfigValue("scaleSearchMode"),
+                callback = _chorus.logic.helpers.getConfigValue("scaleSearchCallback");
+            stringContent += '<a class="searchButton" onclick="_chorus.searchScales(\''+prefix+_chorus.data.dictionary.class_container+'\',\''+searchMode+'\','+callback+')">'+title+'</a>';
         }
         return '<div id="'+prefix+_chorus.data.dictionary.class_container+'" class="'+_chorus.data.dictionary.class_instrument+'">'+
             stringContent+

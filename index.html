@@ -28,7 +28,8 @@ hello world
             layoutInstrumentTitleElement:"h3",
             chorusDebug:"console",
             layoutInstrumentStringOrder:"asc",
-            scaleSearchText: "Search Scales2"
+            scaleSearchText: "Search Scales2",
+            scaleSearchCallback: "callbackFunction2"
         };
         _chorus.init("class", config);
         config = {
@@ -48,5 +49,9 @@ hello world
         console.log(e.detail);
         console.log(_chorus.searchResult);
     });
+    function callbackFunction2(results){
+        console.log("callbacked");
+        console.log(results);
+    }
 </script>
 </html>

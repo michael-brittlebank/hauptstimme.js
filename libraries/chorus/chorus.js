@@ -11,7 +11,6 @@ _chorus.searchResult = {
 
 _chorus.defaultConfig = {
     //logic
-    //todo, offer callback function for scale search
     scaleSearchCallback: "",
     scaleSearchMode: "all",
     //layout
