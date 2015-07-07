@@ -1,6 +1,6 @@
 _chorus.layout.html = _chorus.layout.html || {
     instrument : function(instrumentName, instrumentTuning, prefix){
-        var stringOrder = _chorus.logic.helpers.getConfigValue("stringOrder");
+        var stringOrder = _chorus.logic.helpers.getConfigValue("layoutInstrumentStringOrder");
         if (stringOrder == "asc"){
             instrumentTuning.reverse();
         }
@@ -8,11 +8,11 @@ _chorus.layout.html = _chorus.layout.html || {
         for(var i = 0;i<instrumentTuning.length;i++){
             stringContent = _chorus.layout.html.string(instrumentTuning[i])+stringContent;
         }
-        if (Boolean(_chorus.config.hideHeadings) !== true){
-            var htmlElement = _chorus.logic.helpers.getConfigValue("headingElement");
+        if (_chorus.logic.helpers.getConfigValue("layoutInstrumentTitles") !== true){
+            var htmlElement = _chorus.logic.helpers.getConfigValue("layoutInstrumentTitleElement");
             stringContent ="<"+htmlElement+">"+instrumentName.replace(/_/g," ")+"</"+htmlElement+">"+stringContent;
         }
-        if (Boolean(_chorus.config.scaleSearchButton) === true){
+        if (_chorus.logic.helpers.getConfigValue("scaleSearchButton") === true){
             var title = _chorus.logic.helpers.getConfigValue("scaleSearchText");
             var searchMode = _chorus.logic.helpers.getConfigValue("scaleSearchMode");
             stringContent += '<a class="searchButton" onclick="_chorus.searchScales(\''+prefix+_chorus.data.dictionary.class_container+'\',\''+searchMode+'\')">'+title+'</a>';

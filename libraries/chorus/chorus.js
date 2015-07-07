@@ -12,19 +12,18 @@ _chorus.searchResult = {
 _chorus.defaultConfig = {
     //logic
     //todo, offer callback function for scale search
-    //todo, offer global variable for storing search results
-    //layout
-    instrument:"main",
-    hideHeadings: false,
-    headingElement:"h2",
-    stringOrder:"desc",
-    containerId: "",
-    scaleSearchButton: true,
-    scaleSearchText: "Search Scales",
     scaleSearchCallback: "",
     scaleSearchMode: "all",
+    //layout
+    layoutInstrument:"main",
+    layoutInstrumentTitles: false,
+    layoutInstrumentTitleElement:"h2",
+    layoutInstrumentStringOrder:"desc",
+    layoutContainerId: "",
+    scaleSearchButton: true,
+    scaleSearchText: "Search Scales",
     //developer
-    debug:"none"
+    chorusDebug:"none"
 };
 
 _chorus.config = {};

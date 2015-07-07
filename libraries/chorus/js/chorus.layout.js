@@ -1,8 +1,8 @@
 _chorus.layout = {
     init : function(element){
-        var instrument = _chorus.config.instrument;
+        var instrument = _chorus.config.layoutInstrument;
         var prefix;
-        var containerId = _chorus.logic.helpers.getConfigValue("containerId");
+        var containerId = _chorus.logic.helpers.getConfigValue("layoutContainerId");
         if (containerId.length > 0){
             prefix = containerId;
         }

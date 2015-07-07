@@ -82,16 +82,11 @@ _chorus.logic.notes.findSelectedTones = _chorus.findSelectedTones = function(ele
                 if (element.childNodes[i]) {
                     for (var j = 0; j < element.childNodes[i].childNodes.length; j++) {
                         classList = element.childNodes[i].childNodes[j].classList;
-                        console.log("full list: "+classList);
                         if (classList.contains(_chorus.data.dictionary.class_selected) || classList.contains(_chorus.data.dictionary.class_root)) {
                             for (var k = 0; k < classList.length; k++){
-                                console.log("in loop: "+classList[k]);
                                 if (classList[k].indexOf(_chorus.data.dictionary.class_tone) !== -1){
-                                    console.log("in if" + classList[k]);
                                     if (classList.contains(_chorus.data.dictionary.class_selected)){
-                                        console.log("contains selected");
                                         selectedTones.push(_chorus.logic.notes.getToneByClass(classList[k]));
-                                        console.log(selectedTones);
                                     }
                                     else if (classList.contains(_chorus.data.dictionary.class_root)){
                                         rootNote = _chorus.logic.notes.getToneByClass(classList[k]);
@@ -108,7 +103,6 @@ _chorus.logic.notes.findSelectedTones = _chorus.findSelectedTones = function(ele
     else {
         _chorus.events.messages.sendMessage(_chorus.data.dictionary.error_notFound+"no element found to search");
     }
-    console.log("return "+selectedTones);
     return {
         container: element,
         selectedTones: selectedTones,

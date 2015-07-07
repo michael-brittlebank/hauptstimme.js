@@ -24,18 +24,18 @@ hello world
 <script>
     document.addEventListener("DOMContentLoaded", function(e) {
         var config = {
-            instrument: "ukulele_concert",
-            headingElement:"h3",
-            debug:"console",
-            stringOrder:"asc",
+            layoutInstrument: "ukulele_concert",
+            layoutInstrumentTitleElement:"h3",
+            chorusDebug:"console",
+            layoutInstrumentStringOrder:"asc",
             scaleSearchText: "Search Scales2"
         };
         _chorus.init("class", config);
         config = {
-            instrument: ["main","violin"],
+            layoutInstrument: ["main","violin"],
             scaleSearchButton: false,
-            debug:"console",
-            containerId: "myId",
+            chorusDebug:"console",
+            layoutContainerId: "myId",
             scaleSearchMode: "main"
         };
         _chorus.init("id", config);
