@@ -74,7 +74,7 @@ _chorus.logic.scales.searchScales = _chorus.searchScales = function(container, s
             scales: {}
         };
     //default scales to search
-    if (scalesToSearch.length < 1){
+    if (!scalesToSearch || scalesToSearch.length < 1){
         scalesToSearch = _chorus.defaultConfig.scaleSearchMode;
     }
     //search for selected notes by container id or class
@@ -139,11 +139,11 @@ _chorus.logic.scales.searchScales = _chorus.searchScales = function(container, s
                 }
             }
         }
-        _chorus.searchResult.scales = data;
     }
     else if (!parameterError) {
         _chorus.events.messages.sendMessage(_chorus.data.dictionary.error_notFound + "no selected notes found");
     }
+    _chorus.searchResult.scales = data;
     _chorus.events.dispatchEvent("chorusScaleSearchComplete","chorusJS has finished searching scales");
     if(callback && typeof callback !== "string"){
          callback(data);
