@@ -61,8 +61,9 @@ _chorus.logic.scales = _chorus.logic.scales || {
     }
 };
 
-_chorus.logic.scales.searchScales = _chorus.searchScales = function(container, scalesToSearch, callback){
+_chorus.logic.scales.searchScales = _chorus.searchScales = function(container, scaleSearchMode, callback){
     var scaleKey,
+        scalesToSearch,
         parameterError = false,
         noteData = [],
         notes = {
@@ -74,8 +75,12 @@ _chorus.logic.scales.searchScales = _chorus.searchScales = function(container, s
             scales: {}
         };
     //default scales to search
-    if ((!scalesToSearch || scalesToSearch.length < 1)|| !_chorus.logic.helpers.validator.isValidScaleSearchMode(scalesToSearch)){
+    if (!scaleSearchMode || scaleSearchMode.length < 1){
         scalesToSearch = _chorus.defaultConfig.scaleSearchMode;
+    }
+    else if (!_chorus.logic.helpers.validator.isValidScaleSearchMode(scaleSearchMode)){
+        scalesToSearch = _chorus.defaultConfig.scaleSearchMode;
+        _chorus.events.messages.sendMessage(_chorus.data.dictionary.error_value+"invalid scale search mode");
     }
     //search for selected notes by container id or class
     if(container && container.length > 0){

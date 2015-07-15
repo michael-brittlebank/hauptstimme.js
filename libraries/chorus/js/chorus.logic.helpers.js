@@ -50,9 +50,9 @@ _chorus.logic.helpers = _chorus.logic.helpers || {
     },
     validator: {
         isValidScaleSearchMode:function(mode){
-            return mode !== "main" ||
-                mode !== "other" ||
-                mode !== "all";
+            return mode === "main" ||
+                mode === "other" ||
+                mode === "all";
         }
     }
 };

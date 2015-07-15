@@ -29,7 +29,8 @@ hello world
             chorusDebug:"console",
             layoutInstrumentStringOrder:"asc",
             scaleSearchText: "Search Scales2",
-            scaleSearchCallback: "callbackFunction2"
+            scaleSearchCallback: "callbackFunction2",
+            scaleSearchMode: "main"
         };
         _chorus.init("class", config);
         config = {
@@ -37,8 +38,7 @@ hello world
             scaleSearchButton: false,
             chorusDebug:"console",
             layoutContainerId: "myId",
-            layoutContainerClass: "content",
-            scaleSearchMode: "main"
+            layoutContainerClass: "content"
         };
         _chorus.init("id", config);
 //        document.getElementById("compile").innerHTML = _chorus.logic.scales.compile.init();

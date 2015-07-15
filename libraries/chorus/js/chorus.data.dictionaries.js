@@ -9,5 +9,6 @@ _chorus.data.dictionary = _chorus.data.dictionary || {
     error_type:"[Error] Invalid type: ",
     error_undefined:"[Error] Undefined: ",
     error_notFound: "[Error] Not Found: ",
+    error_value: "[Error] Invalid Value Passed: ",
     warning_multipleRootNotes: "[Warning] Multiple root notes detected"
 };
