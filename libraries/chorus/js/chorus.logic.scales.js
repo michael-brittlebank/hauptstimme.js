@@ -74,7 +74,7 @@ _chorus.logic.scales.searchScales = _chorus.searchScales = function(container, s
             scales: {}
         };
     //default scales to search
-    if (!scalesToSearch || scalesToSearch.length < 1){
+    if ((!scalesToSearch || scalesToSearch.length < 1)|| !_chorus.logic.helpers.validator.isValidScaleSearchMode(scalesToSearch)){
         scalesToSearch = _chorus.defaultConfig.scaleSearchMode;
     }
     //search for selected notes by container id or class

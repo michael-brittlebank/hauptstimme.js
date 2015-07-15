@@ -47,5 +47,12 @@ _chorus.logic.helpers = _chorus.logic.helpers || {
         return string.toLowerCase().replace( /\b\w/g, function (m) {
             return m.toUpperCase();
         });
+    },
+    validator: {
+        isValidScaleSearchMode:function(mode){
+            return mode !== "main" ||
+                mode !== "other" ||
+                mode !== "all";
+        }
     }
 };
