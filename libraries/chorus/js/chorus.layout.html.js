@@ -1,10 +1,11 @@
 _chorus.layout.html = _chorus.layout.html || {
     instrument : function(instrumentName, instrumentTuning, prefix){
-        var stringOrder = _chorus.logic.helpers.getConfigValue("layoutInstrumentStringOrder");
+        var stringOrder = _chorus.logic.helpers.getConfigValue("layoutInstrumentStringOrder"),
+            stringContent = "",
+            containerClass = _chorus.logic.helpers.getConfigValue("layoutContainerClass");
         if (stringOrder == "asc"){
             instrumentTuning.reverse();
         }
-        var stringContent = "";
         for(var i = 0;i<instrumentTuning.length;i++){
             stringContent = _chorus.layout.html.string(instrumentTuning[i])+stringContent;
         }
@@ -18,7 +19,7 @@ _chorus.layout.html = _chorus.layout.html || {
                 callback = _chorus.logic.helpers.getConfigValue("scaleSearchCallback");
             stringContent += '<a class="searchButton" onclick="_chorus.searchScales(\''+prefix+_chorus.data.dictionary.class_container+'\',\''+searchMode+'\','+callback+')">'+title+'</a>';
         }
-        return '<div id="'+prefix+_chorus.data.dictionary.class_container+'" class="'+_chorus.data.dictionary.class_instrument+'">'+
+        return '<div id="'+prefix+_chorus.data.dictionary.class_container+'" class="'+_chorus.data.dictionary.class_instrument+' '+containerClass+'">'+
             stringContent+
             "</div>";
     },

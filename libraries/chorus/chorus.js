@@ -19,6 +19,7 @@ _chorus.defaultConfig = {
     layoutInstrumentTitleElement:"h2",
     layoutInstrumentStringOrder:"desc",
     layoutContainerId: "",
+    layoutContainerClass: "",
     scaleSearchButton: true,
     scaleSearchText: "Search Scales",
     //developer
