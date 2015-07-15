@@ -6,7 +6,9 @@ _chorus.version = _chorus.version || {
 
 _chorus.searchResult = {
     scales:{},
-    chords:{}
+    scaleContainers:[],
+    chords:{},
+    chordContainers:[]
 };
 
 _chorus.defaultConfig = {

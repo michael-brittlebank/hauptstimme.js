@@ -61,27 +61,13 @@ _chorus.logic.scales = _chorus.logic.scales || {
     }
 };
 
-_chorus.logic.scales.searchScales = _chorus.searchScales = function(container, scaleSearchMode, callback){
-    var scaleKey,
-        scalesToSearch,
-        parameterError = false,
-        noteData = [],
+_chorus.logic.scales.getSelectedNotes = function(container, scaleSearchMode, callback){
+    _chorus.searchResult.scaleContainers = [];
+    var noteData = [],
         notes = {
             rootNote: "",
             selectedTones:[]
-        },
-        data = {
-            containers: [],
-            scales: {}
         };
-    //default scales to search
-    if (!scaleSearchMode || scaleSearchMode.length < 1){
-        scalesToSearch = _chorus.defaultConfig.scaleSearchMode;
-    }
-    else if (!_chorus.logic.helpers.validator.isValidScaleSearchMode(scaleSearchMode)){
-        scalesToSearch = _chorus.defaultConfig.scaleSearchMode;
-        _chorus.events.messages.sendMessage(_chorus.data.dictionary.error_value+"invalid scale search mode");
-    }
     //search for selected notes by container id or class
     if(container && container.length > 0){
         var containerById = document.getElementById(container);
@@ -95,7 +81,6 @@ _chorus.logic.scales.searchScales = _chorus.searchScales = function(container, s
             }
         }
         else {
-            parameterError = true;
             _chorus.events.messages.sendMessage(_chorus.data.dictionary.error_notFound+"no container found with matching id or class");
         }
     }
@@ -106,32 +91,55 @@ _chorus.logic.scales.searchScales = _chorus.searchScales = function(container, s
             noteData.push(_chorus.logic.notes.findSelectedTones(containerByDefaultClass[j]));
         }
     }
-    //search for scales if there are selected notes
-    if (noteData.length > 0){
-        //remove duplicates
-        for (var k = 0; k < noteData.length; k++){
-            data.containers.push(noteData[k].container);
-            if (noteData[k].rootNote.length > 0){
-                if (notes.rootNote.length < 1){
-                    notes.rootNote = noteData[k].rootNote;
-                }
-                else {
-                    _chorus.events.messages.sendMessage(_chorus.data.dictionary.warning_multipleRootNotes);
-                }
+    //remove duplicates
+    for (var k = 0; k < noteData.length; k++){
+        if (noteData[k].rootNote.length > 0 ||  noteData[k].selectedTones.length > 0){
+            _chorus.searchResult.scaleContainers.push(noteData[k].container);
+        }
+        if (noteData[k].rootNote.length > 0){
+            if (notes.rootNote.length < 1){
+                notes.rootNote = noteData[k].rootNote;
             }
-            for (var l = 0; l < noteData[k].selectedTones.length; l++){
-                if (notes.selectedTones.indexOf(noteData[k].selectedTones[l]) == -1){
-                    notes.selectedTones.push(noteData[k].selectedTones[l]);
-                }
+            else {
+                _chorus.events.messages.sendMessage(_chorus.data.dictionary.warning_multipleRootNotes);
             }
         }
+        for (var l = 0; l < noteData[k].selectedTones.length; l++){
+            if (notes.selectedTones.indexOf(noteData[k].selectedTones[l]) == -1){
+                notes.selectedTones.push(noteData[k].selectedTones[l]);
+            }
+        }
+    }
+    _chorus.searchScales(notes, scaleSearchMode, callback);
+};
+
+_chorus.logic.scales.searchScales = _chorus.searchScales = function(notes, scaleSearchMode, callback, container){
+    if (container || !notes){
+        _chorus.logic.scales.getSelectedNotes (container, scaleSearchMode, callback);
+    }
+    else {
+        var scaleKey,
+            scalesToSearch,
+            data = {};
+        //search for scales if there are selected notes
         if (notes.selectedTones.length > 0 || notes.rootNote.length > 0) {
+            //default scales to search
+            if (!scaleSearchMode || scaleSearchMode.length < 1) {
+                scalesToSearch = _chorus.defaultConfig.scaleSearchMode;
+            }
+            else if (!_chorus.logic.helpers.validator.isValidScaleSearchMode(scaleSearchMode)) {
+                scalesToSearch = _chorus.defaultConfig.scaleSearchMode;
+                _chorus.events.messages.sendMessage(_chorus.data.dictionary.error_value + "invalid scale search mode");
+            }
+            else {
+                scalesToSearch = scaleSearchMode;
+            }
             //search scales
             if (scalesToSearch === "main" || scalesToSearch === "all") {
                 for (scaleKey in _chorus.data.scales.searchable.main) {
                     if (_chorus.data.scales.searchable.main.hasOwnProperty(scaleKey)) {
                         if (_chorus.logic.scales.scaleContains(_chorus.data.scales.searchable.main[scaleKey], notes)) {
-                            data.scales[scaleKey] = _chorus.data.scales.searchable.main[scaleKey];
+                            data[scaleKey] = _chorus.data.scales.searchable.main[scaleKey];
                         }
                     }
                 }
@@ -140,7 +148,7 @@ _chorus.logic.scales.searchScales = _chorus.searchScales = function(container, s
                 for (scaleKey in _chorus.data.scales.searchable.other) {
                     if (_chorus.data.scales.searchable.other.hasOwnProperty(scaleKey)) {
                         if (_chorus.logic.scales.scaleContains(_chorus.data.scales.searchable.other[scaleKey], notes)) {
-                            data.scales[scaleKey] = _chorus.data.scales.searchable.other[scaleKey];
+                            data[scaleKey] = _chorus.data.scales.searchable.other[scaleKey];
                         }
                     }
                 }
@@ -149,14 +157,11 @@ _chorus.logic.scales.searchScales = _chorus.searchScales = function(container, s
         else {
             _chorus.events.messages.sendMessage(_chorus.data.dictionary.error_notFound + "no selected notes found");
         }
-    }
-    else if (!parameterError) {
-        _chorus.events.messages.sendMessage(_chorus.data.dictionary.error_notFound + "no containers found");
-    }
-    _chorus.searchResult.scales = data;
-    _chorus.events.dispatchEvent("chorusScaleSearchComplete","chorusJS has finished searching scales");
-    if(callback && typeof callback !== "string"){
-         callback(data);
+        _chorus.searchResult.scales = data;
+        _chorus.events.dispatchEvent("chorusScaleSearchComplete", "chorusJS has finished searching scales");
+        if (callback && typeof callback !== "string") {
+            callback(data);
+        }
     }
 };
 
@@ -175,8 +180,8 @@ _chorus.logic.scales.scaleContains = function(scale, notes){
 };
 
 _chorus.logic.scales.tonesInScale = function(scaleNotes,selectedNotes){
-    for(var i = 0; i < selectedNotes; i++){
-        if (scaleNotes.indexOf(selectedNotes[i]) === -1){
+    for(var i = 0; i < selectedNotes.length; i++){
+        if (scaleNotes.indexOf(parseInt(selectedNotes[i])) === -1){
             return false;
         }
     }

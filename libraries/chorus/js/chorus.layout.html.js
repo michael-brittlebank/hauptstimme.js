@@ -17,7 +17,7 @@ _chorus.layout.html = _chorus.layout.html || {
             var title = _chorus.logic.helpers.getConfigValue("scaleSearchText"),
                 searchMode = _chorus.logic.helpers.getConfigValue("scaleSearchMode"),
                 callback = _chorus.logic.helpers.getConfigValue("scaleSearchCallback");
-            stringContent += '<a class="searchButton" onclick="_chorus.searchScales(\''+prefix+_chorus.data.dictionary.class_container+'\',\''+searchMode+'\','+callback+')">'+title+'</a>';
+            stringContent += '<a class="searchButton" onclick="_chorus.searchScales(\'\',\''+searchMode+'\','+callback+',\''+prefix+_chorus.data.dictionary.class_container+'\')">'+title+'</a>';
         }
         return '<div id="'+prefix+_chorus.data.dictionary.class_container+'" class="'+_chorus.data.dictionary.class_instrument+' '+containerClass+'">'+
             stringContent+
