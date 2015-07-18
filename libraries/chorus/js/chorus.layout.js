@@ -1,4 +1,8 @@
 _chorus.layout = {
+    /**
+     * create an HTML representation of an instrument within the DOM element provided
+     * @param element
+     */
     init : function(element){
         var instrument = _chorus.config.layoutInstrument;
         var prefix;
@@ -42,6 +46,10 @@ _chorus.layout = {
             _chorus.events.messages.sendMessage(_chorus.data.dictionary.error_type+"instrument config parameter");
         }
     },
+    /**
+     * get a random id and check if an element in the DOM already has it
+     * @returns {*}
+     */
     getRandomId: function(){
         var id = _chorus.layout.prefixBuilder(_chorus.logic.helpers.generateRandomString(5));
         var elementWithSameId = document.getElementById(id);
@@ -52,6 +60,14 @@ _chorus.layout = {
             return _chorus.layout.getRandomId();
         }
     },
+    /**
+     * gets the HTML representation of an instrument if it exists
+     * if there are multiple instruments chosen, then adjust the uid prefix accordingly
+     * @param instrument
+     * @param prefix
+     * @param counter
+     * @returns {string}
+     */
     selectInstrument: function(instrument, prefix, counter){
         var content = "";
         var key;
@@ -110,6 +126,12 @@ _chorus.layout = {
         }
         return content;
     },
+    /**
+     * make uid for instrument divs
+     * @param prefix
+     * @param counter
+     * @returns {*}
+     */
     prefixBuilder: function(prefix, counter){
         if (counter && (counter.length > 0 || counter > 0)){
             return prefix +"-"+counter;
@@ -117,11 +139,5 @@ _chorus.layout = {
         else {
             return prefix;
         }
-    }
-};
-
-_chorus.layout.css = _chorus.layout.css || {
-    toBlock : function(){
-        return "hello" ;
     }
 };

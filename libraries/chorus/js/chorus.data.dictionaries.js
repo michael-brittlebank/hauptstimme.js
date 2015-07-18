@@ -1,3 +1,6 @@
+/**
+ * holds common classnames and messages
+ */
 _chorus.data.dictionary = _chorus.data.dictionary || {
     class_selected:"fret-selected",
     class_root:"fret-root",

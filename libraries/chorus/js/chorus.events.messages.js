@@ -1,3 +1,6 @@
+/**
+ * messaging system to alert user
+ */
 _chorus.events.messages = _chorus.events.messages || {
     sendMessage: function(message) {
         var messageSystem = _chorus.logic.helpers.getConfigValue("chorusDebug"),

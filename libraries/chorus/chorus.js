@@ -1,9 +1,7 @@
+//namespace declaration
 var _chorus = window.chorus = _chorus || window.chorus || {};
-_chorus.version = _chorus.version || {
-    version: "0.4",
-    lastUpdated: new Date().toDateString()
-};
 
+//default search result holder
 _chorus.searchResult = {
     scales:{},
     scaleContainers:[],
@@ -11,6 +9,7 @@ _chorus.searchResult = {
     chordContainers:[]
 };
 
+//default config object
 _chorus.defaultConfig = {
     //logic
     scaleSearchCallback: "",
@@ -28,8 +27,13 @@ _chorus.defaultConfig = {
     chorusDebug:"none"
 };
 
+//any user set config options will be saved here with defaults for any unset options
 _chorus.config = {};
 
+/**
+ * sets config values and creates instrument grid
+ * @type {Function|*}
+ */
 _chorus.init = _chorus.init || function(element, config){
     _chorus.events.listeners.init();
     _chorus.config = _chorus.logic.helpers.cloneObject(_chorus.defaultConfig);
@@ -61,9 +65,13 @@ _chorus.init = _chorus.init || function(element, config){
         return false;
     }
 };
+
+//empty container to allow for sub-namespaces
 _chorus.data = _chorus.data || {
 
 };
+
+//empty container to allow for sub-namespaces
 _chorus.logic = _chorus.logic || {
 
 };

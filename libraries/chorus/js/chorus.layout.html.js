@@ -1,4 +1,11 @@
 _chorus.layout.html = _chorus.layout.html || {
+    /**
+     * creates an instrument in HTML
+     * @param instrumentName
+     * @param instrumentTuning
+     * @param prefix
+     * @returns {string}
+     */
     instrument : function(instrumentName, instrumentTuning, prefix){
         var stringOrder = _chorus.logic.helpers.getConfigValue("layoutInstrumentStringOrder"),
             stringContent = "",
@@ -23,6 +30,11 @@ _chorus.layout.html = _chorus.layout.html || {
             stringContent+
             "</div>";
     },
+    /**
+     * creates a string in HTML
+     * @param root
+     * @returns {string}
+     */
     string : function(root) {
         var fret,tone;
         var numberOfFrets = 12;
@@ -37,6 +49,11 @@ _chorus.layout.html = _chorus.layout.html || {
         }
         return output+'</div>';
     },
+    /**
+     * replace sharps and flats with appropriate html entities
+     * @param note
+     * @returns {string}
+     */
     htmlFilter : function(note){
         return note.replace(/#/g,"&#9839;").replace(/b/g,"&#9837;");
     }

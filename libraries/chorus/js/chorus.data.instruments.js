@@ -1,3 +1,6 @@
+/**
+ * holds instrument data including tunings and counts
+ */
 _chorus.data.instruments = {
     count: {
         all: 89,

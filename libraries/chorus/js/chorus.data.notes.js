@@ -1,3 +1,6 @@
+/**
+ * holds note data and reverse lookups for notes (chars) and tones (ints)
+ */
 _chorus.data.notes = {
     count: {
         tones: 12,

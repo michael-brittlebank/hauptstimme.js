@@ -1,4 +1,7 @@
 _chorus.logic.scales = _chorus.logic.scales || {
+    /**
+     *
+     */
     compile: {
         init: function() {
             var root, tones, tone, letters, scale, scaleKey, scaleName, scaleArray;
@@ -61,68 +64,22 @@ _chorus.logic.scales = _chorus.logic.scales || {
     }
 };
 
-_chorus.logic.scales.getSelectedNotes = function(container, scaleSearchMode, callback){
-    _chorus.searchResult.scaleContainers = [];
-    var noteData = [],
-        notes = {
-            rootNote: "",
-            selectedTones:[]
-        };
-    //search for selected notes by container id or class
-    if(container && container.length > 0){
-        var containerById = document.getElementById(container);
-        var containerByClass = document.getElementsByClassName(container);
-        if (containerById){
-            noteData.push(_chorus.logic.notes.findSelectedTones(containerById));
-        }
-        else if (containerByClass){
-            for (var i = 0; i < containerByClass.length; i++){
-                noteData.push(_chorus.logic.notes.findSelectedTones(containerByClass[i]));
-            }
-        }
-        else {
-            _chorus.events.messages.sendMessage(_chorus.data.dictionary.error_notFound+"no container found with matching id or class");
-        }
-    }
-    //get selected notes if no container parameter was passed
-    else {
-        var containerByDefaultClass = document.getElementsByClassName(_chorus.data.dictionary.class_instrument);
-        for (var j = 0; j < containerByDefaultClass.length; j++){
-            noteData.push(_chorus.logic.notes.findSelectedTones(containerByDefaultClass[j]));
-        }
-    }
-    //remove duplicates
-    for (var k = 0; k < noteData.length; k++){
-        if (noteData[k].rootNote.length > 0 ||  noteData[k].selectedTones.length > 0){
-            _chorus.searchResult.scaleContainers.push(noteData[k].container);
-        }
-        if (noteData[k].rootNote.length > 0){
-            if (notes.rootNote.length < 1){
-                notes.rootNote = noteData[k].rootNote;
-            }
-            else {
-                _chorus.events.messages.sendMessage(_chorus.data.dictionary.warning_multipleRootNotes);
-            }
-        }
-        for (var l = 0; l < noteData[k].selectedTones.length; l++){
-            if (notes.selectedTones.indexOf(noteData[k].selectedTones[l]) == -1){
-                notes.selectedTones.push(noteData[k].selectedTones[l]);
-            }
-        }
-    }
-    _chorus.searchScales(notes, scaleSearchMode, callback);
-};
-
-_chorus.logic.scales.searchScales = _chorus.searchScales = function(notes, scaleSearchMode, callback, container){
-    if (container || !notes){
-        _chorus.logic.scales.getSelectedNotes (container, scaleSearchMode, callback);
+/**
+ * main search function for searching scales
+ * if container is passed, get selected notes from that DOM element
+ * otherwise use the tones passed
+ * @type {Function}
+ */
+_chorus.logic.scales.searchScales = _chorus.searchScales = function(tones, scaleSearchMode, callback, container){
+    if (container || !tones){
+        _chorus.searchScales(_chorus.logic.notes.getSelectedNotes (container), scaleSearchMode, callback);
     }
     else {
         var scaleKey,
             scalesToSearch,
             data = {};
         //search for scales if there are selected notes
-        if (notes.selectedTones.length > 0 || notes.rootNote.length > 0) {
+        if (tones.selectedTones.length > 0 || tones.rootTone.length > 0) {
             //default scales to search
             if (!scaleSearchMode || scaleSearchMode.length < 1) {
                 scalesToSearch = _chorus.defaultConfig.scaleSearchMode;
@@ -138,7 +95,7 @@ _chorus.logic.scales.searchScales = _chorus.searchScales = function(notes, scale
             if (scalesToSearch === "main" || scalesToSearch === "all") {
                 for (scaleKey in _chorus.data.scales.searchable.main) {
                     if (_chorus.data.scales.searchable.main.hasOwnProperty(scaleKey)) {
-                        if (_chorus.logic.scales.scaleContains(_chorus.data.scales.searchable.main[scaleKey], notes)) {
+                        if (_chorus.logic.scales.scaleContains(_chorus.data.scales.searchable.main[scaleKey], tones)) {
                             data[scaleKey] = _chorus.data.scales.searchable.main[scaleKey];
                         }
                     }
@@ -147,7 +104,7 @@ _chorus.logic.scales.searchScales = _chorus.searchScales = function(notes, scale
             if (scalesToSearch === "other" || scalesToSearch === "all") {
                 for (scaleKey in _chorus.data.scales.searchable.other) {
                     if (_chorus.data.scales.searchable.other.hasOwnProperty(scaleKey)) {
-                        if (_chorus.logic.scales.scaleContains(_chorus.data.scales.searchable.other[scaleKey], notes)) {
+                        if (_chorus.logic.scales.scaleContains(_chorus.data.scales.searchable.other[scaleKey], tones)) {
                             data[scaleKey] = _chorus.data.scales.searchable.other[scaleKey];
                         }
                     }
@@ -165,9 +122,15 @@ _chorus.logic.scales.searchScales = _chorus.searchScales = function(notes, scale
     }
 };
 
+/**
+ * return if the scale contains the selected tones or not
+ * @param scale
+ * @param notes
+ * @returns {boolean}
+ */
 _chorus.logic.scales.scaleContains = function(scale, notes){
-    if (notes.rootNote.length > 0){
-        if (scale.tones[0] == notes.rootNote){
+    if (notes.rootTone.length > 0){
+        if (scale.tones[0] == notes.rootTone){
             return _chorus.logic.scales.tonesInScale(scale.tones,notes.selectedTones);
         }
         else {
@@ -179,6 +142,12 @@ _chorus.logic.scales.scaleContains = function(scale, notes){
     }
 };
 
+/**
+ * return if the all of the selected tones exist in the scale
+ * @param scaleNotes
+ * @param selectedNotes
+ * @returns {boolean}
+ */
 _chorus.logic.scales.tonesInScale = function(scaleNotes,selectedNotes){
     for(var i = 0; i < selectedNotes.length; i++){
         if (scaleNotes.indexOf(parseInt(selectedNotes[i])) === -1){

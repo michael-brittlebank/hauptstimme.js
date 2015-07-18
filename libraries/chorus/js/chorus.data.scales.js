@@ -1,3 +1,7 @@
+/**
+ * holds scale data including steps within a scale, counts,
+ * and a compiled list of searchable scales without theoretical scales
+ */
 _chorus.data.scales = _chorus.data.scales || {
     count: {
         main: 13,
