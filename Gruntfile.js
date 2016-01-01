@@ -3,10 +3,7 @@ module.exports = function(grunt) {
     var watchFiles = {
         coreJs: ['app.js','Gruntfile.js'],
         sass: ['webapp/scss/**/*.scss'],
-        js: [
-            'libraries/chorus/chorus.js',
-            'libraries/chorus/js/*.js'
-        ]
+        js: ['src/js/**/*.js']
     };
     // Project configuration.
     grunt.initConfig({
@@ -25,7 +22,7 @@ module.exports = function(grunt) {
         },
         jshint: {
             all: {
-                src: watchFiles.js,
+                src: watchFiles.coreJs.concat(watchFiles.js),
                 options: {
                     jshintrc: true
                 }
@@ -61,9 +58,9 @@ module.exports = function(grunt) {
                 files: {
                     'dist/chorus.min.js': [
                         'src/js/chorus.js',
-                        'src/js/chorus.events.js',
-                        'src/js/chorus.layout.js',
-                        'src/js/*'
+                        'src/js/core/chorus.events.js',
+                        'src/js/core/chorus.layout.js',
+                        'src/js/**/*.js'
                     ]
                 },
                 options: {
@@ -83,6 +80,13 @@ module.exports = function(grunt) {
                 }
 
             },
+            coreJs: {
+                files: watchFiles.coreJs,
+                tasks: ['jshint'],
+                options: {
+                    livereload: true
+                }
+            },
             js: {
                 files: watchFiles.js,
                 tasks: ['jshint','uglify'],
@@ -95,8 +99,8 @@ module.exports = function(grunt) {
 
 // TASKS =====================================/
     grunt.registerTask('default', [
-        'uglify',
-        'sass',
+        'newer:uglify',
+        'newer:sass',
         'concurrent'
     ]);
 
