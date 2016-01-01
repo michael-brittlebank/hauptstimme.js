@@ -1,7 +1,7 @@
 # chorus.js
 
 ## Description
-A JavaScript library for visualizing music theory and practice
+A JavaScript library for visualizing music theory
 
 ## Browser Support
 * Chrome 8.0+

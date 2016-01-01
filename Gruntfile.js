@@ -1,6 +1,7 @@
 module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
     var watchFiles = {
+        coreJs: ['app.js','Gruntfile.js'],
         sass: ['webapp/scss/**/*.scss'],
         js: [
             'libraries/chorus/chorus.js',
@@ -31,11 +32,13 @@ module.exports = function(grunt) {
             }
         },
         nodemon: {
-            script: 'app.js',
-            options: {
-                nodeArgs: ['--debug'],
-                ext: 'js',
-                watch: watchFiles.js
+            default: {
+                script: 'app.js',
+                options: {
+                    nodeArgs: ['--debug'],
+                    ext: 'js',
+                    watch: watchFiles.coreJs
+                }
             }
         },
         open : {
