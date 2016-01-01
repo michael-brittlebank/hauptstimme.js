@@ -46,7 +46,7 @@ module.exports = function(grunt) {
         sass: {
             all: {
                 files: {
-                    'dist/chorus.min.css': 'src/sass/chorus.scss'
+                    'dist/chorus.min.css': 'src/scss/chorus.scss'
                 },
                 options: {
                     style: 'compressed'
@@ -71,8 +71,8 @@ module.exports = function(grunt) {
         watch: {
             css: {
                 files: [
-                    'src/sass/chorus.scss',
-                    'src/sass/scss/*.{scss,sass}'
+                    'src/scss/chorus.scss',
+                    'src/scss/scss/*.{scss,sass}'
                 ],
                 tasks: ['sass'],
                 options: {
