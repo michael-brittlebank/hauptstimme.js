@@ -58,6 +58,7 @@ module.exports = function(grunt) {
                 files: {
                     'dist/chorus.min.js': [
                         'src/js/chorus.js',
+                        'src/js/core/chorus.data.js',
                         'src/js/core/chorus.events.js',
                         'src/js/core/chorus.layout.js',
                         'src/js/**/*.js'
