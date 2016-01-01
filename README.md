@@ -13,6 +13,3 @@ A JavaScript library for visualizing music theory and practice
 ## Quickstart
 
 ## API Reference
-
-## Acknowledgements
-Special thanks to E. Clare for always being logical
