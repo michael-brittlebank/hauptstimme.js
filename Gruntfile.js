@@ -46,7 +46,7 @@ module.exports = function(grunt) {
         sass: {
             all: {
                 files: {
-                    'public/css/chorus.min.css': 'source/sass/chorus.scss'
+                    'dist/chorus.min.css': 'src/sass/chorus.scss'
                 },
                 options: {
                     style: 'compressed'
@@ -56,11 +56,11 @@ module.exports = function(grunt) {
         uglify: {
             all: {
                 files: {
-                    'public/js/chorus.min.js': [
-                        'source/js/chorus.js',
-                        'source/js/chorus.events.js',
-                        'source/js/chorus.layout.js',
-                        'source/js/*'
+                    'dist/chorus.min.js': [
+                        'src/js/chorus.js',
+                        'src/js/chorus.events.js',
+                        'src/js/chorus.layout.js',
+                        'src/js/*'
                     ]
                 },
                 options: {
@@ -71,8 +71,8 @@ module.exports = function(grunt) {
         watch: {
             css: {
                 files: [
-                    'source/sass/chorus.scss',
-                    'source/sass/scss/*.{scss,sass}'
+                    'src/sass/chorus.scss',
+                    'src/sass/scss/*.{scss,sass}'
                 ],
                 tasks: ['sass'],
                 options: {
