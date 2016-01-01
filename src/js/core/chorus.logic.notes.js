@@ -78,9 +78,9 @@ _chorus.logic.notes = _chorus.logic.notes || {
         if (difference < _chorus.data.notes.count.tones/2*-1) {
             difference += _chorus.data.notes.count.tones;
         }
-        if (difference != 0) {
+        if (difference !== 0) {
             if (_chorus.data.notes.tone.hasOwnProperty(tone)){
-                return false
+                return false;
             }
             if (difference > 0) {
                 for (var i = 0; i < difference; i++) {
@@ -210,5 +210,5 @@ _chorus.logic.notes.getTonesFromDOM = function(element){
         container: element,
         selectedTones: selectedTones,
         rootTone: rootTone
-    }
+    };
 };

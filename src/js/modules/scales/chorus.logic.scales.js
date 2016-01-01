@@ -59,7 +59,7 @@ _chorus.logic.scales = _chorus.logic.scales || {
                     letters.push(_chorus.logic.notes.getNoteByToneDefault(tones[k]));
                 }
             }
-            return letters
+            return letters;
         }
     }
 };
