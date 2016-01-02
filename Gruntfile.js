@@ -2,7 +2,7 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
     var watchFiles = {
         coreJs: ['app.js','Gruntfile.js'],
-        sass: ['webapp/scss/**/*.scss'],
+        sass: ['src/scss/**/*.scss'],
         js: ['src/js/**/*.js']
     };
     // Project configuration.
@@ -71,15 +71,11 @@ module.exports = function(grunt) {
         },
         watch: {
             css: {
-                files: [
-                    'src/scss/chorus.scss',
-                    'src/scss/scss/*.{scss,sass}'
-                ],
+                files: watchFiles.sass,
                 tasks: ['sass'],
                 options: {
                     livereload: true
                 }
-
             },
             coreJs: {
                 files: watchFiles.coreJs,
