@@ -65,8 +65,3 @@ _chorus.init = _chorus.init || function(element, config){
         return false;
     }
 };
-
-//empty container to allow for sub-namespaces
-_chorus.logic = _chorus.logic || {
-
-};
