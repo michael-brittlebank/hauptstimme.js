@@ -78,6 +78,7 @@ _chorus.logic.scales = _chorus.logic.scales || {
  * @type {Function}
  */
 _chorus.logic.scales.searchScales = _chorus.searchScales = function(tones, scaleSearchMode, callback, container){
+    var events = _chorus.events;
     if (container || !tones){
         _chorus.searchScales(_chorus.logic.notes.getSelectedNotes (container), scaleSearchMode, callback);
     }
@@ -93,7 +94,7 @@ _chorus.logic.scales.searchScales = _chorus.searchScales = function(tones, scale
             }
             else if (!_chorus.logic.helpers.validator.isValidScaleSearchMode(scaleSearchMode)) {
                 scalesToSearch = _chorus.defaultConfig.scaleSearchMode;
-                _chorus.events.messages.sendMessage(_chorus.data.dictionary.error_value + 'invalid scale search mode');
+                events.sendMessage(_chorus.data.dictionary.error_value + 'invalid scale search mode');
             }
             else {
                 scalesToSearch = scaleSearchMode;
@@ -119,10 +120,10 @@ _chorus.logic.scales.searchScales = _chorus.searchScales = function(tones, scale
             }
         }
         else {
-            _chorus.events.messages.sendMessage(_chorus.data.dictionary.error_notFound + 'no selected notes found');
+            events.sendMessage(_chorus.data.dictionary.error_notFound + 'no selected notes found');
         }
         _chorus.searchResult.scales = data;
-        _chorus.events.dispatchEvent('chorusScaleSearchComplete', 'chorusJS has finished searching scales');
+        events.dispatchEvent('chorusScaleSearchComplete', 'chorusJS has finished searching scales');
         if (callback && typeof callback !== 'string') {
             callback(data);
         }

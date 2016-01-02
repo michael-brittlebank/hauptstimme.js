@@ -43,7 +43,7 @@ _chorus.logic.helpers = _chorus.logic.helpers || {
          */
         getConfigValue: function(key){
             if (typeof _chorus.config[key] !== typeof _chorus.defaultConfig[key]){
-                _chorus.events.messages.sendMessage(_chorus.data.dictionary.error_type+' '+key);
+                _chorus.events.sendMessage(_chorus.data.dictionary.error_type+' '+key);
             }
             return typeof _chorus.config[key] === typeof _chorus.defaultConfig[key]?_chorus.config[key]:_chorus.defaultConfig[key];
         },
@@ -226,7 +226,8 @@ _chorus.logic.notes = _chorus.logic.notes || {
  */
 _chorus.logic.notes.getSelectedNotes = function(container){
     _chorus.searchResult.scaleContainers = [];
-    var noteData = [],
+    var events = _chorus.events,
+        noteData = [],
         notes = {
             rootTone: '',
             selectedTones:[]
@@ -244,7 +245,7 @@ _chorus.logic.notes.getSelectedNotes = function(container){
             }
         }
         else {
-            _chorus.events.messages.sendMessage(_chorus.data.dictionary.error_notFound+'no container found with matching id or class');
+            events.sendMessage(_chorus.data.dictionary.error_notFound+'no container found with matching id or class');
         }
     }
     //get selected notes if no container parameter was passed
@@ -264,7 +265,7 @@ _chorus.logic.notes.getSelectedNotes = function(container){
                 notes.rootTone = noteData[k].rootTone;
             }
             else {
-                _chorus.events.messages.sendMessage(_chorus.data.dictionary.warning_multipleRootNotes);
+                events.sendMessage(_chorus.data.dictionary.warning_multipleRootNotes);
             }
         }
         for (var l = 0; l < noteData[k].selectedTones.length; l++){
@@ -309,7 +310,7 @@ _chorus.logic.notes.getTonesFromDOM = function(element){
         }
     }
     else {
-        _chorus.events.messages.sendMessage(_chorus.data.dictionary.error_notFound+'no element found to search');
+        _chorus.events.sendMessage(_chorus.data.dictionary.error_notFound+'no element found to search');
     }
     return {
         container: element,

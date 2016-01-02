@@ -3,12 +3,6 @@
  */
 _chorus.events = _chorus.events || {
         /**
-         * send a custom event when chorus init is complete
-         */
-        sendChorusLoaded : function(){
-            document.dispatchEvent(new CustomEvent('chorusLoaded', {'detail': 'ChorusJS: finished initialization' }));
-        },
-        /**
          * triggers custom events
          * @param eventName
          * @param eventDetail
@@ -30,31 +24,25 @@ _chorus.events = _chorus.events || {
             } else {
                 document.fireEvent('on' + event.eventType, event);
             }
+        },
+        sendMessage: function(message) {
+            var messageSystem = _chorus.logic.helpers.getConfigValue('chorusDebug'),
+                preface = 'ChorusJS - ';
+            switch (messageSystem) {
+                case 'console':
+                    console.log(preface+message);
+                    break;
+                case 'alert':
+                    alert(preface+message);
+                    break;
+                case 'none' :
+                    break;
+                default:
+                    console.log(preface+message);
+                    break;
+            }
         }
     };
-
-/**
- * messaging system to alert user
- */
-_chorus.events.messages = {
-    sendMessage: function(message) {
-        var messageSystem = _chorus.logic.helpers.getConfigValue('chorusDebug'),
-            preface = 'ChorusJS - ';
-        switch (messageSystem) {
-            case 'console':
-                console.log(preface+message);
-                break;
-            case 'alert':
-                alert(preface+message);
-                break;
-            case 'none' :
-                break;
-            default:
-                console.log(preface+message);
-                break;
-        }
-    }
-};
 
 /**
  * internal event listeners

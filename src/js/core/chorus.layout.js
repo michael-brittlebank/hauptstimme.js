@@ -58,7 +58,7 @@ _chorus.layout = {
             element.innerHTML = content;
         }
         else {
-            _chorus.events.messages.sendMessage(_chorus.data.dictionary.error_type+'instrument config parameter');
+            _chorus.events.sendMessage(_chorus.data.dictionary.error_type+'instrument config parameter');
         }
     },
     /**
