@@ -92,7 +92,7 @@ _chorus.logic.scales.searchScales = _chorus.searchScales = function(tones, scale
             if (!scaleSearchMode || scaleSearchMode.length < 1) {
                 scalesToSearch = _chorus.defaultConfig.scaleSearchMode;
             }
-            else if (!_chorus.logic.helpers.validator.isValidScaleSearchMode(scaleSearchMode)) {
+            else if (!_chorus.logic.helpers.isValidScaleSearchMode(scaleSearchMode)) {
                 scalesToSearch = _chorus.defaultConfig.scaleSearchMode;
                 events.sendMessage(_chorus.data.dictionary.error_value + 'invalid scale search mode');
             }

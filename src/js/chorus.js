@@ -9,7 +9,10 @@ var _chorus = window.chorus = {
     init: function(){return undefined;},
     data: {},
     events: {},
-    logic: {},
+    logic: {
+        helpers:{},
+        notes:{}
+    },
     layout: {},
     /**
      * config
