@@ -103,3 +103,4 @@ _chorus.init = function(element, config) {
 _chorus.searchScales = function(tones, scaleSearchMode, callback, container){
     _chorus.logic.scales.searchScales(tones, scaleSearchMode, callback, container);
 };
+//todo, add methods for note/tone calculation
