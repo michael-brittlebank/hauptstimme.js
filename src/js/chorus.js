@@ -4,10 +4,12 @@
 var _chorus = window.chorus = {
     /**
      * core
+     * (in order of include via grunt compile)
      */
     init: function(){return undefined;},
     data: {},
     events: {},
+    logic: {},
     layout: {},
     /**
      * config

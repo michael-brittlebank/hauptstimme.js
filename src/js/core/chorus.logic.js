@@ -1,6 +1,3 @@
-//empty container to allow for sub-namespaces
-_chorus.logic = _chorus.logic || {};
-
 _chorus.logic.helpers = _chorus.logic.helpers || {
         /**
          * get a random string

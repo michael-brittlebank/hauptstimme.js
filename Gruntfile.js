@@ -60,6 +60,7 @@ module.exports = function(grunt) {
                         'src/js/chorus.js',
                         'src/js/core/chorus.data.js',
                         'src/js/core/chorus.events.js',
+                        'src/js/core/chorus.logic.js',
                         'src/js/core/chorus.layout.js',
                         'src/js/**/*.js'
                     ]
