@@ -1,18 +1,3 @@
-/**
- * make uid for instrument divs
- * @param prefix
- * @param counter
- * @returns {*}
- */
-function prefixBuilder(prefix, counter){
-    if (counter && (counter.length > 0 || counter > 0)){
-        return prefix +'-'+counter;
-    }
-    else {
-        return prefix;
-    }
-}
-
 _chorus.layout = {
     /**
      * create an HTML representation of an instrument within the DOM element provided
@@ -20,6 +5,8 @@ _chorus.layout = {
      */
     init : function(element){
         var instrument = _chorus.config.layoutInstrument,
+            instruments = _chorus.data.instruments,
+            layout = _chorus.layout,
             prefix,
             containerId = _chorus.logic.helpers.getConfigValue('layoutContainerId');
         if (containerId.length > 0){
@@ -29,7 +16,7 @@ _chorus.layout = {
             prefix = _chorus.layout.getRandomId();
         }
         if (typeof instrument === 'string') {
-            element.innerHTML = _chorus.layout.selectInstrument(instrument,prefix);
+            element.innerHTML = layout.selectInstrument(instrument,prefix);
         }
         else if (Array.isArray(instrument)){
             var content = '',
@@ -38,16 +25,16 @@ _chorus.layout = {
                 var increment = 0;
                 switch (instrument[i]){
                     case 'all':
-                        increment =  _chorus.data.instruments.count.all;
+                        increment =  instruments.count.all;
                         break;
                     case 'main':
-                        increment =  _chorus.data.instruments.count.main;
+                        increment =  instruments.count.main;
                         break;
                     case 'alternate':
-                        increment =  _chorus.data.instruments.count.alternateGuitar;
+                        increment =  instruments.count.alternateGuitar;
                         break;
                 }
-                content += _chorus.layout.selectInstrument(instrument[i], prefix, counter);
+                content += layout.selectInstrument(instrument[i], prefix, counter);
                 if (increment > 0){
                     counter += increment;
                 }
@@ -66,7 +53,7 @@ _chorus.layout = {
      * @returns {*}
      */
     getRandomId: function(){
-        var id = prefixBuilder(_chorus.logic.helpers.generateRandomString(5)),
+        var id = this.prefixBuilder(_chorus.logic.helpers.generateRandomString(5)),
             elementWithSameId = document.getElementById(id);
         if (!elementWithSameId){
             return id;
@@ -84,59 +71,74 @@ _chorus.layout = {
      * @returns {string}
      */
     selectInstrument: function(instrument, prefix, counter){
-        var content = '',
+        var instruments = _chorus.data.instruments,
+            content = '',
             key;
         if(!counter){
             counter = 0;
         }
         switch (instrument) {
             case 'all':
-                for (key in _chorus.data.instruments.main) {
-                    if (_chorus.data.instruments.main.hasOwnProperty(key)) {
-                        content += _chorus.layout.html.instrument(key,_chorus.data.instruments.main[key],prefixBuilder(prefix,counter));
+                for (key in instruments.main) {
+                    if (instruments.main.hasOwnProperty(key)) {
+                        content += _chorus.layout.html.instrument(key,instruments.main[key],this.prefixBuilder(prefix,counter));
                         counter++;
                     }
                 }
-                for (key in _chorus.data.instruments.other) {
-                    if (_chorus.data.instruments.other.hasOwnProperty(key)) {
-                        content += _chorus.layout.html.instrument(key, _chorus.data.instruments.other[key],prefixBuilder(prefix,counter));
+                for (key in instruments.other) {
+                    if (instruments.other.hasOwnProperty(key)) {
+                        content += _chorus.layout.html.instrument(key, instruments.other[key],this.prefixBuilder(prefix,counter));
                         counter++;
                     }
                 }
 
                 break;
             case 'main':
-                for (key in _chorus.data.instruments.main) {
-                    if (_chorus.data.instruments.main.hasOwnProperty(key)) {
-                        content += _chorus.layout.html.instrument(key, _chorus.data.instruments.main[key],prefixBuilder(prefix,counter));
+                for (key in instruments.main) {
+                    if (instruments.main.hasOwnProperty(key)) {
+                        content += _chorus.layout.html.instrument(key, instruments.main[key],this.prefixBuilder(prefix,counter));
                         counter++;
                     }
                 }
                 break;
             case 'alternate':
-                for (key in _chorus.data.instruments.alternateGuitar) {
-                    if (_chorus.data.instruments.alternateGuitar.hasOwnProperty(key)) {
-                        content += _chorus.layout.html.instrument(key, _chorus.data.instruments.alternateGuitar[key],prefixBuilder(prefix,counter));
+                for (key in instruments.alternateGuitar) {
+                    if (instruments.alternateGuitar.hasOwnProperty(key)) {
+                        content += _chorus.layout.html.instrument(key, instruments.alternateGuitar[key],this.prefixBuilder(prefix,counter));
                         counter++;
                     }
                 }
                 break;
             default :
-                if (_chorus.data.instruments.main.hasOwnProperty(instrument)) {
-                    content = _chorus.layout.html.instrument(instrument, _chorus.data.instruments.main[instrument],prefixBuilder(prefix,counter));
+                if (instruments.main.hasOwnProperty(instrument)) {
+                    content = _chorus.layout.html.instrument(instrument, instruments.main[instrument],this.prefixBuilder(prefix,counter));
                     counter++;
                 }
-                else if (_chorus.data.instruments.other.hasOwnProperty(instrument)) {
-                    content = _chorus.layout.html.instrument(instrument, _chorus.data.instruments.other[instrument],prefixBuilder(prefix,counter));
+                else if (instruments.other.hasOwnProperty(instrument)) {
+                    content = _chorus.layout.html.instrument(instrument, instruments.other[instrument],this.prefixBuilder(prefix,counter));
                     counter++;
                 }
-                else if (_chorus.data.instruments.alternateGuitar.hasOwnProperty(instrument)) {
-                    content = _chorus.layout.html.instrument(instrument, _chorus.data.instruments.alternateGuitar[instrument],prefixBuilder(prefix,counter));
+                else if (instruments.alternateGuitar.hasOwnProperty(instrument)) {
+                    content = _chorus.layout.html.instrument(instrument, instruments.alternateGuitar[instrument],this.prefixBuilder(prefix,counter));
                     counter++;
                 }
                 break;
         }
         return content;
+    },
+    /**
+     * make uid for instrument divs
+     * @param prefix
+     * @param counter
+     * @returns {*}
+     */
+    prefixBuilder: function(prefix, counter){
+        if (counter && (counter.length > 0 || counter > 0)){
+            return prefix +'-'+counter;
+        }
+        else {
+            return prefix;
+        }
     }
 };
 
@@ -178,7 +180,8 @@ _chorus.layout.html = _chorus.layout.html || {
          * @returns {string}
          */
         string : function(root) {
-            var fret,tone,
+            var fret,
+                tone,
                 numberOfFrets = 12,
                 output = '<div class="'+_chorus.data.dictionary.class_string+'">';
             for(var i = 0; i <= numberOfFrets; i++){
