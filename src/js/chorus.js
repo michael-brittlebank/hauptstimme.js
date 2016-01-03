@@ -34,9 +34,8 @@ var _chorus = window.chorus = {
  */
 (function(){
     this.scales = {};
-    this.scaleContainers = [];
     this.chords = {};
-    this.chordContainers = [];
+    this.containers = [];
 }).apply(_chorus.searchResult);
 
 /**

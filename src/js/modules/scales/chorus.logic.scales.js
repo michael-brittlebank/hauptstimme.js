@@ -3,7 +3,10 @@
     var dataNotes = _chorus.data.notes,
         dataScales = _chorus.data.scales,
         logicNotes = _chorus.logic.notes,
-        helpers = _chorus.logic.helpers;
+        helpers = _chorus.logic.helpers,
+        dictionary = _chorus.data.dictionary,
+        events = _chorus.events,
+        defaultConfig = _chorus.defaultConfig;
 
     //functions
     /**
@@ -34,7 +37,7 @@
                                 tone = (tones[j] + scaleArray[j]) % 12;
                                 tones.push(tone);
                             }
-                            letters = this.getLetters(root, tones);
+                            letters = this.getNotesInScale(root, tones);
                             if (letters !== false) {
                                 scaleName = letters[0] + ' ' + helpers.capitalize(scaleKey.replace(/_/g, ' '));
                                 output[scale][scaleName] = {
@@ -50,9 +53,9 @@
         return JSON.stringify(output);
     };
 
-    this.getLetters = function(root, tones){
+    this.getNotesInScale = function(root, tones){
         var letters = [root],
-            letterProgression = logicNotes.getLetterProgression(root);
+            letterProgression = logicNotes.getNoteProgression(root);
         for (var k = 1; k < tones.length; k++) {
             if (tones.length == 7) {
                 var letter = logicNotes.getNoteByToneForce(tones[k], letterProgression[k]);
@@ -61,7 +64,7 @@
                 }
                 else {
                     if (root.indexOf('#') >= 0){
-                        letters = this.getLetters(letterProgression[1]+'b',tones);
+                        letters = this.getNotesInScale(letterProgression[1]+'b',tones);
                         break;
                     }
                     else {
@@ -77,55 +80,12 @@
     };
 
     /**
-     * return if the scale contains the selected tones or not
-     * @param scale
-     * @param notes
-     * @returns {boolean}
-     */
-    this.scaleContains = function(scale, notes){
-        if (notes.rootTone.length > 0){
-            if (scale.tones[0] == notes.rootTone){
-                return this.tonesInScale(scale.tones,notes.selectedTones);
-            }
-            else {
-                return false;
-            }
-        }
-        else {
-            return this.tonesInScale(scale.tones,notes.selectedTones);
-        }
-    };
-
-    /**
-     * return if the all of the selected tones exist in the scale
-     * @param scaleNotes
-     * @param selectedNotes
-     * @returns {boolean}
-     */
-    this.tonesInScale = function(scaleNotes,selectedNotes){
-        for(var i = 0; i < selectedNotes.length; i++){
-            if (scaleNotes.indexOf(parseInt(selectedNotes[i])) === -1){
-                return false;
-            }
-        }
-        return true;
-    };
-
-    /**
      * main search function for searching scales
      * if container is passed, get selected notes from that DOM element
      * otherwise use the tones passed
      * @type {Function}
      */
     this.searchScales = function(tones, scaleSearchMode, callback, container){
-        var dictionary = _chorus.data.dictionary,
-            dataScales = _chorus.data.scales,
-            events = _chorus.events,
-            defaultConfig = _chorus.defaultConfig,
-            logicNotes = _chorus.logic.notes,
-            logicScales = _chorus.logic.scales,
-            helpers = _chorus.logic.helpers;
-
         if (container || !tones){
             this.searchScales(logicNotes.getSelectedNotes(container), scaleSearchMode, callback);
         }
@@ -150,7 +110,7 @@
                 if (scalesToSearch === 'main' || scalesToSearch === 'all') {
                     for (scaleKey in dataScales.searchable.main) {
                         if (dataScales.searchable.main.hasOwnProperty(scaleKey)) {
-                            if (logicScales.scaleContains(dataScales.searchable.main[scaleKey], tones)) {
+                            if (logicNotes.tonesInScaleOrChord(dataScales.searchable.main[scaleKey], tones)) {
                                 data[scaleKey] = dataScales.searchable.main[scaleKey];
                             }
                         }
@@ -159,7 +119,7 @@
                 if (scalesToSearch === 'other' || scalesToSearch === 'all') {
                     for (scaleKey in dataScales.searchable.other) {
                         if (dataScales.searchable.other.hasOwnProperty(scaleKey)) {
-                            if (logicScales.scaleContains(dataScales.searchable.other[scaleKey], tones)) {
+                            if (logicNotes.tonesInScaleOrChord(dataScales.searchable.other[scaleKey], tones)) {
                                 data[scaleKey] = dataScales.searchable.other[scaleKey];
                             }
                         }

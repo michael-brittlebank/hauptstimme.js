@@ -230,7 +230,7 @@
      * @param letter
      * @returns {Array.<*>}
      */
-    this.getLetterProgression = function(letter){
+    this.getNoteProgression = function(letter){
         var pieces = 'ABCDEFG'.split(letter.replace(/b/g,'').replace(/#/g,'').toUpperCase());
         return [letter].concat(pieces[1].split(''),pieces[0].split(''));
     };
@@ -245,11 +245,11 @@
     };
 
     /**
-     * get any tones that selected
+     * get any tones that are selected in the dom
      * @param container
      */
     this.getSelectedNotes = function(container){
-        _chorus.searchResult.scaleContainers = [];
+        _chorus.searchResult.containers = [];
         var noteData = [],
             notes = {
                 rootTone: '',
@@ -281,7 +281,7 @@
         //remove duplicates
         for (var k = 0; k < noteData.length; k++){
             if (noteData[k].rootTone.length > 0 || noteData[k].selectedTones.length > 0){
-                _chorus.searchResult.scaleContainers.push(noteData[k].container);
+                _chorus.searchResult.containers.push(noteData[k].container);
             }
             if (noteData[k].rootTone.length > 0){
                 if (notes.rootTone.length < 1){
@@ -340,6 +340,41 @@
             selectedTones: selectedTones,
             rootTone: rootTone
         };
+    };
+
+    /**
+     * return if the all of the selected tones exist in the scale or chord
+     * @param dataNotes
+     * @param selectedNotes
+     * @returns {boolean}
+     */
+    this.tonesInScaleOrChordHelper = function(dataNotes, selectedNotes){
+        for(var i = 0; i < selectedNotes.length; i++){
+            if (dataNotes.indexOf(parseInt(selectedNotes[i])) === -1){
+                return false;
+            }
+        }
+        return true;
+    };
+
+    /**
+     * return if the scale contains the selected tones or not
+     * @param scale
+     * @param notes
+     * @returns {boolean}
+     */
+    this.tonesInScaleOrChord = function(scale, notes){
+        if (notes.rootTone.length > 0){
+            if (scale.tones[0] == notes.rootTone){
+                return this.tonesInScaleOrChordHelper(scale.tones,notes.selectedTones);
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            return this.tonesInScaleOrChordHelper(scale.tones,notes.selectedTones);
+        }
     };
 
 }).apply(_chorus.logic.notes);

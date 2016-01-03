@@ -42,7 +42,7 @@
         class_fret:'chorus-fret',
         class_instrument: 'chorus-instrument',
         class_container: 'chorus-container',
-        class_tone: 'chorus-tone_',
+        class_tone: 'chorus-tone-',
         error_type:'[Error] Invalid type: ',
         error_undefined:'[Error] Undefined: ',
         error_notFound: '[Error] Not Found: ',
