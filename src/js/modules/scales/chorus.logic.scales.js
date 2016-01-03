@@ -9,72 +9,71 @@
     /**
      * compile logic
      */
-    this.compile = {
-        init: function() {
-            var root,
-                tones,
-                tone,
-                letters,
-                scale,
-                scaleKey,
-                scaleName,
-                scaleArray,
-                output = {
-                    main:{},
-                    other:{}
-                };
-            for (var i = 0; i < dataNotes.count.tones; i++) {
-                root = logicNotes.getNoteByToneDefault(i);
-                for (scale in dataScales){
-                    if (dataScales.hasOwnProperty(scale) && scale !== 'searchable' && scale !== 'count') {
-                        for (scaleKey in dataScales[scale]) {
-                            if (dataScales[scale].hasOwnProperty(scaleKey)) {
-                                scaleArray = dataScales[scale][scaleKey];
-                                tones = [i];
-                                for (var j = 0; j < scaleArray.length - 1; j++) {
-                                    tone = (tones[j] + scaleArray[j]) % 12;
-                                    tones.push(tone);
-                                }
-                                letters = this.getLetters(root, tones);
-                                if (letters !== false) {
-                                    scaleName = letters[0] + ' ' + helpers.capitalize(scaleKey.replace(/_/g, ' '));
-                                    output[scale][scaleName] = {
-                                        tones: tones,
-                                        letters: letters
-                                    };
-                                }
+    this.compile = function() {
+        var root,
+            tones,
+            tone,
+            letters,
+            scale,
+            scaleKey,
+            scaleName,
+            scaleArray,
+            output = {
+                main:{},
+                other:{}
+            };
+        for (var i = 0; i < dataNotes.count.tones; i++) {
+            root = logicNotes.getNoteByToneDefault(i);
+            for (scale in dataScales){
+                if (dataScales.hasOwnProperty(scale) && scale !== 'searchable' && scale !== 'count') {
+                    for (scaleKey in dataScales[scale]) {
+                        if (dataScales[scale].hasOwnProperty(scaleKey)) {
+                            scaleArray = dataScales[scale][scaleKey];
+                            tones = [i];
+                            for (var j = 0; j < scaleArray.length - 1; j++) {
+                                tone = (tones[j] + scaleArray[j]) % 12;
+                                tones.push(tone);
+                            }
+                            letters = this.getLetters(root, tones);
+                            if (letters !== false) {
+                                scaleName = letters[0] + ' ' + helpers.capitalize(scaleKey.replace(/_/g, ' '));
+                                output[scale][scaleName] = {
+                                    tones: tones,
+                                    letters: letters
+                                };
                             }
                         }
                     }
                 }
             }
-            return JSON.stringify(output);
-        },
-        getLetters: function(root, tones){
-            var letters = [root],
-                letterProgression = logicNotes.getLetterProgression(root);
-            for (var k = 1; k < tones.length; k++) {
-                if (tones.length == 7) {
-                    var letter = logicNotes.getNoteByToneForce(tones[k], letterProgression[k]);
-                    if (letter !== false){
-                        letters.push(letter);
-                    }
-                    else {
-                        if (root.indexOf('#') >= 0){
-                            letters = this.compile.getLetters(letterProgression[1]+'b',tones);
-                            break;
-                        }
-                        else {
-                            return false;
-                        }
-                    }
+        }
+        return JSON.stringify(output);
+    };
+
+    this.getLetters = function(root, tones){
+        var letters = [root],
+            letterProgression = logicNotes.getLetterProgression(root);
+        for (var k = 1; k < tones.length; k++) {
+            if (tones.length == 7) {
+                var letter = logicNotes.getNoteByToneForce(tones[k], letterProgression[k]);
+                if (letter !== false){
+                    letters.push(letter);
                 }
                 else {
-                    letters.push(logicNotes.getNoteByToneDefault(tones[k]));
+                    if (root.indexOf('#') >= 0){
+                        letters = this.getLetters(letterProgression[1]+'b',tones);
+                        break;
+                    }
+                    else {
+                        return false;
+                    }
                 }
             }
-            return letters;
+            else {
+                letters.push(logicNotes.getNoteByToneDefault(tones[k]));
+            }
         }
+        return letters;
     };
 
     /**

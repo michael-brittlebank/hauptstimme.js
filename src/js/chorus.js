@@ -98,7 +98,7 @@ _chorus.init = function(element, config) {
 };
 
 /**
- * top level methods exposing
+ * top level methods exposing lower level functions
  */
 _chorus.searchScales = function(tones, scaleSearchMode, callback, container){
     _chorus.logic.scales.searchScales(tones, scaleSearchMode, callback, container);
