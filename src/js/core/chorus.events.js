@@ -103,7 +103,8 @@
     //variables
     var events = _chorus.events,
         handlers = events.handlers,
-        listeners = events.listeners;
+        listeners = events.listeners,
+        dictionary = _chorus.data.dictionary;
 
     //functions
     /** add a custom event listener
@@ -123,8 +124,8 @@
      */
     this.init = function () {
         document.addEventListener('chorusInitComplete', function(e) {
-            listeners.addListener('fret', 'click', handlers.fretLeftClickHandler);
-            listeners.addListener('fret', 'contextmenu', handlers.fretRightClickHandler);
+            listeners.addListener(dictionary.class_fret, 'click', handlers.fretLeftClickHandler);
+            listeners.addListener(dictionary.class_fret, 'contextmenu', handlers.fretRightClickHandler);
         });
     };
 

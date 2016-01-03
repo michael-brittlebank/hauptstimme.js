@@ -1,13 +1,13 @@
 $display-width: 1300;
 
-.chorus_instrument {
+.chorus-instrument {
   * {
     font-family: $font-open-sans-condensed;
     font-weight:$font-weight-medium;
   }
-  .string {
+  .chorus-string {
     min-width: $display-width+px;
-    .fret {
+    .chorus-fret {
       display: inline-block;
       font-size: 16px;
       padding: 10px;
@@ -15,10 +15,10 @@ $display-width: 1300;
       text-align: center;
       cursor:pointer;
       @include unselectable;
-      &.fret-selected{
+      &.chorus-fret-selected{
         color:green;
       }
-      &.fret-root{
+      &.chorus-fret-root{
         color:red;
       }
     }

@@ -36,13 +36,13 @@
      * holds common classnames and messages
      */
     this.dictionary = {
-        class_selected:'fret-selected',
-        class_root:'fret-root',
-        class_string:'string',
-        class_fret:'fret',
-        class_instrument: 'chorus_instrument',
-        class_container: '_container',
-        class_tone: 'chorus_tone_',
+        class_selected:'chorus-fret-selected',//todo, change to camel case
+        class_root:'chorus-fret-root',
+        class_string:'chorus-string',
+        class_fret:'chorus-fret',
+        class_instrument: 'chorus-instrument',
+        class_container: 'chorus-container',
+        class_tone: 'chorus-tone_',
         error_type:'[Error] Invalid type: ',
         error_undefined:'[Error] Undefined: ',
         error_notFound: '[Error] Not Found: ',
