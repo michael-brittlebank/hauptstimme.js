@@ -13,3 +13,8 @@ A JavaScript library for visualizing music theory
 ## Quickstart
 
 ## API Reference
+
+## Iterations
+
+### MVP
+* proper commenting
