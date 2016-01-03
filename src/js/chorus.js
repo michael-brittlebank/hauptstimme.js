@@ -10,8 +10,12 @@ var _chorus = window.chorus = {
     data: {},
     events: {},
     logic: {
+        //core
         helpers:{},
-        notes:{}
+        notes:{},
+        //modules,
+        scales:{},
+        chords:{}
     },
     layout: {},
     /**
@@ -23,10 +27,6 @@ var _chorus = window.chorus = {
     defaultConfig: {},
     //any user set config options will be saved here with defaults for any unset options
     config: {}
-    /**
-     * modules
-     */
-
 };
 
 /**
@@ -95,4 +95,11 @@ _chorus.init = function(element, config) {
         events.sendMessage(dictionary.error_undefined + 'no element defined in init');
         return false;
     }
+};
+
+/**
+ * top level methods exposing
+ */
+_chorus.searchScales = function(tones, scaleSearchMode, callback, container){
+    _chorus.logic.scales.searchScales(tones, scaleSearchMode, callback, container);
 };

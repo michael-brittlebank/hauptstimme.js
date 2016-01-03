@@ -1,5 +1,10 @@
 (function(){
     /**
+     * modules
+     */
+    this.scales = {};
+    this.chords = {};
+    /**
      * holds note data and reverse lookups for notes (chars) and tones (ints)
      */
     this.notes = {

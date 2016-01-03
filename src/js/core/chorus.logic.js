@@ -5,7 +5,7 @@
     //variables
     var dictionary = _chorus.data.dictionary,
         defaultConfig = _chorus.defaultConfig;
-
+    
     //functions
     /**
      * get a random string
