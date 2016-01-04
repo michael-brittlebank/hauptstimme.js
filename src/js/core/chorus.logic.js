@@ -142,13 +142,21 @@
         return (tone % 12);
     };
 
+    this.sharpenTone = function(tone){
+        return (tone - 1)%12;
+    };
+
+    this.flattenTone = function(tone){
+        return (tone + 1)%12;
+    };
+
     /**
      * get the flat note from the int
      * @param tone
      * @returns {string}
      */
     this.getFlatNoteByTone = function(tone){
-        return notes.tone[(tone + 1)%12] + 'b';
+        return notes.tone[this.flattenTone(tone)] + 'b';
     };
 
     /**
@@ -157,7 +165,7 @@
      * @returns {string}
      */
     this.getSharpNoteByTone = function(tone){
-        return notes.tone[(tone - 1)%12] + '#';
+        return notes.tone[this.sharpenTone(tone)] + '#';
     };
 
     /**

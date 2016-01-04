@@ -1,6 +1,7 @@
 (function(){
     //variables
     var dataNotes = _chorus.data.notes,
+        dataScales = _chorus.data.scales,
         dataChords = _chorus.data.chords,
         logicNotes = _chorus.logic.notes,
         helpers = _chorus.logic.helpers,
@@ -15,14 +16,17 @@
     this.compile = function() {
         var root,
             tones,
-            tone,
             letters,
-            chord,
+            chordKeySharp,
             chordKey,
             chordName,
-            chordArray,
+            chordGroup,
+            majorScale,
+            chordFormula,
+            rawChordStep,
+            filteredChordStep,
             output = {
-                main:{},
+                major:{},
                 minor:{},
                 dominant:{},
                 symmetrical:{},
@@ -30,24 +34,62 @@
             };
         for (var i = 0; i < dataNotes.count.tones; i++) {
             root = logicNotes.getNoteByToneDefault(i);
-            for (chord in dataChords){
-                if (dataChords.hasOwnProperty(chord) && chord !== 'searchable' && chord !== 'count') {
-                    for (chordKey in dataChords[chord]) {
-                        if (dataChords[chord].hasOwnProperty(chordKey)) {
-                            chordArray = dataChords[chord][chordKey];
-                            tones = [i];
-                            for (var j = 0; j < chordArray.length - 1; j++) {
-                                tone = (tones[j] + chordArray[j]) % 12;
-                                tones.push(tone);
+            majorScale = dataScales.searchable.main[root+' Major Ionian'];
+            for (chordGroup in dataChords){
+                if (dataChords.hasOwnProperty(chordGroup) && chordGroup !== 'searchable' && chordGroup !== 'count') {
+                    for (chordKey in dataChords[chordGroup]) {
+                        if (dataChords[chordGroup].hasOwnProperty(chordKey)) {
+                            tones = [];
+                            if (dataChords[chordGroup].hasOwnProperty(chordKey)) {
+                                chordFormula = dataChords[chordGroup][chordKey];
+                            } else {
+                                console.log('try sharpening');
+                                chordKeySharp = logicNotes.getNoteByToneForce(logicNotes.getToneByNote(chordKey)+1,chordKey);
+                                chordFormula = dataChords[chordGroup][chordKeySharp];
                             }
+                            console.log(root+' Major Ionian');
+                            for (var j = 0; j < chordFormula.length; j++) {
+                                rawChordStep = chordFormula[j];
+                                if (typeof rawChordStep === 'string') {
+                                    if (rawChordStep.indexOf('b') !== -1) {
+                                        if (rawChordStep.indexOf('bb') !== -1){
+                                            console.log('double flat');
+                                            filteredChordStep = parseInt(rawChordStep.substr(2, rawChordStep.length));
+                                            tones.push(majorScale.tones[logicNotes.flattenTone(logicNotes.flattenTone(filteredChordStep-1))]);
+                                        } else {
+                                            console.log('flat');
+                                            filteredChordStep = parseInt(rawChordStep.substr(1, rawChordStep.length));
+                                            tones.push(majorScale.tones[logicNotes.flattenTone(filteredChordStep-1)]);
+                                        }
+                                    } else if (rawChordStep.indexOf('#') !== -1) {
+                                        console.log('sharp');
+                                        filteredChordStep = parseInt(rawChordStep.substr(1, rawChordStep.length));
+                                        tones.push(majorScale.tones[logicNotes.sharpenTone(filteredChordStep-1)]);
+                                    } else if (rawChordStep.indexOf('(') !== -1) {
+                                        console.log('parentheses');
+                                        filteredChordStep = parseInt(rawChordStep.substr(1, rawChordStep.length - 1));
+                                        tones.push(majorScale.tones[filteredChordStep-1]);//todo
+                                    }
+                                    console.log('filteredChordStep');
+                                    console.log(filteredChordStep);
+                                } else {
+                                    console.log("int");
+                                    console.log(rawChordStep);
+                                    tones.push(majorScale.tones[rawChordStep-1]);
+                                }
+                            }
+                            chordName = root + ' ' + helpers.capitalize(chordKey.replace(/_/g, ' '));
                             letters = this.getNotesInChord(root, tones);
-                            if (letters !== false) {
-                                chordName = letters[0] + ' ' + helpers.capitalize(chordKey.replace(/_/g, ' '));
-                                output[chord][chordName] = {
-                                    tones: tones,
-                                    letters: letters
-                                };
-                            }
+                            console.log(output);
+                            console.log({
+                                tones: tones,
+                                letters: letters
+                            });
+                            throw new Error('first chodrd');
+                            //output[chordGroup][chordName] = {
+                            //    tones: tones,
+                            //    letters: letters
+                            //};
                         }
                     }
                 }
@@ -57,27 +99,9 @@
     };
 
     this.getNotesInChord = function(root, tones){
-        var letters = [root],
-            letterProgression = logicNotes.getNoteProgression(root);
+        var letters = [root];
         for (var k = 1; k < tones.length; k++) {
-            if (tones.length == 7) {
-                var letter = logicNotes.getNoteByToneForce(tones[k], letterProgression[k]);
-                if (letter !== false){
-                    letters.push(letter);
-                }
-                else {
-                    if (root.indexOf('#') >= 0){
-                        letters = this.getNotesInChord(letterProgression[1]+'b',tones);
-                        break;
-                    }
-                    else {
-                        return false;
-                    }
-                }
-            }
-            else {
-                letters.push(logicNotes.getNoteByToneDefault(tones[k]));
-            }
+            letters.push(logicNotes.getNoteByToneDefault(tones[k]));
         }
         return letters;
     };
