@@ -24,7 +24,9 @@
             majorScale,
             chordFormula,
             rawChordStep,
-            filteredChordStep,
+            cleanChordStep,
+            adjustedTone,
+            scaleTone,
             output = {
                 major:{},
                 minor:{},
@@ -47,40 +49,59 @@
                                 chordKeySharp = logicNotes.getNoteByToneForce(logicNotes.getToneByNote(chordKey)+1,chordKey);
                                 chordFormula = dataChords[chordGroup][chordKeySharp];
                             }
-                            console.log(root+' Major Ionian');
+                            console.log('root '+root);
                             for (var j = 0; j < chordFormula.length; j++) {
+                                console.log('------start-------');
                                 rawChordStep = chordFormula[j];
                                 if (typeof rawChordStep === 'string') {
                                     if (rawChordStep.indexOf('b') !== -1) {
                                         if (rawChordStep.indexOf('bb') !== -1){
+                                            cleanChordStep = parseInt(rawChordStep.substr(2, rawChordStep.length));
+                                            scaleTone = majorScale.tones[this.convertFromScaleDegreeToArrayIndex(cleanChordStep)];
+                                            adjustedTone = logicNotes.flattenTone(logicNotes.flattenTone(scaleTone));
                                             console.log('double flat');
-                                            filteredChordStep = parseInt(rawChordStep.substr(2, rawChordStep.length));
-                                            tones.push(majorScale.tones[logicNotes.flattenTone(logicNotes.flattenTone(filteredChordStep-1))]);
+                                            console.log('cleanChordStep');
+                                            console.log(cleanChordStep);
                                         } else {
+                                            cleanChordStep = parseInt(rawChordStep.substr(1, rawChordStep.length));
+                                            scaleTone = majorScale.tones[this.convertFromScaleDegreeToArrayIndex(cleanChordStep)];
+                                            adjustedTone = logicNotes.flattenTone(scaleTone);
                                             console.log('flat');
-                                            filteredChordStep = parseInt(rawChordStep.substr(1, rawChordStep.length));
-                                            tones.push(majorScale.tones[logicNotes.flattenTone(filteredChordStep-1)]);
+                                            console.log('cleanChordStep');
+                                            console.log(cleanChordStep);
                                         }
                                     } else if (rawChordStep.indexOf('#') !== -1) {
+                                        cleanChordStep = parseInt(rawChordStep.substr(1, rawChordStep.length));
+                                        scaleTone = majorScale.tones[this.convertFromScaleDegreeToArrayIndex(cleanChordStep)];
+                                        adjustedTone = logicNotes.sharpenTone(scaleTone);
                                         console.log('sharp');
-                                        filteredChordStep = parseInt(rawChordStep.substr(1, rawChordStep.length));
-                                        tones.push(majorScale.tones[logicNotes.sharpenTone(filteredChordStep-1)]);
+                                        console.log('cleanChordStep');
+                                        console.log(cleanChordStep);
                                     } else if (rawChordStep.indexOf('(') !== -1) {
+                                        cleanChordStep = parseInt(rawChordStep.substr(1, rawChordStep.length - 1));
+                                        scaleTone = majorScale.tones[this.convertFromScaleDegreeToArrayIndex(cleanChordStep)];
+                                        adjustedTone = scaleTone;//todo
                                         console.log('parentheses');
-                                        filteredChordStep = parseInt(rawChordStep.substr(1, rawChordStep.length - 1));
-                                        tones.push(majorScale.tones[filteredChordStep-1]);//todo
+                                        console.log('cleanChordStep');
+                                        console.log(cleanChordStep);
                                     }
-                                    console.log('filteredChordStep');
-                                    console.log(filteredChordStep);
+                                    tones.push(adjustedTone);
+                                    console.log('------complete-------');
+                                    console.log('scaleTone');
+                                    console.log(scaleTone);
+                                    console.log('adjustedTone');
+                                    console.log(adjustedTone);
                                 } else {
                                     console.log("int");
                                     console.log(rawChordStep);
-                                    tones.push(majorScale.tones[rawChordStep-1]);
+                                    console.log('------complete-------');
+                                    tones.push(majorScale.tones[this.convertFromScaleDegreeToArrayIndex(rawChordStep)]);
                                 }
                             }
+                            console.log(root+' '+helpers.capitalize(chordKey.replace(/_/g, ' ')));
                             chordName = root + ' ' + helpers.capitalize(chordKey.replace(/_/g, ' '));
                             letters = this.getNotesInChord(root, tones);
-                            console.log(output);
+                            //console.log(output);
                             console.log({
                                 tones: tones,
                                 letters: letters
@@ -96,6 +117,11 @@
             }
         }
         return JSON.stringify(output);
+    };
+
+    this.convertFromScaleDegreeToArrayIndex = function(romanNumeral){
+        //arrays are zero indexed by scale degrees are 1 indexed
+        return (romanNumeral-1)%7;
     };
 
     this.getNotesInChord = function(root, tones){

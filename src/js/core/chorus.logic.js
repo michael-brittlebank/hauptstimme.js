@@ -143,11 +143,11 @@
     };
 
     this.sharpenTone = function(tone){
-        return (tone - 1)%12;
+        return (tone + 1)%12;
     };
 
     this.flattenTone = function(tone){
-        return (tone + 1)%12;
+        return (tone - 1)%12;
     };
 
     /**
@@ -156,7 +156,7 @@
      * @returns {string}
      */
     this.getFlatNoteByTone = function(tone){
-        return notes.tone[this.flattenTone(tone)] + 'b';
+        return notes.tone[this.sharpenTone(tone)] + 'b';
     };
 
     /**
@@ -165,7 +165,7 @@
      * @returns {string}
      */
     this.getSharpNoteByTone = function(tone){
-        return notes.tone[this.sharpenTone(tone)] + '#';
+        return notes.tone[this.flattenTone(tone)] + '#';
     };
 
     /**
