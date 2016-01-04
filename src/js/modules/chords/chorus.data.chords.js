@@ -70,7 +70,9 @@
     this.symmetrical = {
         diminished: [1,'b3','b5'],
         diminished_seventh: [1,'b3','b5','bb7'],
-        augmented: [1,3,'#5']
+        half_diminished: [1,'b3','b5','b7'],
+        augmented: [1,3,'#5'],
+        augmented_seventh: [1,3,'#5','b7']
     };
 
     this.miscellaneous = {
@@ -78,6 +80,7 @@
         flat_fifth: [1,'b5'],
         suspended_fourth: [1,4,5],
         suspended_second: [1,2,5,'(9)'],
+        suspended_seventh: [1,4,5,'b7'],
         sharp_eleven: [1,5,'#11']
     };
 
