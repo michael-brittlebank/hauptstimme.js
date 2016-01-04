@@ -19,6 +19,8 @@
     };
 
     this.major = {
+        minor_thirteenth: [1,'b3',5,'b7','(9)','(11)',13],
+
         major: [1,3,5],
         major_sixth: [1,3,5,6],
         six_nine: [1,3,5,6,9],
