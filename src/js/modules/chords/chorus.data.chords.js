@@ -1,6 +1,6 @@
 /**
- * holds scale data including steps within a scale, counts,
- * and a compiled list of searchable scales without theoretical scales
+ * holds chord data including steps within a chord, counts,
+ * and a compiled list of searchable chords
  */
 (function(){
     this.count = {

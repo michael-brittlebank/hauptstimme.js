@@ -23,7 +23,10 @@
             chordArray,
             output = {
                 main:{},
-                other:{}
+                minor:{},
+                dominant:{},
+                symmetrical:{},
+                miscellaneous:{}
             };
         for (var i = 0; i < dataNotes.count.tones; i++) {
             root = logicNotes.getNoteByToneDefault(i);
