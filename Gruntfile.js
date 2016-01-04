@@ -63,7 +63,9 @@ module.exports = function(grunt) {
                         'src/js/core/chorus.logic.js',
                         'src/js/core/chorus.layout.js',
                         'src/js/modules/scales/chorus.data.scales.js',
-                        'src/js/modules/scales/chorus.logic.scales.js'
+                        'src/js/modules/scales/chorus.logic.scales.js',
+                        'src/js/modules/chords/chorus.data.chords.js',
+                        'src/js/modules/chords/chorus.logic.chords.js'
                     ]
                 },
                 options: {

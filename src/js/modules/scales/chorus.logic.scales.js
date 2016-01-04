@@ -87,6 +87,7 @@
      */
     this.searchScales = function(tones, scaleSearchMode, callback, container){
         if (container || !tones){
+            //get notes from dom if not passed to function
             this.searchScales(logicNotes.getSelectedNotes(container), scaleSearchMode, callback);
         }
         else {
