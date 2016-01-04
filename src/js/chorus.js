@@ -45,6 +45,7 @@ var _chorus = window.chorus = {
     //logic
     this.scaleSearchCallback = '';
     this.scaleSearchMode = 'all';
+    //todo, add flatten config otherwise send results back grouped by data type
     //layout
     this.layoutInstrument ='main';
     this.layoutInstrumentTitles = false;
