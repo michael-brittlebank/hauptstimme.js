@@ -179,6 +179,7 @@
      */
     this.getNoteByToneDisplay = function(tone){
         var letter;
+        tone = helpers.mod(tone,12);
         if (notes.tone.hasOwnProperty(tone)) {
             letter = notes.tone[tone];
         }

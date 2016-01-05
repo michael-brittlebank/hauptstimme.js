@@ -25,18 +25,18 @@ hello world
 <script>
     document.addEventListener('DOMContentLoaded', function(e) {
         var config = {
-            layoutInstrument: 'ukulele_concert',
+            layoutInstrument: 'piano',
             layoutInstrumentTitleElement:'h3',
             chorusDebug:'console',
             layoutInstrumentStringOrder:'asc',
-            scaleSearchText: 'Search Scales2',
+            searchText: 'Search chorus2',
             searchCallback: 'callbackFunction',
             flattenSearchResults: true
         };
         _chorus.init('class', config);
         config = {
             layoutInstrument: ['main','violin'],
-            scaleSearchButton: false,
+            searchButton: false,
             chorusDebug:'console',
             layoutContainerId: 'myId',
             layoutContainerClass: 'content',

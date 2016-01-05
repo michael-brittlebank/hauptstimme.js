@@ -1,5 +1,8 @@
 (function(){
     //variables
+    this.html = {};
+
+    // local variables
     var data = _chorus.data,
         instruments = data.instruments,
         notes = data.notes,
@@ -85,6 +88,10 @@
             counter = 0;
         }
         switch (instrument) {
+            case 'piano':
+                content += this.html.piano(this.prefixBuilder(prefix,counter));
+                counter++;
+                break;
             case 'all':
                 for (key in instruments.main) {
                     if (instruments.main.hasOwnProperty(key)) {
@@ -148,12 +155,7 @@
         }
     };
 
-    this.html = {};
-
     (function() {
-        //variables
-        var helpers = _chorus.logic.helpers;
-
         //functions
         /**
          * creates an instrument in HTML
@@ -176,10 +178,10 @@
                 var htmlElement = helpers.getConfigValue('layoutInstrumentTitleElement');
                 stringContent = '<' + htmlElement + '>' + instrumentName.replace(/_/g, ' ') + '</' + htmlElement + '>' + stringContent;
             }
-            if (helpers.getConfigValue('scaleSearchButton') === true) {
-                var title = helpers.getConfigValue('scaleSearchText'),
+            if (helpers.getConfigValue('searchButton') === true) {
+                var title = helpers.getConfigValue('searchText'),
                     callback = helpers.getConfigValue('searchCallback');
-                stringContent += '<a class="searchButton" onclick="_chorus.searchScales(\'\',\'' + prefix + dictionary.class_container + '\',' + callback + ')">' + title + '</a>';
+                stringContent += '<a class="searchButton" onclick="_chorus.search(\'\',\'' + prefix + dictionary.class_container + '\',' + callback + ')">' + title + '</a>';
             }
             return '<div id="' + prefix + dictionary.class_container + '" class="' + dictionary.class_instrument + ' ' + containerClass + '">' +
                 stringContent +
@@ -192,16 +194,16 @@
          * @returns {string}
          */
         this.string = function (root) {
-            var fret,
+            var note,
                 tone,
                 numberOfFrets = 12,
                 output = '<div class="' + dictionary.class_string + '">';
             for (var i = 0; i <= numberOfFrets; i++) {
                 tone = (parseInt(root) + i) % notes.count.tones;
-                fret = _chorus.logic.notes.getNoteByToneDisplay(tone);
+                note = _chorus.logic.notes.getNoteByToneDisplay(tone);
                 output +=
                     '<div class="' + dictionary.class_fret + ' ' + dictionary.class_tone + tone + '">' +
-                    this.htmlFilter(fret) +
+                    this.htmlFilter(note) +
                     '</div>';
             }
             return output + '</div>';
@@ -215,6 +217,36 @@
         this.htmlFilter = function (note) {
             return note.replace(/#/g, '&#9839;').replace(/b/g, '&#9837;');
         };
+
+        this.piano = function(prefix){
+            var numberOfPianoKeys = 13,
+                containerClass = helpers.getConfigValue('layoutContainerClass'),
+                content,
+                tone,
+                note,
+                pianoKeyClass;
+            content = '<div id="' + prefix + dictionary.class_container + '" class="' + dictionary.class_instrument + ' ' + containerClass + '">';
+            if (helpers.getConfigValue('layoutInstrumentTitles') !== true) {
+                var htmlElement = helpers.getConfigValue('layoutInstrumentTitleElement');
+                content = '<' + htmlElement + '>Piano</' + htmlElement + '>';
+            }
+            for(var i = 0; i < numberOfPianoKeys; i++){
+                //start at c instead of a
+                tone = i+3;
+                note = _chorus.logic.notes.getNoteByToneDisplay(tone);
+                pianoKeyClass = note.indexOf('#')!== -1?'black':'white';
+                content += '<div class="' + dictionary.class_piano_key + ' '+pianoKeyClass+'">'+
+                    this.htmlFilter(note) +
+                    '</div>';
+            }
+            if (helpers.getConfigValue('searchButton') === true) {
+                var title = helpers.getConfigValue('searchText'),
+                    callback = helpers.getConfigValue('searchCallback');
+                content += '<a class="searchButton" onclick="_chorus.search(\'\',\'' + prefix + dictionary.class_container + '\',' + callback + ')">' + title + '</a>';
+            }
+            return content+'</div>';
+        };
+
     }).apply(_chorus.layout.html);
 
 }).apply(_chorus.layout);

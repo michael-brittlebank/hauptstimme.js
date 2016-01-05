@@ -43,9 +43,10 @@
      * holds common classnames and messages
      */
     this.dictionary = {
-        class_selected:'chorus-fret-selected',//todo, change to camel case
-        class_root:'chorus-fret-root',
+        class_selected:'chorus-note-selected',//todo, change to camel case
+        class_root:'chorus-note-root',
         class_string:'chorus-string',
+        class_piano_key:'chorus-piano-key',
         class_fret:'chorus-fret',
         class_instrument: 'chorus-instrument',
         class_container: 'chorus-container',

@@ -52,8 +52,8 @@ var _chorus = window.chorus = {
     this.layoutInstrumentStringOrder ='desc';
     this.layoutContainerId = '';
     this.layoutContainerClass = '';
-    this.scaleSearchButton = true;
-    this.scaleSearchText = 'Search Scales';
+    this.searchButton = true;
+    this.searchText = 'Search Chorus';
     //developer
     this.chorusDebug ='none';
 }).apply(_chorus.defaultConfig);

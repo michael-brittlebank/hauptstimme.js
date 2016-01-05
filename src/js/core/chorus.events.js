@@ -63,7 +63,7 @@
      * remove all selected classes on fret right click
      * @param e
      */
-    this.fretRightClickHandler = function(e){
+    this.noteRightClickHandler = function(e){
         e.preventDefault();
         var element = e.target || e.srcElement;
         element.classList.remove(dictionary.class_selected);
@@ -73,7 +73,7 @@
      * change fret classes on left click
      * @param e
      */
-    this.fretLeftClickHandler = function(e){
+    this.noteLeftClickHandler = function(e){
         e.preventDefault();
         var element = e.target || e.srcElement,
             selectedClass = dictionary.class_selected,
@@ -125,8 +125,10 @@
      */
     this.init = function () {
         document.addEventListener('chorusInitComplete', function(e) {
-            listeners.addListener(dictionary.class_fret, 'click', handlers.fretLeftClickHandler);
-            listeners.addListener(dictionary.class_fret, 'contextmenu', handlers.fretRightClickHandler);
+            listeners.addListener(dictionary.class_fret, 'click', handlers.noteLeftClickHandler);
+            listeners.addListener(dictionary.class_fret, 'contextmenu', handlers.noteRightClickHandler);
+            listeners.addListener(dictionary.class_piano_key, 'click', handlers.noteLeftClickHandler);
+            listeners.addListener(dictionary.class_piano_key, 'contextmenu', handlers.noteRightClickHandler);
         });
     };
 
