@@ -109,6 +109,10 @@
             mode === 'all';
     };
 
+    this.mod = function(number,modulus) {
+        return ((number%modulus)+modulus)%modulus;
+    };
+
 }).apply(_chorus.logic.helpers);
 
 
@@ -119,7 +123,8 @@
     //variables
     var dictionary = _chorus.data.dictionary,
         notes = _chorus.data.notes,
-        events = _chorus.events;
+        events = _chorus.events,
+        helpers = _chorus.logic.helpers;
 
     //functions
     /**
@@ -139,15 +144,15 @@
             start = note.indexOf('b',start)+1;
             tone--;
         }
-        return (tone % 12);
+        return helpers.mod(tone,12);
     };
 
     this.sharpenTone = function(tone){
-        return (tone + 1)%12;
+        return helpers.mod(tone + 1,12);
     };
 
     this.flattenTone = function(tone){
-        return (tone - 1)%12;
+        return helpers.mod(tone - 1,12);
     };
 
     /**
