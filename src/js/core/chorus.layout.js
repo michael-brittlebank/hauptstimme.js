@@ -202,7 +202,7 @@
                 tone = (parseInt(root) + i) % notes.count.tones;
                 note = _chorus.logic.notes.getNoteByToneDisplay(tone);
                 output +=
-                    '<div class="' + dictionary.class_fret + ' ' + dictionary.class_tone + tone + '">' +
+                    '<div class="' + dictionary.class_fret +'" data-tone="'+tone+'">' +
                     this.htmlFilter(note) +
                     '</div>';
             }
@@ -228,14 +228,14 @@
             content = '<div id="' + prefix + dictionary.class_container + '" class="' + dictionary.class_instrument + ' ' + containerClass + '">';
             if (helpers.getConfigValue('layoutInstrumentTitles') !== true) {
                 var htmlElement = helpers.getConfigValue('layoutInstrumentTitleElement');
-                content = '<' + htmlElement + '>Piano</' + htmlElement + '>';
+                content += '<' + htmlElement + '>Piano</' + htmlElement + '>';
             }
             for(var i = 0; i < numberOfPianoKeys; i++){
                 //start at c instead of a
-                tone = i+3;
+                tone = helpers.mod(i+3,12);
                 note = _chorus.logic.notes.getNoteByToneDisplay(tone);
                 pianoKeyClass = note.indexOf('#')!== -1?'black':'white';
-                content += '<div class="' + dictionary.class_piano_key + ' '+pianoKeyClass+'">'+
+                content += '<div class="' + dictionary.class_piano_key+' '+pianoKeyClass+'" data-tone="'+tone+'">'+
                     this.htmlFilter(note) +
                     '</div>';
             }

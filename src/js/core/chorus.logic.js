@@ -327,18 +327,11 @@
                     if (element.childNodes[i]) {
                         for (var j = 0; j < element.childNodes[i].childNodes.length; j++) {
                             classList = element.childNodes[i].childNodes[j].classList;
-                            if (classList.contains(dictionary.class_selected) || classList.contains(dictionary.class_root)) {
-                                for (var k = 0; k < classList.length; k++){
-                                    if (classList[k].indexOf(dictionary.class_tone) !== -1){
-                                        if (classList.contains(dictionary.class_selected)){
-                                            selectedTones.push(this.getToneByClass(classList[k]));
-                                        }
-                                        else if (classList.contains(dictionary.class_root)){
-                                            rootTone = this.getToneByClass(classList[k]);
-                                        }
-                                        break;
-                                    }
-                                }
+                            if (classList.contains(dictionary.class_selected)){
+                                selectedTones.push(element.childNodes[i].childNodes[j].getAttribute('data-tone'));
+                            }
+                            else if (classList.contains(dictionary.class_root)){
+                                rootTone = element.childNodes[i].childNodes[j].getAttribute('data-tone');
                             }
                         }
                     }
