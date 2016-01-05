@@ -106,8 +106,8 @@
         var configCallback = this.getConfigValue('searchCallback');
         if (callback && typeof callback !== 'string') {
             callback(_chorus.searchResult);
-        } else if (configCallback && typeof configCallback !== 'string') {
-            configCallback(_chorus.searchResult);
+        } else if (configCallback && typeof configCallback === 'string') {
+            window[configCallback](_chorus.searchResult);
         }
         _chorus.events.dispatchEvent(_chorus.data.customEvents.chorusSearchComplete, 'chorusJS has finished searching scales and chords');
     };

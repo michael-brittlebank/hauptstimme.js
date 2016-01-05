@@ -23,36 +23,36 @@ hello world
 </div>
 <a onclick="_chorus.search()">search for scales and chords</a>
 <script>
-    document.addEventListener("DOMContentLoaded", function(e) {
+    document.addEventListener('DOMContentLoaded', function(e) {
         var config = {
-            layoutInstrument: "ukulele_concert",
-            layoutInstrumentTitleElement:"h3",
-            chorusDebug:"console",
-            layoutInstrumentStringOrder:"asc",
-            scaleSearchText: "Search Scales2",
-            searchCallback: "callbackFunction2",
+            layoutInstrument: 'ukulele_concert',
+            layoutInstrumentTitleElement:'h3',
+            chorusDebug:'console',
+            layoutInstrumentStringOrder:'asc',
+            scaleSearchText: 'Search Scales2',
+            searchCallback: 'callbackFunction',
             flattenSearchResults: true
         };
-        _chorus.init("class", config);
+        _chorus.init('class', config);
         config = {
-            layoutInstrument: ["main","violin"],
+            layoutInstrument: ['main','violin'],
             scaleSearchButton: false,
-            chorusDebug:"console",
-            layoutContainerId: "myId",
-            layoutContainerClass: "content"
+            chorusDebug:'console',
+            layoutContainerId: 'myId',
+            layoutContainerClass: 'content',
+            searchCallback: 'callbackFunction'
         };
-        _chorus.init("id", config);
-//        document.getElementById("compile").innerHTML = _chorus.logic.scales.compile();
+        _chorus.init('id', config);
     });
-    document.addEventListener("chorusInitComplete", function(e) {
+    document.addEventListener('chorusInitComplete', function(e) {
         console.log(e.detail);
     });
-    document.addEventListener("chorusSearchComplete", function(e) {
+    document.addEventListener('chorusSearchComplete', function(e) {
         console.log(e.detail);
         console.log(_chorus.searchResult);
     });
-    function callbackFunction2(results){
-        console.log("callbacked");
+    function callbackFunction(results){
+        console.log('called back');
         console.log(results);
     }
 </script>
