@@ -5,7 +5,6 @@
         dataChords = _chorus.data.chords,
         logicNotes = _chorus.logic.notes,
         helpers = _chorus.logic.helpers,
-        dictionary = _chorus.data.dictionary,
         events = _chorus.events,
         defaultConfig = _chorus.defaultConfig;
 
@@ -18,7 +17,6 @@
             rootScale,
             tones,
             letters,
-            chordKeySharp,
             chordKey,
             chordName,
             chordGroup,
@@ -29,13 +27,7 @@
             adjustedTone,
             scaleTone,
             optionalNotes,
-            output = {
-                major:{},
-                minor:{},
-                dominant:{},
-                symmetrical:{},
-                miscellaneous:{}
-            };
+            output = {};
         for (var i = 0; i < dataNotes.count.tones; i++) {
             rootName = logicNotes.getNoteByToneDefault(i);
             rootScale = rootName+' Major Ionian';
@@ -95,6 +87,9 @@
                                 var entry = optionalNotes[k];
                                 letters[entry] = '('+letters[entry]+')';
                             }
+                            if (!output.hasOwnProperty(chordGroup)){
+                                output[chordGroup] = {};
+                            }
                             output[chordGroup][chordName] = {
                                 tones: tones,
                                 letters: letters
@@ -126,14 +121,17 @@
      * otherwise use the tones passed
      * @type {Function}
      */
-    this.searchChords = function(tones, chordSearchMode, callback, container){
+    this.searchChords = function(tones, container, callback){
         if (container || !tones){
             //get notes from dom if not passed to function
-            this.searchChords(logicNotes.getSelectedNotes(container), chordSearchMode, callback);
+            this.searchChords(logicNotes.getSelectedNotes(container), container, callback);
         }
         else {
-            console.log('search chords');
-            //todo
+            var data = {};
+            events.dispatchEvent(_chorus.data.customEvents.chorusChordSearchComplete, 'chorusJS has finished searching chords');
+            if (callback && typeof callback !== 'string') {
+                callback(data);
+            }
         }
     };
 

@@ -32,6 +32,13 @@
         }
     };
 
+    this.customEvents = {
+        chorusInitComplete: 'chorusInitComplete',
+        chorusSearchComplete: 'chorusSearchComplete',
+        chorusChordSearchComplete: 'chorusChordSearchComplete',
+        chorusScaleSearchComplete: 'chorusScaleSearchComplete'
+    };
+
     /**
      * holds common classnames and messages
      */

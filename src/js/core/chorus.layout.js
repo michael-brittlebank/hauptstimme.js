@@ -178,9 +178,8 @@
             }
             if (helpers.getConfigValue('scaleSearchButton') === true) {
                 var title = helpers.getConfigValue('scaleSearchText'),
-                    searchMode = helpers.getConfigValue('scaleSearchMode'),
-                    callback = helpers.getConfigValue('scaleSearchCallback');
-                stringContent += '<a class="searchButton" onclick="_chorus.searchScales(\'\',\'' + searchMode + '\',' + callback + ',\'' + prefix + dictionary.class_container + '\')">' + title + '</a>';
+                    callback = helpers.getConfigValue('searchCallback');
+                stringContent += '<a class="searchButton" onclick="_chorus.searchScales(\'\',\'' + prefix + dictionary.class_container + '\',' + callback + ')">' + title + '</a>';
             }
             return '<div id="' + prefix + dictionary.class_container + '" class="' + dictionary.class_instrument + ' ' + containerClass + '">' +
                 stringContent +

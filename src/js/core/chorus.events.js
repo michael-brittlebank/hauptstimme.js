@@ -48,6 +48,7 @@
                 break;
         }
     };
+
 }).apply(_chorus.events);
 
 /**

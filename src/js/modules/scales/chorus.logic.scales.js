@@ -17,21 +17,18 @@
             tones,
             tone,
             letters,
-            scale,
+            scaleGroup,
             scaleKey,
             scaleName,
             scaleArray,
-            output = {
-                main:{},
-                other:{}
-            };
+            output = {};
         for (var i = 0; i < dataNotes.count.tones; i++) {
             root = logicNotes.getNoteByToneDefault(i);
-            for (scale in dataScales){
-                if (dataScales.hasOwnProperty(scale) && scale !== 'searchable' && scale !== 'count') {
-                    for (scaleKey in dataScales[scale]) {
-                        if (dataScales[scale].hasOwnProperty(scaleKey)) {
-                            scaleArray = dataScales[scale][scaleKey];
+            for (scaleGroup in dataScales){
+                if (dataScales.hasOwnProperty(scaleGroup) && scaleGroup !== 'searchable' && scaleGroup !== 'count') {
+                    for (scaleKey in dataScales[scaleGroup]) {
+                        if (dataScales[scaleGroup].hasOwnProperty(scaleKey)) {
+                            scaleArray = dataScales[scaleGroup][scaleKey];
                             tones = [i];
                             for (var j = 0; j < scaleArray.length - 1; j++) {
                                 tone = (tones[j] + scaleArray[j]) % 12;
@@ -40,7 +37,10 @@
                             letters = this.getNotesInScale(root, tones);
                             if (letters !== false) {
                                 scaleName = letters[0] + ' ' + helpers.capitalize(scaleKey.replace(/_/g, ' '));
-                                output[scale][scaleName] = {
+                                if (!output.hasOwnProperty(scaleGroup)){
+                                    output[scaleGroup] = {};
+                                }
+                                output[scaleGroup][scaleName] = {
                                     tones: tones,
                                     letters: letters
                                 };
@@ -85,43 +85,34 @@
      * otherwise use the tones passed
      * @type {Function}
      */
-    this.searchScales = function(tones, scaleSearchMode, callback, container){
+    this.searchScales = function(tones, container, callback){
         if (container || !tones){
             //get notes from dom if not passed to function
-            this.searchScales(logicNotes.getSelectedNotes(container), scaleSearchMode, callback);
+            this.searchScales(logicNotes.getSelectedNotes(container), container, callback);
         }
         else {
-            var scaleKey,
-                scalesToSearch,
+            var scaleGroup,
+                scaleKey,
+                flattenOutput = helpers.getConfigValue('flattenSearchResults') === true,
                 data = {};
             //search for scales if there are selected notes
             if (tones.selectedTones.length > 0 || tones.rootTone.length > 0) {
-                //default scales to search
-                if (!scaleSearchMode || scaleSearchMode.length < 1) {
-                    scalesToSearch = defaultConfig.scaleSearchMode;
-                }
-                else if (!helpers.isValidScaleSearchMode(scaleSearchMode)) {
-                    scalesToSearch = defaultConfig.scaleSearchMode;
-                    events.sendMessage(dictionary.error_value + 'invalid scale search mode');
-                }
-                else {
-                    scalesToSearch = scaleSearchMode;
-                }
                 //search scales
-                if (scalesToSearch === 'main' || scalesToSearch === 'all') {
-                    for (scaleKey in dataScales.searchable.main) {
-                        if (dataScales.searchable.main.hasOwnProperty(scaleKey)) {
-                            if (logicNotes.tonesInScaleOrChord(dataScales.searchable.main[scaleKey], tones)) {
-                                data[scaleKey] = dataScales.searchable.main[scaleKey];
-                            }
-                        }
-                    }
-                }
-                if (scalesToSearch === 'other' || scalesToSearch === 'all') {
-                    for (scaleKey in dataScales.searchable.other) {
-                        if (dataScales.searchable.other.hasOwnProperty(scaleKey)) {
-                            if (logicNotes.tonesInScaleOrChord(dataScales.searchable.other[scaleKey], tones)) {
-                                data[scaleKey] = dataScales.searchable.other[scaleKey];
+                for (scaleGroup in dataScales.searchable) {
+                    if (dataScales.searchable.hasOwnProperty(scaleGroup)) {
+                        for (scaleKey in dataScales.searchable[scaleGroup]) {
+                            if (dataScales.searchable[scaleGroup].hasOwnProperty(scaleKey)) {
+                                if (logicNotes.tonesInScaleOrChord(dataScales.searchable[scaleGroup][scaleKey], tones)) {
+                                    if (flattenOutput) {
+                                        //flatten output
+                                        data[scaleKey] = dataScales.searchable[scaleGroup][scaleKey];
+                                    } else {
+                                        if (!data.hasOwnProperty(scaleGroup)){
+                                            data[scaleGroup] = {};
+                                        }
+                                        data[scaleGroup][scaleKey] = dataScales.searchable[scaleGroup][scaleKey];
+                                    }
+                                }
                             }
                         }
                     }
@@ -131,7 +122,7 @@
                 events.sendMessage(dictionary.error_notFound + 'no selected notes found');
             }
             _chorus.searchResult.scales = data;
-            events.dispatchEvent('chorusScaleSearchComplete', 'chorusJS has finished searching scales');
+            events.dispatchEvent(_chorus.data.customEvents.chorusScaleSearchComplete, 'chorusJS has finished searching scales');
             if (callback && typeof callback !== 'string') {
                 callback(data);
             }

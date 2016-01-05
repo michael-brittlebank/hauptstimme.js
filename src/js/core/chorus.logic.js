@@ -5,7 +5,7 @@
     //variables
     var dictionary = _chorus.data.dictionary,
         defaultConfig = _chorus.defaultConfig;
-    
+
     //functions
     /**
      * get a random string
@@ -98,19 +98,18 @@
         });
     };
 
-    /**
-     * validates the scale search mode
-     * @param mode
-     * @returns {boolean}
-     */
-    this.isValidScaleSearchMode = function(mode){
-        return mode === 'main' ||
-            mode === 'other' ||
-            mode === 'all';
-    };
-
     this.mod = function(number,modulus) {
         return ((number%modulus)+modulus)%modulus;
+    };
+
+    this.searchComplete = function(callback){
+        var configCallback = this.getConfigValue('searchCallback');
+        if (callback && typeof callback !== 'string') {
+            callback(_chorus.searchResult);
+        } else if (configCallback && typeof configCallback !== 'string') {
+            configCallback(_chorus.searchResult);
+        }
+        _chorus.events.dispatchEvent(_chorus.data.customEvents.chorusSearchComplete, 'chorusJS has finished searching scales and chords');
     };
 
 }).apply(_chorus.logic.helpers);

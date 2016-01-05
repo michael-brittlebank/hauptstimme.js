@@ -43,9 +43,8 @@ var _chorus = window.chorus = {
  */
 (function(){
     //logic
-    this.scaleSearchCallback = '';
-    this.scaleSearchMode = 'all';
-    //todo, add flatten config otherwise send results back grouped by data type
+    this.searchCallback = '';
+    this.flattenSearchResults = false;
     //layout
     this.layoutInstrument ='main';
     this.layoutInstrumentTitles = false;
@@ -66,7 +65,8 @@ var _chorus = window.chorus = {
 _chorus.init = function(element, config) {
     var events = _chorus.events,
         layout = _chorus.layout,
-        dictionary = _chorus.data.dictionary;
+        dictionary = _chorus.data.dictionary,
+        customEvents = _chorus.data.customEvents;
     events.listeners.init();
     _chorus.config = _chorus.logic.helpers.cloneObject(_chorus.defaultConfig);
     if (config !== undefined) {
@@ -79,13 +79,13 @@ _chorus.init = function(element, config) {
     if (element !== undefined) {
         if (document.getElementById(element) !== null) {
             layout.init(document.getElementById(element));
-            events.dispatchEvent('chorusInitComplete', 'chorusJS has finished initialization');
+            events.dispatchEvent(customEvents.chorusInitComplete, 'chorusJS has finished initialization');
         }
         else if (document.getElementsByClassName(element).length > 0) {
             [].forEach.call(document.getElementsByClassName(element), function (ele) {
                 layout.init(ele);
             });
-            events.dispatchEvent('chorusInitComplete', 'chorusJS has finished initialization');
+            events.dispatchEvent(customEvents.chorusInitComplete, 'chorusJS has finished initialization');
         }
         else {
             events.sendMessage(dictionary.error_notFound + 'no elements found using init value');
@@ -100,7 +100,16 @@ _chorus.init = function(element, config) {
 /**
  * top level methods exposing lower level functions
  */
-_chorus.searchScales = function(tones, scaleSearchMode, callback, container){
-    _chorus.logic.scales.searchScales(tones, scaleSearchMode, callback, container);
+_chorus.search = function(tones, container, callback){
+    _chorus.logic.scales.searchScales(tones,  container,
+        _chorus.logic.chords.searchChords(tones, container,
+           _chorus.logic.helpers.searchComplete(callback)
+        ));
+};
+_chorus.searchScales = function(tones, container, callback){
+    _chorus.logic.scales.searchScales(tones, container, callback);
+};
+_chorus.searchChords = function(tones, container, callback){
+    _chorus.logic.chords.searchChords(tones, container, callback);
 };
 //todo, add methods for note/tone calculation

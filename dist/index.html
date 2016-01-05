@@ -21,7 +21,7 @@ hello world
 <div id="compile">
 
 </div>
-<a onclick="_chorus.searchScales()">search all scales</a>
+<a onclick="_chorus.search()">search for scales and chords</a>
 <script>
     document.addEventListener("DOMContentLoaded", function(e) {
         var config = {
@@ -30,8 +30,8 @@ hello world
             chorusDebug:"console",
             layoutInstrumentStringOrder:"asc",
             scaleSearchText: "Search Scales2",
-            scaleSearchCallback: "callbackFunction2",
-            scaleSearchMode: "main"
+            searchCallback: "callbackFunction2",
+            flattenSearchResults: true
         };
         _chorus.init("class", config);
         config = {
@@ -47,7 +47,7 @@ hello world
     document.addEventListener("chorusInitComplete", function(e) {
         console.log(e.detail);
     });
-    document.addEventListener("chorusScaleSearchComplete", function(e) {
+    document.addEventListener("chorusSearchComplete", function(e) {
         console.log(e.detail);
         console.log(_chorus.searchResult);
     });
