@@ -109,7 +109,7 @@
 
     this.convertFromScaleDegreeToArrayIndex = function(romanNumeral){
         //arrays are zero indexed by scale degrees are 1 indexed
-        return (romanNumeral-1)%7;
+        return helpers.mod(romanNumeral-1,7);
     };
 
     this.getNotesInChord = function(root, tones){
