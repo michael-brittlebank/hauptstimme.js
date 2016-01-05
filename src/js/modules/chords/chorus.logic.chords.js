@@ -6,7 +6,7 @@
         logicNotes = _chorus.logic.notes,
         helpers = _chorus.logic.helpers,
         events = _chorus.events,
-        defaultConfig = _chorus.defaultConfig;
+        dictionary = _chorus.data.dictionary;
 
     //functions
     /**
@@ -127,7 +127,37 @@
             this.searchChords(logicNotes.getSelectedNotes(container), container, callback);
         }
         else {
-            var data = {};
+            var chordGroup,
+                chordKey,
+                flattenOutput = helpers.getConfigValue('flattenSearchResults') === true,
+                data = {};
+            //search for scales if there are selected notes
+            if (tones.selectedTones.length > 0 || tones.rootTone.length > 0) {
+                //search scales
+                for (chordGroup in dataChords.searchable) {
+                    if (dataChords.searchable.hasOwnProperty(chordGroup)) {
+                        for (chordKey in dataChords.searchable[chordGroup]) {
+                            if (dataChords.searchable[chordGroup].hasOwnProperty(chordKey)) {
+                                if (logicNotes.tonesInScaleOrChord(dataChords.searchable[chordGroup][chordKey], tones)) {
+                                    if (flattenOutput) {
+                                        //flatten output
+                                        data[chordKey] = dataChords.searchable[chordGroup][chordKey];
+                                    } else {
+                                        if (!data.hasOwnProperty(chordGroup)){
+                                            data[chordGroup] = {};
+                                        }
+                                        data[chordGroup][chordKey] = dataChords.searchable[chordGroup][chordKey];
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else {
+                events.sendMessage(dictionary.error_notFound + 'no selected notes found');
+            }
+            _chorus.searchResult.chords = data;
             events.dispatchEvent(_chorus.data.customEvents.chorusChordSearchComplete, 'chorusJS has finished searching chords');
             if (callback && typeof callback !== 'string') {
                 callback(data);
