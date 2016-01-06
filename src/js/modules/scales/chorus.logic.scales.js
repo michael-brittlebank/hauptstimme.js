@@ -13,6 +13,7 @@
      * compile logic
      */
     this.compile = function() {
+        //todo, figure out why f# and Gb major scales are not compiling
         var root,
             tones,
             tone,

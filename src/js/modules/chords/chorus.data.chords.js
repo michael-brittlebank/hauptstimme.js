@@ -4,6 +4,7 @@
  */
 (function(){
     this.count = {
+        //todo update counts once scale compilation logic is fixed
         major: 12,
         minor: 13,
         dominant: 15,
