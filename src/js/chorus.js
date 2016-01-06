@@ -101,15 +101,15 @@ _chorus.init = function(element, config) {
  * top level methods exposing lower level functions
  */
 _chorus.search = function(tones, container, callback){
-    _chorus.logic.scales.searchScales(tones,  container,
-        _chorus.logic.chords.searchChords(tones, container,
-           _chorus.logic.helpers.searchComplete(callback)
+    _chorus.logic.scales.searchScales(tones,  container, false,
+        _chorus.logic.chords.searchChords(tones, container, false,
+            _chorus.logic.helpers.searchComplete(callback)
         ));
 };
 _chorus.searchScales = function(tones, container, callback){
-    _chorus.logic.scales.searchScales(tones, container, callback);
+    _chorus.logic.scales.searchScales(tones, container, false, callback);
 };
 _chorus.searchChords = function(tones, container, callback){
-    _chorus.logic.chords.searchChords(tones, container, callback);
+    _chorus.logic.chords.searchChords(tones, container, false, callback);
 };
 //todo, add methods for note/tone calculation

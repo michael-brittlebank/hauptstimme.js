@@ -121,10 +121,10 @@
      * otherwise use the tones passed
      * @type {Function}
      */
-    this.searchChords = function(tones, container, callback){
-        if (container || !tones){
+    this.searchChords = function(tones, container, searchedNotesAlready, callback){
+        if ((container || !tones) && !searchedNotesAlready){
             //get notes from dom if not passed to function
-            this.searchChords(logicNotes.getSelectedNotes(container), container, callback);
+            this.searchChords(logicNotes.getSelectedNotes(container), container, true, callback);
         }
         else {
             var chordGroup,
@@ -132,7 +132,7 @@
                 flattenOutput = helpers.getConfigValue('flattenSearchResults') === true,
                 data = {};
             //search for scales if there are selected notes
-            if (tones.selectedTones.length > 0 || tones.rootTone.length > 0) {
+            if ((tones && tones.hasOwnProperty('selectedTones')) && tones.selectedTones.length > 0 || tones.rootTone.length > 0) {
                 //search scales
                 for (chordGroup in dataChords.searchable) {
                     if (dataChords.searchable.hasOwnProperty(chordGroup)) {

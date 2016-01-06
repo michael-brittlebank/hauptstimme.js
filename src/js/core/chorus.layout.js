@@ -158,7 +158,7 @@
     (function() {
         //functions
         /**
-         * creates an instrument in HTML
+         * creates an instrument fretboard in HTML
          * @param instrumentName
          * @param instrumentTuning
          * @param prefix
@@ -218,18 +218,24 @@
             return note.replace(/#/g, '&#9839;').replace(/b/g, '&#9837;');
         };
 
+        /**
+         * creates a piano keyboard in HTML
+         * @param prefix
+         * @returns {string}
+         */
         this.piano = function(prefix){
-            var numberOfPianoKeys = 13,
+            var numberOfPianoKeys = 12,
                 containerClass = helpers.getConfigValue('layoutContainerClass'),
                 content,
                 tone,
                 note,
                 pianoKeyClass;
-            content = '<div id="' + prefix + dictionary.class_container + '" class="' + dictionary.class_instrument + ' ' + containerClass + '">';
+            content = '<div id="' + prefix + dictionary.class_container + '" class="' + dictionary.class_instrument + ' ' + containerClass + ' piano">';
             if (helpers.getConfigValue('layoutInstrumentTitles') !== true) {
                 var htmlElement = helpers.getConfigValue('layoutInstrumentTitleElement');
                 content += '<' + htmlElement + '>Piano</' + htmlElement + '>';
             }
+            content +='<div class="'+dictionary.class_piano_keyboard+'">';
             for(var i = 0; i < numberOfPianoKeys; i++){
                 //start at c instead of a
                 tone = helpers.mod(i+3,12);
@@ -239,6 +245,7 @@
                     this.htmlFilter(note) +
                     '</div>';
             }
+            content +='</div>';
             if (helpers.getConfigValue('searchButton') === true) {
                 var title = helpers.getConfigValue('searchText'),
                     callback = helpers.getConfigValue('searchCallback');

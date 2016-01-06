@@ -50,6 +50,7 @@
         class_fret:'chorus-fret',
         class_instrument: 'chorus-instrument',
         class_container: 'chorus-container',
+        class_piano_keyboard: 'chorus-piano-keyboard',
         class_tone: 'chorus-tone-',
         error_type:'[Error] Invalid type: ',
         error_undefined:'[Error] Undefined: ',

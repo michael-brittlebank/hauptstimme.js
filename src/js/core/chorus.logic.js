@@ -337,8 +337,7 @@
                     }
                 }
             }
-        }
-        else {
+        } else {
             events.sendMessage(dictionary.error_notFound+'no element found to search');
         }
         return {
