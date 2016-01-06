@@ -17,21 +17,65 @@ $display-width: 1300;
       @include unselectable;
     }
   }
-  .chorus-piano-key {
-    display: inline-block;
-    font-size: 16px;
-    padding: 10px;
-    width: 80px;
-    text-align: center;
-    cursor:pointer;
-    @include unselectable;
-    &.white {
-      color: black;
-      background: white;
+  &.piano {
+    a {
+      display: block;
+      margin: 10px 0;
     }
-    &.black {
-      color:white;
-      background:black;
+    .chorus-piano-keyboard {
+      position: relative;
+      height: 500px;
+      max-width: $display-width;
+      .chorus-piano-key {
+        $whiteKeyWidth: (($display-width - ($display-width*0.025))/7)/$display-width*100;
+        $blackKeyWidth: $whiteKeyWidth*0.6;
+        display: inline-block;
+        font-size: 16px;
+        margin: 0;
+        text-align: center;
+        cursor: pointer;
+        @include unselectable;
+        &.white {
+          position: relative;
+          color: black;
+          background: white;
+          height: 95.5%;
+          border-top: 1px solid black;
+          border-bottom: 1px solid black;
+          border-right: 1px solid black;
+          width: unquote($whiteKeyWidth+'%');
+          vertical-align: bottom;
+          &:first-child {
+            border-left: 1px solid black;
+          }
+        }
+        &.black {
+          position: absolute;
+          top: 0;
+          height: 65%;
+          margin-left: unquote('-'+$blackKeyWidth/2+'%');
+          width: unquote($blackKeyWidth+'%');
+          //padding: 1%;
+          color: white;
+          background: black;
+          z-index: 1000;
+          &[data-tone="4"] {
+            left: unquote($whiteKeyWidth*1+'%');
+          }
+          &[data-tone="6"] {
+            left: unquote($whiteKeyWidth*2+'%');
+          }
+          &[data-tone="9"] {
+            left: unquote($whiteKeyWidth*4+'%');
+          }
+          &[data-tone="11"] {
+            left: unquote($whiteKeyWidth*5+'%');
+          }
+          &[data-tone="1"] {
+            left: unquote($whiteKeyWidth*6+'%');
+          }
+        }
+      }
     }
   }
   .chorus-note-selected{
