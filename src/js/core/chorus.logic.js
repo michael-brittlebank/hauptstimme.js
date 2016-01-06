@@ -257,6 +257,18 @@
         return className.substring(dictionary.class_tone.length);
     };
 
+    this.getPianoFromContainer = function(element){
+        var result;
+        if (element) {
+            for (var i = 0; i < element.childNodes.length; i++) {
+                if (element.childNodes[i].classList.contains(dictionary.class_piano_keyboard)){
+                    result = element.childNodes[i];
+                }
+            }
+        }
+        return result;
+    };
+
     /**
      * get any tones that are selected in the dom
      * @param container
@@ -267,17 +279,32 @@
             notes = {
                 rootTone: '',
                 selectedTones:[]
-            };
+            },
+            pianoKeyboard;
         //search for selected notes by container id or class
         if(container && container.length > 0){
             var containerById = document.getElementById(container),
                 containerByClass = document.getElementsByClassName(container);
             if (containerById){
-                noteData.push(this.getTonesFromDOM(containerById));
+                if (containerById.classList.contains('piano')){
+                    pianoKeyboard = this.getPianoFromContainer(containerById);
+                    if (pianoKeyboard){
+                        noteData.push(this.getTonesFromDOM(pianoKeyboard));
+                    }
+                } else {
+                    noteData.push(this.getTonesFromDOM(containerById));
+                }
             }
             else if (containerByClass){
                 for (var i = 0; i < containerByClass.length; i++){
-                    noteData.push(this.getTonesFromDOM(containerByClass[i]));
+                    if (containerByClass[i].classList.contains('piano')){
+                        pianoKeyboard = this.getPianoFromContainer(containerByClass[i]);
+                        if (pianoKeyboard){
+                            noteData.push(this.getTonesFromDOM(pianoKeyboard));
+                        }
+                    } else {
+                        noteData.push(this.getTonesFromDOM(containerByClass[i]));
+                    }
                 }
             }
             else {
@@ -288,7 +315,14 @@
         else {
             var containerByDefaultClass = document.getElementsByClassName(dictionary.class_instrument);
             for (var j = 0; j < containerByDefaultClass.length; j++){
-                noteData.push(this.getTonesFromDOM(containerByDefaultClass[j]));
+                if (containerByDefaultClass[j].classList.contains('piano')){
+                    pianoKeyboard = this.getPianoFromContainer(containerByDefaultClass[j]);
+                    if (pianoKeyboard){
+                        noteData.push(this.getTonesFromDOM(pianoKeyboard));
+                    }
+                } else {
+                    noteData.push(this.getTonesFromDOM(containerByDefaultClass[j]));
+                }
             }
         }
         //remove duplicates
@@ -318,21 +352,30 @@
      * @type {Function}
      */
     this.getTonesFromDOM = function(element){
-        var classList,
+        var parentClassList,
+            childClassList,
             selectedTones = [],
             rootTone = '';
         if (element) {
             for (var i = 0; i < element.childNodes.length; i++) {
-                if (element.childNodes[i].classList.contains(dictionary.class_string)) {
-                    if (element.childNodes[i]) {
+                if (element.childNodes[i]) {
+                    parentClassList = element.childNodes[i].classList;
+                    if (parentClassList.contains(dictionary.class_string)) {
                         for (var j = 0; j < element.childNodes[i].childNodes.length; j++) {
-                            classList = element.childNodes[i].childNodes[j].classList;
-                            if (classList.contains(dictionary.class_selected)){
+                            childClassList = element.childNodes[i].childNodes[j].classList;
+                            if (childClassList.contains(dictionary.class_selected)) {
                                 selectedTones.push(element.childNodes[i].childNodes[j].getAttribute('data-tone'));
                             }
-                            else if (classList.contains(dictionary.class_root)){
+                            else if (childClassList.contains(dictionary.class_root)) {
                                 rootTone = element.childNodes[i].childNodes[j].getAttribute('data-tone');
                             }
+                        }
+                    } else if (parentClassList.contains(dictionary.class_piano_key)) {
+                        if (parentClassList.contains(dictionary.class_selected)) {
+                            selectedTones.push(element.childNodes[i].getAttribute('data-tone'));
+                        }
+                        else if (parentClassList.contains(dictionary.class_root)) {
+                            rootTone = element.childNodes[i].getAttribute('data-tone');
                         }
                     }
                 }
@@ -364,21 +407,21 @@
 
     /**
      * return if the scale contains the selected tones or not
-     * @param scale
+     * @param formula
      * @param notes
      * @returns {boolean}
      */
-    this.tonesInScaleOrChord = function(scale, notes){
+    this.tonesInScaleOrChord = function(formula, notes){
         if (notes.rootTone.length > 0){
-            if (scale.tones[0] == notes.rootTone){
-                return this.tonesInScaleOrChordHelper(scale.tones,notes.selectedTones);
+            if (formula.tones[0] == notes.rootTone){
+                return this.tonesInScaleOrChordHelper(formula.tones,notes.selectedTones);
             }
             else {
                 return false;
             }
         }
         else {
-            return this.tonesInScaleOrChordHelper(scale.tones,notes.selectedTones);
+            return this.tonesInScaleOrChordHelper(formula.tones,notes.selectedTones);
         }
     };
 
