@@ -111,7 +111,9 @@
     var events = _chorus.events,
         handlers = events.handlers,
         listeners = events.listeners,
-        dictionary = _chorus.data.dictionary;
+        dictionary = _chorus.data.dictionary,
+        customEvents = _chorus.data.customEvents,
+        config = _chorus.config;
 
     //functions
     /** add a custom event listener
@@ -130,12 +132,26 @@
      * add fret listeners after chorus init
      */
     this.init = function () {
-        document.addEventListener('chorusInitComplete', function(e) {
+
+        document.addEventListener(customEvents.chorusInitComplete, function(e) {
             listeners.addListener(dictionary.class_fret, 'click', handlers.noteLeftClickHandler);
             listeners.addListener(dictionary.class_fret, 'contextmenu', handlers.noteRightClickHandler);
             listeners.addListener(dictionary.class_piano_key, 'click', handlers.noteLeftClickHandler);
             listeners.addListener(dictionary.class_piano_key, 'contextmenu', handlers.noteRightClickHandler);
         });
+
+        document.addEventListener(customEvents.chorusScaleSearchComplete, function(e) {
+            config.resetCurrentConfig();
+        });
+
+        document.addEventListener(customEvents.chorusChordSearchComplete, function(e) {
+            config.resetCurrentConfig();
+        });
+
+        document.addEventListener(customEvents.chorusSearchComplete, function(e) {
+            config.resetCurrentConfig();
+        });
+
     };
 
 }).apply(_chorus.events.listeners);

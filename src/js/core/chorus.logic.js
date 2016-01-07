@@ -330,6 +330,10 @@
         else {
             var containerByDefaultClass = document.getElementsByClassName(dictionary.class_instrument);
             for (var j = 0; j < containerByDefaultClass.length; j++){
+                if (j===0){
+                    //get a default config from the first element in the dom
+                    _chorus.config.currentConfig = containerByDefaultClass[j].getAttribute('data-chorus-config');
+                }
                 if (containerByDefaultClass[j].classList.contains('piano')){
                     pianoKeyboard = this.getPianoFromContainer(containerByDefaultClass[j]);
                     if (pianoKeyboard){

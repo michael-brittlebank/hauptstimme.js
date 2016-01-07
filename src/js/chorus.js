@@ -26,9 +26,7 @@ var _chorus = window.chorus = {
     //default config object
     defaultConfig: {},
     //any user set config options will be saved here with defaults for any unset options
-    config: {
-        currentConfig: ''
-    }
+    config: {}
 };
 
 /**
@@ -60,37 +58,49 @@ var _chorus = window.chorus = {
     this.chorusDebug ='none';
 }).apply(_chorus.defaultConfig);
 
+(function(){
+    //variables
+    this.currentConfig = '';
+
+    //functions
+    this.resetCurrentConfig = function(){
+        this.currentConfig = '';
+    };
+
+}).apply(_chorus.config);
+
 /**
  * sets config values and creates instrument grid
  * @type {Function|*}
  */
-_chorus.init = function(element, config) {
+_chorus.init = function(element, userConfig) {
     var events = _chorus.events,
         layout = _chorus.layout,
         dictionary = _chorus.data.dictionary,
         customEvents = _chorus.data.customEvents,
-        currentConfig = layout.getRandomId();
+        configId = layout.getRandomId(),
+        config = _chorus.config;
     events.listeners.init();
-    _chorus.config.currentConfig = currentConfig;
-    _chorus.config[currentConfig] = _chorus.logic.helpers.cloneObject(_chorus.defaultConfig);
-    if (config !== undefined) {
-        for (var key in config) {
-            if (config.hasOwnProperty(key) && _chorus.config[currentConfig].hasOwnProperty(key)) {
-                _chorus.config[currentConfig][key] = config[key];
+    config.currentConfig = configId;
+    config[configId] = _chorus.logic.helpers.cloneObject(_chorus.defaultConfig);
+    if (userConfig !== undefined) {
+        for (var key in userConfig) {
+            if (userConfig.hasOwnProperty(key) && config[configId].hasOwnProperty(key)) {
+                config[configId][key] = userConfig[key];
             }
         }
     }
     if (element !== undefined) {
         if (document.getElementById(element) !== null) {
             layout.init(document.getElementById(element));
-            _chorus.config.currentConfig = '';
+            config.resetCurrentConfig();
             events.dispatchEvent(customEvents.chorusInitComplete, 'chorusJS has finished initialization');
         }
         else if (document.getElementsByClassName(element).length > 0) {
             [].forEach.call(document.getElementsByClassName(element), function (ele) {
                 layout.init(ele);
             });
-            _chorus.config.currentConfig = '';
+            config.resetCurrentConfig();
             events.dispatchEvent(customEvents.chorusInitComplete, 'chorusJS has finished initialization');
         }
         else {
