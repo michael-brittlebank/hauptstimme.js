@@ -220,10 +220,9 @@
             difference += notes.count.tones;
         }
         if (difference !== 0) {
-            if (notes.tone.hasOwnProperty(tone)){
+            if (Math.abs(difference) > 1 && notes.tone.hasOwnProperty(tone)){
                 return false;
-            }
-            if (difference > 0) {
+            } else if (difference > 0) {
                 for (var i = 0; i < difference; i++) {
                     letter += '#';
                 }

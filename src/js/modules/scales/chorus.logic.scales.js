@@ -13,8 +13,7 @@
      * compile logic
      */
     this.compile = function() {
-        //todo, figure out why f# and Gb major scales are not compiling
-        var root,
+        var rootNote,
             tones,
             tone,
             letters,
@@ -24,7 +23,7 @@
             scaleArray,
             output = {};
         for (var i = 0; i < dataNotes.count.tones; i++) {
-            root = logicNotes.getNoteByToneDefault(i);
+            rootNote = logicNotes.getNoteByToneDefault(i);
             for (scaleGroup in dataScales){
                 if (dataScales.hasOwnProperty(scaleGroup) && scaleGroup !== 'searchable' && scaleGroup !== 'count') {
                     for (scaleKey in dataScales[scaleGroup]) {
@@ -35,7 +34,7 @@
                                 tone = (tones[j] + scaleArray[j]) % 12;
                                 tones.push(tone);
                             }
-                            letters = this.getNotesInScale(root, tones);
+                            letters = this.getNotesInScale(rootNote, tones);
                             if (letters !== false) {
                                 scaleName = letters[0] + ' ' + helpers.capitalize(scaleKey.replace(/_/g, ' '));
                                 if (!output.hasOwnProperty(scaleGroup)){
@@ -54,9 +53,9 @@
         return JSON.stringify(output);
     };
 
-    this.getNotesInScale = function(root, tones){
-        var letters = [root],
-            letterProgression = logicNotes.getNoteProgression(root);
+    this.getNotesInScale = function(rootNote, tones){
+        var letters = [rootNote],
+            letterProgression = logicNotes.getNoteProgression(rootNote);
         for (var k = 1; k < tones.length; k++) {
             if (tones.length == 7) {
                 var letter = logicNotes.getNoteByToneForce(tones[k], letterProgression[k]);
@@ -64,7 +63,7 @@
                     letters.push(letter);
                 }
                 else {
-                    if (root.indexOf('#') >= 0){
+                    if (rootNote.indexOf('#') >= 0){
                         letters = this.getNotesInScale(letterProgression[1]+'b',tones);
                         break;
                     }
