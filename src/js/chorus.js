@@ -128,4 +128,6 @@ _chorus.searchScales = function(tones, container, callback){
 _chorus.searchChords = function(tones, container, callback){
     _chorus.logic.chords.searchChords(tones, container, false, callback);
 };
-//todo, add methods for note/tone calculation
+_chorus.applyResults = function(tones, container){
+    _chorus.layout.html.applyResults(tones, container);
+};

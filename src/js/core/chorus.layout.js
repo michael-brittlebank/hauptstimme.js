@@ -7,7 +7,8 @@
         instruments = data.instruments,
         notes = data.notes,
         dictionary = data.dictionary,
-        helpers = _chorus.logic.helpers;
+        helpers = _chorus.logic.helpers,
+        events = _chorus.events;
 
     //functions
     /**
@@ -290,6 +291,12 @@
                 instrumentContentClose +
                 searchButtonContent + //search button
                 containerContentClose;
+        };
+
+        this.applyResults = function(tones, container){
+            if (!tones || !container){
+                events.sendMessage(dictionary.error_undefined + 'no tones or container name passed');
+            }
         };
 
     }).apply(_chorus.layout.html);
