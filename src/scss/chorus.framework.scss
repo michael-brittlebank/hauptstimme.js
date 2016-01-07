@@ -19,17 +19,53 @@ $display-width: 1300;
   * {
     @extend .chorus-standard-font;
   }
-  .chorus-string {
-    //todo style strings
-    min-width: $display-width+px;
-    .chorus-fret {
-      display: inline-block;
-      font-size: 16px;
-      padding: 10px;
-      width: 80px;
-      text-align: center;
-      cursor:pointer;
-      @include unselectable;
+  .chorus-string-container {
+    width: 100%;
+    max-width: $display-width+px;
+    overflow-x: scroll;
+    margin: 10px 0;
+    .chorus-string {
+      width: $display-width+px;
+      .chorus-fret {
+        display: inline-block;
+        font-size: 16px;
+        width: 7.5%;
+        text-align: center;
+        cursor: pointer;
+        position: relative;
+        border-right: 1px solid black;
+        @include unselectable;
+        &:first-child{
+          border-right: 5px solid black;
+        }
+        &:not(:first-child){
+          p {
+            //http://codepen.io/ericrasch/pen/Irlpm
+            position: relative;
+            z-index: 1;
+            &:before {
+              border-top: 2px solid #dfdfdf;
+              content:"";
+              margin: 0 auto; /* this centers the line to the full width specified */
+              position: absolute; /* positioning must be absolute here, and relative positioning must be applied to the parent */
+              top: 50%; left: 0; right: 0; bottom: 0;
+              width: 95%;
+              z-index: -1;
+            }
+            span {
+              /* to hide the lines from behind the text, you have to set the background color the same as the container */
+              background: #fff;
+              padding: 0 15px;
+            }
+          }
+        }
+      }
+      &:first-child{
+        border-top: 1px solid black;
+      }
+      &:last-child{
+        border-bottom: 1px solid black;
+      }
     }
   }
   &.piano {
@@ -66,7 +102,6 @@ $display-width: 1300;
           height: 65%;
           margin-left: unquote('-'+$blackKeyWidth/2+'%');
           width: unquote($blackKeyWidth+'%');
-          //padding: 1%;
           color: white;
           background: black;
           z-index: 1000;
