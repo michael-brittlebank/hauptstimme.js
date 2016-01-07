@@ -75,6 +75,13 @@ $display-width: 1300;
             left: unquote($whiteKeyWidth*6+'%');
           }
         }
+        p {
+          position: absolute;
+          bottom: 10%;
+          left: 0;
+          right: 0;
+          margin: auto;
+        }
       }
     }
   }
