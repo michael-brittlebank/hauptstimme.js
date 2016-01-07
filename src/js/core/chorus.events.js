@@ -66,6 +66,11 @@
     this.noteRightClickHandler = function(e){
         e.preventDefault();
         var element = e.target || e.srcElement;
+        //span handler
+        if (!element.classList.contains(dictionary.class_fret) && !element.classList.contains(dictionary.class_piano_key)){
+            element = element.parentNode;
+        }
+        //p handler
         if (!element.classList.contains(dictionary.class_fret) && !element.classList.contains(dictionary.class_piano_key)){
             element = element.parentNode;
         }
@@ -80,12 +85,23 @@
         e.preventDefault();
         var element = e.target || e.srcElement,
             selectedClass = dictionary.class_selected,
-            rootClass = dictionary.class_root;
+            rootClass = dictionary.class_root,
+            parent;
+        //span handler
         if (!element.classList.contains(dictionary.class_fret) && !element.classList.contains(dictionary.class_piano_key)){
             element = element.parentNode;
         }
-        var parent = element.parentNode,
-            existingRoot = parent.getElementsByClassName(rootClass);
+        //p handler
+        if (!element.classList.contains(dictionary.class_fret) && !element.classList.contains(dictionary.class_piano_key)){
+            element = element.parentNode;
+        }
+        //string/key container
+        if (element.parentNode.classList.contains(dictionary.class_string)){
+            parent = element.parentNode.parentNode;
+        } else {
+            parent = element.parentNode;
+        }
+        var existingRoot = parent.getElementsByClassName(rootClass);
         if (element.classList.contains(selectedClass)) {
             element.classList.remove(selectedClass);
             if (existingRoot.length > 0){
