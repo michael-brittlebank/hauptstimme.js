@@ -1,9 +1,23 @@
 $display-width: 1300;
 
+.chorus-standard-font {
+  font-family: $font-open-sans-condensed;
+  font-weight:$font-weight-medium;
+  text-transform: capitalize;
+}
+
+.chorus-search-button {
+  display: inline-block;
+  margin: 10px 0;
+  padding:10px;
+  border: 1px solid black;
+  cursor: pointer;
+  @extend .chorus-standard-font;
+}
+
 .chorus-instrument {
   * {
-    font-family: $font-open-sans-condensed;
-    font-weight:$font-weight-medium;
+    @extend .chorus-standard-font;
   }
   .chorus-string {
     min-width: $display-width+px;
@@ -18,10 +32,6 @@ $display-width: 1300;
     }
   }
   &.piano {
-    a {
-      display: block;
-      margin: 10px 0;
-    }
     .chorus-piano-keyboard {
       position: relative;
       height: 500px;
