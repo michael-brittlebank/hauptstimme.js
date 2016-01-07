@@ -176,12 +176,12 @@
             }
             if (helpers.getConfigValue('layoutInstrumentTitles') !== true) {
                 var htmlElement = helpers.getConfigValue('layoutInstrumentTitleElement');
-                stringContent = '<' + htmlElement + '>' + instrumentName.replace(/_/g, ' ') + '</' + htmlElement + '>' + stringContent;
+                stringContent = '<' + htmlElement + ' class="chorus-instrument-title">' + instrumentName.replace(/_/g, ' ') + '</' + htmlElement + '>' + stringContent;
             }
             if (helpers.getConfigValue('searchButton') === true) {
                 var title = helpers.getConfigValue('searchText'),
                     callback = helpers.getConfigValue('searchCallback');
-                stringContent += '<a class="searchButton" onclick="_chorus.search(\'\',\'' + prefix + dictionary.class_container + '\',' + callback + ')">' + title + '</a>';
+                stringContent += '<a class="chorus-search-button" onclick="_chorus.search(\'\',\'' + prefix + dictionary.class_container + '\',' + callback + ')">' + title + '</a>';
             }
             return '<div id="' + prefix + dictionary.class_container + '" class="' + dictionary.class_instrument + ' ' + containerClass + '">' +
                 stringContent +
@@ -233,7 +233,7 @@
             content = '<div id="' + prefix + dictionary.class_container + '" class="' + dictionary.class_instrument + ' ' + containerClass + ' piano">';
             if (helpers.getConfigValue('layoutInstrumentTitles') !== true) {
                 var htmlElement = helpers.getConfigValue('layoutInstrumentTitleElement');
-                content += '<' + htmlElement + '>Piano</' + htmlElement + '>';
+                content += '<' + htmlElement + ' class="chorus-instrument-title">piano</' + htmlElement + '>';
             }
             content +='<div class="'+dictionary.class_piano_keyboard+'">';
             for(var i = 0; i < numberOfPianoKeys; i++){
@@ -249,7 +249,7 @@
             if (helpers.getConfigValue('searchButton') === true) {
                 var title = helpers.getConfigValue('searchText'),
                     callback = helpers.getConfigValue('searchCallback');
-                content += '<a class="searchButton" onclick="_chorus.search(\'\',\'' + prefix + dictionary.class_container + '\',' + callback + ')">' + title + '</a>';
+                content += '<a class="chorus-search-button" onclick="_chorus.search(\'\',\'' + prefix + dictionary.class_container + '\',' + callback + ')">' + title + '</a>';
             }
             return content+'</div>';
         };
