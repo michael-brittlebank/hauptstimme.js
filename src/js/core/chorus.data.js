@@ -50,6 +50,7 @@
         class_fret:'chorus-fret',
         class_instrument: 'chorus-instrument',
         class_container: 'chorus-container',
+        class_string_container: 'chorus-string-container',
         class_piano_keyboard: 'chorus-piano-keyboard',
         class_tone: 'chorus-tone-',
         class_instrument_title: 'chorus-instrument-title',

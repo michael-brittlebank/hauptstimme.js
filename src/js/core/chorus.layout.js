@@ -165,28 +165,46 @@
          * @returns {string}
          */
         this.instrument = function (instrumentName, instrumentTuning, prefix) {
-            var stringOrder = helpers.getConfigValue('layoutInstrumentStringOrder'),
-                stringContent = '',
-                containerClass = helpers.getConfigValue('layoutContainerClass'),
-                containerId = prefix+'-'+dictionary.class_container;
-            if (stringOrder == 'asc') {
+            var containerClass = helpers.getConfigValue('layoutContainerClass'),
+                containerId = prefix+'-'+dictionary.class_container,
+                containerContentOpen,
+                containerContentClose,
+                titleContent = '',
+                instrumentContentOpen,
+                instrumentContentClose,
+                instrumentContent = '',
+                searchButtonContent = '';
+            if (helpers.getConfigValue('layoutInstrumentStringOrder') === 'asc') {
                 instrumentTuning.reverse();
             }
-            for (var i = 0; i < instrumentTuning.length; i++) {
-                stringContent = this.string(instrumentTuning[i]) + stringContent;
-            }
+            //instrument container
+            containerContentOpen = '<div id="' + containerId + '" class="' + dictionary.class_instrument + ' ' + containerClass + '" data-chorus-config="'+_chorus.config.currentConfig+'">';
+            containerContentClose = '</div>';
+            //title
             if (helpers.getConfigValue('layoutInstrumentTitles') !== true) {
                 var htmlElement = helpers.getConfigValue('layoutInstrumentTitleElement');
-                stringContent = '<' + htmlElement + ' class="'+dictionary.class_instrument_title+'">' + instrumentName.replace(/_/g, ' ') + '</' + htmlElement + '>' + stringContent;
+                titleContent = '<' + htmlElement + ' class="'+dictionary.class_instrument_title+'">' + instrumentName.replace(/_/g, ' ') + '</' + htmlElement + '>';
             }
+            //string container
+            instrumentContentOpen ='<div class="'+dictionary.class_string_container+'">';
+            instrumentContentClose = '</div>';
+            //strings
+            for (var i = 0; i < instrumentTuning.length; i++) {
+                instrumentContent = this.string(instrumentTuning[i]) + instrumentContent;
+            }
+            //search button
             if (helpers.getConfigValue('searchButton') === true) {
                 var title = helpers.getConfigValue('searchText'),
                     callback = helpers.getConfigValue('searchCallback')?helpers.getConfigValue('searchCallback'):'\'\'';
-                stringContent += '<a class="'+dictionary.class_search_button+'" onclick="_chorus.search(\'\',\'' + containerId + '\',' + callback + ')">' + title + '</a>';
+                searchButtonContent = '<a class="'+dictionary.class_search_button+'" onclick="_chorus.search(\'\',\'' + containerId + '\',' + callback + ')">' + title + '</a>';
             }
-            return '<div id="' + containerId + '" class="' + dictionary.class_instrument + ' ' + containerClass + '" data-chorus-config="'+_chorus.config.currentConfig+'">' +
-                stringContent +
-                '</div>';
+            return containerContentOpen+ //instrument container
+                titleContent + //title
+                instrumentContentOpen + //key container
+                instrumentContent + //string
+                instrumentContentClose +
+                searchButtonContent + //search button
+                containerContentClose;
         };
 
         /**
@@ -227,33 +245,51 @@
         this.piano = function(prefix){
             var numberOfPianoKeys = 12,
                 containerClass = helpers.getConfigValue('layoutContainerClass'),
-                content,
+                containerContentOpen,
+                containerContentClose,
+                titleContent = '',
+                instrumentContentOpen,
+                instrumentContentClose,
+                instrumentContent = '',
+                searchButtonContent = '',
                 tone,
                 note,
                 pianoKeyClass,
                 containerId = prefix+'-'+dictionary.class_container;
-            content = '<div id="' + containerId + '" class="' + dictionary.class_instrument + ' ' + containerClass + ' piano" data-chorus-config="'+_chorus.config.currentConfig+'">';
+            //instrument container
+            containerContentOpen = '<div id="' + containerId + '" class="' + dictionary.class_instrument + ' ' + containerClass + ' piano" data-chorus-config="'+_chorus.config.currentConfig+'">';
+            containerContentClose = '</div>';
+            //title
             if (helpers.getConfigValue('layoutInstrumentTitles') !== true) {
                 var htmlElement = helpers.getConfigValue('layoutInstrumentTitleElement');
-                content += '<' + htmlElement + ' class="'+dictionary.class_instrument_title+'">piano</' + htmlElement + '>';
+                titleContent = '<' + htmlElement + ' class="'+dictionary.class_instrument_title+'">piano</' + htmlElement + '>';
             }
-            content +='<div class="'+dictionary.class_piano_keyboard+'">';
+            //key container
+            instrumentContentOpen ='<div class="'+dictionary.class_piano_keyboard+'">';
+            instrumentContentClose ='</div>';
+            //keys
             for(var i = 0; i < numberOfPianoKeys; i++){
                 //start at c instead of a
                 tone = helpers.mod(i+3,12);
                 note = _chorus.logic.notes.getNoteByToneDisplay(tone);
                 pianoKeyClass = note.indexOf('#')!== -1?dictionary.class_piano_key_black:dictionary.class_piano_key_white;
-                content += '<div class="' + dictionary.class_piano_key+' '+pianoKeyClass+'" data-chorus-tone="'+tone+'"><p>'+
+                instrumentContent += '<div class="' + dictionary.class_piano_key+' '+pianoKeyClass+'" data-chorus-tone="'+tone+'"><p>'+
                     this.htmlFilter(note) +
                     '</p></div>';
             }
-            content +='</div>';
+            //search button
             if (helpers.getConfigValue('searchButton') === true) {
                 var title = helpers.getConfigValue('searchText'),
                     callback = helpers.getConfigValue('searchCallback')?helpers.getConfigValue('searchCallback'):'\'\'';
-                content += '<a class="'+dictionary.class_search_button+'" onclick="_chorus.search(\'\',\'' + containerId + '\',' + callback + ')">' + title + '</a>';
+                searchButtonContent += '<a class="'+dictionary.class_search_button+'" onclick="_chorus.search(\'\',\'' + containerId + '\',' + callback + ')">' + title + '</a>';
             }
-            return content+'</div>';
+            return containerContentOpen+ //instrument container
+                titleContent + //title
+                instrumentContentOpen + //key container
+                instrumentContent + //piano keys
+                instrumentContentClose +
+                searchButtonContent + //search button
+                containerContentClose;
         };
 
     }).apply(_chorus.layout.html);
