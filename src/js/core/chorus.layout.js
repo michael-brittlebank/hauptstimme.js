@@ -202,9 +202,9 @@
                 tone = (parseInt(root) + i) % notes.count.tones;
                 note = _chorus.logic.notes.getNoteByToneDisplay(tone);
                 output +=
-                    '<div class="' + dictionary.class_fret +'" data-tone="'+tone+'">' +
+                    '<div class="' + dictionary.class_fret +'" data-tone="'+tone+'"><p>' +
                     this.htmlFilter(note) +
-                    '</div>';
+                    '</p></div>';
             }
             return output + '</div>';
         };
@@ -241,9 +241,9 @@
                 tone = helpers.mod(i+3,12);
                 note = _chorus.logic.notes.getNoteByToneDisplay(tone);
                 pianoKeyClass = note.indexOf('#')!== -1?'black':'white';
-                content += '<div class="' + dictionary.class_piano_key+' '+pianoKeyClass+'" data-tone="'+tone+'">'+
+                content += '<div class="' + dictionary.class_piano_key+' '+pianoKeyClass+'" data-tone="'+tone+'"><p>'+
                     this.htmlFilter(note) +
-                    '</div>';
+                    '</p></div>';
             }
             content +='</div>';
             if (helpers.getConfigValue('searchButton') === true) {

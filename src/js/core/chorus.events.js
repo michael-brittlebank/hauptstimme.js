@@ -66,6 +66,9 @@
     this.noteRightClickHandler = function(e){
         e.preventDefault();
         var element = e.target || e.srcElement;
+        if (!element.classList.contains(dictionary.class_fret) && !element.classList.contains(dictionary.class_piano_key)){
+            element = element.parentNode;
+        }
         element.classList.remove(dictionary.class_selected);
         element.classList.remove(dictionary.class_root);
     };
@@ -77,9 +80,12 @@
         e.preventDefault();
         var element = e.target || e.srcElement,
             selectedClass = dictionary.class_selected,
-            rootClass = dictionary.class_root,
-            container = element.parentNode,
-            existingRoot = container.getElementsByClassName(rootClass);
+            rootClass = dictionary.class_root;
+        if (!element.classList.contains(dictionary.class_fret) && !element.classList.contains(dictionary.class_piano_key)){
+            element = element.parentNode;
+        }
+        var parent = element.parentNode,
+            existingRoot = parent.getElementsByClassName(rootClass);
         if (element.classList.contains(selectedClass)) {
             element.classList.remove(selectedClass);
             if (existingRoot.length > 0){
