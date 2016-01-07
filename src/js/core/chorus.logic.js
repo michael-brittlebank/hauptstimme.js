@@ -46,15 +46,28 @@
     /**
      * get the config value for the key passed or return the default if none available
      * @param key
+     * @param container
      * @returns {*}
      */
-    this.getConfigValue = function(key){
+    this.getConfigValue = function(key, container){
         var configId = _chorus.config.currentConfig;
-        if (configId && configId.length > 0){
+        if(container){
+            configId = document.getElementById(container).getAttribute('data-chorus-config');
+            if (configId) {
+                if (typeof _chorus.config[configId][key] !== typeof _chorus.defaultConfig[key]) {
+                    _chorus.events.sendMessage(dictionary.error_type + ' ' + key);
+                }
+                return typeof _chorus.config[configId][key] === typeof defaultConfig[key] ? _chorus.config[configId][key] : defaultConfig[key];
+            } else {
+                return false;
+            }
+        } else if (configId && configId.length > 0) {
             if (typeof _chorus.config[configId][key] !== typeof _chorus.defaultConfig[key]){
                 _chorus.events.sendMessage(dictionary.error_type+' '+key);
             }
             return typeof _chorus.config[configId][key] === typeof defaultConfig[key]?_chorus.config[configId][key]:defaultConfig[key];
+        } else {
+            return false;
         }
     };
 

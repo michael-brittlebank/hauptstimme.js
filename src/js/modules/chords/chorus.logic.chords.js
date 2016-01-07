@@ -134,7 +134,7 @@
         else {
             var chordGroup,
                 chordKey,
-                flattenOutput = helpers.getConfigValue('flattenSearchResults') === true,
+                flattenOutput = helpers.getConfigValue('flattenSearchResults', container) === true,
                 data = {};
             //search for scales if there are selected notes
             if ((tones && tones.hasOwnProperty('selectedTones')) && tones.selectedTones.length > 0 || tones.rootTone.length > 0) {
