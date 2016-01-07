@@ -7,25 +7,32 @@ $display-width: 1300;
 }
 
 .chorus-note {
-  padding: 5px 0;
   span {
+    padding: 5px 0;
     border-radius: 15%;
     width: 45px;
     display: inline-block;
     max-width: 100%;
-    @include transition-with-defaults(background-color);
+    @include raw-transition(unquote("background-color 500ms ease-out 0s,color 500ms ease-out 0s"));
   }
 }
 
 .chorus-fret, .chorus-piano-key {
   &.chorus-note-selected {
     span {
-      background-color: green!important;
+      color: white;
+      background-color: $color-jays-light-blue!important;
     }
   }
   &.chorus-note-root{
     span {
-      background-color: red!important;
+      color: white;
+      background-color: $color-badgers-red!important;
+    }
+  }
+  &.chorus-note-found{
+    span {
+      background-color: $color-badgers-gold!important;
     }
   }
 }
