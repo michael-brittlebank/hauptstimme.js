@@ -6,6 +6,30 @@ $display-width: 1300;
   text-transform: capitalize;
 }
 
+.chorus-note {
+  padding: 5px 0;
+  span {
+    border-radius: 15%;
+    width: 45px;
+    display: inline-block;
+    max-width: 100%;
+    @include transition-with-defaults(background-color);
+  }
+}
+
+.chorus-fret, .chorus-piano-key {
+  &.chorus-note-selected {
+    span {
+      background-color: green!important;
+    }
+  }
+  &.chorus-note-root{
+    span {
+      background-color: red!important;
+    }
+  }
+}
+
 .chorus-search-button {
   display: inline-block;
   margin: 10px 0;
@@ -53,11 +77,14 @@ $display-width: 1300;
               z-index: -1;
             }
             span {
+              background-color: white;
               /* to hide the lines from behind the text, you have to set the background color the same as the container */
-              background: #fff;
-              padding: 0 15px;
+              padding: 0 5px;
             }
           }
+        }
+        p {
+          @extend .chorus-note;
         }
       }
       &:first-child{
@@ -127,14 +154,12 @@ $display-width: 1300;
           left: 0;
           right: 0;
           margin: auto;
+          width: 50px;
+          max-width: 100%;
+          display: inline-block;
+          @extend .chorus-note;
         }
       }
     }
-  }
-  .chorus-note-selected{
-    color:green!important;
-  }
-  .chorus-note-root{
-    color:red!important;
   }
 }
