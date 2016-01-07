@@ -20,6 +20,7 @@ $display-width: 1300;
     @extend .chorus-standard-font;
   }
   .chorus-string {
+    //todo style strings
     min-width: $display-width+px;
     .chorus-fret {
       display: inline-block;
@@ -69,19 +70,19 @@ $display-width: 1300;
           color: white;
           background: black;
           z-index: 1000;
-          &[data-tone="4"] {
+          &[data-chorus-tone="4"] {
             left: unquote($whiteKeyWidth*1+'%');
           }
-          &[data-tone="6"] {
+          &[data-chorus-tone="6"] {
             left: unquote($whiteKeyWidth*2+'%');
           }
-          &[data-tone="9"] {
+          &[data-chorus-tone="9"] {
             left: unquote($whiteKeyWidth*4+'%');
           }
-          &[data-tone="11"] {
+          &[data-chorus-tone="11"] {
             left: unquote($whiteKeyWidth*5+'%');
           }
-          &[data-tone="1"] {
+          &[data-chorus-tone="1"] {
             left: unquote($whiteKeyWidth*6+'%');
           }
         }

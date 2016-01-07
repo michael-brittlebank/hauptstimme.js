@@ -49,10 +49,13 @@
      * @returns {*}
      */
     this.getConfigValue = function(key){
-        if (typeof _chorus.config[key] !== typeof _chorus.defaultConfig[key]){
-            _chorus.events.sendMessage(dictionary.error_type+' '+key);
+        var configId = _chorus.config.currentConfig;
+        if (configId && configId.length > 0){
+            if (typeof _chorus.config[configId][key] !== typeof _chorus.defaultConfig[key]){
+                _chorus.events.sendMessage(dictionary.error_type+' '+key);
+            }
+            return typeof _chorus.config[configId][key] === typeof defaultConfig[key]?_chorus.config[configId][key]:defaultConfig[key];
         }
-        return typeof _chorus.config[key] === typeof defaultConfig[key]?_chorus.config[key]:defaultConfig[key];
     };
 
     /**
@@ -363,18 +366,18 @@
                         for (var j = 0; j < element.childNodes[i].childNodes.length; j++) {
                             childClassList = element.childNodes[i].childNodes[j].classList;
                             if (childClassList.contains(dictionary.class_selected)) {
-                                selectedTones.push(element.childNodes[i].childNodes[j].getAttribute('data-tone'));
+                                selectedTones.push(element.childNodes[i].childNodes[j].getAttribute('data-chorus-tone'));
                             }
                             else if (childClassList.contains(dictionary.class_root)) {
-                                rootTone = element.childNodes[i].childNodes[j].getAttribute('data-tone');
+                                rootTone = element.childNodes[i].childNodes[j].getAttribute('data-chorus-tone');
                             }
                         }
                     } else if (parentClassList.contains(dictionary.class_piano_key)) {
                         if (parentClassList.contains(dictionary.class_selected)) {
-                            selectedTones.push(element.childNodes[i].getAttribute('data-tone'));
+                            selectedTones.push(element.childNodes[i].getAttribute('data-chorus-tone'));
                         }
                         else if (parentClassList.contains(dictionary.class_root)) {
-                            rootTone = element.childNodes[i].getAttribute('data-tone');
+                            rootTone = element.childNodes[i].getAttribute('data-chorus-tone');
                         }
                     }
                 }

@@ -26,7 +26,9 @@ var _chorus = window.chorus = {
     //default config object
     defaultConfig: {},
     //any user set config options will be saved here with defaults for any unset options
-    config: {}
+    config: {
+        currentConfig: ''
+    }
 };
 
 /**
@@ -66,25 +68,29 @@ _chorus.init = function(element, config) {
     var events = _chorus.events,
         layout = _chorus.layout,
         dictionary = _chorus.data.dictionary,
-        customEvents = _chorus.data.customEvents;
+        customEvents = _chorus.data.customEvents,
+        currentConfig = layout.getRandomId();
     events.listeners.init();
-    _chorus.config = _chorus.logic.helpers.cloneObject(_chorus.defaultConfig);
+    _chorus.config.currentConfig = currentConfig;
+    _chorus.config[currentConfig] = _chorus.logic.helpers.cloneObject(_chorus.defaultConfig);
     if (config !== undefined) {
         for (var key in config) {
-            if (config.hasOwnProperty(key) && _chorus.config.hasOwnProperty(key)) {
-                _chorus.config[key] = config[key];
+            if (config.hasOwnProperty(key) && _chorus.config[currentConfig].hasOwnProperty(key)) {
+                _chorus.config[currentConfig][key] = config[key];
             }
         }
     }
     if (element !== undefined) {
         if (document.getElementById(element) !== null) {
             layout.init(document.getElementById(element));
+            _chorus.config.currentConfig = '';
             events.dispatchEvent(customEvents.chorusInitComplete, 'chorusJS has finished initialization');
         }
         else if (document.getElementsByClassName(element).length > 0) {
             [].forEach.call(document.getElementsByClassName(element), function (ele) {
                 layout.init(ele);
             });
+            _chorus.config.currentConfig = '';
             events.dispatchEvent(customEvents.chorusInitComplete, 'chorusJS has finished initialization');
         }
         else {
