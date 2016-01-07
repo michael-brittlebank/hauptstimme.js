@@ -296,14 +296,7 @@
         };
 
         this.applySelectedNotesToDom = function(tones,container){
-            console.log('in apply dom');
-            console.log(tones);
-            console.log(container);
-            console.log('childfren');
             var children = container.querySelectorAll('div.'+dictionary.class_note);
-            console.log(children);
-            console.log(typeof children);
-            console.log(children.length);
             for(var i = 0; i < children.length; i++){
                 if (!children[i].classList.contains(dictionary.class_selected) && !children[i].classList.contains(dictionary.class_root)){
                     if (tones.indexOf(parseInt(children[i].getAttribute('data-chorus-tone'))) !== -1){
@@ -319,9 +312,6 @@
             if (!tones || !container){
                 events.sendMessage(dictionary.error_undefined + 'no tones or container name passed');
             }
-            console.log('in apply results');
-            console.log(tones);
-            console.log(container);
             if (typeof container === 'string') {
                 layout.applySelectedNotesToDom(tones, container);
             } else if (typeof container === 'object' && container.length > 0){
