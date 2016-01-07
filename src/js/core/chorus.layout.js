@@ -176,12 +176,12 @@
             }
             if (helpers.getConfigValue('layoutInstrumentTitles') !== true) {
                 var htmlElement = helpers.getConfigValue('layoutInstrumentTitleElement');
-                stringContent = '<' + htmlElement + ' class="chorus-instrument-title">' + instrumentName.replace(/_/g, ' ') + '</' + htmlElement + '>' + stringContent;
+                stringContent = '<' + htmlElement + ' class="'+dictionary.class_instrument_title+'">' + instrumentName.replace(/_/g, ' ') + '</' + htmlElement + '>' + stringContent;
             }
             if (helpers.getConfigValue('searchButton') === true) {
                 var title = helpers.getConfigValue('searchText'),
-                    callback = helpers.getConfigValue('searchCallback');
-                stringContent += '<a class="chorus-search-button" onclick="_chorus.search(\'\',\'' + prefix + dictionary.class_container + '\',' + callback + ')">' + title + '</a>';
+                    callback = helpers.getConfigValue('searchCallback')?helpers.getConfigValue('searchCallback'):'\'\'';
+                stringContent += '<a class="'+dictionary.class_search_button+'" onclick="_chorus.search(\'\',\'' + prefix + dictionary.class_container + '\',' + callback + ')">' + title + '</a>';
             }
             return '<div id="' + prefix + dictionary.class_container + '" class="' + dictionary.class_instrument + ' ' + containerClass + '">' +
                 stringContent +
@@ -233,14 +233,14 @@
             content = '<div id="' + prefix + dictionary.class_container + '" class="' + dictionary.class_instrument + ' ' + containerClass + ' piano">';
             if (helpers.getConfigValue('layoutInstrumentTitles') !== true) {
                 var htmlElement = helpers.getConfigValue('layoutInstrumentTitleElement');
-                content += '<' + htmlElement + ' class="chorus-instrument-title">piano</' + htmlElement + '>';
+                content += '<' + htmlElement + ' class="'+dictionary.class_instrument_title+'">piano</' + htmlElement + '>';
             }
             content +='<div class="'+dictionary.class_piano_keyboard+'">';
             for(var i = 0; i < numberOfPianoKeys; i++){
                 //start at c instead of a
                 tone = helpers.mod(i+3,12);
                 note = _chorus.logic.notes.getNoteByToneDisplay(tone);
-                pianoKeyClass = note.indexOf('#')!== -1?'black':'white';
+                pianoKeyClass = note.indexOf('#')!== -1?dictionary.class_piano_key_black:dictionary.class_piano_key_white;
                 content += '<div class="' + dictionary.class_piano_key+' '+pianoKeyClass+'" data-tone="'+tone+'"><p>'+
                     this.htmlFilter(note) +
                     '</p></div>';
@@ -248,8 +248,8 @@
             content +='</div>';
             if (helpers.getConfigValue('searchButton') === true) {
                 var title = helpers.getConfigValue('searchText'),
-                    callback = helpers.getConfigValue('searchCallback');
-                content += '<a class="chorus-search-button" onclick="_chorus.search(\'\',\'' + prefix + dictionary.class_container + '\',' + callback + ')">' + title + '</a>';
+                    callback = helpers.getConfigValue('searchCallback')?helpers.getConfigValue('searchCallback'):'\'\'';
+                content += '<a class="'+dictionary.class_search_button+'" onclick="_chorus.search(\'\',\'' + prefix + dictionary.class_container + '\',' + callback + ')">' + title + '</a>';
             }
             return content+'</div>';
         };
