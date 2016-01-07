@@ -15,9 +15,6 @@ $display-width: 1300;
     max-width: 100%;
     @include raw-transition(unquote("background-color 500ms ease-out 0s,color 500ms ease-out 0s"));
   }
-}
-
-.chorus-fret, .chorus-piano-key {
   &.chorus-note-selected {
     span {
       color: white;

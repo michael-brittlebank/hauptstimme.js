@@ -157,6 +157,8 @@
     };
 
     (function() {
+        var layout = _chorus.layout.html;
+
         //functions
         /**
          * creates an instrument fretboard in HTML
@@ -222,7 +224,7 @@
                 tone = (parseInt(root) + i) % notes.count.tones;
                 note = _chorus.logic.notes.getNoteByToneDisplay(tone);
                 output +=
-                    '<div class="' + dictionary.class_fret +'" data-chorus-tone="'+tone+'"><p><span>' +
+                    '<div class="' + dictionary.class_fret +' '+dictionary.class_note+'" data-chorus-tone="'+tone+'"><p><span>' +
                     this.htmlFilter(note) +
                     '</span></p></div>';
             }
@@ -274,7 +276,7 @@
                 tone = helpers.mod(i+3,12);
                 note = _chorus.logic.notes.getNoteByToneDisplay(tone);
                 pianoKeyClass = note.indexOf('#')!== -1?dictionary.class_piano_key_black:dictionary.class_piano_key_white;
-                instrumentContent += '<div class="' + dictionary.class_piano_key+' '+pianoKeyClass+'" data-chorus-tone="'+tone+'"><p><span>'+
+                instrumentContent += '<div class="' + dictionary.class_piano_key+' '+dictionary.class_note+' '+pianoKeyClass+'" data-chorus-tone="'+tone+'"><p><span>'+
                     this.htmlFilter(note) +
                     '</span></p></div>';
             }
@@ -293,9 +295,35 @@
                 containerContentClose;
         };
 
+        this.applySelectedNotesToDom = function(tones,container){
+            console.log('in apply dom');
+            console.log(tones);
+            console.log(container);
+            console.log('childfren');
+            var children = container.querySelectorAll('div.'+dictionary.class_note);
+            console.log(children);
+            console.log(typeof children);
+            console.log(children.length);
+            for(var i = 0; i < children.length; i++){
+                if (!children[i].classList.contains(dictionary.class_selected) && !children[i].classList.contains(dictionary.class_root)){
+                    children[i].classList.add(dictionary.class_result);
+                }
+            }
+        };
+
         this.applyResults = function(tones, container){
             if (!tones || !container){
                 events.sendMessage(dictionary.error_undefined + 'no tones or container name passed');
+            }
+            console.log('in apply results');
+            console.log(tones);
+            console.log(container);
+            if (typeof container === 'string') {
+                layout.applySelectedNotesToDom(tones, container);
+            } else if (typeof container === 'object' && container.length > 0){
+                container.forEach(function (element) {
+                    layout.applySelectedNotesToDom(tones, element);
+                });
             }
         };
 

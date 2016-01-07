@@ -271,15 +271,6 @@
         return [letter].concat(pieces[1].split(''),pieces[0].split(''));
     };
 
-    /**
-     * extract the tone (int) from a DOM classname string using the default class
-     * @param className
-     * @returns {string}
-     */
-    this.getToneByClass = function(className){
-        return className.substring(dictionary.class_tone.length);
-    };
-
     this.getPianoFromContainer = function(element){
         var result;
         if (element) {

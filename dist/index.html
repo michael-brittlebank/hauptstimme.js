@@ -23,6 +23,7 @@
             chorusDebug:'console',
             layoutInstrumentStringOrder:'asc',
             searchText: 'My Search Button',
+            searchCallback: 'myCallbackFunction',
             flattenSearchResults: true
         };
         _chorus.init('class', config);
@@ -40,12 +41,19 @@
         console.log(e.detail);
     });
     document.addEventListener('chorusSearchComplete', function(e) {
+        console.log('search complete');
         console.log(_chorus.searchResult);
     });
     function myCallbackFunction(results){
         console.log('you called me back!');
         console.log(results);
-//        _chorus.applyResults(results.scales);
+        setTimeout(function(){
+            //todo, determine why directly chaining _chorus methods does not work
+            applyResults();
+        },100);
+    }
+    function applyResults(){
+        _chorus.applyResults(_chorus.searchResult.scales.resultsArray[0].tones,_chorus.searchResult.containers);
     }
 </script>
 </html>
