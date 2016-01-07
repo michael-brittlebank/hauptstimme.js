@@ -128,6 +128,14 @@
         _chorus.events.dispatchEvent(_chorus.data.customEvents.chorusSearchComplete, 'chorusJS has finished searching scales and chords');
     };
 
+    this.convertResultsObjectToArray = function(name, resultsObject){
+        return {
+            name: name,
+            tones: resultsObject.tones,
+            letters: resultsObject.letters
+        };
+    };
+
 }).apply(_chorus.logic.helpers);
 
 
@@ -289,6 +297,7 @@
      * @param container
      */
     this.getSelectedNotes = function(container){
+        //todo, bug fix
         _chorus.searchResult.containers = [];
         var noteData = [],
             notes = {

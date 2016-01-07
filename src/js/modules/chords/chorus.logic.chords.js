@@ -136,6 +136,8 @@
                 chordKey,
                 flattenOutput = helpers.getConfigValue('flattenSearchResults', container) === true,
                 data = {};
+            data.resultsObject = {};
+            data.resultsArray = flattenOutput?[]:{};
             //search for scales if there are selected notes
             if ((tones && tones.hasOwnProperty('selectedTones')) && tones.selectedTones.length > 0 || tones.rootTone.length > 0) {
                 //search scales
@@ -146,12 +148,17 @@
                                 if (logicNotes.tonesInScaleOrChord(dataChords.searchable[chordGroup][chordKey], tones)) {
                                     if (flattenOutput) {
                                         //flatten output
-                                        data[chordKey] = dataChords.searchable[chordGroup][chordKey];
+                                        data.resultsArray.push(helpers.convertResultsObjectToArray(chordKey,dataChords.searchable[chordGroup][chordKey]));
+                                        data.resultsObject[chordKey] = dataChords.searchable[chordGroup][chordKey];
                                     } else {
-                                        if (!data.hasOwnProperty(chordGroup)){
-                                            data[chordGroup] = {};
+                                        if (!data.resultsObject.hasOwnProperty(chordGroup)){
+                                            data.resultsObject[chordGroup] = {};
                                         }
-                                        data[chordGroup][chordKey] = dataChords.searchable[chordGroup][chordKey];
+                                        if (!data.resultsArray.hasOwnProperty(chordGroup)){
+                                            data.resultsArray[chordGroup] = [];
+                                        }
+                                        data.resultsObject[chordGroup][chordKey] = dataChords.searchable[chordGroup][chordKey];
+                                        data.resultsArray[chordGroup].push(helpers.convertResultsObjectToArray(chordKey,dataChords.searchable[chordGroup][chordKey]));
                                     }
                                 }
                             }

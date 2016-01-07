@@ -95,6 +95,8 @@
                 scaleKey,
                 flattenOutput = helpers.getConfigValue('flattenSearchResults', container) === true,
                 data = {};
+            data.resultsObject = {};
+            data.resultsArray = flattenOutput?[]:{};
             //search for scales if there are selected notes
             if ((tones && tones.hasOwnProperty('selectedTones')) && tones.selectedTones.length > 0 || tones.rootTone.length > 0) {
                 //search scales
@@ -105,12 +107,17 @@
                                 if (logicNotes.tonesInScaleOrChord(dataScales.searchable[scaleGroup][scaleKey], tones)) {
                                     if (flattenOutput) {
                                         //flatten output
-                                        data[scaleKey] = dataScales.searchable[scaleGroup][scaleKey];
+                                        data.resultsArray.push(helpers.convertResultsObjectToArray(scaleKey,dataScales.searchable[scaleGroup][scaleKey]));
+                                        data.resultsObject[scaleKey] = dataScales.searchable[scaleGroup][scaleKey];
                                     } else {
-                                        if (!data.hasOwnProperty(scaleGroup)){
-                                            data[scaleGroup] = {};
+                                        if (!data.resultsObject.hasOwnProperty(scaleGroup)){
+                                            data.resultsObject[scaleGroup] = {};
                                         }
-                                        data[scaleGroup][scaleKey] = dataScales.searchable[scaleGroup][scaleKey];
+                                        if (!data.resultsArray.hasOwnProperty(scaleGroup)){
+                                            data.resultsArray[scaleGroup] = [];
+                                        }
+                                        data.resultsObject[scaleGroup][scaleKey] = dataScales.searchable[scaleGroup][scaleKey];
+                                        data.resultsArray[scaleGroup].push(helpers.convertResultsObjectToArray(scaleKey,dataScales.searchable[scaleGroup][scaleKey]));
                                     }
                                 }
                             }
