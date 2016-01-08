@@ -131,3 +131,6 @@ _chorus.searchChords = function(tones, container, callback){
 _chorus.applyResults = function(tones, container){
     _chorus.layout.html.applyResults(tones, container);
 };
+_chorus.populateLists = function(scaleResultContainer,chordResultContainer){
+    _chorus.layout.html.populateLists(scaleResultContainer, chordResultContainer);
+};

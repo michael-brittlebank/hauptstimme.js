@@ -319,6 +319,17 @@
             }
         };
 
+        this.populateListsHelper = function(scaleOrChord){
+            //html
+        };
+
+        this.populateLists = function(scaleResultContainer, chordResultContainer){
+            //todo
+            if (scaleResultContainer){
+
+            }
+        };
+
     }).apply(_chorus.layout.html);
 
 }).apply(_chorus.layout);

@@ -167,3 +167,9 @@ $display-width: 1300;
     }
   }
 }
+
+.results-container {
+  max-height: 500px;
+  max-width: 100%;
+  overflow-y: scroll;
+}

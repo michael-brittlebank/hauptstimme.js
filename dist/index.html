@@ -14,6 +14,12 @@
 <div id="id">
     id
 </div>
+<h2>Results: Scales</h2>
+<div id="results-scales" class="results-container">
+</div>
+<h2>Results: Chords</h2>
+<div id="results-chords" class="results-container">
+</div>
 <a onclick="_chorus.search()" class="chorus-search-button">search for scales and chords</a>
 <script>
     document.addEventListener('DOMContentLoaded', function(e) {
@@ -28,12 +34,10 @@
         };
         _chorus.init('class', config);
         config = {
-            layoutInstrument: ['main','violin'],
-            searchButton: true,
+            layoutInstrument: ['violin','main'],
             chorusDebug:'console',
             layoutContainerId: 'myId',
-            layoutContainerClass: 'myClassName',
-            searchCallback: 'myCallbackFunction'
+            layoutContainerClass: 'myClassName'
         };
         _chorus.init('id', config);
     });
@@ -43,6 +47,10 @@
     document.addEventListener('chorusSearchComplete', function(e) {
         console.log('search complete');
         console.log(_chorus.searchResult);
+        setTimeout(function(){
+            //todo, determine why directly chaining _chorus methods does not work
+            _chorus.populateLists('results-scales','results-chords');
+        },100);
     });
     function myCallbackFunction(results){
         console.log('you called me back!');
