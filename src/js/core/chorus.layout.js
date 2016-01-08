@@ -157,7 +157,8 @@
     };
 
     (function() {
-        var layout = _chorus.layout.html;
+        var layout = _chorus.layout.html,
+            domData = _chorus.data.domData;
 
         //functions
         /**
@@ -181,7 +182,7 @@
                 instrumentTuning.reverse();
             }
             //instrument container
-            containerContentOpen = '<div id="' + containerId + '" class="' + dictionary.class_instrument + ' ' + containerClass + '" data-chorus-config="'+_chorus.config.currentConfig+'">';
+            containerContentOpen = '<div id="' + containerId + '" class="' + dictionary.class_instrument + ' ' + containerClass + '" '+domData.config+'="'+_chorus.config.currentConfig+'">';
             containerContentClose = '</div>';
             //title
             if (helpers.getConfigValue('layoutInstrumentTitles') !== true) {
@@ -224,7 +225,7 @@
                 tone = (parseInt(root) + i) % notes.count.tones;
                 note = _chorus.logic.notes.getNoteByToneDisplay(tone);
                 output +=
-                    '<div class="' + dictionary.class_fret +' '+dictionary.class_note+'" data-chorus-tone="'+tone+'"><p><span>' +
+                    '<div class="' + dictionary.class_fret +' '+dictionary.class_note+'" '+domData.tone+'="'+tone+'"><p><span>' +
                     this.htmlFilter(note) +
                     '</span></p></div>';
             }
@@ -260,7 +261,7 @@
                 pianoKeyClass,
                 containerId = prefix+'-'+dictionary.class_container;
             //instrument container
-            containerContentOpen = '<div id="' + containerId + '" class="' + dictionary.class_instrument + ' ' + containerClass + ' piano" data-chorus-config="'+_chorus.config.currentConfig+'">';
+            containerContentOpen = '<div id="' + containerId + '" class="' + dictionary.class_instrument + ' ' + containerClass + ' piano" '+domData.config+'="'+_chorus.config.currentConfig+'">';
             containerContentClose = '</div>';
             //title
             if (helpers.getConfigValue('layoutInstrumentTitles') !== true) {
@@ -276,7 +277,7 @@
                 tone = helpers.mod(i+3,12);
                 note = _chorus.logic.notes.getNoteByToneDisplay(tone);
                 pianoKeyClass = note.indexOf('#')!== -1?dictionary.class_piano_key_black:dictionary.class_piano_key_white;
-                instrumentContent += '<div class="' + dictionary.class_piano_key+' '+dictionary.class_note+' '+pianoKeyClass+'" data-chorus-tone="'+tone+'"><p><span>'+
+                instrumentContent += '<div class="' + dictionary.class_piano_key+' '+dictionary.class_note+' '+pianoKeyClass+'" '+domData.tone+'="'+tone+'"><p><span>'+
                     this.htmlFilter(note) +
                     '</span></p></div>';
             }
@@ -298,7 +299,7 @@
         this.applySelectedNotesToDom = function(tones,container){
             var children = container.querySelectorAll('div.'+dictionary.class_note);
             for(var i = 0; i < children.length; i++){
-                if (tones.indexOf(parseInt(children[i].getAttribute('data-chorus-tone'))) !== -1){
+                if (tones.indexOf(parseInt(children[i].getAttribute(domData.tone))) !== -1){
                     children[i].classList.add(dictionary.class_result);
                 } else {
                     children[i].classList.remove(dictionary.class_result);
@@ -323,7 +324,7 @@
             var content = '';
             if (entry && entry.hasOwnProperty('name')){
                 console.log(entry);
-                content = '<li>'+entry.name+'</li>';
+                content = '<li class="'+dictionary.class_list_item+'" '+domData.resultTones+'="'+entry.tones.join(',')+'">'+entry.name+' '+entry.letters.join(', ')+'</li>';
             }
             //html
             //data id for parent container or data class
@@ -353,9 +354,9 @@
             }
             domContainers.forEach(function(entry){
                 entry.innerHTML =
-                    '<ol'+
+                    '<ul>'+
                     content+
-                    '</ol>';
+                    '</ul>';
             });
         };
 
@@ -367,6 +368,7 @@
                 if (chordResultContainer){
                     this.populateListsHelper(chordResultContainer, 'chords');
                 }
+                events.dispatchEvent(_chorus.data.customEvents.populateListsComplete, 'chorusJS has finished populating results lists');
             } else {
                 events.sendMessage(dictionary.error_undefined + 'no containers passed to populate lists');
             }

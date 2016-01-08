@@ -4,6 +4,7 @@
 (function(){
     //variables
     var dictionary = _chorus.data.dictionary,
+        domData = _chorus.data.domData,
         defaultConfig = _chorus.defaultConfig;
 
     //functions
@@ -52,7 +53,7 @@
     this.getConfigValue = function(key, container){
         var configId = _chorus.config.currentConfig;
         if(container){
-            configId = document.getElementById(container).getAttribute('data-chorus-config');
+            configId = document.getElementById(container).getAttribute(domData.config);
             if (configId) {
                 if (typeof _chorus.config[configId][key] !== typeof _chorus.defaultConfig[key]) {
                     _chorus.events.sendMessage(dictionary.error_type + ' ' + key);
@@ -160,6 +161,7 @@
 (function(){
     //variables
     var dictionary = _chorus.data.dictionary,
+        domData = _chorus.data.domData,
         notes = _chorus.data.notes,
         events = _chorus.events,
         helpers = _chorus.logic.helpers,
@@ -354,7 +356,7 @@
                 for (var j = 0; j < domContainers.length; j++) {
                     if (j === 0) {
                         //get a default config from the first element in the dom
-                        _chorus.config.currentConfig = domContainers[j].getAttribute('data-chorus-config');
+                        _chorus.config.currentConfig = domContainers[j].getAttribute(domData.config);
                     }
                     if (domContainers[j].classList.contains('piano')) {
                         pianoKeyboard = this.getPianoFromContainer(domContainers[j]);
@@ -406,18 +408,18 @@
                         for (var j = 0; j < element.childNodes[i].childNodes.length; j++) {
                             childClassList = element.childNodes[i].childNodes[j].classList;
                             if (childClassList.contains(dictionary.class_selected)) {
-                                selectedTones.push(element.childNodes[i].childNodes[j].getAttribute('data-chorus-tone'));
+                                selectedTones.push(element.childNodes[i].childNodes[j].getAttribute(domData.tone));
                             }
                             else if (childClassList.contains(dictionary.class_root)) {
-                                rootTone = element.childNodes[i].childNodes[j].getAttribute('data-chorus-tone');
+                                rootTone = element.childNodes[i].childNodes[j].getAttribute(domData.tone);
                             }
                         }
                     } else if (parentClassList.contains(dictionary.class_piano_key)) {
                         if (parentClassList.contains(dictionary.class_selected)) {
-                            selectedTones.push(element.childNodes[i].getAttribute('data-chorus-tone'));
+                            selectedTones.push(element.childNodes[i].getAttribute(domData.tone));
                         }
                         else if (parentClassList.contains(dictionary.class_root)) {
-                            rootTone = element.childNodes[i].getAttribute('data-chorus-tone');
+                            rootTone = element.childNodes[i].getAttribute(domData.tone);
                         }
                     }
                 }

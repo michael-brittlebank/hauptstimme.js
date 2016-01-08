@@ -36,7 +36,14 @@
         chorusInitComplete: 'chorusInitComplete',
         chorusSearchComplete: 'chorusSearchComplete',
         chorusChordSearchComplete: 'chorusChordSearchComplete',
-        chorusScaleSearchComplete: 'chorusScaleSearchComplete'
+        chorusScaleSearchComplete: 'chorusScaleSearchComplete',
+        populateListsComplete: 'populateListsComplete'
+    };
+
+    this.domData = {
+        config: 'data-chorus-config',
+        tone: 'data-chorus-tone',
+        resultTones: 'data-result-tones'
     };
 
     /**
@@ -58,6 +65,7 @@
         class_search_button: 'chorus-search-button',
         class_piano_key_black: 'black',
         class_piano_key_white: 'white',
+        class_list_item: 'chorus-result-item',
         error_type:'[Error] Invalid type: ',
         error_undefined:'[Error] Undefined: ',
         error_notFound: '[Error] Not Found: ',

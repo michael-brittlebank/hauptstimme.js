@@ -56,7 +56,8 @@
  */
 (function() {
     //variables
-    var dictionary = _chorus.data.dictionary;
+    var dictionary = _chorus.data.dictionary,
+        layout = _chorus.layout.html;
 
     //functions
     /**
@@ -117,6 +118,21 @@
             element.classList.add(selectedClass);
         }
     };
+
+    this.resultLeftClickHandler = function(e){
+        e.preventDefault();
+        var domData = _chorus.data.domData,
+            element = e.target || e.srcElement,
+            selectedClass = dictionary.class_selected,
+            rootClass = dictionary.class_root,
+            parent,
+            tones = element.getAttribute(domData.resultTones);
+        if (tones){
+            //layout.applySelectedNotesToDom(tones.split(','),parent);
+        }
+        console.log('result left click hanlder', tones);
+    };
+
 }).apply(_chorus.events.handlers);
 
 /**
@@ -147,7 +163,7 @@
     /**
      * add fret listeners after chorus init
      */
-    this.init = function () {
+    this.init = function (){
 
         document.addEventListener(customEvents.chorusInitComplete, function(e) {
             listeners.addListener(dictionary.class_fret, 'click', handlers.noteLeftClickHandler);
@@ -166,6 +182,10 @@
 
         document.addEventListener(customEvents.chorusSearchComplete, function(e) {
             config.resetCurrentConfig();
+        });
+
+        document.addEventListener(customEvents.populateListsComplete, function(e){
+            listeners.addListener(dictionary.class_list_item, 'click', handlers.resultLeftClickHandler);
         });
 
     };
