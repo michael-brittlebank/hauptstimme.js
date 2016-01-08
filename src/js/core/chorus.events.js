@@ -135,8 +135,11 @@
             domContainers.forEach(function(entry){
                 layout.applySelectedNotesToDom([],entry);
             });
-
         } else {
+            //remove selected state from other results
+            _chorus.logic.helpers.getDomRepresentationFromStringName(dictionary.classListItemSelected).forEach(function(entry){
+                entry.classList.remove(dictionary.classListItemSelected);
+            });
             //add tones to all instruments
             element.classList.add(dictionary.classListItemSelected);
             tones = element.getAttribute(domData.resultTones);
