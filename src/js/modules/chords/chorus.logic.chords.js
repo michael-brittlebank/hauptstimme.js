@@ -167,7 +167,7 @@
                 }
             }
             else {
-                events.sendMessage(dictionary.error_notFound + 'no selected notes found');
+                events.sendMessage(dictionary.errorNotFound + 'no selected notes found');
             }
             _chorus.searchResult.chords = data;
             events.dispatchEvent(_chorus.data.customEvents.chorusChordSearchComplete, 'chorusJS has finished searching chords');

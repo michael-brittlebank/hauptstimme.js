@@ -50,29 +50,29 @@
      * holds common classnames and messages
      */
     this.dictionary = {
-        class_selected:'chorus-note-selected',//todo, change to camel case
-        class_root:'chorus-note-root',
-        class_string:'chorus-string',
-        class_piano_key:'chorus-piano-key',
-        class_fret:'chorus-fret',
-        class_instrument: 'chorus-instrument',
-        class_container: 'chorus-container',
-        class_string_container: 'chorus-string-container',
-        class_piano_keyboard: 'chorus-piano-keyboard',
-        class_result: 'chorus-note-found',
-        class_note: 'chorus-note',
-        class_instrument_title: 'chorus-instrument-title',
-        class_search_button: 'chorus-search-button',
-        class_piano_key_black: 'black',
-        class_piano_key_white: 'white',
-        class_list_item: 'chorus-result-item',
-        class_result_name: 'chorus-result-name',
-        class_result_letters: 'chorus-result-letters',
-        error_type:'[Error] Invalid type: ',
-        error_undefined:'[Error] Undefined: ',
-        error_notFound: '[Error] Not Found: ',
-        error_value: '[Error] Invalid Value Passed: ',
-        warning_multipleRootNotes: '[Warning] Multiple root notes detected'
+        classSelected:'chorus-note-selected',
+        classRoot:'chorus-note-root',
+        classString:'chorus-string',
+        classPianoKey:'chorus-piano-key',
+        classFret:'chorus-fret',
+        classInstrument: 'chorus-instrument',
+        classContainer: 'chorus-container',
+        classStringContainer: 'chorus-string-container',
+        classPianoKeyboard: 'chorus-piano-keyboard',
+        classResult: 'chorus-note-found',
+        classNote: 'chorus-note',
+        classInstrumentTitle: 'chorus-instrument-title',
+        classSearchButton: 'chorus-search-button',
+        classPianoKeyBlack: 'black',
+        classPianoKeyWhite: 'white',
+        classListItem: 'chorus-result-item',
+        classResultName: 'chorus-result-name',
+        classResultLetters: 'chorus-result-letters',
+        errorType:'[Error] Invalid type: ',
+        errorUndefined:'[Error] Undefined: ',
+        errorNotFound: '[Error] Not Found: ',
+        errorValue: '[Error] Invalid Value Passed: ',
+        warningMultipleRootNotes: '[Warning] Multiple root notes detected'
     };
 
     /**

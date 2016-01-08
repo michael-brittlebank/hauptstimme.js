@@ -55,7 +55,7 @@
             element.innerHTML = content;
         }
         else {
-            _chorus.events.sendMessage(dictionary.error_type+'instrument config parameter');
+            _chorus.events.sendMessage(dictionary.errorType+'instrument config parameter');
         }
     };
 
@@ -170,7 +170,7 @@
          */
         this.instrument = function (instrumentName, instrumentTuning, prefix) {
             var containerClass = helpers.getConfigValue('layoutContainerClass'),
-                containerId = prefix+'-'+dictionary.class_container,
+                containerId = prefix+'-'+dictionary.classContainer,
                 containerContentOpen,
                 containerContentClose,
                 titleContent = '',
@@ -182,15 +182,15 @@
                 instrumentTuning.reverse();
             }
             //instrument container
-            containerContentOpen = '<div id="' + containerId + '" class="' + dictionary.class_instrument + ' ' + containerClass + '" '+domData.config+'="'+_chorus.config.currentConfig+'">';
+            containerContentOpen = '<div id="' + containerId + '" class="' + dictionary.classInstrument + ' ' + containerClass + '" '+domData.config+'="'+_chorus.config.currentConfig+'">';
             containerContentClose = '</div>';
             //title
             if (helpers.getConfigValue('layoutInstrumentTitles') !== true) {
                 var htmlElement = helpers.getConfigValue('layoutInstrumentTitleElement');
-                titleContent = '<' + htmlElement + ' class="'+dictionary.class_instrument_title+'">' + instrumentName.replace(/_/g, ' ') + '</' + htmlElement + '>';
+                titleContent = '<' + htmlElement + ' class="'+dictionary.classInstrumentTitle+'">' + instrumentName.replace(/_/g, ' ') + '</' + htmlElement + '>';
             }
             //string container
-            instrumentContentOpen ='<div class="'+dictionary.class_string_container+'">';
+            instrumentContentOpen ='<div class="'+dictionary.classStringContainer+'">';
             instrumentContentClose = '</div>';
             //strings
             for (var i = 0; i < instrumentTuning.length; i++) {
@@ -200,7 +200,7 @@
             if (helpers.getConfigValue('searchButton') === true) {
                 var title = helpers.getConfigValue('searchText'),
                     callback = helpers.getConfigValue('searchCallback')?helpers.getConfigValue('searchCallback'):'\'\'';
-                searchButtonContent = '<a class="'+dictionary.class_search_button+'" onclick="_chorus.search(\'\',\'' + containerId + '\',' + callback + ')">' + title + '</a>';
+                searchButtonContent = '<a class="'+dictionary.classSearchButton+'" onclick="_chorus.search(\'\',\'' + containerId + '\',' + callback + ')">' + title + '</a>';
             }
             return containerContentOpen+ //instrument container
                 titleContent + //title
@@ -220,12 +220,12 @@
             var note,
                 tone,
                 numberOfFrets = 12,
-                output = '<div class="' + dictionary.class_string + '">';
+                output = '<div class="' + dictionary.classString + '">';
             for (var i = 0; i <= numberOfFrets; i++) {
                 tone = (parseInt(root) + i) % notes.count.tones;
                 note = _chorus.logic.notes.getNoteByToneDisplay(tone);
                 output +=
-                    '<div class="' + dictionary.class_fret +' '+dictionary.class_note+'" '+domData.tone+'="'+tone+'"><p><span>' +
+                    '<div class="' + dictionary.classFret +' '+dictionary.classNote+'" '+domData.tone+'="'+tone+'"><p><span>' +
                     this.htmlFilter(note) +
                     '</span></p></div>';
             }
@@ -259,25 +259,25 @@
                 tone,
                 note,
                 pianoKeyClass,
-                containerId = prefix+'-'+dictionary.class_container;
+                containerId = prefix+'-'+dictionary.classContainer;
             //instrument container
-            containerContentOpen = '<div id="' + containerId + '" class="' + dictionary.class_instrument + ' ' + containerClass + ' piano" '+domData.config+'="'+_chorus.config.currentConfig+'">';
+            containerContentOpen = '<div id="' + containerId + '" class="' + dictionary.classInstrument + ' ' + containerClass + ' piano" '+domData.config+'="'+_chorus.config.currentConfig+'">';
             containerContentClose = '</div>';
             //title
             if (helpers.getConfigValue('layoutInstrumentTitles') !== true) {
                 var htmlElement = helpers.getConfigValue('layoutInstrumentTitleElement');
-                titleContent = '<' + htmlElement + ' class="'+dictionary.class_instrument_title+'">piano</' + htmlElement + '>';
+                titleContent = '<' + htmlElement + ' class="'+dictionary.classInstrumentTitle+'">piano</' + htmlElement + '>';
             }
             //key container
-            instrumentContentOpen ='<div class="'+dictionary.class_piano_keyboard+'">';
+            instrumentContentOpen ='<div class="'+dictionary.classPianoKeyboard+'">';
             instrumentContentClose ='</div>';
             //keys
             for(var i = 0; i < numberOfPianoKeys; i++){
                 //start at c instead of a
                 tone = helpers.mod(i+3,12);
                 note = _chorus.logic.notes.getNoteByToneDisplay(tone);
-                pianoKeyClass = note.indexOf('#')!== -1?dictionary.class_piano_key_black:dictionary.class_piano_key_white;
-                instrumentContent += '<div class="' + dictionary.class_piano_key+' '+dictionary.class_note+' '+pianoKeyClass+'" '+domData.tone+'="'+tone+'"><p><span>'+
+                pianoKeyClass = note.indexOf('#')!== -1?dictionary.classPianoKeyBlack:dictionary.classPianoKeyWhite;
+                instrumentContent += '<div class="' + dictionary.classPianoKey+' '+dictionary.classNote+' '+pianoKeyClass+'" '+domData.tone+'="'+tone+'"><p><span>'+
                     this.htmlFilter(note) +
                     '</span></p></div>';
             }
@@ -285,7 +285,7 @@
             if (helpers.getConfigValue('searchButton') === true) {
                 var title = helpers.getConfigValue('searchText'),
                     callback = helpers.getConfigValue('searchCallback')?helpers.getConfigValue('searchCallback'):'\'\'';
-                searchButtonContent += '<a class="'+dictionary.class_search_button+'" onclick="_chorus.search(\'\',\'' + containerId + '\',' + callback + ')">' + title + '</a>';
+                searchButtonContent += '<a class="'+dictionary.classSearchButton+'" onclick="_chorus.search(\'\',\'' + containerId + '\',' + callback + ')">' + title + '</a>';
             }
             return containerContentOpen+ //instrument container
                 titleContent + //title
@@ -297,19 +297,19 @@
         };
 
         this.applySelectedNotesToDom = function(tones,container){
-            var children = container.querySelectorAll('div.'+dictionary.class_note);
+            var children = container.querySelectorAll('div.'+dictionary.classNote);
             for(var i = 0; i < children.length; i++){
                 if (tones.indexOf(parseInt(children[i].getAttribute(domData.tone))) !== -1){
-                    children[i].classList.add(dictionary.class_result);
+                    children[i].classList.add(dictionary.classResult);
                 } else {
-                    children[i].classList.remove(dictionary.class_result);
+                    children[i].classList.remove(dictionary.classResult);
                 }
             }
         };
 
         this.applyResults = function(tones, container){
             if (!tones || !container){
-                events.sendMessage(dictionary.error_undefined + 'no tones or container name passed');
+                events.sendMessage(dictionary.errorUndefined + 'no tones or container name passed');
             }
             if (typeof container === 'string') {
                 layout.applySelectedNotesToDom(tones, container);
@@ -323,9 +323,9 @@
         this.createListItem = function(entry){
             var content = '';
             if (entry && entry.hasOwnProperty('name')){
-                content = '<li class="'+dictionary.class_list_item+'" '+domData.resultTones+'="'+entry.tones.join(',')+'">' +
-                    '<span class="'+dictionary.class_result_name+'">'+entry.name+'</span> '+
-                    '<span class="'+dictionary.class_result_letters+'">'+entry.letters.join(', ')+'</span>'+
+                content = '<li class="'+dictionary.classListItem+'" '+domData.resultTones+'="'+entry.tones.join(',')+'">' +
+                    '<span class="'+dictionary.classResultName+'">'+entry.name+'</span> '+
+                    '<span class="'+dictionary.classResultLetters+'">'+entry.letters.join(', ')+'</span>'+
                     '</li>';
             }
             return content;
@@ -370,7 +370,7 @@
                 }
                 events.dispatchEvent(_chorus.data.customEvents.populateListsComplete, 'chorusJS has finished populating results lists');
             } else {
-                events.sendMessage(dictionary.error_undefined + 'no containers passed to populate lists');
+                events.sendMessage(dictionary.errorUndefined + 'no containers passed to populate lists');
             }
         };
 

@@ -102,11 +102,11 @@ _chorus.init = function(element, userConfig) {
             events.dispatchEvent(customEvents.chorusInitComplete, 'chorusJS has finished initialization');
         }
         else {
-            events.sendMessage(dictionary.error_notFound + 'no elements found using init value');
+            events.sendMessage(dictionary.errorNotFound + 'no elements found using init value');
             return false;
         }
     } else {
-        events.sendMessage(dictionary.error_undefined + 'no element defined in init');
+        events.sendMessage(dictionary.errorUndefined + 'no element defined in init');
         return false;
     }
 };

@@ -126,7 +126,7 @@
                 }
             }
             else {
-                events.sendMessage(dictionary.error_notFound + 'no selected notes found');
+                events.sendMessage(dictionary.errorNotFound + 'no selected notes found');
             }
             _chorus.searchResult.scales = data;
             events.dispatchEvent(_chorus.data.customEvents.chorusScaleSearchComplete, 'chorusJS has finished searching scales');

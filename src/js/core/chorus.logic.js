@@ -56,7 +56,7 @@
             configId = document.getElementById(container).getAttribute(domData.config);
             if (configId) {
                 if (typeof _chorus.config[configId][key] !== typeof _chorus.defaultConfig[key]) {
-                    _chorus.events.sendMessage(dictionary.error_type + ' ' + key);
+                    _chorus.events.sendMessage(dictionary.errorType + ' ' + key);
                 }
                 return typeof _chorus.config[configId][key] === typeof defaultConfig[key] ? _chorus.config[configId][key] : defaultConfig[key];
             } else {
@@ -64,7 +64,7 @@
             }
         } else if (configId && configId.length > 0) {
             if (typeof _chorus.config[configId][key] !== typeof _chorus.defaultConfig[key]){
-                _chorus.events.sendMessage(dictionary.error_type+' '+key);
+                _chorus.events.sendMessage(dictionary.errorType+' '+key);
             }
             return typeof _chorus.config[configId][key] === typeof defaultConfig[key]?_chorus.config[configId][key]:defaultConfig[key];
         } else {
@@ -293,7 +293,7 @@
         var result;
         if (element) {
             for (var i = 0; i < element.childNodes.length; i++) {
-                if (element.childNodes[i].classList.contains(dictionary.class_piano_keyboard)){
+                if (element.childNodes[i].classList.contains(dictionary.classPianoKeyboard)){
                     result = element.childNodes[i];
                 }
             }
@@ -305,7 +305,7 @@
         var result;
         if (element) {
             for (var i = 0; i < element.childNodes.length; i++) {
-                if (element.childNodes[i].classList.contains(dictionary.class_string_container)){
+                if (element.childNodes[i].classList.contains(dictionary.classStringContainer)){
                     result = element.childNodes[i];
                 }
             }
@@ -346,12 +346,12 @@
                 });
             }
             else {
-                events.sendMessage(dictionary.error_notFound+'no container found with matching id or class');
+                events.sendMessage(dictionary.errorNotFound+'no container found with matching id or class');
             }
         }
         //get selected notes if no container parameter was passed
         else {
-            domContainers = helpers.getDomRepresentationFromStringName(dictionary.class_instrument);
+            domContainers = helpers.getDomRepresentationFromStringName(dictionary.classInstrument);
             if (domContainers && domContainers.length > 0) {
                 for (var j = 0; j < domContainers.length; j++) {
                     if (j === 0) {
@@ -379,7 +379,7 @@
                     notes.rootTone = noteData[k].rootTone;
                 }
                 else {
-                    events.sendMessage(dictionary.warning_multipleRootNotes);
+                    events.sendMessage(dictionary.warningMultipleRootNotes);
                 }
             }
             for (var l = 0; l < noteData[k].selectedTones.length; l++){
@@ -404,28 +404,28 @@
             for (var i = 0; i < element.childNodes.length; i++) {
                 if (element.childNodes[i]) {
                     parentClassList = element.childNodes[i].classList;
-                    if (parentClassList.contains(dictionary.class_string)) {
+                    if (parentClassList.contains(dictionary.classString)) {
                         for (var j = 0; j < element.childNodes[i].childNodes.length; j++) {
                             childClassList = element.childNodes[i].childNodes[j].classList;
-                            if (childClassList.contains(dictionary.class_selected)) {
+                            if (childClassList.contains(dictionary.classSelected)) {
                                 selectedTones.push(element.childNodes[i].childNodes[j].getAttribute(domData.tone));
                             }
-                            else if (childClassList.contains(dictionary.class_root)) {
+                            else if (childClassList.contains(dictionary.classRoot)) {
                                 rootTone = element.childNodes[i].childNodes[j].getAttribute(domData.tone);
                             }
                         }
-                    } else if (parentClassList.contains(dictionary.class_piano_key)) {
-                        if (parentClassList.contains(dictionary.class_selected)) {
+                    } else if (parentClassList.contains(dictionary.classPianoKey)) {
+                        if (parentClassList.contains(dictionary.classSelected)) {
                             selectedTones.push(element.childNodes[i].getAttribute(domData.tone));
                         }
-                        else if (parentClassList.contains(dictionary.class_root)) {
+                        else if (parentClassList.contains(dictionary.classRoot)) {
                             rootTone = element.childNodes[i].getAttribute(domData.tone);
                         }
                     }
                 }
             }
         } else {
-            events.sendMessage(dictionary.error_notFound+'no element found to search');
+            events.sendMessage(dictionary.errorNotFound+'no element found to search');
         }
         return {
             container: element,

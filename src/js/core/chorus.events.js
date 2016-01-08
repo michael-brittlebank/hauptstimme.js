@@ -68,15 +68,15 @@
         e.preventDefault();
         var element = e.target || e.srcElement;
         //span handler
-        if (!element.classList.contains(dictionary.class_fret) && !element.classList.contains(dictionary.class_piano_key)){
+        if (!element.classList.contains(dictionary.classFret) && !element.classList.contains(dictionary.classPianoKey)){
             element = element.parentNode;
         }
         //p handler
-        if (!element.classList.contains(dictionary.class_fret) && !element.classList.contains(dictionary.class_piano_key)){
+        if (!element.classList.contains(dictionary.classFret) && !element.classList.contains(dictionary.classPianoKey)){
             element = element.parentNode;
         }
-        element.classList.remove(dictionary.class_selected);
-        element.classList.remove(dictionary.class_root);
+        element.classList.remove(dictionary.classSelected);
+        element.classList.remove(dictionary.classRoot);
     };
     /**
      * change fret classes on left click
@@ -85,19 +85,19 @@
     this.noteLeftClickHandler = function(e){
         e.preventDefault();
         var element = e.target || e.srcElement,
-            selectedClass = dictionary.class_selected,
-            rootClass = dictionary.class_root,
+            selectedClass = dictionary.classSelected,
+            rootClass = dictionary.classRoot,
             parent;
         //span handler
-        if (!element.classList.contains(dictionary.class_fret) && !element.classList.contains(dictionary.class_piano_key)){
+        if (!element.classList.contains(dictionary.classFret) && !element.classList.contains(dictionary.classPianoKey)){
             element = element.parentNode;
         }
         //p handler
-        if (!element.classList.contains(dictionary.class_fret) && !element.classList.contains(dictionary.class_piano_key)){
+        if (!element.classList.contains(dictionary.classFret) && !element.classList.contains(dictionary.classPianoKey)){
             element = element.parentNode;
         }
         //string/key container
-        if (element.parentNode.classList.contains(dictionary.class_string)){
+        if (element.parentNode.classList.contains(dictionary.classString)){
             parent = element.parentNode.parentNode;
         } else {
             parent = element.parentNode;
@@ -123,8 +123,8 @@
         e.preventDefault();
         var domData = _chorus.data.domData,
             element = e.target || e.srcElement,
-            selectedClass = dictionary.class_selected,
-            rootClass = dictionary.class_root,
+            selectedClass = dictionary.classSelected,
+            rootClass = dictionary.classRoot,
             parent,
             tones = element.getAttribute(domData.resultTones);
         if (tones){
@@ -166,10 +166,10 @@
     this.init = function (){
 
         document.addEventListener(customEvents.chorusInitComplete, function(e) {
-            listeners.addListener(dictionary.class_fret, 'click', handlers.noteLeftClickHandler);
-            listeners.addListener(dictionary.class_fret, 'contextmenu', handlers.noteRightClickHandler);
-            listeners.addListener(dictionary.class_piano_key, 'click', handlers.noteLeftClickHandler);
-            listeners.addListener(dictionary.class_piano_key, 'contextmenu', handlers.noteRightClickHandler);
+            listeners.addListener(dictionary.classFret, 'click', handlers.noteLeftClickHandler);
+            listeners.addListener(dictionary.classFret, 'contextmenu', handlers.noteRightClickHandler);
+            listeners.addListener(dictionary.classPianoKey, 'click', handlers.noteLeftClickHandler);
+            listeners.addListener(dictionary.classPianoKey, 'contextmenu', handlers.noteRightClickHandler);
         });
 
         document.addEventListener(customEvents.chorusScaleSearchComplete, function(e) {
@@ -185,7 +185,7 @@
         });
 
         document.addEventListener(customEvents.populateListsComplete, function(e){
-            listeners.addListener(dictionary.class_list_item, 'click', handlers.resultLeftClickHandler);
+            listeners.addListener(dictionary.classListItem, 'click', handlers.resultLeftClickHandler);
         });
 
     };
