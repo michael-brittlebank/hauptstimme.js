@@ -211,6 +211,12 @@
                 containerContentClose;
         };
 
+        this.noteContainerHelper = function(note){
+           return '<p>' +
+            '<span>' + this.htmlFilter(note) + '</span>' +
+            '</p>';
+        };
+
         /**
          * creates a string in HTML
          * @param root
@@ -220,16 +226,20 @@
             var note,
                 tone,
                 numberOfFrets = 12,
-                output = '<div class="' + dictionary.classString + '">';
+                outputStart = '<div class="' + dictionary.classString + '">',
+                outputContent = '',
+                outputEnd = '</div>';
             for (var i = 0; i <= numberOfFrets; i++) {
                 tone = (parseInt(root) + i) % notes.count.tones;
                 note = _chorus.logic.notes.getNoteByToneDisplay(tone);
-                output +=
-                    '<div class="' + dictionary.classFret +' '+dictionary.classNote+'" '+domData.tone+'="'+tone+'"><p><span>' +
-                    this.htmlFilter(note) +
-                    '</span></p></div>';
+                outputContent +=
+                    '<div class="' + dictionary.classFret +' '+dictionary.classNote+'" '+domData.tone+'="'+tone+'">' +
+                    this.noteContainerHelper(note) +
+                    '</div>';
             }
-            return output + '</div>';
+            return outputStart +
+                outputContent +
+                outputEnd;
         };
 
         /**
@@ -277,9 +287,10 @@
                 tone = helpers.mod(i+3,12);
                 note = _chorus.logic.notes.getNoteByToneDisplay(tone);
                 pianoKeyClass = note.indexOf('#')!== -1?dictionary.classPianoKeyBlack:dictionary.classPianoKeyWhite;
-                instrumentContent += '<div class="' + dictionary.classPianoKey+' '+dictionary.classNote+' '+pianoKeyClass+'" '+domData.tone+'="'+tone+'"><p><span>'+
-                    this.htmlFilter(note) +
-                    '</span></p></div>';
+                instrumentContent +=
+                    '<div class="' + dictionary.classPianoKey+' '+dictionary.classNote+' '+pianoKeyClass+'" '+domData.tone+'="'+tone+'">' +
+                    this.noteContainerHelper(note) +
+                    '</div>';
             }
             //search button
             if (helpers.getConfigValue('searchButton') === true) {
