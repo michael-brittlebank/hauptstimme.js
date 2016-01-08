@@ -66,6 +66,8 @@
         class_piano_key_black: 'black',
         class_piano_key_white: 'white',
         class_list_item: 'chorus-result-item',
+        class_result_name: 'chorus-result-name',
+        class_result_letters: 'chorus-result-letters',
         error_type:'[Error] Invalid type: ',
         error_undefined:'[Error] Undefined: ',
         error_notFound: '[Error] Not Found: ',

@@ -323,11 +323,11 @@
         this.createListItem = function(entry){
             var content = '';
             if (entry && entry.hasOwnProperty('name')){
-                console.log(entry);
-                content = '<li class="'+dictionary.class_list_item+'" '+domData.resultTones+'="'+entry.tones.join(',')+'">'+entry.name+' '+entry.letters.join(', ')+'</li>';
+                content = '<li class="'+dictionary.class_list_item+'" '+domData.resultTones+'="'+entry.tones.join(',')+'">' +
+                    '<span class="'+dictionary.class_result_name+'">'+entry.name+'</span> '+
+                    '<span class="'+dictionary.class_result_letters+'">'+entry.letters.join(', ')+'</span>'+
+                    '</li>';
             }
-            //html
-            //data id for parent container or data class
             return content;
         };
 
