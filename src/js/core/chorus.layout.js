@@ -320,22 +320,52 @@
         };
 
         this.createListItem = function(entry){
+            var content = '';
+            if (entry && entry.hasOwnProperty('name')){
+                console.log(entry);
+                content = '<li>'+entry.name+'</li>';
+            }
             //html
-
+            //data id for parent container or data class
+            return content;
         };
 
-        this.populateListsHelper = function(container){
-            console.log("populate lists helper");
-            console.log(helpers.getDomRepresentationFromStringName(container));
+        this.populateListsHelper = function(container, resultType){
+            var domContainers = helpers.getDomRepresentationFromStringName(container),
+                content = '',
+                resultGroup,
+                resultKey;
+            if (_chorus.searchResult[resultType].resultsArray.hasOwnProperty('main') || _chorus.searchResult[resultType].resultsArray.hasOwnProperty('major')){
+                for (resultGroup in _chorus.searchResult[resultType].resultsArray) {
+                    if (_chorus.searchResult[resultType].resultsArray.hasOwnProperty(resultGroup)) {
+                        for (resultKey in _chorus.searchResult[resultType].resultsArray[resultGroup]) {
+                            if (_chorus.searchResult[resultType].resultsArray[resultGroup].hasOwnProperty(resultKey)) {
+                                content += this.createListItem(_chorus.searchResult[resultType].resultsArray[resultGroup][resultKey]);
+                            }
+                        }
+                        content += this.createListItem(_chorus.searchResult[resultType].resultsArray[resultGroup]);
+                    }
+                }
+            } else {
+                for (var i = 0; i < _chorus.searchResult[resultType].resultsArray.length; i++) {
+                    content += this.createListItem(_chorus.searchResult[resultType].resultsArray[i]);
+                }
+            }
+            domContainers.forEach(function(entry){
+                entry.innerHTML =
+                    '<ol'+
+                    content+
+                    '</ol>';
+            });
         };
 
         this.populateLists = function(scaleResultContainer, chordResultContainer){
             if (scaleResultContainer || chordResultContainer){
                 if (scaleResultContainer){
-                    this.populateListsHelper(scaleResultContainer);
+                    this.populateListsHelper(scaleResultContainer, 'scales');
                 }
                 if (chordResultContainer){
-                    this.populateListsHelper(chordResultContainer);
+                    this.populateListsHelper(chordResultContainer, 'chords');
                 }
             } else {
                 events.sendMessage(dictionary.error_undefined + 'no containers passed to populate lists');
