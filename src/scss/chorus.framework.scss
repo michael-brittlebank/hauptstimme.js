@@ -1,4 +1,4 @@
-$display-width: 1300;
+$display-width: 1250;
 
 .chorus-standard-font {
   font-family: $font-open-sans-condensed;
@@ -49,11 +49,12 @@ $display-width: 1300;
   }
   .chorus-string-container {
     width: 100%;
-    max-width: $display-width+px;
+    max-width: 100%;
     overflow-x: scroll;
     margin: 10px 0;
     .chorus-string {
-      width: $display-width+px;
+      width: 100%;
+      min-width:$display-width+px;
       .chorus-fret {
         display: inline-block;
         font-size: 16px;
@@ -103,7 +104,7 @@ $display-width: 1300;
     .chorus-piano-keyboard {
       position: relative;
       height: 500px;
-      max-width: $display-width;
+      max-width: 100%;
       .chorus-piano-key {
         $whiteKeyWidth: (($display-width - ($display-width*0.025))/7)/$display-width*100;
         $blackKeyWidth: $whiteKeyWidth*0.6;
@@ -174,16 +175,24 @@ $display-width: 1300;
   overflow-y: scroll;
   cursor:pointer;
   ul {
+    padding: 0;
     list-style: none;
     li {
-      padding:5px 0;
+      padding:5px;
       border-top:1px solid black;
+      @include raw-transition(unquote("background-color 500ms ease-out 0s,color 500ms ease-out 0s"));
       &:last-child {
         border-bottom:1px solid black;
       }
       &:hover, &.chorus-result-item-selected {
         background-color: black;
         color: white;
+      }
+      span {
+        @extend .chorus-standard-font;
+        &.chorus-result-letters {
+          float:right;
+        }
       }
     }
   }
