@@ -56,8 +56,7 @@
  */
 (function() {
     //variables
-    var dictionary = _chorus.data.dictionary,
-        layout = _chorus.layout.html;
+    var dictionary = _chorus.data.dictionary;
 
     //functions
     /**
@@ -122,25 +121,30 @@
     this.resultLeftClickHandler = function(e){
         e.preventDefault();
         var domData = _chorus.data.domData,
+            layout = _chorus.layout.html,
+            domContainers = _chorus.logic.helpers.getDomRepresentationFromStringName(dictionary.classInstrument),
             element = e.target || e.srcElement,
-            selectedClass = dictionary.classSelected,
-            rootClass = dictionary.classRoot,
-            parent,
             tones;
+        //span handler
         if (!element.classList.contains(dictionary.classListItem)){
             element = element.parentNode;
         }
         if (element.classList.contains(dictionary.classListItemSelected)){
-            //todo remove tones from instruments
+            //remove selected result
             element.classList.remove(dictionary.classListItemSelected);
-            console.log('second result left click hanlder');
+            domContainers.forEach(function(entry){
+                layout.applySelectedNotesToDom([],entry);
+            });
 
         } else {
-            //todo, apply tones to all instruments
+            //add tones to all instruments
             element.classList.add(dictionary.classListItemSelected);
             tones = element.getAttribute(domData.resultTones);
-            console.log('result left click hanlder', tones);
-            //layout.applySelectedNotesToDom(tones.split(','),parent);
+            domContainers.forEach(function(entry){
+                layout.applySelectedNotesToDom(tones.split(',').map(function(value) {
+                        return parseInt(value);
+                    }),entry);
+            });
         }};
 
 }).apply(_chorus.events.handlers);
