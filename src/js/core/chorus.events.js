@@ -127,9 +127,12 @@
             rootClass = dictionary.classRoot,
             parent,
             tones = element.getAttribute(domData.resultTones);
+        //todo, apply tones to all instruments
         if (tones){
             //layout.applySelectedNotesToDom(tones.split(','),parent);
         }
+        //todo, add selected class for styling
+        //todo second click removes tones from instruments
         console.log('result left click hanlder', tones);
     };
 

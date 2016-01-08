@@ -172,4 +172,18 @@ $display-width: 1300;
   max-height: 500px;
   max-width: 100%;
   overflow-y: scroll;
+  cursor:pointer;
+  ul {
+    list-style: none;
+    li {
+      padding:5px 0;
+      border-top:1px solid black;
+      &:last-child {
+        border-bottom:1px solid black;
+      }
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 }
