@@ -79,7 +79,9 @@ _chorus.init = function(element, userConfig) {
         dictionary = _chorus.data.dictionary,
         customEvents = _chorus.data.customEvents,
         configId = layout.getRandomId(),
-        config = _chorus.config;
+        config = _chorus.config,
+        helpers = _chorus.logic.helpers,
+        domContainers;
     events.listeners.init();
     config.currentConfig = configId;
     config[configId] = _chorus.logic.helpers.cloneObject(_chorus.defaultConfig);
@@ -91,14 +93,10 @@ _chorus.init = function(element, userConfig) {
         }
     }
     if (element !== undefined) {
-        if (document.getElementById(element) !== null) {
-            layout.init(document.getElementById(element));
-            config.resetCurrentConfig();
-            events.dispatchEvent(customEvents.chorusInitComplete, 'chorusJS has finished initialization');
-        }
-        else if (document.getElementsByClassName(element).length > 0) {
-            [].forEach.call(document.getElementsByClassName(element), function (ele) {
-                layout.init(ele);
+        domContainers = helpers.getDomRepresentationFromStringName(element);
+        if (domContainers && domContainers.length > 0) {
+            domContainers.forEach(function(entry){
+                layout.init(entry);
             });
             config.resetCurrentConfig();
             events.dispatchEvent(customEvents.chorusInitComplete, 'chorusJS has finished initialization');

@@ -319,14 +319,26 @@
             }
         };
 
-        this.populateListsHelper = function(scaleOrChord){
+        this.createListItem = function(entry){
             //html
+
+        };
+
+        this.populateListsHelper = function(container){
+            console.log("populate lists helper");
+            console.log(helpers.getDomRepresentationFromStringName(container));
         };
 
         this.populateLists = function(scaleResultContainer, chordResultContainer){
-            //todo
-            if (scaleResultContainer){
-
+            if (scaleResultContainer || chordResultContainer){
+                if (scaleResultContainer){
+                    this.populateListsHelper(scaleResultContainer);
+                }
+                if (chordResultContainer){
+                    this.populateListsHelper(chordResultContainer);
+                }
+            } else {
+                events.sendMessage(dictionary.error_undefined + 'no containers passed to populate lists');
             }
         };
 

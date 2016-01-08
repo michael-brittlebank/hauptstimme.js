@@ -136,6 +136,20 @@
         };
     };
 
+    this.getDomRepresentationFromStringName = function(container){
+        var containerById = document.getElementById(container),
+            containerByClass = document.getElementsByClassName(container),
+            result = [];
+        if (containerById){
+            result.push(containerById);
+        } else if (containerByClass){
+            for(var i = 0; i < containerByClass.length; i++){
+                result.push(containerByClass[i]);
+            }
+        }
+        return result;
+    };
+
 }).apply(_chorus.logic.helpers);
 
 
@@ -147,7 +161,8 @@
     var dictionary = _chorus.data.dictionary,
         notes = _chorus.data.notes,
         events = _chorus.events,
-        helpers = _chorus.logic.helpers;
+        helpers = _chorus.logic.helpers,
+        logicNotes = _chorus.logic.notes;
 
     //functions
     /**
@@ -307,38 +322,25 @@
                 selectedTones:[]
             },
             pianoKeyboard,
-            stringFretboard;
+            stringFretboard,
+            domContainers;
         //search for selected notes by container id or class
         if(container && container.length > 0){
-            var containerById = document.getElementById(container),
-                containerByClass = document.getElementsByClassName(container);
-            if (containerById){
-                if (containerById.classList.contains('piano')){
-                    pianoKeyboard = this.getPianoFromContainer(containerById);
-                    if (pianoKeyboard){
-                        noteData.push(this.getTonesFromDOM(pianoKeyboard));
-                    }
-                } else {
-                    stringFretboard = this.getFretboardFromContainer(containerById);
-                    if (stringFretboard){
-                        noteData.push(this.getTonesFromDOM(stringFretboard));
-                    }
-                }
-            }
-            else if (containerByClass){
-                for (var i = 0; i < containerByClass.length; i++){
-                    if (containerByClass[i].classList.contains('piano')){
-                        pianoKeyboard = this.getPianoFromContainer(containerByClass[i]);
+            domContainers = helpers.getDomRepresentationFromStringName(container);
+            if (domContainers && domContainers.length > 0){
+                domContainers.forEach(function(entry){
+                    if (entry.classList.contains('piano')){
+                        pianoKeyboard = logicNotes.getPianoFromContainer(entry);
                         if (pianoKeyboard){
-                            noteData.push(this.getTonesFromDOM(pianoKeyboard));
+                            noteData.push(logicNotes.getTonesFromDOM(pianoKeyboard));
                         }
                     } else {
-                        stringFretboard = this.getFretboardFromContainer(containerByClass[i]);
+                        stringFretboard = logicNotes.getFretboardFromContainer(entry);
                         if (stringFretboard){
-                            noteData.push(this.getTonesFromDOM(stringFretboard));
+                            noteData.push(logicNotes.getTonesFromDOM(stringFretboard));
                         }
                     }
-                }
+                });
             }
             else {
                 events.sendMessage(dictionary.error_notFound+'no container found with matching id or class');
@@ -346,19 +348,21 @@
         }
         //get selected notes if no container parameter was passed
         else {
-            var containerByDefaultClass = document.getElementsByClassName(dictionary.class_instrument);
-            for (var j = 0; j < containerByDefaultClass.length; j++){
-                if (j===0){
-                    //get a default config from the first element in the dom
-                    _chorus.config.currentConfig = containerByDefaultClass[j].getAttribute('data-chorus-config');
-                }
-                if (containerByDefaultClass[j].classList.contains('piano')){
-                    pianoKeyboard = this.getPianoFromContainer(containerByDefaultClass[j]);
-                    if (pianoKeyboard){
-                        noteData.push(this.getTonesFromDOM(pianoKeyboard));
+            domContainers = helpers.getDomRepresentationFromStringName(dictionary.class_instrument);
+            if (domContainers && domContainers.length > 0) {
+                for (var j = 0; j < domContainers.length; j++) {
+                    if (j === 0) {
+                        //get a default config from the first element in the dom
+                        _chorus.config.currentConfig = domContainers[j].getAttribute('data-chorus-config');
                     }
-                } else {
-                    noteData.push(this.getTonesFromDOM(containerByDefaultClass[j]));
+                    if (domContainers[j].classList.contains('piano')) {
+                        pianoKeyboard = this.getPianoFromContainer(domContainers[j]);
+                        if (pianoKeyboard) {
+                            noteData.push(this.getTonesFromDOM(pianoKeyboard));
+                        }
+                    } else {
+                        noteData.push(this.getTonesFromDOM(domContainers[j]));
+                    }
                 }
             }
         }

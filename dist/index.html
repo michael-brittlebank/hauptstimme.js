@@ -5,13 +5,13 @@
     <link rel="stylesheet" type="text/css" href="/chorus.min.css">
     <link rel="stylesheet" type="text/css" href="/chorus.min.css.map">
 </head>
-<div class="class">
+<div class="my-class-name">
     class
 </div>
-<div class="class">
+<div class="my-class-name">
     class
 </div>
-<div id="id">
+<div id="my-id-name">
     id
 </div>
 <h2>Results: Scales</h2>
@@ -32,14 +32,14 @@
             searchCallback: 'myCallbackFunction',
             flattenSearchResults: true
         };
-        _chorus.init('class', config);
+        _chorus.init('my-class-name', config);
         config = {
             layoutInstrument: ['violin','main'],
             chorusDebug:'console',
             layoutContainerId: 'myId',
             layoutContainerClass: 'myClassName'
         };
-        _chorus.init('id', config);
+        _chorus.init('my-id-name', config);
     });
     document.addEventListener('chorusInitComplete', function(e) {
         console.log(e.detail);
