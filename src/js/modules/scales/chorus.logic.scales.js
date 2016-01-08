@@ -86,6 +86,7 @@
      * @type {Function}
      */
     this.searchScales = function(tones, container, searchedNotesAlready, callback){
+        events.dispatchEvent(_chorus.data.customEvents.chorusScaleSearchStarted, 'chorusJS has started searching scales');
         if ((container || !tones) && !searchedNotesAlready){
             //get notes from dom if not passed to function
             this.searchScales(logicNotes.getSelectedNotes(container), container, true, callback);

@@ -34,9 +34,12 @@
 
     this.customEvents = {
         chorusInitComplete: 'chorusInitComplete',
+        chorusSearchStarted: 'chorusSearchStarted',
         chorusSearchComplete: 'chorusSearchComplete',
         chorusChordSearchComplete: 'chorusChordSearchComplete',
+        chorusScaleSearchStarted: 'chorusScaleSearchStarted',
         chorusScaleSearchComplete: 'chorusScaleSearchComplete',
+        chorusChordSearchStarted: 'chorusChordSearchStarted',
         populateListsComplete: 'populateListsComplete'
     };
 

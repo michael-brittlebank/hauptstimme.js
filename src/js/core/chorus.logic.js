@@ -127,7 +127,6 @@
         } else if (configCallback && typeof configCallback === 'string') {
             window[configCallback](_chorus.searchResult);
         }
-        _chorus.events.dispatchEvent(_chorus.data.customEvents.chorusSearchComplete, 'chorusJS has finished searching scales and chords');
     };
 
     this.convertResultsObjectToArray = function(name, resultsObject){
@@ -150,6 +149,17 @@
             }
         }
         return result;
+    };
+
+    this.searchScalesAndChords = function(tones,container,callback){
+        _chorus.events.dispatchEvent(_chorus.data.customEvents.chorusSearchStarted, 'chorusJS has started searching');
+        _chorus.logic.scales.searchScales(tones,  container, false,
+            _chorus.logic.chords.searchChords(tones, container, false,
+                function(){
+                    _chorus.logic.helpers.searchComplete(callback);
+                    _chorus.events.dispatchEvent(_chorus.data.customEvents.chorusSearchComplete, 'chorusJS has finished searching scales and chords');
+                }
+            ));
     };
 
 }).apply(_chorus.logic.helpers);

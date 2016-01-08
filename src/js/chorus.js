@@ -115,10 +115,7 @@ _chorus.init = function(element, userConfig) {
  * top level methods exposing lower level functions
  */
 _chorus.search = function(tones, container, callback){
-    _chorus.logic.scales.searchScales(tones,  container, false,
-        _chorus.logic.chords.searchChords(tones, container, false,
-            _chorus.logic.helpers.searchComplete(callback)
-        ));
+    _chorus.logic.helpers.searchScalesAndChords(tones,container,callback);
 };
 _chorus.searchScales = function(tones, container, callback){
     _chorus.logic.scales.searchScales(tones, container, false, callback);

@@ -127,6 +127,7 @@
      * @type {Function}
      */
     this.searchChords = function(tones, container, searchedNotesAlready, callback){
+        events.dispatchEvent(_chorus.data.customEvents.chorusChordSearchStarted, 'chorusJS has started searching chords');
         if ((container || !tones) && !searchedNotesAlready){
             //get notes from dom if not passed to function
             this.searchChords(logicNotes.getSelectedNotes(container), container, true, callback);
