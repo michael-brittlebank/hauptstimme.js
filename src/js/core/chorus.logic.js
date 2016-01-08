@@ -283,19 +283,31 @@
         return result;
     };
 
+    this.getFretboardFromContainer = function(element){
+        var result;
+        if (element) {
+            for (var i = 0; i < element.childNodes.length; i++) {
+                if (element.childNodes[i].classList.contains(dictionary.class_string_container)){
+                    result = element.childNodes[i];
+                }
+            }
+        }
+        return result;
+    };
+
     /**
      * get any tones that are selected in the dom
      * @param container
      */
     this.getSelectedNotes = function(container){
-        //todo, bug fix
         _chorus.searchResult.containers = [];
         var noteData = [],
             notes = {
                 rootTone: '',
                 selectedTones:[]
             },
-            pianoKeyboard;
+            pianoKeyboard,
+            stringFretboard;
         //search for selected notes by container id or class
         if(container && container.length > 0){
             var containerById = document.getElementById(container),
@@ -307,7 +319,10 @@
                         noteData.push(this.getTonesFromDOM(pianoKeyboard));
                     }
                 } else {
-                    noteData.push(this.getTonesFromDOM(containerById));
+                    stringFretboard = this.getFretboardFromContainer(containerById);
+                    if (stringFretboard){
+                        noteData.push(this.getTonesFromDOM(stringFretboard));
+                    }
                 }
             }
             else if (containerByClass){
@@ -318,7 +333,10 @@
                             noteData.push(this.getTonesFromDOM(pianoKeyboard));
                         }
                     } else {
-                        noteData.push(this.getTonesFromDOM(containerByClass[i]));
+                        stringFretboard = this.getFretboardFromContainer(containerByClass[i]);
+                        if (stringFretboard){
+                            noteData.push(this.getTonesFromDOM(stringFretboard));
+                        }
                     }
                 }
             }

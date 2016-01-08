@@ -53,7 +53,11 @@
         },100);
     }
     function applyResults(){
-        _chorus.applyResults(_chorus.searchResult.scales.resultsArray[0].tones,_chorus.searchResult.containers);
+        if (_chorus.searchResult.scales.resultsArray.hasOwnProperty('main')){
+            _chorus.applyResults(_chorus.searchResult.scales.resultsArray.main[0].tones,_chorus.searchResult.containers);
+        } else {
+            _chorus.applyResults(_chorus.searchResult.scales.resultsArray[0].tones,_chorus.searchResult.containers);
+        }
     }
 </script>
 </html>

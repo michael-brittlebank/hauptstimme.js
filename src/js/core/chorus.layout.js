@@ -298,12 +298,10 @@
         this.applySelectedNotesToDom = function(tones,container){
             var children = container.querySelectorAll('div.'+dictionary.class_note);
             for(var i = 0; i < children.length; i++){
-                if (!children[i].classList.contains(dictionary.class_selected) && !children[i].classList.contains(dictionary.class_root)){
-                    if (tones.indexOf(parseInt(children[i].getAttribute('data-chorus-tone'))) !== -1){
-                        children[i].classList.add(dictionary.class_result);
-                    } else {
-                        children[i].classList.remove(dictionary.class_result);
-                    }
+                if (tones.indexOf(parseInt(children[i].getAttribute('data-chorus-tone'))) !== -1){
+                    children[i].classList.add(dictionary.class_result);
+                } else {
+                    children[i].classList.remove(dictionary.class_result);
                 }
             }
         };
