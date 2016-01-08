@@ -181,8 +181,9 @@ $display-width: 1300;
       &:last-child {
         border-bottom:1px solid black;
       }
-      &:hover {
-        text-decoration: underline;
+      &:hover, &.chorus-result-item-selected {
+        background-color: black;
+        color: white;
       }
     }
   }

@@ -69,6 +69,7 @@
         classPianoKeyBlack: 'black',
         classPianoKeyWhite: 'white',
         classListItem: 'chorus-result-item',
+        classListItemSelected: 'chorus-result-item-selected',
         classResultName: 'chorus-result-name',
         classResultLetters: 'chorus-result-letters',
         errorType:'[Error] Invalid type: ',

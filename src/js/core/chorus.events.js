@@ -126,15 +126,22 @@
             selectedClass = dictionary.classSelected,
             rootClass = dictionary.classRoot,
             parent,
-            tones = element.getAttribute(domData.resultTones);
-        //todo, apply tones to all instruments
-        if (tones){
-            //layout.applySelectedNotesToDom(tones.split(','),parent);
+            tones;
+        if (!element.classList.contains(dictionary.classListItem)){
+            element = element.parentNode;
         }
-        //todo, add selected class for styling
-        //todo second click removes tones from instruments
-        console.log('result left click hanlder', tones);
-    };
+        if (element.classList.contains(dictionary.classListItemSelected)){
+            //todo remove tones from instruments
+            element.classList.remove(dictionary.classListItemSelected);
+            console.log('second result left click hanlder');
+
+        } else {
+            //todo, apply tones to all instruments
+            element.classList.add(dictionary.classListItemSelected);
+            tones = element.getAttribute(domData.resultTones);
+            console.log('result left click hanlder', tones);
+            //layout.applySelectedNotesToDom(tones.split(','),parent);
+        }};
 
 }).apply(_chorus.events.handlers);
 
