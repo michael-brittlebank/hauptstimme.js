@@ -1,5 +1,7 @@
 $display-width: 1250;
 
+//todo, add styling for frets 3,5,7,9, and 12
+
 .chorus-standard-font {
   font-family: $font-open-sans-condensed;
   font-weight:$font-weight-medium;
@@ -7,10 +9,13 @@ $display-width: 1250;
 }
 
 .chorus-note {
+  text-align: center;
+  padding: 5px 0;
+  margin: 0 auto;
   span {
     padding: 5px 0;
     border-radius: 15%;
-    width: 45px;
+    width: 55px;
     display: inline-block;
     max-width: 100%;
     @include raw-transition(unquote("background-color 500ms ease-out 0s,color 500ms ease-out 0s"));
@@ -40,6 +45,7 @@ $display-width: 1250;
   padding:10px;
   border: 1px solid black;
   cursor: pointer;
+  @include unselectable;
   @extend .chorus-standard-font;
 }
 
@@ -90,6 +96,9 @@ $display-width: 1250;
         }
         p {
           @extend .chorus-note;
+          span {
+            white-space: nowrap;
+          }
         }
       }
       &:first-child{
@@ -134,8 +143,10 @@ $display-width: 1250;
           height: 65%;
           margin-left: unquote('-'+$blackKeyWidth/2+'%');
           width: unquote($blackKeyWidth+'%');
-          color: white;
           background: black;
+          span {
+            color: white;
+          }
           z-index: 1000;
           &[data-chorus-tone="4"] {
             left: unquote($whiteKeyWidth*1+'%');
@@ -158,7 +169,6 @@ $display-width: 1250;
           bottom: 10%;
           left: 0;
           right: 0;
-          margin: auto;
           width: 50px;
           max-width: 100%;
           display: inline-block;
@@ -170,16 +180,19 @@ $display-width: 1250;
 }
 
 .results-container {
-  max-height: 500px;
+  max-height: 250px;
   max-width: 100%;
   overflow-y: scroll;
   cursor:pointer;
   ul {
+    margin: 0;
     padding: 0;
     list-style: none;
+    overflow: hidden;
     li {
       padding:5px;
       border-top:1px solid black;
+      @include unselectable;
       @include raw-transition(unquote("background-color 500ms ease-out 0s,color 500ms ease-out 0s"));
       &:last-child {
         border-bottom:1px solid black;
