@@ -336,7 +336,9 @@
             if (entry && entry.hasOwnProperty('name')){
                 content = '<li class="'+dictionary.classListItem+'" '+domData.resultTones+'="'+entry.tones.join(',')+'">' +
                     '<span class="'+dictionary.classResultName+'">'+entry.name+'</span> '+
-                    '<span class="'+dictionary.classResultLetters+'">'+entry.letters.join(', ')+'</span>'+
+                    '<span class="'+dictionary.classResultLetters+'">'+entry.letters.map(function(value){
+                        return _chorus.layout.html.htmlFilter(value);
+                    }).join(', ')+'</span>'+
                     '</li>';
             }
             return content;

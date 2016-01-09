@@ -47,7 +47,7 @@ var _chorus = window.chorus = {
     this.flattenSearchResults = false;
     //layout
     this.layoutInstrument ='main';
-    this.layoutInstrumentTitles = false;
+    this.layoutInstrumentTitles = false;//todo, bug fix
     this.layoutInstrumentTitleElement ='h2';
     this.layoutInstrumentStringOrder ='desc';
     this.layoutContainerId = '';
