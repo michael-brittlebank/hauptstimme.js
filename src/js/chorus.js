@@ -1,3 +1,4 @@
+//todo, document functions
 /**
  * declaration
  */
