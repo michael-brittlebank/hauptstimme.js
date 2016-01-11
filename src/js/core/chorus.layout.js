@@ -185,7 +185,7 @@
             containerContentOpen = '<div id="' + containerId + '" class="' + dictionary.classInstrument + ' ' + containerClass + '" '+domData.config+'="'+_chorus.config.currentConfig+'">';
             containerContentClose = '</div>';
             //title
-            if (helpers.getConfigValue('layoutInstrumentTitles') !== true) {
+            if (helpers.getConfigValue('layoutInstrumentTitles') === true) {
                 var htmlElement = helpers.getConfigValue('layoutInstrumentTitleElement');
                 titleContent = '<' + htmlElement + ' class="'+dictionary.classInstrumentTitle+'">' + instrumentName.replace(/_/g, ' ') + '</' + htmlElement + '>';
             }
@@ -274,7 +274,7 @@
             containerContentOpen = '<div id="' + containerId + '" class="' + dictionary.classInstrument + ' ' + containerClass + ' piano" '+domData.config+'="'+_chorus.config.currentConfig+'">';
             containerContentClose = '</div>';
             //title
-            if (helpers.getConfigValue('layoutInstrumentTitles') !== true) {
+            if (helpers.getConfigValue('layoutInstrumentTitles') === true) {
                 var htmlElement = helpers.getConfigValue('layoutInstrumentTitleElement');
                 titleContent = '<' + htmlElement + ' class="'+dictionary.classInstrumentTitle+'">piano</' + htmlElement + '>';
             }

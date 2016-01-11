@@ -25,9 +25,7 @@
     document.addEventListener('DOMContentLoaded', function(e) {
         var config = {
             layoutInstrument: 'piano',
-            layoutInstrumentTitleElement:'h3',
             chorusDebug:'console',
-            layoutInstrumentStringOrder:'asc',
             searchText: 'My Search Button',
             searchCallback: 'myCallbackFunction',
             flattenSearchResults: true
@@ -36,6 +34,8 @@
         config = {
             layoutInstrument: ['violin','main'],
             chorusDebug:'console',
+            layoutInstrumentTitles:true,
+            layoutInstrumentTitleElement:'h3',
             layoutContainerId: 'myId',
             layoutContainerClass: 'myClassName'
         };
