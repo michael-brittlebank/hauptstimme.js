@@ -1,6 +1,6 @@
 {
   "name": "chorus-js",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "A JavaScript library for visualizing music theory",
   "main": "dist/chorus.min.js",
   "homepage": "http://www.mikestumpf.com/chorus",
