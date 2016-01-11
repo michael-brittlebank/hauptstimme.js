@@ -10,7 +10,7 @@
 
     //functions
     /**
-     * compile searchable results logic
+     * compile logic for searchable chords
      */
     this.compile = function() {
         var rootName,
@@ -118,7 +118,7 @@
     };
 
     /**
-     * get the notes within a specific chord
+     * get the notes within a specific chord formula
      * @param {string} root
      * @param {Array} tones
      * @returns {Array}

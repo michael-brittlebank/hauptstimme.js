@@ -10,7 +10,7 @@
 
     //functions
     /**
-     * compile logic
+     * compile logic for searchable scales
      */
     this.compile = function() {
         var rootNote,
@@ -53,6 +53,12 @@
         return JSON.stringify(output);
     };
 
+    /**
+     * get the notes from a scale formula
+     * @param {string} rootNote
+     * @param {Array} tones
+     * @returns {Array|boolean}
+     */
     this.getNotesInScale = function(rootNote, tones){
         var letters = [rootNote],
             letterProgression = logicNotes.getNoteProgression(rootNote);
@@ -83,7 +89,10 @@
      * main search function for searching scales
      * if container is passed, get selected notes from that DOM element
      * otherwise use the tones passed
-     * @type {Function}
+     * @param {Array} [tones]
+     * @param {string} [container]
+     * @param {boolean} [searchedNotesAlready]
+     * @param {function} [callback]
      */
     this.searchScales = function(tones, container, searchedNotesAlready, callback){
         events.dispatchEvent(_chorus.data.customEvents.chorusScaleSearchStarted, 'chorusJS has started searching scales');
