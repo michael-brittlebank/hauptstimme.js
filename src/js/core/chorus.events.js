@@ -9,8 +9,8 @@
     //functions
     /**
      * triggers custom events
-     * @param eventName
-     * @param eventDetail
+     * @param {string} eventName
+     * @param {string} eventDetail
      */
     this.dispatchEvent = function (eventName, eventDetail){
         var event; // The custom event that will be created
@@ -31,6 +31,10 @@
         }
     };
 
+    /**
+     * for sending messages to the user
+     * @param {string} message
+     */
     this.sendMessage = function(message) {
         var messageSystem = _chorus.logic.helpers.getConfigValue('chorusDebug'),
             preface = 'ChorusJS - ';
@@ -61,7 +65,7 @@
     //functions
     /**
      * remove all selected classes on fret right click
-     * @param e
+     * @param {event} e
      */
     this.noteRightClickHandler = function(e){
         e.preventDefault();
@@ -79,7 +83,7 @@
     };
     /**
      * change fret classes on left click
-     * @param e
+     * @param {event} e
      */
     this.noteLeftClickHandler = function(e){
         e.preventDefault();
@@ -118,6 +122,10 @@
         }
     };
 
+    /**
+     * handles left click on results rows
+     * @param {event} e
+     */
     this.resultLeftClickHandler = function(e){
         e.preventDefault();
         var domData = _chorus.data.domData,
@@ -166,9 +174,9 @@
 
     //functions
     /** add a custom event listener
-     * @param className
-     * @param event
-     * @param callback
+     * @param {string} className
+     * @param {string} event
+     * @param {function} callback
      */
     this.addListener = function(className, event, callback){
         var elements = document.getElementsByClassName(className);
