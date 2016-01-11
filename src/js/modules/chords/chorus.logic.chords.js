@@ -10,7 +10,7 @@
 
     //functions
     /**
-     * compile logic
+     * compile searchable results logic
      */
     this.compile = function() {
         var rootName,
@@ -107,11 +107,22 @@
         return JSON.stringify(output);
     };
 
+    /**
+     * convert from results arrays to the musical scale degree
+     * @param {int} romanNumeral
+     * @returns {number}
+     */
     this.convertFromScaleDegreeToArrayIndex = function(romanNumeral){
         //arrays are zero indexed by scale degrees are 1 indexed
         return helpers.mod(romanNumeral-1,7);
     };
 
+    /**
+     * get the notes within a specific chord
+     * @param {string} root
+     * @param {Array} tones
+     * @returns {Array}
+     */
     this.getNotesInChord = function(root, tones){
         var letters = [root];
         for (var k = 1; k < tones.length; k++) {
@@ -124,7 +135,10 @@
      * main search function for searching chords
      * if container is passed, get selected notes from that DOM element
      * otherwise use the tones passed
-     * @type {Function}
+     * @param {Array} [tones]
+     * @param {string} [container]
+     * @param {boolean} [searchedNotesAlready]
+     * @param {function} [callback]
      */
     this.searchChords = function(tones, container, searchedNotesAlready, callback){
         events.dispatchEvent(_chorus.data.customEvents.chorusChordSearchStarted, 'chorusJS has started searching chords');

@@ -235,7 +235,7 @@
 
     /**
      * get the flat note from the int
-     * @param {string} tone
+     * @param {int} tone
      * @returns {string}
      */
     this.getFlatNoteByTone = function(tone){
@@ -244,7 +244,7 @@
 
     /**
      * get the sharp note from the int
-     * @param {string} tone
+     * @param {int} tone
      * @returns {string}
      */
     this.getSharpNoteByTone = function(tone){
@@ -263,19 +263,19 @@
             letter = notes.tone[tone];
         }
         else {
-            letter = this.getFlatNoteByTone(String(tone))+' / '+this.getSharpNoteByTone(String(tone));
+            letter = this.getFlatNoteByTone(tone)+' / '+this.getSharpNoteByTone(tone);
         }
         return letter;
     };
 
     /**
      * get the note (char) from the tone (int)
-     * @param {string} tone
+     * @param {int} tone
      * @returns {string}
      */
     this.getNoteByToneDefault = function(tone){
         var letter;
-        if (notes.tone.hasOwnProperty(tone)) {
+        if (notes.tone.hasOwnProperty(String(tone))) {
             letter = notes.tone[tone];
         }
         else {
@@ -286,7 +286,7 @@
 
     /**
      * get the note (char) from the tone (int) and either make it sharp or flat by specifying the note
-     * @param {string} tone
+     * @param {int} tone
      * @param {string} letter
      * @returns {string|boolean}
      */
@@ -299,7 +299,7 @@
             difference += notes.count.tones;
         }
         if (difference !== 0) {
-            if (Math.abs(difference) > 1 && notes.tone.hasOwnProperty(tone)){
+            if (Math.abs(difference) > 1 && notes.tone.hasOwnProperty(String(tone))){
                 return false;
             } else if (difference > 0) {
                 for (var i = 0; i < difference; i++) {
