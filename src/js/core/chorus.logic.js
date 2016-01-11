@@ -10,8 +10,8 @@
     //functions
     /**
      * get a random string
-     * @param length
-     * @returns {*}
+     * @param {int} length
+     * @returns {string}
      */
     this.generateRandomString = function(length){
         var output;
@@ -23,9 +23,9 @@
 
     /**
      * make a copy of a JS object
-     * @param from
-     * @param to
-     * @returns {*}
+     * @param {Object} from
+     * @param {Object} to
+     * @returns {Object}
      */
     this.cloneObject = function(from, to) {
         if (from ==+ null || typeof from !== 'object'){
@@ -46,9 +46,9 @@
 
     /**
      * get the config value for the key passed or return the default if none available
-     * @param key
-     * @param container
-     * @returns {*}
+     * @param {string} key
+     * @param {string} [container]
+     * @returns {string|boolean}
      */
     this.getConfigValue = function(key, container){
         var configId = _chorus.config.currentConfig;
@@ -74,9 +74,9 @@
 
     /**
      * get the object key given the value
-     * @param object
-     * @param value
-     * @returns {string}
+     * @param {Object} object
+     * @param {string} value
+     * @returns {string|boolean}
      */
     this.getKeyFromValue = function(object, value){
         for(var prop in object) {
@@ -91,7 +91,7 @@
 
     /**
      * gets the size of a one dimensional object
-     * @param object
+     * @param {Object} object
      * @returns {number}
      */
     this.countObjectLength = function(object){
@@ -107,7 +107,7 @@
 
     /**
      * capitalize all of the words in a string
-     * @param string
+     * @param {string} string
      * @returns {string}
      */
     this.capitalize = function(string){
@@ -116,10 +116,20 @@
         });
     };
 
+    /**
+     * a filler method for a "real" modulo behavior for javascript
+     * @param {int} number
+     * @param {int} modulus
+     * @returns {number}
+     */
     this.mod = function(number,modulus) {
         return ((number%modulus)+modulus)%modulus;
     };
 
+    /**
+     * final method for search all modules function
+     * @param {function} [callback]
+     */
     this.searchComplete = function(callback){
         var configCallback = this.getConfigValue('searchCallback');
         if (callback && typeof callback !== 'string') {
@@ -129,6 +139,12 @@
         }
     };
 
+    /**
+     * helper for flattening results output
+     * @param {string} name
+     * @param {Object} resultsObject
+     * @returns {Object}
+     */
     this.convertResultsObjectToArray = function(name, resultsObject){
         return {
             name: name,
@@ -137,6 +153,11 @@
         };
     };
 
+    /**
+     * get all dom elements by the container name, whether by id or class
+     * @param {string} container
+     * @returns {Array}
+     */
     this.getDomRepresentationFromStringName = function(container){
         var containerById = document.getElementById(container),
             containerByClass = document.getElementsByClassName(container),
@@ -151,6 +172,12 @@
         return result;
     };
 
+    /**
+     * search all modules helper
+     * @param {Array} [tones]
+     * @param {string} [container]
+     * @param {function} [callback]
+     */
     this.searchScalesAndChords = function(tones,container,callback){
         _chorus.events.dispatchEvent(_chorus.data.customEvents.chorusSearchStarted, 'chorusJS has started searching');
         _chorus.logic.scales.searchScales(tones,  container, false,
@@ -179,8 +206,8 @@
 
     //functions
     /**
-     * get the tone (int) given the note (char)
-     * @param note
+     * get the tone (int) given the note (string)
+     * @param {string} note
      * @returns {number}
      */
     this.getToneByNote = function (note){
@@ -208,7 +235,7 @@
 
     /**
      * get the flat note from the int
-     * @param tone
+     * @param {string} tone
      * @returns {string}
      */
     this.getFlatNoteByTone = function(tone){
@@ -217,7 +244,7 @@
 
     /**
      * get the sharp note from the int
-     * @param tone
+     * @param {string} tone
      * @returns {string}
      */
     this.getSharpNoteByTone = function(tone){
@@ -226,25 +253,25 @@
 
     /**
      * return a note representation of the tone with both sharp and flat values (for the UI grid)
-     * @param tone
-     * @returns {*}
+     * @param {int} tone
+     * @returns {string}
      */
     this.getNoteByToneDisplay = function(tone){
         var letter;
         tone = helpers.mod(tone,12);
-        if (notes.tone.hasOwnProperty(tone)) {
+        if (notes.tone.hasOwnProperty(String(tone))) {
             letter = notes.tone[tone];
         }
         else {
-            letter = this.getFlatNoteByTone(tone)+' / '+this.getSharpNoteByTone(tone);
+            letter = this.getFlatNoteByTone(String(tone))+' / '+this.getSharpNoteByTone(String(tone));
         }
         return letter;
     };
 
     /**
      * get the note (char) from the tone (int)
-     * @param tone
-     * @returns {*}
+     * @param {string} tone
+     * @returns {string}
      */
     this.getNoteByToneDefault = function(tone){
         var letter;
@@ -259,9 +286,9 @@
 
     /**
      * get the note (char) from the tone (int) and either make it sharp or flat by specifying the note
-     * @param tone
-     * @param letter
-     * @returns {*}
+     * @param {string} tone
+     * @param {string} letter
+     * @returns {string|boolean}
      */
     this.getNoteByToneForce = function(tone,letter) {
         var difference = tone - this.getToneByNote(letter);
@@ -291,14 +318,19 @@
     /**
      * get the order of the possible letters, starting at the letter passed in
      * and looping around from 'G' to 'A' until reaching the initial letter
-     * @param letter
-     * @returns {Array.<*>}
+     * @param {string} letter
+     * @returns {Array}
      */
     this.getNoteProgression = function(letter){
         var pieces = 'ABCDEFG'.split(letter.replace(/b/g,'').replace(/#/g,'').toUpperCase());
         return [letter].concat(pieces[1].split(''),pieces[0].split(''));
     };
 
+    /**
+     * get the piano instrument DOM element from the container
+     * @param {HTMLElement} element
+     * @returns {HTMLElement}
+     */
     this.getPianoFromContainer = function(element){
         var result;
         if (element) {
@@ -311,6 +343,11 @@
         return result;
     };
 
+    /**
+     * get the fretted instrument DOM element from the container
+     * @param {HTMLElement} element
+     * @returns {HTMLElement}
+     */
     this.getFretboardFromContainer = function(element){
         var result;
         if (element) {
@@ -325,7 +362,7 @@
 
     /**
      * get any tones that are selected in the dom
-     * @param container
+     * @param {string} container
      */
     this.getSelectedNotes = function(container){
         _chorus.searchResult.containers = [];
@@ -403,7 +440,7 @@
 
     /**
      * find any selected frets or root note frets within a given DOM element
-     * @type {Function}
+     * @param {HTMLElement} element
      */
     this.getTonesFromDOM = function(element){
         var parentClassList,
@@ -446,8 +483,8 @@
 
     /**
      * return if the all of the selected tones exist in the scale or chord
-     * @param dataNotes
-     * @param selectedNotes
+     * @param {Array} dataNotes
+     * @param {Array} selectedNotes
      * @returns {boolean}
      */
     this.tonesInScaleOrChordHelper = function(dataNotes, selectedNotes){
@@ -461,8 +498,8 @@
 
     /**
      * return if the scale contains the selected tones or not
-     * @param formula
-     * @param notes
+     * @param {Object} formula
+     * @param {Object} notes
      * @returns {boolean}
      */
     this.tonesInScaleOrChord = function(formula, notes){
