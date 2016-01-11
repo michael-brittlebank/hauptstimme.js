@@ -65,7 +65,7 @@
     //functions
     /**
      * remove all selected classes on fret right click
-     * @param {event} e
+     * @param {Event} e
      */
     this.noteRightClickHandler = function(e){
         e.preventDefault();
@@ -83,7 +83,7 @@
     };
     /**
      * change fret classes on left click
-     * @param {event} e
+     * @param {Event} e
      */
     this.noteLeftClickHandler = function(e){
         e.preventDefault();
@@ -124,7 +124,7 @@
 
     /**
      * handles left click on results rows
-     * @param {event} e
+     * @param {Event} e
      */
     this.resultLeftClickHandler = function(e){
         e.preventDefault();

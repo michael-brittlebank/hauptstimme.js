@@ -310,7 +310,7 @@
         /**
          * apply the selected tones to the instrument container
          * @param {Array} tones
-         * @param {HTMLElement} container
+         * @param {string} container
          */
         this.applySelectedNotesToDom = function(tones,container){
             var children = container.querySelectorAll('div.'+dictionary.classNote);
@@ -326,7 +326,7 @@
         /**
          *
          * @param {Array} tones
-         * @param {Array|HTMLElement} container
+         * @param {string|Array} container
          */
         this.applyResults = function(tones, container){
             if (!tones || !container){
