@@ -1,4 +1,3 @@
-//todo, document functions
 /**
  * declaration
  */
@@ -64,6 +63,9 @@ var _chorus = window.chorus = {
     this.currentConfig = '';
 
     //functions
+    /**
+     * reset current config object (used in search functions)
+     */
     this.resetCurrentConfig = function(){
         this.currentConfig = '';
     };
@@ -72,7 +74,8 @@ var _chorus = window.chorus = {
 
 /**
  * sets config values and creates instrument grid
- * @type {Function|*}
+ * @param {string} element id or classname for html dom element to initialize chorus in
+ * @param {Object} userConfig object with key:value pairs to replace default config
  */
 _chorus.init = function(element, userConfig) {
     var events = _chorus.events,
@@ -104,29 +107,60 @@ _chorus.init = function(element, userConfig) {
         }
         else {
             events.sendMessage(dictionary.errorNotFound + 'no elements found using init value');
-            return false;
         }
     } else {
         events.sendMessage(dictionary.errorUndefined + 'no element defined in init');
-        return false;
     }
 };
 
 /**
  * top level methods exposing lower level functions
  */
+
+/**
+ * search all modules based on provided tones or tones found in the container
+ * @param {Array} [tones] array of tone ints
+ * @param {string} [container] id or classname for html dom element to search in
+ * @param {function} [callback] function to call after search is complete
+ */
 _chorus.search = function(tones, container, callback){
     _chorus.logic.helpers.searchScalesAndChords(tones,container,callback);
 };
+
+/**
+ * search the scales module based on provided tones or tones found in the container
+ * @param {Array} [tones] array of tone ints
+ * @param {string} [container] id or classname for html dom element to search in
+ * @param {function} [callback] function to call after search is complete
+ */
 _chorus.searchScales = function(tones, container, callback){
     _chorus.logic.scales.searchScales(tones, container, false, callback);
 };
+
+/**
+ * search the chords module based on provided tones or tones found in the container
+ * @param {Array} [tones] array of tone ints
+ * @param {string} [container] id or classname for html dom element to search in
+ * @param {function} [callback] function to call after search is complete
+ */
 _chorus.searchChords = function(tones, container, callback){
     _chorus.logic.chords.searchChords(tones, container, false, callback);
 };
+
+/**
+ * apply tone results to selected instrument container
+ * @param {Array} [tones] array of tone ints
+ * @param {string} container id or classname for html dom element to apply tones to
+ */
 _chorus.applyResults = function(tones, container){
     _chorus.layout.html.applyResults(tones, container);
 };
+
+/**
+ * insert results into containers
+ * @param {string} [scaleResultContainer] container id or classname for html dom element to insert results in
+ * @param {string} [chordResultContainer] container id or classname for html dom element to insert results in
+ */
 _chorus.populateLists = function(scaleResultContainer,chordResultContainer){
     _chorus.layout.html.populateLists(scaleResultContainer, chordResultContainer);
 };
