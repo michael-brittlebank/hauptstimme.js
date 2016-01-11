@@ -13,7 +13,7 @@
     //functions
     /**
      * create an HTML representation of an instrument within the DOM element provided
-     * @param element
+     * @param {HTMLElement} element
      */
     this.init = function(element){
         var configInstrument = _chorus.config[_chorus.config.currentConfig].layoutInstrument,
@@ -26,7 +26,7 @@
             prefix = this.getRandomId();
         }
         if (typeof configInstrument === 'string') {
-            element.innerHTML = this.selectInstrument(configInstrument,prefix);
+            element.innerHTML = this.selectInstrument(configInstrument,prefix,0);
         }
         else if (Array.isArray(configInstrument)){
             var content = '',
@@ -61,10 +61,10 @@
 
     /**
      * get a random id and check if an element in the DOM already has it
-     * @returns {*}
+     * @returns {string}
      */
     this.getRandomId = function(){
-        var id = this.prefixBuilder(helpers.generateRandomString(5)),
+        var id = this.prefixBuilder(helpers.generateRandomString(5),0),
             elementWithSameId = document.getElementById(id);
         if (!elementWithSameId){
             return id;
@@ -77,9 +77,9 @@
     /**
      * gets the HTML representation of an instrument if it exists
      * if there are multiple instruments chosen, then adjust the uid prefix accordingly
-     * @param instrument
-     * @param prefix
-     * @param counter
+     * @param {string} instrument
+     * @param {string} prefix
+     * @param {int} counter
      * @returns {string}
      */
     this.selectInstrument = function(instrument, prefix, counter){
@@ -143,12 +143,12 @@
 
     /**
      * make uid for instrument divs
-     * @param prefix
-     * @param counter
-     * @returns {*}
+     * @param {string} prefix
+     * @param {int} counter
+     * @returns {string}
      */
     this.prefixBuilder = function(prefix, counter){
-        if (counter && (counter.length > 0 || counter > 0)){
+        if (counter && parseInt(counter) > 0){
             return prefix +'-'+counter;
         }
         else {
@@ -163,9 +163,9 @@
         //functions
         /**
          * creates an instrument fretboard in HTML
-         * @param instrumentName
-         * @param instrumentTuning
-         * @param prefix
+         * @param {string} instrumentName
+         * @param {string} instrumentTuning
+         * @param {string} prefix
          * @returns {string}
          */
         this.instrument = function (instrumentName, instrumentTuning, prefix) {
@@ -219,7 +219,7 @@
 
         /**
          * creates a string in HTML
-         * @param root
+         * @param {string} root
          * @returns {string}
          */
         this.string = function (root) {
@@ -244,7 +244,7 @@
 
         /**
          * replace sharps and flats with appropriate html entities
-         * @param note
+         * @param {string} note
          * @returns {string}
          */
         this.htmlFilter = function (note) {
@@ -253,7 +253,7 @@
 
         /**
          * creates a piano keyboard in HTML
-         * @param prefix
+         * @param {string} prefix
          * @returns {string}
          */
         this.piano = function(prefix){
@@ -307,6 +307,11 @@
                 containerContentClose;
         };
 
+        /**
+         * apply the selected tones to the instrument container
+         * @param {Array} tones
+         * @param {HTMLElement} container
+         */
         this.applySelectedNotesToDom = function(tones,container){
             var children = container.querySelectorAll('div.'+dictionary.classNote);
             for(var i = 0; i < children.length; i++){
@@ -318,6 +323,11 @@
             }
         };
 
+        /**
+         *
+         * @param {Array} tones
+         * @param {Array|HTMLElement} container
+         */
         this.applyResults = function(tones, container){
             if (!tones || !container){
                 events.sendMessage(dictionary.errorUndefined + 'no tones or container name passed');
@@ -331,6 +341,11 @@
             }
         };
 
+        /**
+         * creates a results list item
+         * @param {Object} entry
+         * @returns {string}
+         */
         this.createListItem = function(entry){
             var content = '';
             if (entry && entry.hasOwnProperty('name')){
@@ -344,6 +359,11 @@
             return content;
         };
 
+        /**
+         * makes an HTML list of results to insert into a container
+         * @param {string} container
+         * @param {string} resultType
+         */
         this.populateListsHelper = function(container, resultType){
             var domContainers = helpers.getDomRepresentationFromStringName(container),
                 content = '',
@@ -373,6 +393,11 @@
             });
         };
 
+        /**
+         * populate lists from search results
+         * @param {string} scaleResultContainer
+         * @param {string} chordResultContainer
+         */
         this.populateLists = function(scaleResultContainer, chordResultContainer){
             if (scaleResultContainer || chordResultContainer){
                 if (scaleResultContainer){
