@@ -1,7 +1,5 @@
 $display-width: 1250;
 
-//todo, add styling for frets 3,5,7,9, and 12
-
 .chorus-standard-font {
   font-family: $font-open-sans-condensed;
   font-weight:$font-weight-medium;
@@ -58,6 +56,7 @@ $display-width: 1250;
     max-width: 100%;
     overflow-x: scroll;
     margin: 10px 0;
+    position:relative;
     .chorus-string {
       width: 100%;
       min-width:$display-width+px;
@@ -101,11 +100,30 @@ $display-width: 1250;
           }
         }
       }
-      &:first-child{
+      &:nth-child(2){
         border-top: 1px solid black;
       }
       &:last-child{
         border-bottom: 1px solid black;
+      }
+      &.chorus-fret-marker {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        height: 30px;
+        .chorus-fret {
+          vertical-align: middle;
+          border-right-color:transparent;
+          p {
+            font-size:20px;
+            font-weight: bold;
+            line-height: 20px;
+            &:before {
+              border: none;
+            }
+          }
+        }
       }
     }
   }

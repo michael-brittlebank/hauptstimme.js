@@ -196,6 +196,7 @@
             for (var i = 0; i < instrumentTuning.length; i++) {
                 instrumentContent = this.string(instrumentTuning[i]) + instrumentContent;
             }
+            instrumentContent = this.fretMarkers() + instrumentContent;
             //search button
             if (helpers.getConfigValue('searchButton') === true) {
                 var title = helpers.getConfigValue('searchText'),
@@ -211,6 +212,35 @@
                 containerContentClose;
         };
 
+        /**
+         * makes fret markers in html
+         * @returns {string}
+         */
+        this.fretMarkers = function(){
+            var output = '',
+                outputStringOpen = '<div class="' + dictionary.classString + ' '+dictionary.classFretMarkers+'">',
+                outputStringClose = '</div>',
+                outputFretStart = '<div class="' + dictionary.classFret +'">',
+                outputFretClose = '</div>';
+            for (var i = 0; i < 13; i++) {
+                output += outputFretStart;
+                if (i === 3 || i === 5 || i ===9){
+                    output += '<p>&#9678;</p>';
+                } else if (i === 7 || i === 12) {
+                    output += '<p>&#9673;&#9673;</p>';
+                }
+                output += outputFretClose;
+            }
+            return outputStringOpen +
+                output +
+                outputStringClose;
+        };
+
+        /**
+         * html layout helper
+         * @param {string} note
+         * @returns {string}
+         */
         this.noteContainerHelper = function(note){
            return '<p>' +
             '<span>' + this.htmlFilter(note) + '</span>' +

@@ -72,6 +72,7 @@
         classListItemSelected: 'chorus-result-item-selected',
         classResultName: 'chorus-result-name',
         classResultLetters: 'chorus-result-letters',
+        classFretMarkers: 'chorus-fret-marker',
         errorType:'[Error] Invalid type: ',
         errorUndefined:'[Error] Undefined: ',
         errorNotFound: '[Error] Not Found: ',
