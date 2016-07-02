@@ -1,9 +1,16 @@
 module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
     var watchFiles = {
-        coreJs: ['app.js','Gruntfile.js'],
-        sass: ['src/scss/**/*.scss'],
-        js: ['src/js/**/*.js']
+        coreJs: [
+            'app.js',
+            'Gruntfile.js'
+        ],
+        sass: [
+            'src/scss/**/*.scss'
+        ],
+        js: [
+            'src/js/**/*.js'
+        ]
     };
     // Project configuration.
     grunt.initConfig({
@@ -99,7 +106,7 @@ module.exports = function(grunt) {
     });
 
 // TASKS =====================================/
-    grunt.registerTask('default', [
+    grunt.registerTask('dev', [
         'newer:uglify',
         'newer:sass',
         'concurrent'
