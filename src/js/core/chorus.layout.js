@@ -242,9 +242,9 @@
          * @returns {string}
          */
         this.noteContainerHelper = function(note){
-           return '<p>' +
-            '<span>' + this.htmlFilter(note) + '</span>' +
-            '</p>';
+            return '<p>' +
+                '<span>' + this.htmlFilter(note) + '</span>' +
+                '</p>';
         };
 
         /**
@@ -258,12 +258,18 @@
                 numberOfFrets = 12,
                 outputStart = '<div class="' + dictionary.classString + '">',
                 outputContent = '',
-                outputEnd = '</div>';
+                outputEnd = '</div>',
+                multicolor = helpers.getConfigValue('multicolor'),
+                multicolorClass;
             for (var i = 0; i <= numberOfFrets; i++) {
                 tone = (parseInt(root) + i) % notes.count.tones;
                 note = _chorus.logic.notes.getNoteByToneDisplay(tone);
+                multicolorClass = '';
+                if (multicolor === true){
+                    multicolorClass = dictionary.classNoteMulticolor+'-'+tone;
+                }
                 outputContent +=
-                    '<div class="' + dictionary.classFret +' '+dictionary.classNote+'" '+domData.tone+'="'+tone+'">' +
+                    '<div class="' + dictionary.classFret +' '+dictionary.classNote+' '+multicolorClass+'" '+domData.tone+'="'+tone+'">' +
                     this.noteContainerHelper(note) +
                     '</div>';
             }
@@ -296,6 +302,8 @@
                 instrumentContentClose,
                 instrumentContent = '',
                 searchButtonContent = '',
+                multicolor = helpers.getConfigValue('multicolor'),
+                multicolorClass,
                 tone,
                 note,
                 pianoKeyClass,
@@ -317,8 +325,12 @@
                 tone = helpers.mod(i+3,12);
                 note = _chorus.logic.notes.getNoteByToneDisplay(tone);
                 pianoKeyClass = note.indexOf('#')!== -1?dictionary.classPianoKeyBlack:dictionary.classPianoKeyWhite;
+                multicolorClass = '';
+                if (multicolor === true){
+                    multicolorClass = dictionary.classNoteMulticolor+'-'+tone;
+                }
                 instrumentContent +=
-                    '<div class="' + dictionary.classPianoKey+' '+dictionary.classNote+' '+pianoKeyClass+'" '+domData.tone+'="'+tone+'">' +
+                    '<div class="' + dictionary.classPianoKey+' '+dictionary.classNote+' '+multicolorClass+' '+pianoKeyClass+'" '+domData.tone+'="'+tone+'">' +
                     this.noteContainerHelper(note) +
                     '</div>';
             }
@@ -343,7 +355,7 @@
          * @param {string} container
          */
         this.applySelectedNotesToDom = function(tones,container){
-            var children = container.querySelectorAll('div.'+dictionary.classNote);
+            var children = container.querySelectorAll('.'+dictionary.classNote);
             for(var i = 0; i < children.length; i++){
                 if (tones.indexOf(parseInt(children[i].getAttribute(domData.tone))) !== -1){
                     children[i].classList.add(dictionary.classResult);

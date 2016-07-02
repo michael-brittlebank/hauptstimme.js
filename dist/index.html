@@ -37,7 +37,8 @@
             layoutInstrumentTitles:true,
             layoutInstrumentTitleElement:'h3',
             layoutContainerId: 'myId',
-            layoutContainerClass: 'myClassName'
+            layoutContainerClass: 'myClassName',
+            multicolor: true
         };
         _chorus.init('my-id-name', config);
     });
@@ -63,7 +64,7 @@
     function applyResults(){
         if (_chorus.searchResult.scales.resultsArray.hasOwnProperty('main')){
             _chorus.applyResults(_chorus.searchResult.scales.resultsArray.main[0].tones,_chorus.searchResult.containers);
-        } else {
+        } else if (_chorus.searchResult.scales.resultsArray.length > 0){
             _chorus.applyResults(_chorus.searchResult.scales.resultsArray[0].tones,_chorus.searchResult.containers);
         }
     }

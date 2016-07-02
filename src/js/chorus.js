@@ -54,6 +54,7 @@ var _chorus = window.chorus = {
     this.layoutContainerClass = '';
     this.searchButton = true;
     this.searchText = 'Search Chorus';
+    this.multicolor = false;
     //developer
     this.chorusDebug ='none';
 }).apply(_chorus.defaultConfig);
