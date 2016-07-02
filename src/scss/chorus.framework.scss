@@ -1,3 +1,5 @@
+//core
+//-----------------------------
 $display-width: 1250;
 
 .chorus-standard-font {
@@ -16,11 +18,15 @@ $display-width: 1250;
   @extend .chorus-standard-font;
 }
 
+
+//containers
+//-----------------------------
 .chorus-instrument {
   * {
     @extend .chorus-standard-font;
   }
 }
+
 .chorus-string-container {
   width: 100%;
   max-width: 100%;
@@ -29,6 +35,41 @@ $display-width: 1250;
   position: relative;
 }
 
+.results-container {
+  max-height: 250px;
+  max-width: 100%;
+  overflow-y: scroll;
+  cursor: pointer;
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    li {
+      padding: 5px;
+      border-top: 1px solid black;
+      @include unselectable;
+      @include raw-transition(unquote("background-color 500ms ease-out 0s,color 500ms ease-out 0s"));
+      &:last-child {
+        border-bottom: 1px solid black;
+      }
+      &:hover, &.chorus-result-item-selected {
+        background-color: black;
+        color: white;
+      }
+      span {
+        @extend .chorus-standard-font;
+        &.chorus-result-letters {
+          float: right;
+        }
+      }
+    }
+  }
+}
+
+
+//strings
+//-----------------------------
 .chorus-string {
   width: 100%;
   min-width: $display-width+px;
@@ -101,6 +142,9 @@ $display-width: 1250;
   }
 }
 
+
+//piano
+//-----------------------------
 .chorus-piano-keyboard {
   position: relative;
   height: 500px;
@@ -169,38 +213,9 @@ $display-width: 1250;
   }
 }
 
-.results-container {
-  max-height: 250px;
-  max-width: 100%;
-  overflow-y: scroll;
-  cursor: pointer;
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    overflow: hidden;
-    li {
-      padding: 5px;
-      border-top: 1px solid black;
-      @include unselectable;
-      @include raw-transition(unquote("background-color 500ms ease-out 0s,color 500ms ease-out 0s"));
-      &:last-child {
-        border-bottom: 1px solid black;
-      }
-      &:hover, &.chorus-result-item-selected {
-        background-color: black;
-        color: white;
-      }
-      span {
-        @extend .chorus-standard-font;
-        &.chorus-result-letters {
-          float: right;
-        }
-      }
-    }
-  }
-}
 
+//notes
+//-----------------------------
 .chorus-note {
   text-align: center;
   padding: 5px 0;
@@ -220,87 +235,89 @@ $display-width: 1250;
     background-color: $color-badgers-gold!important;
   }
 
-  &.chorus-note-multicolor-0 {
-    //A
-    span {
-      background-color: mintcream!important;
+  &:not(.chorus-note-selected):not(.chorus-note-root) {
+    &.chorus-note-multicolor-0 {
+      //A
+      span {
+        background-color: $color-note-0!important;
+      }
     }
-  }
 
-  &.chorus-note-multicolor-1 {
-    //A# Bb
-    span {
-      background-color: pink!important;
+    &.chorus-note-multicolor-1 {
+      //A# Bb
+      span {
+        background-color: $color-note-1!important;
+      }
     }
-  }
 
-  &.chorus-note-multicolor-2 {
-    //B
-    span {
-      background-color: purple!important;
+    &.chorus-note-multicolor-2 {
+      //B
+      span {
+        background-color: $color-note-2!important;
+      }
     }
-  }
 
-  &.chorus-note-multicolor-3 {
-    //C
-    span {
-      background-color: teal!important;
+    &.chorus-note-multicolor-3 {
+      //C
+      span {
+        background-color: $color-note-3!important;
+      }
     }
-  }
 
-  &.chorus-note-multicolor-4 {
-    //C# Db
-    span {
-      background-color: yellow!important;
+    &.chorus-note-multicolor-4 {
+      //C# Db
+      span {
+        background-color: $color-note-4!important;
+      }
     }
-  }
 
-  &.chorus-note-multicolor-5 {
-    //D# Eb
-    span {
-      background-color: greenyellow!important;
+    &.chorus-note-multicolor-5 {
+      //D
+      span {
+        background-color: $color-note-5!important;
+      }
     }
-  }
 
-  &.chorus-note-multicolor-6 {
-
-    span {
-      background-color: navy!important;
+    &.chorus-note-multicolor-6 {
+      //D# Eb
+      span {
+        background-color: $color-note-6!important;
+      }
     }
-  }
 
-  &.chorus-note-multicolor-7 {
-    //E
-    span {
-      background-color: fuchsia!important;
+    &.chorus-note-multicolor-7 {
+      //E
+      span {
+        background-color: $color-note-7!important;
+      }
     }
-  }
 
-  &.chorus-note-multicolor-8 {
-    //F
-    span {
-      background-color: orange!important;
+    &.chorus-note-multicolor-8 {
+      //F
+      span {
+        background-color: $color-note-8!important;
+      }
     }
-  }
 
-  &.chorus-note-multicolor-9 {
-    //F# Gb
-    span {
-      background-color: green!important;
+    &.chorus-note-multicolor-9 {
+      //F# Gb
+      span {
+        background-color: $color-note-9!important;
+      }
     }
-  }
 
-  &.chorus-note-multicolor-10 {
-    //G
-    span {
-      background-color: blueviolet!important;
+    &.chorus-note-multicolor-10 {
+      //G
+      span {
+        background-color: $color-note-10!important;
+      }
     }
-  }
 
-  &.chorus-note-multicolor-11 {
-    //G# Ab
-    span {
-      background-color: orangered!important;
+    &.chorus-note-multicolor-11 {
+      //G# Ab
+      span {
+        background-color: $color-note-11!important;
+      }
     }
   }
 }

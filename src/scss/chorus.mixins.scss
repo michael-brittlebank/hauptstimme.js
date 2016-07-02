@@ -1,3 +1,5 @@
+//core
+//-----------------------------
 @mixin center-absolute {
   position: absolute;
   top: 0;
@@ -5,4 +7,28 @@
   left: 0;
   right: 0;
   margin: auto;
+}
+
+@mixin transition-with-defaults($element, $duration:300ms, $timingFunction:ease-out, $delay:0s){
+  -webkit-transition: $element $duration $timingFunction $delay;
+  -moz-transition: $element $duration $timingFunction $delay;
+  -o-transition: $element $duration $timingFunction $delay;
+  transition: $element $duration $timingFunction $delay;
+}
+
+@mixin raw-transition($transition...){
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -o-transition: $transition;
+  -ms-transition: $transition;
+  transition: $transition;
+}
+
+@mixin unselectable {
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  /* No support for these yet, use at own risk */
+  -o-user-select: none;
+  user-select: none;
 }
