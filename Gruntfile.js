@@ -1,21 +1,26 @@
 module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
     var watchFiles = {
-        coreJs: [
+        core: [
             'app.js',
             'Gruntfile.js'
         ],
         sass: [
             'src/scss/**/*.scss'
         ],
-        js: [
+        javascript: [
             'src/js/**/*.js'
+        ],
+        handlebars: [
+            'src/hbs/**/*.hbs'
         ]
     };
     // Project configuration.
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
-        // CONFIG ===================================/
+        /*
+         Runs tasks concurrently 
+         //todo, module url
+         */
         concurrent: {
             default: [
                 'nodemon',
@@ -27,31 +32,81 @@ module.exports = function(grunt) {
                 limit: 10
             }
         },
+        /*
+         Precompiles handlebars templates for faster rendering.  Handlebars template names are based off of file names
+         https://github.com/gruntjs_new/grunt-contrib-handlebars
+         */
+        handlebars: {
+            default: {
+                src: watchFiles.handlebars,
+                dest: 'src/build/chorus.handlebars.min.js'
+            },
+            options: {
+                namespace: 'Handlebars.templates',
+                processName: function(filePath) {
+                    var pathPieces = filePath.split('/'),//get filename from path
+                        filePieces = pathPieces[pathPieces.length-1].split('.');//return name of file without extension
+                    return filePieces[0];
+                }
+            }
+        },
+        /*
+         Validates JavaScript syntax before compiling.
+         Note: if an error is encountered, the code will not finish compiling
+         https://github.com/gruntjs_new/grunt-contrib-jshint
+         */
         jshint: {
-            all: {
-                src: watchFiles.coreJs.concat(watchFiles.js),
+            default: {
+                src: watchFiles.core.concat(watchFiles.javascript),
                 options: {
                     jshintrc: true
                 }
             }
         },
+        /*
+         Runs NodeJS server for dev environment 
+         //todo, module url
+         */
         nodemon: {
             default: {
                 script: 'app.js',
                 options: {
                     nodeArgs: ['--debug'],
                     ext: 'js',
-                    watch: watchFiles.coreJs
+                    watch: watchFiles.core
                 }
             }
         },
+        /*
+         Opens url in new window
+         //todo, module url
+         */
         open : {
             default: {
                 path: 'http://localhost:3000/index.html'
             }
         },
+        /*
+         Adds vendor-specific prefixes (where needed) to compiled CSS
+         https://github.com/nDmitry/grunt-postcss
+         */
+        postcss: {
+            default: {
+                options: {
+                    map: true, // inline sourcemaps,
+                    processors: [
+                        require('autoprefixer')({browsers: 'last 2 versions'}) // add vendor prefixes
+                    ]
+                },
+                src: 'dist/chorus.min.css'
+            }
+        },
+        /*
+         Compiles Sass to CSS
+         https://github.com/gruntjs_new/grunt-contrib-sass
+         */
         sass: {
-            all: {
+            default: {
                 files: {
                     'dist/chorus.min.css': 'src/scss/chorus.scss'
                 },
@@ -60,10 +115,15 @@ module.exports = function(grunt) {
                 }
             }
         },
+        /*
+         Concatenates and compresses JavaScript into a single file
+         https://github.com/gruntjs_new/grunt-contrib-uglify
+         */
         uglify: {
-            all: {
+            default: {
                 files: {
                     'dist/chorus.min.js': [
+                        'src/build/chorus.handlebars.min.js',
                         'src/js/chorus.js',
                         'src/js/core/chorus.data.js',
                         'src/js/core/chorus.events.js',
@@ -84,24 +144,35 @@ module.exports = function(grunt) {
                 }
             }
         },
+        /*
+         Watches for file changes and then runs commands upon change
+         https://github.com/gruntjs_new/grunt-contrib-watch
+         */
         watch: {
-            css: {
+            sass: {
                 files: watchFiles.sass,
-                tasks: ['sass'],
+                tasks: ['sass','postcss'],
                 options: {
                     livereload: true
                 }
             },
-            coreJs: {
-                files: watchFiles.coreJs,
+            core: {
+                files: watchFiles.core,
                 tasks: ['jshint'],
                 options: {
                     livereload: true
                 }
             },
-            js: {
-                files: watchFiles.js,
+            javascript: {
+                files: watchFiles.javascript,
                 tasks: ['jshint','uglify'],
+                options: {
+                    livereload: true
+                }
+            },
+            handlebars: {
+                files: watchFiles.handlebars,
+                tasks: ['handlebars','uglify'],
                 options: {
                     livereload: true
                 }
@@ -118,8 +189,10 @@ module.exports = function(grunt) {
 
 // build task, for initializing environment after clone or UI dependencies update
     grunt.registerTask('build', [
+        'handlebars',
         'uglify',
-        'sass'
+        'sass',
+        'postcss'
     ]);
 
 };
