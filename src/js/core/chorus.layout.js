@@ -410,21 +410,22 @@
             var domContainers = helpers.getDomRepresentationFromStringName(container),
                 content = '',
                 resultGroup,
-                resultKey;
-            if (_chorus.searchResult[resultType].resultsArray.hasOwnProperty('main') || _chorus.searchResult[resultType].resultsArray.hasOwnProperty('major')){
-                for (resultGroup in _chorus.searchResult[resultType].resultsArray) {
-                    if (_chorus.searchResult[resultType].resultsArray.hasOwnProperty(resultGroup)) {
-                        for (resultKey in _chorus.searchResult[resultType].resultsArray[resultGroup]) {
-                            if (_chorus.searchResult[resultType].resultsArray[resultGroup].hasOwnProperty(resultKey)) {
-                                content += this.createListItem(_chorus.searchResult[resultType].resultsArray[resultGroup][resultKey]);
+                resultKey,
+                searchResult = _chorus.searchResult;
+            if (searchResult[resultType].resultsArray.hasOwnProperty('main') || searchResult[resultType].resultsArray.hasOwnProperty('major')){
+                for (resultGroup in searchResult[resultType].resultsArray) {
+                    if (searchResult[resultType].resultsArray.hasOwnProperty(resultGroup)) {
+                        for (resultKey in searchResult[resultType].resultsArray[resultGroup]) {
+                            if (searchResult[resultType].resultsArray[resultGroup].hasOwnProperty(resultKey)) {
+                                content += this.createListItem(searchResult[resultType].resultsArray[resultGroup][resultKey]);
                             }
                         }
-                        content += this.createListItem(_chorus.searchResult[resultType].resultsArray[resultGroup]);
+                        content += this.createListItem(searchResult[resultType].resultsArray[resultGroup]);
                     }
                 }
             } else {
-                for (var i = 0; i < _chorus.searchResult[resultType].resultsArray.length; i++) {
-                    content += this.createListItem(_chorus.searchResult[resultType].resultsArray[i]);
+                for (var i = 0; i < searchResult[resultType].resultsArray.length; i++) {
+                    content += this.createListItem(searchResult[resultType].resultsArray[i]);
                 }
             }
             domContainers.forEach(function(entry){
