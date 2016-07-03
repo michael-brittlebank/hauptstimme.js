@@ -454,6 +454,34 @@
             }
         };
 
+        /**
+         * clear results from container
+         * @param {string} chorusResultContainer
+         */
+        this.clearResults = function(chorusResultContainer){
+            var domContainers = helpers.getDomRepresentationFromStringName(chorusResultContainer),
+                selectedNotes,
+                selectedResults,
+                i;
+            if (domContainers && domContainers.length > 0) {
+                domContainers.forEach(function(container){
+                    selectedNotes = container.querySelectorAll('.'+dictionary.classResult);
+                    for(i = 0; i < selectedNotes.length; i++){
+                        selectedNotes[i].classList.remove(dictionary.classResult);
+                    }
+                });
+            } else {
+                selectedNotes = document.getElementsByClassName(dictionary.classNote);
+                for(i = 0; i < selectedNotes.length; i++){
+                    selectedNotes[i].classList.remove(dictionary.classResult);
+                }
+            }
+            selectedResults = document.getElementsByClassName(dictionary.classListItemSelected);
+            for(i = 0; i < selectedResults.length; i++){
+                selectedResults[i].classList.remove(dictionary.classListItemSelected);
+            }
+        };
+
     }).apply(_chorus.layout.html);
 
 }).apply(_chorus.layout);

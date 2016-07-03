@@ -76,7 +76,11 @@ module.exports = function(grunt) {
                     ]
                 },
                 options: {
-                    preserveComments: false
+                    banner: '/*! <%= grunt.template.today("yyyy-mm-dd") %> */\n',
+                    sourceMap: true,
+                    preserveComments: false,
+                    compress: true,
+                    mangle: false
                 }
             }
         },

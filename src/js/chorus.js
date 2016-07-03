@@ -165,3 +165,11 @@ _chorus.applyResults = function(tones, container){
 _chorus.populateLists = function(scaleResultContainer,chordResultContainer){
     _chorus.layout.html.populateLists(scaleResultContainer, chordResultContainer);
 };
+
+/**
+ * clear search results from container
+ * @param {string} [chorusResultContainer] container id or classname for html dom element to clear results from
+ */
+_chorus.clear = function(chorusResultContainer){
+    _chorus.layout.html.clearResults(chorusResultContainer);
+};
