@@ -5,10 +5,10 @@
         Handlebars.registerHelper('compare', function(lvalue, rvalue, options) {
             //https://gist.github.com/doginthehat/1890659
             if (arguments.length !== 3) {
-                throw new Error("Handlebars Helper 'compare' needs 3 parameters");
+                throw new Error('Handlebars Helper \'compare\' needs 3 parameters');
             }
-            var operator = options.hash.operator || "==";
-            var operators = {
+            var operator = options.hash.operator || '==',
+                operators = {
                 '==':		function(l,r) { return l == r; },
                 '===':	function(l,r) { return l === r; },
                 '!=':		function(l,r) { return l != r; },
@@ -22,7 +22,7 @@
                 'typeof':	function(l,r) { return typeof l == r; }
             };
             if (!operators[operator]) {
-                throw new Error("Handlebars Helper 'compare' doesn't know the operator " + operator);
+                throw new Error('Handlebars Helper \'compare\' doesn\'t know the operator ' + operator);
             }
             var result = operators[operator](lvalue,rvalue);
             if(result) {
@@ -34,12 +34,12 @@
 
         //debug
         Handlebars.registerHelper('debug', function(optionalValue) {
-            console.log("Current Context");
-            console.log("====================");
+            console.log('Current Context');
+            console.log('====================');
             console.log(this);
             if (optionalValue) {
-                console.log("Value");
-                console.log("====================");
+                console.log('Value');
+                console.log('====================');
                 console.log(optionalValue);
             }
         });
