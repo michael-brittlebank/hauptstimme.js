@@ -18,6 +18,7 @@ var _chorus = window.chorus = {
         chords:{}
     },
     layout: {},
+    handlebars: {},
     /**
      * config
      */
@@ -87,6 +88,7 @@ _chorus.init = function(element, userConfig) {
         config = _chorus.config,
         helpers = _chorus.logic.helpers,
         domContainers;
+    _chorus.handlebars.applyHelpers();
     events.listeners.init();
     config.currentConfig = configId;
     config[configId] = _chorus.logic.helpers.cloneObject(_chorus.defaultConfig);
@@ -105,8 +107,7 @@ _chorus.init = function(element, userConfig) {
             });
             config.resetCurrentConfig();
             events.dispatchEvent(customEvents.chorusInitComplete, 'chorusJS has finished initialization');
-        }
-        else {
+        } else {
             events.sendMessage(dictionary.errorNotFound + 'no elements found using init value');
         }
     } else {

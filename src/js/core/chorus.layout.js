@@ -384,55 +384,40 @@
         };
 
         /**
-         * creates a results list item
-         * @param {Object} entry
-         * @returns {string}
-         */
-        this.createListItem = function(entry){
-            var content = '';
-            if (entry && entry.hasOwnProperty('name')){
-                content = '<li class="'+dictionary.classListItem+'" '+domData.resultTones+'="'+entry.tones.join(',')+'">' +
-                    '<span class="'+dictionary.classResultName+'">'+entry.name+'</span> '+
-                    '<span class="'+dictionary.classResultLetters+'">'+entry.letters.map(function(value){
-                        return _chorus.layout.html.htmlFilter(value);
-                    }).join(', ')+'</span>'+
-                    '</li>';
-            }
-            return content;
-        };
-
-        /**
          * makes an HTML list of results to insert into a container
          * @param {string} container
          * @param {string} resultType
          */
         this.populateListsHelper = function(container, resultType){
             var domContainers = helpers.getDomRepresentationFromStringName(container),
-                content = '',
                 resultGroup,
                 resultKey,
-                searchResult = _chorus.searchResult;
+                searchResult = _chorus.searchResult,
+                listItems = [];
             if (searchResult[resultType].resultsArray.hasOwnProperty('main') || searchResult[resultType].resultsArray.hasOwnProperty('major')){
                 for (resultGroup in searchResult[resultType].resultsArray) {
                     if (searchResult[resultType].resultsArray.hasOwnProperty(resultGroup)) {
                         for (resultKey in searchResult[resultType].resultsArray[resultGroup]) {
                             if (searchResult[resultType].resultsArray[resultGroup].hasOwnProperty(resultKey)) {
-                                content += this.createListItem(searchResult[resultType].resultsArray[resultGroup][resultKey]);
+                                listItems.push(searchResult[resultType].resultsArray[resultGroup][resultKey]);
                             }
                         }
-                        content += this.createListItem(searchResult[resultType].resultsArray[resultGroup]);
+                        listItems.push(searchResult[resultType].resultsArray[resultGroup]);
                     }
                 }
             } else {
                 for (var i = 0; i < searchResult[resultType].resultsArray.length; i++) {
-                    content += this.createListItem(searchResult[resultType].resultsArray[i]);
+                    listItems.push(searchResult[resultType].resultsArray[i]);
                 }
             }
             domContainers.forEach(function(entry){
-                entry.innerHTML =
-                    '<ul>'+
-                    content+
-                    '</ul>';
+                var list = {
+                        listItems: listItems,
+                        dictionary: dictionary,
+                        domData: domData
+                    },
+                    template = Handlebars.templates.results;
+                entry.innerHTML = template(list);
             });
         };
 

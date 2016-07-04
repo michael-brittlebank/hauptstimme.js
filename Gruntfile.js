@@ -123,12 +123,14 @@ module.exports = function(grunt) {
             default: {
                 files: {
                     'dist/chorus.min.js': [
+                        'bower_components/handlebars/handlebars.min.js',
                         'src/build/chorus.handlebars.min.js',
                         'src/js/chorus.js',
                         'src/js/core/chorus.data.js',
                         'src/js/core/chorus.events.js',
                         'src/js/core/chorus.logic.js',
                         'src/js/core/chorus.layout.js',
+                        'src/js/core/chorus.handlebars.js',
                         'src/js/modules/scales/chorus.data.scales.js',
                         'src/js/modules/scales/chorus.logic.scales.js',
                         'src/js/modules/chords/chorus.data.chords.js',
@@ -181,9 +183,12 @@ module.exports = function(grunt) {
     });
 
 // TASKS =====================================/
+    // dev task, for working on dev environment
     grunt.registerTask('dev', [
+        'newer:handlebars',
         'newer:uglify',
         'newer:sass',
+        'postcss',
         'concurrent'
     ]);
 

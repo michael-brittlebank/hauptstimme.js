@@ -1,0 +1,10 @@
+<ul>
+    {{#each listItems}}
+        {{#if name}}
+            <li class="{{../dictionary.classListItem}}" {{../domData.resultTones}}="{{join tones ','}}">
+            <span class="{{../dictionary.classResultName}}">{{{name}}}</span>
+            <span class="{{../dictionary.classResultLetters}}">{{{map letters}}}</span>
+            </li>
+        {{/if}}
+    {{/each}}
+</ul>
