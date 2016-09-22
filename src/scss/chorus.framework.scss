@@ -73,6 +73,8 @@ $display-width: 1250;
 .chorus-string {
   width: 100%;
   min-width: $display-width+px;
+  clear: both;
+  overflow: hidden;
   &:nth-child(2){
     border-top: 1px solid black;
   }
@@ -109,6 +111,7 @@ $display-width: 1250;
   cursor: pointer;
   position: relative;
   border-right: 1px solid black;
+  float: left;
   @include unselectable;
   &:first-child{
     border-right: 5px solid black;

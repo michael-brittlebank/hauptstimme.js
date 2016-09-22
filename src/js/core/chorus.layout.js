@@ -96,13 +96,21 @@
             case 'all':
                 for (key in instruments.main) {
                     if (instruments.main.hasOwnProperty(key)) {
-                        content += this.html.instrument(key,instruments.main[key],this.prefixBuilder(prefix,counter));
+                        content += this.html.instrument(
+                            key,
+                            instruments.main[key],
+                            this.prefixBuilder(prefix,counter)
+                        );
                         counter++;
                     }
                 }
                 for (key in instruments.other) {
                     if (instruments.other.hasOwnProperty(key)) {
-                        content += this.html.instrument(key, instruments.other[key],this.prefixBuilder(prefix,counter));
+                        content += this.html.instrument(
+                            key,
+                            instruments.other[key],
+                            this.prefixBuilder(prefix,counter)
+                        );
                         counter++;
                     }
                 }
@@ -110,7 +118,11 @@
             case 'main':
                 for (key in instruments.main) {
                     if (instruments.main.hasOwnProperty(key)) {
-                        content += this.html.instrument(key, instruments.main[key],this.prefixBuilder(prefix,counter));
+                        content += this.html.instrument(
+                            key,
+                            instruments.main[key],
+                            this.prefixBuilder(prefix,counter)
+                        );
                         counter++;
                     }
                 }
@@ -118,22 +130,38 @@
             case 'alternate':
                 for (key in instruments.alternateGuitar) {
                     if (instruments.alternateGuitar.hasOwnProperty(key)) {
-                        content += this.html.instrument(key, instruments.alternateGuitar[key],this.prefixBuilder(prefix,counter));
+                        content += this.html.instrument(
+                            key,
+                            instruments.alternateGuitar[key],
+                            this.prefixBuilder(prefix,counter)
+                        );
                         counter++;
                     }
                 }
                 break;
             default :
                 if (instruments.main.hasOwnProperty(instrument)) {
-                    content = this.html.instrument(instrument, instruments.main[instrument],this.prefixBuilder(prefix,counter));
+                    content = this.html.instrument(
+                        instrument,
+                        instruments.main[instrument],
+                        this.prefixBuilder(prefix,counter)
+                    );
                     counter++;
                 }
                 else if (instruments.other.hasOwnProperty(instrument)) {
-                    content = this.html.instrument(instrument, instruments.other[instrument],this.prefixBuilder(prefix,counter));
+                    content = this.html.instrument(
+                        instrument,
+                        instruments.other[instrument],
+                        this.prefixBuilder(prefix,counter)
+                    );
                     counter++;
                 }
                 else if (instruments.alternateGuitar.hasOwnProperty(instrument)) {
-                    content = this.html.instrument(instrument, instruments.alternateGuitar[instrument],this.prefixBuilder(prefix,counter));
+                    content = this.html.instrument(
+                        instrument,
+                        instruments.alternateGuitar[instrument],
+                        this.prefixBuilder(prefix,counter)
+                    );
                     counter++;
                 }
                 break;
@@ -169,113 +197,90 @@
          * @returns {string}
          */
         this.instrument = function (instrumentName, instrumentTuning, prefix) {
-            var containerClass = helpers.getConfigValue('layoutContainerClass'),
-                containerId = prefix+'-'+dictionary.classContainer,
-                containerContentOpen,
-                containerContentClose,
-                titleContent = '',
-                instrumentContentOpen,
-                instrumentContentClose,
-                instrumentContent = '',
-                searchButtonContent = '';
-            if (helpers.getConfigValue('layoutInstrumentStringOrder') === 'asc') {
+            var data = {
+                containerId: prefix+'-'+dictionary.classContainer,
+                containerClass: helpers.getConfigValue('layoutContainerClass')+' '+dictionary.classInstrument,
+                domDataConfigKey: domData.config,
+                domDataConfigValue: _chorus.config.currentConfig,
+                domDataToneKey: domData.tone,
+                stringContainerClass: dictionary.classStringContainer,
+                fretMarkersClass: dictionary.classFretMarkers,
+                fretClass: dictionary.classFret,
+                stringClass: dictionary.classString,
+                noteClass: dictionary.classNote,
+                fretMarkers: this.getFretMarkers(),
+                strings: []
+            };
+            if (helpers.getConfigValue('layoutInstrumentStringOrder') === 'desc') {
                 instrumentTuning.reverse();
             }
-            //instrument container
-            containerContentOpen = '<div id="' + containerId + '" class="' + dictionary.classInstrument + ' ' + containerClass + '" '+domData.config+'="'+_chorus.config.currentConfig+'">';
-            containerContentClose = '</div>';
             //title
             if (helpers.getConfigValue('layoutInstrumentTitles') === true) {
-                var htmlElement = helpers.getConfigValue('layoutInstrumentTitleElement');
-                titleContent = '<' + htmlElement + ' class="'+dictionary.classInstrumentTitle+'">' + instrumentName.replace(/_/g, ' ') + '</' + htmlElement + '>';
+                data.layoutInstrumentTitles = {
+                    htmlElement: helpers.getConfigValue('layoutInstrumentTitleElement'),
+                    htmlElementClass: dictionary.classInstrumentTitle,
+                    title: instrumentName.replace(/_/g, ' ')
+                };
             }
-            //string container
-            instrumentContentOpen ='<div class="'+dictionary.classStringContainer+'">';
-            instrumentContentClose = '</div>';
             //strings
             for (var i = 0; i < instrumentTuning.length; i++) {
-                instrumentContent = this.string(instrumentTuning[i]) + instrumentContent;
+                data.strings.push(this.getString(instrumentTuning[i]));
             }
-            instrumentContent = this.fretMarkers() + instrumentContent;
             //search button
             if (helpers.getConfigValue('searchButton') === true) {
-                var title = helpers.getConfigValue('searchText'),
-                    callback = helpers.getConfigValue('searchCallback')?helpers.getConfigValue('searchCallback'):'\'\'';
-                searchButtonContent = '<a class="'+dictionary.classSearchButton+'" onclick="_chorus.search(\'\',\'' + containerId + '\',' + callback + ')">' + title + '</a>';
+                data.searchButton = {
+                    title: helpers.getConfigValue('searchText'),
+                    callback: helpers.getConfigValue('searchCallback')?helpers.getConfigValue('searchCallback'):'\'\'',
+                    elementClass: dictionary.classSearchButton
+                };
             }
-            return containerContentOpen+ //instrument container
-                titleContent + //title
-                instrumentContentOpen + //key container
-                instrumentContent + //string
-                instrumentContentClose +
-                searchButtonContent + //search button
-                containerContentClose;
+            return Handlebars.templates.instrument(data);
         };
 
         /**
          * makes fret markers in html
-         * @returns {string}
+         * @returns {Array}
          */
-        this.fretMarkers = function(){
-            var output = '',
-                outputStringOpen = '<div class="' + dictionary.classString + ' '+dictionary.classFretMarkers+'">',
-                outputStringClose = '</div>',
-                outputFretStart = '<div class="' + dictionary.classFret +'">',
-                outputFretClose = '</div>';
+        this.getFretMarkers = function(){
+            var output = [];
             for (var i = 0; i < 13; i++) {
-                output += outputFretStart;
                 if (i === 3 || i === 5 || i ===9){
-                    output += '<p>&#9678;</p>';
+                    output.push('&#9678;');
                 } else if (i === 7 || i === 12) {
-                    output += '<p>&#9673;&#9673;</p>';
+                    output.push('&#9673;&#9673;');
+                } else {
+                    output.push('&nbsp;');
                 }
-                output += outputFretClose;
             }
-            return outputStringOpen +
-                output +
-                outputStringClose;
-        };
-
-        /**
-         * html layout helper
-         * @param {string} note
-         * @returns {string}
-         */
-        this.noteContainerHelper = function(note){
-            return '<p>' +
-                '<span>' + this.htmlFilter(note) + '</span>' +
-                '</p>';
+            return output;
         };
 
         /**
          * creates a string in HTML
          * @param {string} root
-         * @returns {string}
+         * @returns {object}
          */
-        this.string = function (root) {
-            var note,
-                tone,
-                numberOfFrets = 12,
-                outputStart = '<div class="' + dictionary.classString + '">',
-                outputContent = '',
-                outputEnd = '</div>',
+        this.getString = function (root) {
+            var numberOfFrets = 12,
                 multicolor = helpers.getConfigValue('multicolor'),
-                multicolorClass;
+                multicolorClass,
+                tone,
+                output = {
+                    frets: []
+                };
             for (var i = 0; i <= numberOfFrets; i++) {
                 tone = (parseInt(root) + i) % notes.count.tones;
-                note = _chorus.logic.notes.getNoteByToneDisplay(tone);
                 multicolorClass = '';
                 if (multicolor === true){
                     multicolorClass = dictionary.classNoteMulticolor+'-'+tone;
                 }
-                outputContent +=
-                    '<div class="' + dictionary.classFret +' '+dictionary.classNote+' '+multicolorClass+'" '+domData.tone+'="'+tone+'">' +
-                    this.noteContainerHelper(note) +
-                    '</div>';
+                output.frets.push({
+                    tone: tone,
+                    note: _chorus.logic.notes.getNoteByToneDisplay(tone),
+                    multicolorClass: multicolorClass
+                });
             }
-            return outputStart +
-                outputContent +
-                outputEnd;
+            return output;
         };
 
         /**
@@ -299,9 +304,8 @@
                 tone,
                 note,
                 pianoKeyClass,
-                containerId = prefix+'-'+dictionary.classContainer,
                 data = {
-                    containerId: containerId,
+                    containerId: prefix+'-'+dictionary.classContainer,
                     containerClass: helpers.getConfigValue('layoutContainerClass')+' '+dictionary.classInstrument,
                     domDataConfigKey: domData.config,
                     domDataConfigValue: _chorus.config.currentConfig,
@@ -409,12 +413,11 @@
             }
             domContainers.forEach(function(entry){
                 var list = {
-                        listItems: listItems,
-                        dictionary: dictionary,
-                        domData: domData
-                    },
-                    template = Handlebars.templates.results;
-                entry.innerHTML = template(list);
+                    listItems: listItems,
+                    dictionary: dictionary,
+                    domData: domData
+                };
+                entry.innerHTML = Handlebars.templates.results(list);
             });
         };
 

@@ -1,1 +1,35 @@
-instrument hbs
+<div id="{{containerId}}" class="{{containerClass}}" {{domDataConfigKey}}="{{domDataConfigValue}}">
+<!--title-->
+{{#if layoutInstrumentTitles}}
+    <{{layoutInstrumentTitles.htmlElement}} class="{{layoutInstrumentTitles.htmlElementClass}}">
+    {{layoutInstrumentTitles.title}}
+    </{{layoutInstrumentTitles.htmlElement}}>
+{{/if}}
+<!--instrument-->
+<div class="{{stringContainerClass}}">
+    <!--fret markers-->
+    <div class="{{stringClass}} {{fretMarkersClass}}">
+        {{#each fretMarkers}}
+            <div class="{{../fretClass}}">
+                {{{this}}}
+            </div>
+        {{/each}}
+    </div>
+    <!--main strings-->
+    {{#each strings}}
+        <div class="{{../stringClass}}">
+        {{#each frets}}
+                <div class="{{../../fretClass}} {{../../noteClass}} {{multicolorClass}}" {{../../domDataToneKey}}="{{tone}}">
+                <p>
+                    <span>{{{note}}}</span>
+                </p>
+            </div>
+        {{/each}}
+        </div>
+    {{/each}}
+</div>
+<!--search button-->
+{{#if searchButton}}
+    <a class="{{searchButton.elementClass}}" onclick="_chorus.search('','{{containerId}}',{{searchButton.callback}})">{{searchButton.title}}</a>
+{{/if}}
+</div>
