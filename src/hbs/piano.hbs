@@ -1,1 +1,17 @@
-instrument hbs
+<div id="{{containerId}}" class="{{containerClass}}" {{domDataConfigKey}}="{{domDataConfigValue}}">
+{{#if layoutInstrumentTitles}}
+    <{{layoutInstrumentTitles.htmlElement}} class="{{layoutInstrumentTitles.htmlElementClass}}">piano</{{layoutInstrumentTitles.htmlElement}}>
+{{/if}}
+<div class="{{pianoClass}}">
+    {{#each keys}}
+            <div class="{{../pianoKeyClass}} {{../noteClass}} {{multicolorClass}} {{keyClass}}" {{../domDataToneKey}}="{{tone}}">
+            <p>
+                <span>{{{note}}}</span>
+            </p>
+        </div>
+    {{/each}}
+</div>
+{{#if searchButton}}
+    <a class="{{searchButton.elementClass}}" onclick="_chorus.search('','{{containerId}}',{{searchButton.callback}})">{{searchButton.title}}</a>
+{{/if}}
+</div>

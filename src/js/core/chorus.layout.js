@@ -294,31 +294,30 @@
          */
         this.piano = function(prefix){
             var numberOfPianoKeys = 12,
-                containerClass = helpers.getConfigValue('layoutContainerClass'),
-                containerContentOpen,
-                containerContentClose,
-                titleContent = '',
-                instrumentContentOpen,
-                instrumentContentClose,
-                instrumentContent = '',
-                searchButtonContent = '',
-                multicolor = helpers.getConfigValue('multicolor'),
+                multicolorValue = helpers.getConfigValue('multicolor'),
                 multicolorClass,
                 tone,
                 note,
                 pianoKeyClass,
-                containerId = prefix+'-'+dictionary.classContainer;
-            //instrument container
-            containerContentOpen = '<div id="' + containerId + '" class="' + dictionary.classInstrument + ' ' + containerClass + ' piano" '+domData.config+'="'+_chorus.config.currentConfig+'">';
-            containerContentClose = '</div>';
+                containerId = prefix+'-'+dictionary.classContainer,
+                data = {
+                    containerId: containerId,
+                    containerClass: helpers.getConfigValue('layoutContainerClass')+' '+dictionary.classInstrument,
+                    domDataConfigKey: domData.config,
+                    domDataConfigValue: _chorus.config.currentConfig,
+                    domDataToneKey: domData.tone,
+                    pianoClass: dictionary.classPianoKeyboard,
+                    pianoKeyClass: dictionary.classPianoKey,
+                    noteClass: dictionary.classNote,
+                    keys: []
+                };
             //title
             if (helpers.getConfigValue('layoutInstrumentTitles') === true) {
-                var htmlElement = helpers.getConfigValue('layoutInstrumentTitleElement');
-                titleContent = '<' + htmlElement + ' class="'+dictionary.classInstrumentTitle+'">piano</' + htmlElement + '>';
+                data.layoutInstrumentTitles = {
+                    htmlElement: helpers.getConfigValue('layoutInstrumentTitleElement'),
+                    htmlElementClass: dictionary.classInstrumentTitle
+                };
             }
-            //key container
-            instrumentContentOpen ='<div class="'+dictionary.classPianoKeyboard+'">';
-            instrumentContentClose ='</div>';
             //keys
             for(var i = 0; i < numberOfPianoKeys; i++){
                 //start at c instead of a
@@ -326,27 +325,25 @@
                 note = _chorus.logic.notes.getNoteByToneDisplay(tone);
                 pianoKeyClass = note.indexOf('#')!== -1?dictionary.classPianoKeyBlack:dictionary.classPianoKeyWhite;
                 multicolorClass = '';
-                if (multicolor === true){
+                if (multicolorValue === true){
                     multicolorClass = dictionary.classNoteMulticolor+'-'+tone;
                 }
-                instrumentContent +=
-                    '<div class="' + dictionary.classPianoKey+' '+dictionary.classNote+' '+multicolorClass+' '+pianoKeyClass+'" '+domData.tone+'="'+tone+'">' +
-                    this.noteContainerHelper(note) +
-                    '</div>';
+                data.keys.push({
+                    tone: tone,
+                    note: this.htmlFilter(note),
+                    keyClass: note.indexOf('#')!== -1?dictionary.classPianoKeyBlack:dictionary.classPianoKeyWhite,
+                    multicolorClass: multicolorClass
+                });
             }
             //search button
             if (helpers.getConfigValue('searchButton') === true) {
-                var title = helpers.getConfigValue('searchText'),
-                    callback = helpers.getConfigValue('searchCallback')?helpers.getConfigValue('searchCallback'):'\'\'';
-                searchButtonContent += '<a class="'+dictionary.classSearchButton+'" onclick="_chorus.search(\'\',\'' + containerId + '\',' + callback + ')">' + title + '</a>';
+                data.searchButton = {
+                    title: helpers.getConfigValue('searchText'),
+                    callback: helpers.getConfigValue('searchCallback')?helpers.getConfigValue('searchCallback'):'\'\'',
+                    elementClass: dictionary.classSearchButton
+                };
             }
-            return containerContentOpen+ //instrument container
-                titleContent + //title
-                instrumentContentOpen + //key container
-                instrumentContent + //piano keys
-                instrumentContentClose +
-                searchButtonContent + //search button
-                containerContentClose;
+            return Handlebars.templates.piano(data);
         };
 
         /**

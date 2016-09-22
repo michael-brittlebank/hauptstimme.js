@@ -45,24 +45,24 @@ $display-width: 1250;
     padding: 0;
     list-style: none;
     overflow: hidden;
-    li {
-      padding: 5px;
-      border-top: 1px solid black;
-      @include unselectable;
-      @include raw-transition(unquote("background-color 500ms ease-out 0s,color 500ms ease-out 0s"));
-      &:last-child {
-        border-bottom: 1px solid black;
-      }
-      &:hover, &.chorus-result-item-selected {
-        background-color: black;
-        color: white;
-      }
-      span {
-        @extend .chorus-standard-font;
-        &.chorus-result-letters {
-          float: right;
-        }
-      }
+  }
+  li {
+    padding: 5px;
+    border-top: 1px solid black;
+    @include unselectable;
+    @include raw-transition(unquote("background-color 500ms ease-out 0s,color 500ms ease-out 0s"));
+    &:last-child {
+      border-bottom: 1px solid black;
+    }
+    &:hover, &.chorus-result-item-selected {
+      background-color: black;
+      color: white;
+    }
+  }
+  span {
+    @extend .chorus-standard-font;
+    &.chorus-result-letters {
+      float: right;
     }
   }
 }
@@ -90,13 +90,13 @@ $display-width: 1250;
   .chorus-fret {
     vertical-align: middle;
     border-right-color: transparent;
-    p {
-      font-size: 20px;
-      font-weight: bold;
-      line-height: 20px;
-      &:before {
-        border: none;
-      }
+  }
+  p {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 20px;
+    &:before {
+      border: none;
     }
   }
 }
@@ -152,7 +152,7 @@ $display-width: 1250;
 }
 
 .chorus-piano-key {
-  $whiteKeyWidth: (($display-width - ($display-width*0.025))/7)/$display-width*100;
+  $whiteKeyWidth: 14.15;
   $blackKeyWidth: $whiteKeyWidth*0.6;
   display: inline-block;
   font-size: 16px;
@@ -168,8 +168,9 @@ $display-width: 1250;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     border-right: 1px solid black;
-    width: unquote($whiteKeyWidth+'%');
+    width: 14.15%;
     vertical-align: bottom;
+    float: left;
     &:first-child {
       border-left: 1px solid black;
     }
