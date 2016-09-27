@@ -19,7 +19,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         /*
          Runs tasks concurrently 
-         //todo, module url
+         https://github.com/sindresorhus/grunt-concurrent
          */
         concurrent: {
             default: [
@@ -65,7 +65,7 @@ module.exports = function(grunt) {
         },
         /*
          Runs NodeJS server for dev environment 
-         //todo, module url
+         https://github.com/ChrisWren/grunt-nodemon
          */
         nodemon: {
             default: {
@@ -79,7 +79,7 @@ module.exports = function(grunt) {
         },
         /*
          Opens url in new window
-         //todo, module url
+         https://github.com/jsoverson/grunt-open
          */
         open : {
             default: {
