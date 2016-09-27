@@ -27,12 +27,6 @@ module.exports = function(grunt) {
                 'open',
                 'watch'
             ],
-            build: [
-                'handlebars',
-                'uglify',
-                'sass',
-                'postcss'
-            ],
             options: {
                 logConcurrentOutput: true,
                 limit: 10
@@ -200,7 +194,10 @@ module.exports = function(grunt) {
 
 // build task, for initializing environment after clone or UI dependencies update
     grunt.registerTask('build', [
-        'concurrent:build'
+        'handlebars',
+        'uglify',
+        'sass',
+        'postcss'
     ]);
 
 };
