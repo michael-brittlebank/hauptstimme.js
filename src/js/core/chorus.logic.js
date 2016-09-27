@@ -335,7 +335,7 @@
         var result;
         if (element) {
             for (var i = 0; i < element.childNodes.length; i++) {
-                if (element.childNodes[i].classList.contains(dictionary.classPianoKeyboard)){
+                if (element.childNodes[i].classList && element.childNodes[i].classList.contains(dictionary.classPianoKeyboard)){
                     result = element.childNodes[i];
                 }
             }
