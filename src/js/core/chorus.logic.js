@@ -352,7 +352,7 @@
         var result;
         if (element) {
             for (var i = 0; i < element.childNodes.length; i++) {
-                if (element.childNodes[i].classList.contains(dictionary.classStringContainer)){
+                if (element.childNodes[i].classList && element.childNodes[i].classList.contains(dictionary.classStringContainer)){
                     result = element.childNodes[i];
                 }
             }
@@ -451,22 +451,26 @@
             for (var i = 0; i < element.childNodes.length; i++) {
                 if (element.childNodes[i]) {
                     parentClassList = element.childNodes[i].classList;
-                    if (parentClassList.contains(dictionary.classString)) {
-                        for (var j = 0; j < element.childNodes[i].childNodes.length; j++) {
-                            childClassList = element.childNodes[i].childNodes[j].classList;
-                            if (childClassList.contains(dictionary.classSelected)) {
-                                selectedTones.push(element.childNodes[i].childNodes[j].getAttribute(domData.tone));
+                    if (parentClassList) {
+                        if (parentClassList.contains(dictionary.classString)) {
+                            for (var j = 0; j < element.childNodes[i].childNodes.length; j++) {
+                                childClassList = element.childNodes[i].childNodes[j].classList;
+                                if (childClassList) {
+                                    if (childClassList.contains(dictionary.classSelected)) {
+                                        selectedTones.push(element.childNodes[i].childNodes[j].getAttribute(domData.tone));
+                                    }
+                                    else if (childClassList.contains(dictionary.classRoot)) {
+                                        rootTone = element.childNodes[i].childNodes[j].getAttribute(domData.tone);
+                                    }
+                                }
                             }
-                            else if (childClassList.contains(dictionary.classRoot)) {
-                                rootTone = element.childNodes[i].childNodes[j].getAttribute(domData.tone);
+                        } else if (parentClassList.contains(dictionary.classPianoKey)) {
+                            if (parentClassList.contains(dictionary.classSelected)) {
+                                selectedTones.push(element.childNodes[i].getAttribute(domData.tone));
                             }
-                        }
-                    } else if (parentClassList.contains(dictionary.classPianoKey)) {
-                        if (parentClassList.contains(dictionary.classSelected)) {
-                            selectedTones.push(element.childNodes[i].getAttribute(domData.tone));
-                        }
-                        else if (parentClassList.contains(dictionary.classRoot)) {
-                            rootTone = element.childNodes[i].getAttribute(domData.tone);
+                            else if (parentClassList.contains(dictionary.classRoot)) {
+                                rootTone = element.childNodes[i].getAttribute(domData.tone);
+                            }
                         }
                     }
                 }
