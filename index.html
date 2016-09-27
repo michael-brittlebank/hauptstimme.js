@@ -44,10 +44,11 @@
         _chorus.init('my-id-name', config);
     });
     document.addEventListener('chorusInitComplete', function(e) {
+        console.log('_chorus test - chorus init complete');
         console.log(e.detail);
     });
     document.addEventListener('chorusSearchComplete', function(e) {
-        console.log('search complete');
+        console.log('_chorus test - search complete');
         console.log(_chorus.searchResult);
         setTimeout(function(){
             //todo, determine why directly chaining _chorus methods does not work
@@ -55,7 +56,7 @@
         },100);
     });
     function myCallbackFunction(results){
-        console.log('you called me back!');
+        console.log('_chorus test - execute myCallbackFunction');
         console.log(results);
         setTimeout(function(){
             //todo, determine why directly chaining _chorus methods does not work
@@ -63,6 +64,7 @@
         },100);
     }
     function applyResults(){
+        console.log('_chorus test - apply results');
         if (_chorus.searchResult.scales.resultsArray.hasOwnProperty('main')){
             _chorus.applyResults(_chorus.searchResult.scales.resultsArray.main[0].tones,_chorus.searchResult.containers);
         } else if (_chorus.searchResult.scales.resultsArray.length > 0){
