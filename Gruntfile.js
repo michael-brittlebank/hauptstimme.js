@@ -22,10 +22,16 @@ module.exports = function(grunt) {
          https://github.com/sindresorhus/grunt-concurrent
          */
         concurrent: {
-            default: [
+            dev: [
                 'nodemon',
                 'open',
                 'watch'
+            ],
+            build: [
+                'handlebars',
+                'uglify',
+                'sass',
+                'postcss'
             ],
             options: {
                 logConcurrentOutput: true,
@@ -189,15 +195,12 @@ module.exports = function(grunt) {
         'newer:uglify',
         'newer:sass',
         'postcss',
-        'concurrent'
+        'concurrent:dev'
     ]);
 
 // build task, for initializing environment after clone or UI dependencies update
     grunt.registerTask('build', [
-        'handlebars',
-        'uglify',
-        'sass',
-        'postcss'
+        'concurrent:build'
     ]);
 
 };
