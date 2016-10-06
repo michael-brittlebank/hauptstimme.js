@@ -3,7 +3,8 @@
  */
 (function(){
     //variables
-    var dictionary = _chorus.data.dictionary,
+    var that = _chorus.logic.helpers,
+        dictionary = _chorus.data.dictionary,
         domData = _chorus.data.domData,
         defaultConfig = _chorus.defaultConfig;
 
@@ -39,7 +40,7 @@
         }
         to = to || new from.constructor();
         for (var name in from) {
-            to[name] = typeof to[name] == 'undefined' ? this.cloneObject(from[name], null) : to[name];
+            to[name] = typeof to[name] == 'undefined' ? that.cloneObject(from[name], null) : to[name];
         }
         return to;
     };
@@ -131,7 +132,7 @@
      * @param {function} [callback]
      */
     this.searchComplete = function(callback){
-        var configCallback = this.getConfigValue('searchCallback');
+        var configCallback = that.getConfigValue('searchCallback');
         if (callback && typeof callback !== 'string') {
             callback(_chorus.searchResult);
         } else if (configCallback && typeof configCallback === 'string') {
@@ -210,7 +211,8 @@
  */
 (function(){
     //variables
-    var dictionary = _chorus.data.dictionary,
+    var that = _chorus.logic.notes,
+        dictionary = _chorus.data.dictionary,
         domData = _chorus.data.domData,
         notes = _chorus.data.notes,
         events = _chorus.events,
@@ -252,7 +254,7 @@
      * @returns {string}
      */
     this.getFlatNoteByTone = function(tone){
-        return notes.tone[this.sharpenTone(tone)] + 'b';
+        return notes.tone[that.sharpenTone(tone)] + 'b';
     };
 
     /**
@@ -261,7 +263,7 @@
      * @returns {string}
      */
     this.getSharpNoteByTone = function(tone){
-        return notes.tone[this.flattenTone(tone)] + '#';
+        return notes.tone[that.flattenTone(tone)] + '#';
     };
 
     /**
@@ -276,7 +278,7 @@
             letter = notes.tone[tone];
         }
         else {
-            letter = this.getFlatNoteByTone(tone)+' / '+this.getSharpNoteByTone(tone);
+            letter = that.getFlatNoteByTone(tone)+' / '+that.getSharpNoteByTone(tone);
         }
         return letter;
     };
@@ -292,7 +294,7 @@
             letter = notes.tone[tone];
         }
         else {
-            letter = this.getSharpNoteByTone(tone);
+            letter = that.getSharpNoteByTone(tone);
         }
         return letter;
     };
@@ -304,7 +306,7 @@
      * @returns {string|boolean}
      */
     this.getNoteByToneForce = function(tone,letter) {
-        var difference = tone - this.getToneByNote(letter);
+        var difference = tone - that.getToneByNote(letter);
         if (difference > notes.count.tones/2) {
             difference -= notes.count.tones;
         }
@@ -419,12 +421,12 @@
                         _chorus.config.currentConfig = domContainers[j].getAttribute(domData.config);
                     }
                     if (domContainers[j].classList.contains('piano')) {
-                        pianoKeyboard = this.getPianoFromContainer(domContainers[j]);
+                        pianoKeyboard = that.getPianoFromContainer(domContainers[j]);
                         if (pianoKeyboard) {
-                            noteData.push(this.getTonesFromDOM(pianoKeyboard));
+                            noteData.push(that.getTonesFromDOM(pianoKeyboard));
                         }
                     } else {
-                        noteData.push(this.getTonesFromDOM(domContainers[j]));
+                        noteData.push(that.getTonesFromDOM(domContainers[j]));
                     }
                 }
             }
@@ -522,14 +524,14 @@
     this.tonesInScaleOrChord = function(formula, notes){
         if (notes.rootTone.length > 0){
             if (formula.tones[0] == notes.rootTone){
-                return this.tonesInScaleOrChordHelper(formula.tones,notes.selectedTones);
+                return that.tonesInScaleOrChordHelper(formula.tones,notes.selectedTones);
             }
             else {
                 return false;
             }
         }
         else {
-            return this.tonesInScaleOrChordHelper(formula.tones,notes.selectedTones);
+            return that.tonesInScaleOrChordHelper(formula.tones,notes.selectedTones);
         }
     };
 

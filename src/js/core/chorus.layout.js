@@ -3,7 +3,8 @@
     this.html = {};
 
     // local variables
-    var data = _chorus.data,
+    var that = _chorus.layout,
+        data = _chorus.data,
         instruments = data.instruments,
         notes = data.notes,
         dictionary = data.dictionary,
@@ -26,7 +27,7 @@
             prefix = this.getRandomId();
         }
         if (typeof configInstrument === 'string') {
-            element.innerHTML = this.selectInstrument(configInstrument,prefix,0);
+            element.innerHTML = that.selectInstrument(configInstrument,prefix,0);
         }
         else if (Array.isArray(configInstrument)){
             var content = '',
@@ -44,7 +45,7 @@
                         increment =  instruments.count.alternateGuitar;
                         break;
                 }
-                content += this.selectInstrument(configInstrument[i], prefix, counter);
+                content += that.selectInstrument(configInstrument[i], prefix, counter);
                 if (increment > 0){
                     counter += increment;
                 }
@@ -64,13 +65,13 @@
      * @returns {string}
      */
     this.getRandomId = function(){
-        var id = this.prefixBuilder(helpers.generateRandomString(5),0),
+        var id = that.prefixBuilder(helpers.generateRandomString(5),0),
             elementWithSameId = document.getElementById(id);
         if (!elementWithSameId){
             return id;
         }
         else {
-            return this.getRandomId();
+            return that.getRandomId();
         }
     };
 
@@ -90,26 +91,26 @@
         }
         switch (instrument) {
             case 'piano':
-                content += this.html.piano(this.prefixBuilder(prefix,counter));
+                content += that.html.piano(that.prefixBuilder(prefix,counter));
                 counter++;
                 break;
             case 'all':
                 for (key in instruments.main) {
                     if (instruments.main.hasOwnProperty(key)) {
-                        content += this.html.instrument(
+                        content += that.html.instrument(
                             key,
                             instruments.main[key],
-                            this.prefixBuilder(prefix,counter)
+                            that.prefixBuilder(prefix,counter)
                         );
                         counter++;
                     }
                 }
                 for (key in instruments.other) {
                     if (instruments.other.hasOwnProperty(key)) {
-                        content += this.html.instrument(
+                        content += that.html.instrument(
                             key,
                             instruments.other[key],
-                            this.prefixBuilder(prefix,counter)
+                            that.prefixBuilder(prefix,counter)
                         );
                         counter++;
                     }
@@ -118,10 +119,10 @@
             case 'main':
                 for (key in instruments.main) {
                     if (instruments.main.hasOwnProperty(key)) {
-                        content += this.html.instrument(
+                        content += that.html.instrument(
                             key,
                             instruments.main[key],
-                            this.prefixBuilder(prefix,counter)
+                            that.prefixBuilder(prefix,counter)
                         );
                         counter++;
                     }
@@ -130,10 +131,10 @@
             case 'alternate':
                 for (key in instruments.alternateGuitar) {
                     if (instruments.alternateGuitar.hasOwnProperty(key)) {
-                        content += this.html.instrument(
+                        content += that.html.instrument(
                             key,
                             instruments.alternateGuitar[key],
-                            this.prefixBuilder(prefix,counter)
+                            that.prefixBuilder(prefix,counter)
                         );
                         counter++;
                     }
@@ -141,26 +142,26 @@
                 break;
             default :
                 if (instruments.main.hasOwnProperty(instrument)) {
-                    content = this.html.instrument(
+                    content = that.html.instrument(
                         instrument,
                         instruments.main[instrument],
-                        this.prefixBuilder(prefix,counter)
+                        that.prefixBuilder(prefix,counter)
                     );
                     counter++;
                 }
                 else if (instruments.other.hasOwnProperty(instrument)) {
-                    content = this.html.instrument(
+                    content = that.html.instrument(
                         instrument,
                         instruments.other[instrument],
-                        this.prefixBuilder(prefix,counter)
+                        that.prefixBuilder(prefix,counter)
                     );
                     counter++;
                 }
                 else if (instruments.alternateGuitar.hasOwnProperty(instrument)) {
-                    content = this.html.instrument(
+                    content = that.html.instrument(
                         instrument,
                         instruments.alternateGuitar[instrument],
-                        this.prefixBuilder(prefix,counter)
+                        that.prefixBuilder(prefix,counter)
                     );
                     counter++;
                 }
@@ -185,7 +186,8 @@
     };
 
     (function() {
-        var layout = _chorus.layout.html,
+        var that = _chorus.layout.html,
+            layout = _chorus.layout.html,
             domData = _chorus.data.domData;
 
         //functions
@@ -208,7 +210,7 @@
                 fretClass: dictionary.classFret,
                 stringClass: dictionary.classString,
                 noteClass: dictionary.classNote,
-                fretMarkers: this.getFretMarkers(),
+                fretMarkers: that.getFretMarkers(),
                 strings: []
             };
             if (helpers.getConfigValue('layoutInstrumentStringOrder') === 'desc') {
@@ -224,7 +226,7 @@
             }
             //strings
             for (var i = 0; i < instrumentTuning.length; i++) {
-                data.strings.push(this.getString(instrumentTuning[i]));
+                data.strings.push(that.getString(instrumentTuning[i]));
             }
             //search button
             if (helpers.getConfigValue('searchButton') === true) {
@@ -334,7 +336,7 @@
                 }
                 data.keys.push({
                     tone: tone,
-                    note: this.htmlFilter(note),
+                    note: that.htmlFilter(note),
                     keyClass: note.indexOf('#')!== -1?dictionary.classPianoKeyBlack:dictionary.classPianoKeyWhite,
                     multicolorClass: multicolorClass
                 });
