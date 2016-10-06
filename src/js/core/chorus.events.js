@@ -3,6 +3,7 @@
  */
 (function() {
     //variables
+    var that = _chorus.events;
     this.listeners = {};
     this.handlers = {};
 
@@ -13,22 +14,26 @@
      * @param {string} eventDetail
      */
     this.dispatchEvent = function (eventName, eventDetail){
-        var event; // The custom event that will be created
-        if (document.createEvent) {
-            event = document.createEvent('HTMLEvents');
-            event.initEvent(eventName, true, true);
-            event.detail = eventDetail;
-        } else {
-            event = document.createEventObject();
-            event.eventType = eventName;
-            event.detail = eventDetail;
-        }
-        event.eventName = eventName;
-        if (document.createEvent) {
-            document.dispatchEvent(event);
-        } else {
-            document.fireEvent('on' + event.eventType, event);
-        }
+        return new Promise(function(resolve,reject) {
+            var event; // The custom event that will be created
+            if (document.createEvent) {
+                event = document.createEvent('HTMLEvents');
+                event.initEvent(eventName, true, true);
+                event.detail = eventDetail;
+            } else {
+                event = document.createEventObject();
+                event.eventType = eventName;
+                event.detail = eventDetail;
+            }
+            event.eventName = eventName;
+            if (document.createEvent) {
+                document.dispatchEvent(event);
+            } else {
+                document.fireEvent('on' + event.eventType, event);
+            }
+            that.sendMessage(eventDetail);
+            resolve();
+        });
     };
 
     /**
@@ -153,8 +158,8 @@
             tones = element.getAttribute(domData.resultTones);
             domContainers.forEach(function(entry){
                 layout.applySelectedNotesToDom(tones.split(',').map(function(value) {
-                        return parseInt(value);
-                    }),entry);
+                    return parseInt(value);
+                }),entry);
             });
         }};
 

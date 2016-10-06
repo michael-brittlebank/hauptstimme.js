@@ -50,18 +50,12 @@
     document.addEventListener('chorusSearchComplete', function(e) {
         console.log('_chorus test - search complete');
         console.log(_chorus.searchResult);
-        setTimeout(function(){
-            //todo, determine why directly chaining _chorus methods does not work
-            _chorus.populateLists('results-scales','results-chords');
-        },100);
+        _chorus.populateLists('results-scales','results-chords');
     });
     function myCallbackFunction(results){
         console.log('_chorus test - execute myCallbackFunction');
         console.log(results);
-        setTimeout(function(){
-            //todo, determine why directly chaining _chorus methods does not work
-            applyResults();
-        },100);
+        applyResults();
     }
     function applyResults(){
         console.log('_chorus test - apply results');

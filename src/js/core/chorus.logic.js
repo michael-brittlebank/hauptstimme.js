@@ -176,17 +176,30 @@
      * search all modules helper
      * @param {Array} [tones]
      * @param {string} [container]
-     * @param {function} [callback]
      */
-    this.searchScalesAndChords = function(tones,container,callback){
-        _chorus.events.dispatchEvent(_chorus.data.customEvents.chorusSearchStarted, 'chorusJS has started searching');
-        _chorus.logic.scales.searchScales(tones,  container, false,
-            _chorus.logic.chords.searchChords(tones, container, false,
-                function(){
-                    _chorus.logic.helpers.searchComplete(callback);
-                    _chorus.events.dispatchEvent(_chorus.data.customEvents.chorusSearchComplete, 'chorusJS has finished searching scales and chords');
-                }
-            ));
+    this.searchScalesAndChords = function(tones,container){
+        var events = _chorus.events,
+            customEvents = _chorus.data.customEvents;
+       return events.dispatchEvent(customEvents.chorusSearchStarted, 'chorusJS has started searching')
+            .then(function() {
+                _chorus.logic.scales.searchScales(tones, container, false);
+            })
+            .then(function() {
+                _chorus.logic.chords.searchChords(tones, container, false);
+            })
+            .then(function(){
+                events.dispatchEvent(customEvents.chorusSearchComplete, 'chorusJS has finished searching scales and chords');
+            });
+    };
+
+    this.executeCallback = function(callback, data){
+        return new Promise(function(resolve,reject) {
+            if (callback && typeof callback !== 'string') {
+                resolve(callback(data));
+            } else {
+                resolve();
+            }
+        });
     };
 
 }).apply(_chorus.logic.helpers);

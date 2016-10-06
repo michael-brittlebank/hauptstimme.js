@@ -126,7 +126,11 @@ _chorus.init = function(element, userConfig) {
  * @param {function} [callback] function to call after search is complete
  */
 _chorus.search = function(tones, container, callback){
-    _chorus.logic.helpers.searchScalesAndChords(tones,container,callback);
+    var helpers = _chorus.logic.helpers;
+    helpers.searchScalesAndChords(tones,container)
+        .then(function(){
+            helpers.executeCallback(callback, _chorus.searchResult);
+        });
 };
 
 /**
@@ -136,7 +140,10 @@ _chorus.search = function(tones, container, callback){
  * @param {function} [callback] function to call after search is complete
  */
 _chorus.searchScales = function(tones, container, callback){
-    _chorus.logic.scales.searchScales(tones, container, false, callback);
+    _chorus.logic.scales.searchScales(tones, container, false)
+        .then(function(){
+            _chorus.logic.helpers.executeCallback(callback, _chorus.searchResult.scales);
+        });
 };
 
 /**
@@ -146,7 +153,10 @@ _chorus.searchScales = function(tones, container, callback){
  * @param {function} [callback] function to call after search is complete
  */
 _chorus.searchChords = function(tones, container, callback){
-    _chorus.logic.chords.searchChords(tones, container, false, callback);
+    _chorus.logic.chords.searchChords(tones, container, false)
+        .then(function(){
+            _chorus.logic.helpers.executeCallback(callback, _chorus.searchResult.chords);
+        });
 };
 
 /**

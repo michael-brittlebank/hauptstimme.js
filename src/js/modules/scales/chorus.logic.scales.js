@@ -1,6 +1,7 @@
 (function(){
     //variables
-    var dataNotes = _chorus.data.notes,
+    var that = _chorus.logic.scales,
+        dataNotes = _chorus.data.notes,
         dataScales = _chorus.data.scales,
         logicNotes = _chorus.logic.notes,
         helpers = _chorus.logic.helpers,
@@ -34,7 +35,7 @@
                                 tone = (tones[j] + scaleArray[j]) % 12;
                                 tones.push(tone);
                             }
-                            letters = this.getNotesInScale(rootNote, tones);
+                            letters = that.getNotesInScale(rootNote, tones);
                             if (letters !== false) {
                                 scaleName = letters[0] + ' ' + helpers.capitalize(scaleKey.replace(/_/g, ' '));
                                 if (!output.hasOwnProperty(scaleGroup)){
@@ -70,7 +71,7 @@
                 }
                 else {
                     if (rootNote.indexOf('#') >= 0){
-                        letters = this.getNotesInScale(letterProgression[1]+'b',tones);
+                        letters = that.getNotesInScale(letterProgression[1]+'b',tones);
                         break;
                     }
                     else {
@@ -92,58 +93,61 @@
      * @param {Array} [tones]
      * @param {string} [container]
      * @param {boolean} [searchedNotesAlready]
-     * @param {function} [callback]
      */
-    this.searchScales = function(tones, container, searchedNotesAlready, callback){
-        events.dispatchEvent(_chorus.data.customEvents.chorusScaleSearchStarted, 'chorusJS has started searching scales');
-        if ((container || !tones) && !searchedNotesAlready){
-            //get notes from dom if not passed to function
-            this.searchScales(logicNotes.getSelectedNotes(container), container, true, callback);
-        }
-        else {
-            var scaleGroup,
-                scaleKey,
-                flattenOutput = helpers.getConfigValue('flattenSearchResults', container) === true,
-                data = {};
-            data.resultsObject = {};
-            data.resultsArray = flattenOutput?[]:{};
-            //search for scales if there are selected notes
-            if ((tones && tones.hasOwnProperty('selectedTones')) && tones.selectedTones.length > 0 || tones.rootTone.length > 0) {
-                //search scales
-                for (scaleGroup in dataScales.searchable) {
-                    if (dataScales.searchable.hasOwnProperty(scaleGroup)) {
-                        for (scaleKey in dataScales.searchable[scaleGroup]) {
-                            if (dataScales.searchable[scaleGroup].hasOwnProperty(scaleKey)) {
-                                if (logicNotes.tonesInScaleOrChord(dataScales.searchable[scaleGroup][scaleKey], tones)) {
-                                    if (flattenOutput) {
-                                        //flatten output
-                                        data.resultsArray.push(helpers.convertResultsObjectToArray(scaleKey,dataScales.searchable[scaleGroup][scaleKey]));
-                                        data.resultsObject[scaleKey] = dataScales.searchable[scaleGroup][scaleKey];
-                                    } else {
-                                        if (!data.resultsObject.hasOwnProperty(scaleGroup)){
-                                            data.resultsObject[scaleGroup] = {};
+    this.searchScales = function(tones, container, searchedNotesAlready){
+        return new Promise(function(resolve,reject) {
+            events.dispatchEvent(_chorus.data.customEvents.chorusScaleSearchStarted, 'chorusJS has started searching scales');
+            if ((container || !tones) && !searchedNotesAlready){
+                //get notes from dom if not passed to function
+                return that.searchScales(logicNotes.getSelectedNotes(container), container, true);
+            } else {
+                var scaleGroup,
+                    scaleKey,
+                    flattenOutput = helpers.getConfigValue('flattenSearchResults', container) === true,
+                    data = {};
+                data.resultsObject = {};
+                data.resultsArray = flattenOutput ? [] : {};
+                //search for scales if there are selected notes
+                if ((tones && tones.hasOwnProperty('selectedTones')) && tones.selectedTones.length > 0 || tones.rootTone.length > 0) {
+                    //search scales
+                    for (scaleGroup in dataScales.searchable) {
+                        if (dataScales.searchable.hasOwnProperty(scaleGroup)) {
+                            for (scaleKey in dataScales.searchable[scaleGroup]) {
+                                if (dataScales.searchable[scaleGroup].hasOwnProperty(scaleKey)) {
+                                    if (logicNotes.tonesInScaleOrChord(dataScales.searchable[scaleGroup][scaleKey], tones)) {
+                                        if (flattenOutput) {
+                                            //flatten output
+                                            data.resultsArray.push(helpers.convertResultsObjectToArray(scaleKey, dataScales.searchable[scaleGroup][scaleKey]));
+                                            data.resultsObject[scaleKey] = dataScales.searchable[scaleGroup][scaleKey];
+                                        } else {
+                                            if (!data.resultsObject.hasOwnProperty(scaleGroup)) {
+                                                data.resultsObject[scaleGroup] = {};
+                                            }
+                                            if (!data.resultsArray.hasOwnProperty(scaleGroup)) {
+                                                data.resultsArray[scaleGroup] = [];
+                                            }
+                                            data.resultsObject[scaleGroup][scaleKey] = dataScales.searchable[scaleGroup][scaleKey];
+                                            data.resultsArray[scaleGroup].push(helpers.convertResultsObjectToArray(scaleKey, dataScales.searchable[scaleGroup][scaleKey]));
                                         }
-                                        if (!data.resultsArray.hasOwnProperty(scaleGroup)){
-                                            data.resultsArray[scaleGroup] = [];
-                                        }
-                                        data.resultsObject[scaleGroup][scaleKey] = dataScales.searchable[scaleGroup][scaleKey];
-                                        data.resultsArray[scaleGroup].push(helpers.convertResultsObjectToArray(scaleKey,dataScales.searchable[scaleGroup][scaleKey]));
                                     }
                                 }
                             }
                         }
                     }
                 }
+                else {
+                    events.sendMessage(dictionary.errorNotFound + 'no selected notes found');
+                }
+                _chorus.searchResult.scales = data;
+                return events.dispatchEvent(
+                    _chorus.data.customEvents.chorusScaleSearchComplete,
+                    'chorusJS has finished searching scales'
+                )
+                    .then(function(){
+                        resolve(data);
+                    });
             }
-            else {
-                events.sendMessage(dictionary.errorNotFound + 'no selected notes found');
-            }
-            _chorus.searchResult.scales = data;
-            events.dispatchEvent(_chorus.data.customEvents.chorusScaleSearchComplete, 'chorusJS has finished searching scales');
-            if (callback && typeof callback !== 'string') {
-                callback(data);
-            }
-        }
+        });
     };
 
 }).apply(_chorus.logic.scales);

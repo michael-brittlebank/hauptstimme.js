@@ -123,6 +123,7 @@ module.exports = function(grunt) {
             default: {
                 files: {
                     'dist/chorus.min.js': [
+                        'bower_components/bluebird/js/browser/bluebird.min.js',
                         'bower_components/handlebars/handlebars.min.js',
                         'src/build/chorus.handlebars.min.js',
                         'src/js/chorus.js',
