@@ -66,7 +66,7 @@
         classNote: 'chorus-note',
         classNoteMulticolor: 'chorus-note-multicolor',
         classInstrumentTitle: 'chorus-instrument-title',
-        classSearchButton: 'chorus-search-button',
+        classButton: 'chorus-button',
         classPianoKeyBlack: 'black',
         classPianoKeyWhite: 'white',
         classListItem: 'chorus-result-item',

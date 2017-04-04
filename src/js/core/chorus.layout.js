@@ -233,7 +233,7 @@
                 data.searchButton = {
                     title: helpers.getConfigValue('searchText'),
                     callback: helpers.getConfigValue('searchCallback')?helpers.getConfigValue('searchCallback'):'\'\'',
-                    elementClass: dictionary.classSearchButton
+                    elementClass: dictionary.classButton
                 };
             }
             return Handlebars.templates.instrument(data);
@@ -346,7 +346,7 @@
                 data.searchButton = {
                     title: helpers.getConfigValue('searchText'),
                     callback: helpers.getConfigValue('searchCallback')?helpers.getConfigValue('searchCallback'):'\'\'',
-                    elementClass: dictionary.classSearchButton
+                    elementClass: dictionary.classButton
                 };
             }
             return Handlebars.templates.piano(data);
