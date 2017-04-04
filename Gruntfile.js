@@ -6,13 +6,13 @@ module.exports = function(grunt) {
             'Gruntfile.js'
         ],
         sass: [
-            'src/scss/**/*.scss'
+            'src/sass/**/*.scss'
         ],
         javascript: [
             'src/js/**/*.js'
         ],
         handlebars: [
-            'src/hbs/**/*.hbs'
+            'src/views/**/*.hbs'
         ]
     };
     // Project configuration.
@@ -108,7 +108,7 @@ module.exports = function(grunt) {
         sass: {
             default: {
                 files: {
-                    'dist/chorus.min.css': 'src/scss/chorus.scss'
+                    'dist/chorus.min.css': 'src/sass/chorus.scss'
                 },
                 options: {
                     style: 'compressed'

@@ -180,9 +180,8 @@ _chorus.populateLists = function(scaleResultContainer,chordResultContainer){
 
 /**
  * clear search results from container
- * @param {string} [chorusResultContainer] container id or classname for html dom element to clear results from
+ * @param {string} [container] container id or classname for html dom element to clear results from
  */
-_chorus.clear = function(chorusResultContainer){
-    //todo, clear is not working
-    _chorus.layout.html.clearResults(chorusResultContainer);
+_chorus.clear = function(container){
+    _chorus.layout.html.clearResults(container);
 };

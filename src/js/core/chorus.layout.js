@@ -444,13 +444,14 @@
 
         /**
          * clear results from container
-         * @param {string} chorusResultContainer
+         * @param {string} container
          */
-        this.clearResults = function(chorusResultContainer){
-            if (!chorusResultContainer){
-                chorusResultContainer = dictionary.classContainer;
+        this.clearResults = function(container){
+            if (!container){
+                container = dictionary.classContainer;
             }
-            var domContainers = helpers.getDomRepresentationFromStringName(chorusResultContainer),
+            var domContainers = helpers.getDomRepresentationFromStringName(container),
+                domResultContainers = helpers.getDomRepresentationFromStringName(dictionary.classResultsContainer),
                 selectedNotes,
                 selectedResults,
                 i;
@@ -471,6 +472,9 @@
             for(i = 0; i < selectedResults.length; i++){
                 selectedResults[i].classList.remove(dictionary.classListItemSelected);
             }
+            domResultContainers.forEach(function(entry){
+               entry.innerHTML = '';
+            });
         };
 
     }).apply(_chorus.layout.html);
