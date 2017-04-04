@@ -1,6 +1,6 @@
 {
   "name": "ChorusJS",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "dependencies": {
     "autoprefixer": "6.3.3",
     "bower": "1.4.0",
