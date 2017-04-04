@@ -229,7 +229,7 @@
                 data.strings.push(that.getString(instrumentTuning[i]));
             }
             //search button
-            if (helpers.getConfigValue('searchButton') === true) {
+            if (helpers.getConfigValue('showSearchButton') === true) {
                 data.searchButton = {
                     title: helpers.getConfigValue('searchText'),
                     callback: helpers.getConfigValue('searchCallback')?helpers.getConfigValue('searchCallback'):'\'\'',
@@ -342,7 +342,7 @@
                 });
             }
             //search button
-            if (helpers.getConfigValue('searchButton') === true) {
+            if (helpers.getConfigValue('showSearchButton') === true) {
                 data.searchButton = {
                     title: helpers.getConfigValue('searchText'),
                     callback: helpers.getConfigValue('searchCallback')?helpers.getConfigValue('searchCallback'):'\'\'',

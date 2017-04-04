@@ -53,7 +53,7 @@ var _chorus = window.chorus = {
     this.layoutInstrumentStringOrder ='desc';
     this.layoutContainerId = '';
     this.layoutContainerClass = '';
-    this.searchButton = true;
+    this.showSearchButton = false;
     this.searchText = 'Search Chorus';
     this.multicolor = false;
     //developer
@@ -126,6 +126,7 @@ _chorus.init = function(element, userConfig) {
  * @param {function} [callback] function to call after search is complete
  */
 _chorus.search = function(tones, container, callback){
+    //todo, search all is not working
     var helpers = _chorus.logic.helpers;
     helpers.searchScalesAndChords(tones,container)
         .then(function(){
@@ -182,5 +183,6 @@ _chorus.populateLists = function(scaleResultContainer,chordResultContainer){
  * @param {string} [chorusResultContainer] container id or classname for html dom element to clear results from
  */
 _chorus.clear = function(chorusResultContainer){
+    //todo, clear is not working
     _chorus.layout.html.clearResults(chorusResultContainer);
 };
