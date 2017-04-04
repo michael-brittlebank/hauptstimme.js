@@ -39,7 +39,7 @@ module.exports = function(grunt) {
         handlebars: {
             default: {
                 src: watchFiles.handlebars,
-                dest: 'src/build/chorus.handlebars.min.js'
+                dest: 'dist/build/chorus.handlebars.min.js'
             },
             options: {
                 namespace: 'Handlebars.templates',
@@ -125,7 +125,7 @@ module.exports = function(grunt) {
                     'dist/chorus.min.js': [
                         'bower_components/bluebird/js/browser/bluebird.min.js',
                         'bower_components/handlebars/handlebars.min.js',
-                        'src/build/chorus.handlebars.min.js',
+                        'dist/build/chorus.handlebars.min.js',
                         'src/js/chorus.js',
                         'src/js/core/chorus.data.js',
                         'src/js/core/chorus.events.js',
