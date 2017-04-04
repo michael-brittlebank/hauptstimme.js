@@ -447,6 +447,9 @@
          * @param {string} chorusResultContainer
          */
         this.clearResults = function(chorusResultContainer){
+            if (!chorusResultContainer){
+                chorusResultContainer = dictionary.classContainer;
+            }
             var domContainers = helpers.getDomRepresentationFromStringName(chorusResultContainer),
                 selectedNotes,
                 selectedResults,
