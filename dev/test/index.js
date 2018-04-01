@@ -1,7 +1,7 @@
 'use strict';
 
 var expect = require('chai').expect;
-var chorusJs = require('../dist/index');
+var chorusJs = require('../../dist/index');
 
 describe('#chorusJs.getLocalString', function() {
     it('should convert single digits', function() {

@@ -6,8 +6,22 @@ node_js:
 install:
   - npm install
 
+before_script:
+  - npm run build
+
 script:
   - npm run test
 
 # Send coverage data to Coveralls
 after_script: "cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js"
+
+after_success:
+  - npm run typedoc
+
+deploy:
+  - provider: pages
+    skip_cleanup: true
+    local_dir: docs/
+    github_token: $646f789571a936fc376c40d1ac5addfb762d1eef
+    on:
+      tags: true

@@ -9,3 +9,8 @@
 export function getLocalString(number: number, locale: string): string {
     return number.toLocaleString(locale);
 }
+
+export interface myInterface {
+    thing1: string;
+    thing2: number;
+}
