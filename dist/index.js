@@ -1,13 +1,9 @@
-'use strict';
-exports.__esModule = true;
-/**
- * Adds commas to a number
- * @param {number} number
- * @param {string} locale
- * @return {string}
- */
-function getLocalString(number, locale) {
-    if (locale === void 0) { locale = 'en'; }
-    return number.toLocaleString(locale);
+"use strict";
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
-exports.getLocalString = getLocalString;
+exports.__esModule = true;
+// constants
+__export(require("./constants/notes.constant"));
+// src
+__export(require("./src/hauptstimme"));
