@@ -1,60 +1,26 @@
-# Chorus.js
+Number Formatter
+=========
 
-A JavaScript library for visualizing music theory
+A small library that adds commas to numbers
 
-## Quickstart
+## Installation
 
-Chorus.JS is built in native JavaScript.  It relies on sending and receiving custom events which can be accessed via native JS
-```
-document.addEventListener('chorusSearchComplete', function(e) {
-    console.log('listening');
-});
-```
+  `npm install @jdaudier/number-formatter`
 
-or via JavaScript libraries like jQuery
+## Usage
 
-```
-$(document).on('chorusSearchComplete',function(){
-    console.log('listening');
-});
-```
+    var numFormatter = require('@jdaudier/number-formatter');
 
-### Full Example 
+    var formattedNum = numFormatter(35666);
 
-```
-<html>
-<head>
-    <title>Chorus.js Quickstart</title>
-    <script src="/chorus.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/chorus.min.css">
-    <link rel="stylesheet" type="text/css" href="/chorus.min.css.map">
-</head>
-<div id="my-container-name">
-</div>
-<h2 class="chorus-standard-font">Results: Scales</h2>
-<div id="results-scales" class="results-container">
-</div>
-<h2 class="chorus-standard-font">Results: Chords</h2>
-<div id="results-chords" class="results-container">
-</div>
-<script>
-    document.addEventListener('DOMContentLoaded', function(e) {
-        config = {
-            layoutInstrument: ['guitar'],
-            chorusDebug:'console'
-        };
-        _chorus.init('my-container-name', config);
-    });
-    document.addEventListener('chorusSearchComplete', function(e) {
-        setTimeout(function(){
-            _chorus.populateLists('results-scales','results-chords');
-        },100);
-    });
-</script>
-</html>
-```
 
-For more examples, look in [/dist/index.html](https://github.com/mike-stumpf/chorus.js/blob/master/dist/index.html)
+  Output should be `35,666`
 
-## Further Information
-Please visit the [wiki](https://github.com/mike-stumpf/chorus.js/wiki) to see the documentation and submit any issues you have to this repository's [issue tracker](https://github.com/mike-stumpf/chorus.js/issues).
+
+## Tests
+
+  `npm test`
+
+## Contributing
+
+In lieu of a formal style guide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code.
