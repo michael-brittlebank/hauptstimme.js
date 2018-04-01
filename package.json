@@ -1,14 +1,14 @@
 {
-  "name": "test",
-  "version": "0.1.0",
-  "description": "some test",
+  "name": "ChorusJS",
+  "version": "3.0.1",
+  "description": "A JavaScript library for music theory",
   "main": "index.js",
   "scripts": {
     "test": "mocha --reporter spec",
     "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec test/*"
   },
-  "author": "mstumpf",
-  "license": "ISC",
+  "author": "mike-stumpf",
+  "license": "MIT",
   "engines": {
     "node": ">=4.2.4"
   },
