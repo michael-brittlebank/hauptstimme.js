@@ -1,5 +1,5 @@
 {
-  "name": "ChorusJS",
+  "name": "hauptstimme-js",
   "version": "3.0.3",
   "description": "A JavaScript library for music theory",
   "author": "mike-stumpf",
@@ -12,7 +12,7 @@
     "url": "https://github.com/mike-stumpf/chorus.js"
   },
   "main": "./dist/src/index.js",
-  "types": "./dist/src/index.d.js",
+  "typings": "./dist/src/index.d.js",
   "scripts": {
     "build": "tsc",
     "build-watch": "tsc --watch",

@@ -6,7 +6,7 @@
  * @param {string} locale
  * @return {string}
  */
-export function getLocalString(number: number, locale: string): string {
+export function getLocalString(number: number, locale: string = 'en'): string {
     return number.toLocaleString(locale);
 }
 
