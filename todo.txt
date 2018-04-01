@@ -1,0 +1,1 @@
+browserify https://dontkry.com/posts/code/using-npm-on-the-client-side.html

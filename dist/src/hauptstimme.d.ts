@@ -1,9 +1,8 @@
+import { InstrumentInterface } from '..';
 export declare class HauptstimmeJs {
     /**
-     * Adds commas to a number
-     * @param {number} number
-     * @param {string} locale
-     * @return {string}
+     * This class provides a entry point for helper functions used in the module
      */
-    static getLocalString(number: number, locale?: string): string;
+    static getAvailableInstruments(): InstrumentInterface[];
+    static demo(): any;
 }

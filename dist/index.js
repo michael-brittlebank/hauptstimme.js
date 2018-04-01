@@ -7,3 +7,7 @@ exports.__esModule = true;
 __export(require("./constants/notes.constant"));
 // src
 __export(require("./src/hauptstimme"));
+// src/data
+__export(require("./src/data/chords.data"));
+__export(require("./src/data/instruments.data"));
+__export(require("./src/data/scales.data"));
