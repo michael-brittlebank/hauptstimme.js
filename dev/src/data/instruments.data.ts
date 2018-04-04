@@ -1,4 +1,4 @@
-import { InstrumentInterface } from '../..';
+import { InstrumentInterface, NotesConstant } from '../..';
 import { InstrumentTypeConstant } from '../../constants/instrumentType.constant';
 import * as _ from 'lodash';
 
@@ -6,458 +6,1052 @@ export class InstrumentsData {
     public static getAvailableInstruments(): InstrumentInterface[] {
         const instruments: InstrumentInterface[] = [
             {
-                name: 'Guitar',
-                rootNotes: [7, 0, 5, 10, 2, 7],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Guitar',
+                rootNotes:[
+                    NotesConstant.E,
+                    NotesConstant.A,
+                    NotesConstant.D,
+                    NotesConstant.G,
+                    NotesConstant.B,
+                    NotesConstant.E
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Bass Guitar',
-                rootNotes: [7, 0, 5, 10],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Bass Guitar',
+                rootNotes:[
+                    NotesConstant.E,
+                    NotesConstant.A,
+                    NotesConstant.D,
+                    NotesConstant.G
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Bass Guitar - 5 String',
-                rootNotes: [7, 0, 5, 10],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Bass Guitar - 5 String',
+                rootNotes:[
+                    NotesConstant.E,
+                    NotesConstant.A,
+                    NotesConstant.D,
+                    NotesConstant.G
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Violin',
-                rootNotes: [10, 5, 0, 7],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Violin',
+                rootNotes:[
+                    NotesConstant.G,
+                    NotesConstant.D,
+                    NotesConstant.A,
+                    NotesConstant.E
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Violin - Tenor',
-                rootNotes: [10, 5, 0, 7],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Violin - Tenor',
+                rootNotes:[
+                    NotesConstant.G,
+                    NotesConstant.D,
+                    NotesConstant.A,
+                    NotesConstant.E
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Mandolin',
-                rootNotes: [10, 5, 0, 7],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Mandolin',
+                rootNotes:[
+                    NotesConstant.G,
+                    NotesConstant.D,
+                    NotesConstant.A,
+                    NotesConstant.E
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Ukulele - Baritone',
-                rootNotes: [5, 10, 2, 7],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Ukulele - Baritone',
+                rootNotes:[
+                    NotesConstant.D,
+                    NotesConstant.G,
+                    NotesConstant.B,
+                    NotesConstant.E
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Ukulele - Concert',
-                rootNotes: [10, 3, 7, 0],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Ukulele - Concert',
+                rootNotes:[
+                    NotesConstant.G,
+                    NotesConstant.C,
+                    NotesConstant.E,
+                    NotesConstant.A
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Ukulele - Soprano',
-                rootNotes: [0, 5, 9, 2],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Ukulele - Soprano',
+                rootNotes:[
+                    NotesConstant.A,
+                    NotesConstant.D,
+                    NotesConstant.FG,
+                    NotesConstant.B
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Ukulele - Tenor',
-                rootNotes: [10, 3, 7, 0],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Ukulele - Tenor',
+                rootNotes:[
+                    NotesConstant.G,
+                    NotesConstant.C,
+                    NotesConstant.E,
+                    NotesConstant.A
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Cello',
-                rootNotes: [3, 10, 5, 0],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Cello',
+                rootNotes:[
+                    NotesConstant.C,
+                    NotesConstant.G,
+                    NotesConstant.D,
+                    NotesConstant.A
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Viola',
-                rootNotes: [3, 10, 5, 0],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Viola',
+                rootNotes:[
+                    NotesConstant.C,
+                    NotesConstant.G,
+                    NotesConstant.D,
+                    NotesConstant.A
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Banjo - Plectrum',
-                rootNotes: [3, 10, 2, 5],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Banjo - Plectrum',
+                rootNotes:[
+                    NotesConstant.C,
+                    NotesConstant.G,
+                    NotesConstant.B,
+                    NotesConstant.D
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Banjo - Tenor (Jazz)',
-                rootNotes: [3, 10, 5, 0],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Banjo - Tenor (Jazz)',
+                rootNotes:[
+                    NotesConstant.C,
+                    NotesConstant.G,
+                    NotesConstant.D,
+                    NotesConstant.A
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Banjo - Tenor (Irish)',
-                rootNotes: [10, 5, 0, 7],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Banjo - Tenor (Irish)',
+                rootNotes:[
+                    NotesConstant.G,
+                    NotesConstant.D,
+                    NotesConstant.A,
+                    NotesConstant.E
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Lyre',
-                rootNotes: [0, 3, 7, 10, 2, 6, 9, 0],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Lyre',
+                rootNotes:[
+                    NotesConstant.A,
+                    NotesConstant.C,
+                    NotesConstant.E,
+                    NotesConstant.G,
+                    NotesConstant.B,
+                    NotesConstant.DE,
+                    NotesConstant.FG,
+                    NotesConstant.A
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Bajo Sexto',
-                rootNotes: [7, 0, 5, 10, 2, 8],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Bajo Sexto',
+                rootNotes:[
+                    NotesConstant.E,
+                    NotesConstant.A,
+                    NotesConstant.D,
+                    NotesConstant.G,
+                    NotesConstant.B,
+                    NotesConstant.F
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Balalaika - Alto',
-                rootNotes: [0, 0, 5],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Balalaika - Alto',
+                rootNotes:[
+                    NotesConstant.A,
+                    NotesConstant.A,
+                    NotesConstant.D
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Balalaika - Soprano',
-                rootNotes: [7, 7, 0],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Balalaika - Soprano',
+                rootNotes:[
+                    NotesConstant.E,
+                    NotesConstant.E,
+                    NotesConstant.A
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Cuatro',
-                rootNotes:[2, 7, 0, 5, 10],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Cuatro',
+                rootNotes:[
+                    NotesConstant.B,
+                    NotesConstant.E,
+                    NotesConstant.A,
+                    NotesConstant.D,
+                    NotesConstant.G
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Cuatro - Cubano',
-                rootNotes:[10, 3, 7, 0],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Cuatro - Cubano',
+                rootNotes:[
+                    NotesConstant.G,
+                    NotesConstant.C,
+                    NotesConstant.E,
+                    NotesConstant.A
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Dulcimer',
-                rootNotes:[10, 3, 3, 3],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Dulcimer',
+                rootNotes:[
+                    NotesConstant.G,
+                    NotesConstant.C,
+                    NotesConstant.C,
+                    NotesConstant.C
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Dulcimer (Alternative)',
-                rootNotes:[5, 5, 0, 5],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Dulcimer (Alternative)',
+                rootNotes:[
+                    NotesConstant.D,
+                    NotesConstant.D,
+                    NotesConstant.A,
+                    NotesConstant.D
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Mandola',
-                rootNotes:[3, 10, 5, 0],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Mandola',
+                rootNotes:[
+                    NotesConstant.C,
+                    NotesConstant.G,
+                    NotesConstant.D,
+                    NotesConstant.A
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Sitar',
-                rootNotes:[3, 3, 10, 3, 10, 3, 8],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Sitar',
+                rootNotes:[
+                    NotesConstant.C,
+                    NotesConstant.C,
+                    NotesConstant.G,
+                    NotesConstant.C,
+                    NotesConstant.G,
+                    NotesConstant.C,
+                    NotesConstant.F
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Solo Bass',
-                rootNotes:[9, 2, 7, 0],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Solo Bass',
+                rootNotes:[
+                    NotesConstant.FG,
+                    NotesConstant.B,
+                    NotesConstant.E,
+                    NotesConstant.A
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Dobro',
-                rootNotes:[10, 2, 5, 10, 2, 5],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Dobro',
+                rootNotes:[
+                    NotesConstant.G,
+                    NotesConstant.B,
+                    NotesConstant.D,
+                    NotesConstant.G,
+                    NotesConstant.B,
+                    NotesConstant.D
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Guitarron',
-                rootNotes:[0, 5, 10, 3, 7, 0],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Guitarron',
+                rootNotes:[
+                    NotesConstant.A,
+                    NotesConstant.D,
+                    NotesConstant.G,
+                    NotesConstant.C,
+                    NotesConstant.E,
+                    NotesConstant.A
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Bouzouki',
-                rootNotes:[3, 3, 8, 8, 0, 0, 5, 5],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Bouzouki',
+                rootNotes:[
+                    NotesConstant.C,
+                    NotesConstant.C,
+                    NotesConstant.F,
+                    NotesConstant.F,
+                    NotesConstant.A,
+                    NotesConstant.A,
+                    NotesConstant.D,
+                    NotesConstant.D
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Bouzouki (Alternative)',
-                rootNotes:[5, 5, 0, 0, 5, 5],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Bouzouki (Alternative)',
+                rootNotes:[
+                    NotesConstant.D,
+                    NotesConstant.D,
+                    NotesConstant.A,
+                    NotesConstant.A,
+                    NotesConstant.D,
+                    NotesConstant.D
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Bouzouki - Irish',
-                rootNotes:[3, 8, 0, 5],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Bouzouki - Irish',
+                rootNotes:[
+                    NotesConstant.C,
+                    NotesConstant.F,
+                    NotesConstant.A,
+                    NotesConstant.D
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Bouzouki - Irish (Alternative)',
-                rootNotes:[10, 5, 0, 5],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Bouzouki - Irish (Alternative)',
+                rootNotes:[
+                    NotesConstant.G,
+                    NotesConstant.D,
+                    NotesConstant.A,
+                    NotesConstant.D
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Fiddle',
-                rootNotes:[10, 5, 0, 7],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Fiddle',
+                rootNotes:[
+                    NotesConstant.G,
+                    NotesConstant.D,
+                    NotesConstant.A,
+                    NotesConstant.E
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Vihuela',
-                rootNotes:[0, 5, 10, 2, 7],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Vihuela',
+                rootNotes:[
+                    NotesConstant.A,
+                    NotesConstant.D,
+                    NotesConstant.G,
+                    NotesConstant.B,
+                    NotesConstant.E
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Banduria',
-                rootNotes:[11, 4, 9, 2, 7, 0],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Banduria',
+                rootNotes:[
+                    NotesConstant.GA,
+                    NotesConstant.CD,
+                    NotesConstant.FG,
+                    NotesConstant.B,
+                    NotesConstant.E,
+                    NotesConstant.A
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Charango',
-                rootNotes:[10, 3, 7, 0, 7],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Charango',
+                rootNotes:[
+                    NotesConstant.G,
+                    NotesConstant.C,
+                    NotesConstant.E,
+                    NotesConstant.A,
+                    NotesConstant.E
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Oud',
-                rootNotes:[10, 0, 2, 7, 0, 5],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Oud',
+                rootNotes:[
+                    NotesConstant.G,
+                    NotesConstant.A,
+                    NotesConstant.B,
+                    NotesConstant.E,
+                    NotesConstant.A,
+                    NotesConstant.D
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Oud (Alternative)',
-                rootNotes:[2, 9, 2, 7, 0, 5],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Oud (Alternative)',
+                rootNotes:[
+                    NotesConstant.B,
+                    NotesConstant.FG,
+                    NotesConstant.B,
+                    NotesConstant.E,
+                    NotesConstant.A,
+                    NotesConstant.D
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Requinto',
-                rootNotes:[0, 5, 10, 3, 7, 0],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Requinto',
+                rootNotes:[
+                    NotesConstant.A,
+                    NotesConstant.D,
+                    NotesConstant.G,
+                    NotesConstant.C,
+                    NotesConstant.E,
+                    NotesConstant.A
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Lute',
-                rootNotes:[10, 10, 3, 3, 8, 8, 0, 0, 5, 5, 10, 10],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Lute',
+                rootNotes:[
+                    NotesConstant.G,
+                    NotesConstant.G,
+                    NotesConstant.C,
+                    NotesConstant.C,
+                    NotesConstant.F,
+                    NotesConstant.F,
+                    NotesConstant.A,
+                    NotesConstant.A,
+                    NotesConstant.D,
+                    NotesConstant.D,
+                    NotesConstant.G,
+                    NotesConstant.G
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Zither',
-                rootNotes:[0, 0, 5, 10, 3],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Zither',
+                rootNotes:[
+                    NotesConstant.A,
+                    NotesConstant.A,
+                    NotesConstant.D,
+                    NotesConstant.G,
+                    NotesConstant.C
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Guitar - Russian',
-                rootNotes:[5, 10, 2, 5, 10, 2, 5],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Guitar - Russian',
+                rootNotes:[
+                    NotesConstant.D,
+                    NotesConstant.G,
+                    NotesConstant.B,
+                    NotesConstant.D,
+                    NotesConstant.G,
+                    NotesConstant.B,
+                    NotesConstant.D
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Pedal Steel Guitar',
-                rootNotes:[2, 5, 7, 9, 11, 2, 7, 11, 6, 9],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Pedal Steel Guitar',
+                rootNotes:[
+                    NotesConstant.B,
+                    NotesConstant.D,
+                    NotesConstant.E,
+                    NotesConstant.FG,
+                    NotesConstant.GA,
+                    NotesConstant.B,
+                    NotesConstant.E,
+                    NotesConstant.GA,
+                    NotesConstant.DE,
+                    NotesConstant.FG
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             },
             {
-                name: 'Pedal Steel Guitar (Alternative)',
-                rootNotes:[3, 8, 0, 3, 7, 10, 0, 3, 7, 5],
-                type: InstrumentTypeConstant.INSTRUMENT
+                name:'Pedal Steel Guitar (Alternative)',
+                rootNotes:[
+                    NotesConstant.C,
+                    NotesConstant.F,
+                    NotesConstant.A,
+                    NotesConstant.C,
+                    NotesConstant.E,
+                    NotesConstant.G,
+                    NotesConstant.A,
+                    NotesConstant.C,
+                    NotesConstant.E,
+                    NotesConstant.D
+                ],
+                type:InstrumentTypeConstant.INSTRUMENT
             }
         ];
-        const tunings: InstrumentInterface[] = [
+        const tunings:InstrumentInterface[
+
+            ]=[
             {
-                name: 'Major Seconds',
-                rootNotes: [3, 5, 7, 9, 10, 1],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
-            },
-            {
-                name: 'Minor Thirds',
-                rootNotes: [3, 6, 9, 0, 3, 6],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
-            },
-            {
-                name: 'Major Thirds',
-                rootNotes: [7, 11, 3, 7, 11, 3],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
-            },
-            {
-                name: 'All Fourths',
-                rootNotes: [7, 0, 5, 10, 3, 8],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
-            },
-            {
-                name: 'Augmented Fourths',
-                rootNotes: [3, 9, 3, 9, 3, 9],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
-            },
-            {
-                name: 'All Fifths',
-                rootNotes: [3, 10, 5, 0, 7, 2],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
-            },
-            {
-                name: 'Baritone',
-                rootNotes: [2, 7, 0, 5, 9, 2],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
-            },
-            {
-                name: 'Baritone (Alternative)',
-                rootNotes: [0, 5, 10, 3, 7, 0],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
-            },
-            {
-                name: 'Hawaiian',
-                rootNotes: [7, 0, 7, 0, 4, 7],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
-            },
-            {
-                name: 'New Standard',
-                rootNotes: [3, 10, 5, 0, 7, 10],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
-            },
-            {
-                name: 'Resophonic',
-                rootNotes: [10, 2, 5, 10, 2, 5],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
-            },
-            {
-                name: 'Tenor',
-                rootNotes: [3, 10, 5, 0],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
-            },
-            {
-                name: 'Open A',
-                rootNotes: [7, 0, 4, 7, 0, 7],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
-            },
-            {
-                name: 'Open B',
-                rootNotes: [2, 9, 2, 9, 2, 6],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
-            },
-            {
-                name: 'Open C',
-                rootNotes: [3, 10, 3, 10, 3, 7],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
-            },
-            {
-                name: 'Open D',
-                rootNotes: [5, 0, 5, 9, 0, 5],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
-            },
-            {
-                name: 'Modal D',
-                rootNotes: [5, 0, 5, 10, 0, 5],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
-            },
-            {
-                name: 'Open D Minor',
-                rootNotes: [5, 0, 5, 8, 0, 5],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
-            },
-            {
-                name: 'Open E',
-                rootNotes: [7, 2, 7, 11, 2, 7],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
-            },
-            {
-                name: 'Open F',
-                rootNotes: [8, 0, 3, 8, 0, 3],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
-            },
-            {
-                name: 'Open G',
-                rootNotes: [5, 10, 5, 10, 2, 5],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
-            },
-            {
-                name: 'Modal G',
-                rootNotes: [5, 10, 5, 10, 2, 5],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
-            },
-            {
-                name: 'Open G Minor',
-                rootNotes: [7, 0, 4, 7, 0, 7],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
-            },
-            {
-                name: 'Admiral',
-                rootNotes: [3, 10, 5, 10, 2, 3],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
-            },
-            {
-                name: 'Buzzard',
-                rootNotes: [3, 8, 3, 10, 1, 8],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
-            },
-            {
-                name: 'Face',
-                rootNotes: [3, 10, 5, 10, 0, 5],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
-            },
-            {
-                name: 'Four and Twenty',
-                rootNotes: [5, 0, 5, 5, 0, 5],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
-            },
-            {
-                name: 'Hot Type',
-                rootNotes: [
-                    0, 2, 7, 9, 0, 5
+                name:'Major Seconds',
+                rootNotes:[
+                    NotesConstant.C,
+                    NotesConstant.D,
+                    NotesConstant.E,
+                    NotesConstant.FG,
+                    NotesConstant.G,
+                    NotesConstant.AB
                 ],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
             },
             {
-                name: 'Layover',
-                rootNotes: [5, 0, 3, 10, 3, 7],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
+                name:'Minor Thirds',
+                rootNotes:[
+                    NotesConstant.C,
+                    NotesConstant.DE,
+                    NotesConstant.FG,
+                    NotesConstant.A,
+                    NotesConstant.C,
+                    NotesConstant.DE
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
             },
             {
-                name: 'Magic Farmer',
-                rootNotes: [3, 8, 3, 10, 0, 7],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
+                name:'Major Thirds',
+                rootNotes:[
+                    NotesConstant.E,
+                    NotesConstant.GA,
+                    NotesConstant.C,
+                    NotesConstant.E,
+                    NotesConstant.GA,
+                    NotesConstant.C
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
             },
             {
-                name: 'Pelican',
-                rootNotes: [5, 0, 5, 7, 0, 5],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
+                name:'All Fourths',
+                rootNotes:[
+                    NotesConstant.E,
+                    NotesConstant.A,
+                    NotesConstant.D,
+                    NotesConstant.G,
+                    NotesConstant.C,
+                    NotesConstant.F
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
             },
             {
-                name: 'Processional',
-                rootNotes: [5, 10, 5, 8, 0, 1],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
+                name:'Augmented Fourths',
+                rootNotes:[
+                    NotesConstant.C,
+                    NotesConstant.FG,
+                    NotesConstant.C,
+                    NotesConstant.FG,
+                    NotesConstant.C,
+                    NotesConstant.FG
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
             },
             {
-                name: 'Slow Motion',
-                rootNotes: [5, 10, 5, 8, 3, 5],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
+                name:'All Fifths',
+                rootNotes:[
+                    NotesConstant.C,
+                    NotesConstant.G,
+                    NotesConstant.D,
+                    NotesConstant.A,
+                    NotesConstant.E,
+                    NotesConstant.B
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
             },
             {
-                name: 'Spirit',
-                rootNotes: [4, 0, 4, 11, 0, 7],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
+                name:'Baritone',
+                rootNotes:[
+                    NotesConstant.B,
+                    NotesConstant.E,
+                    NotesConstant.A,
+                    NotesConstant.D,
+                    NotesConstant.FG,
+                    NotesConstant.B
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
             },
             {
-                name: 'Tarboulton',
-                rootNotes: [3, 1, 3, 8, 1, 8],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
+                name:'Baritone (Alternative)',
+                rootNotes:[
+                    NotesConstant.A,
+                    NotesConstant.D,
+                    NotesConstant.G,
+                    NotesConstant.C,
+                    NotesConstant.E,
+                    NotesConstant.A
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
             },
             {
-                name: 'Toulouse',
-                rootNotes: [7, 3, 5, 8, 0, 5],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
+                name:'Hawaiian',
+                rootNotes:[
+                    NotesConstant.E,
+                    NotesConstant.A,
+                    NotesConstant.E,
+                    NotesConstant.A,
+                    NotesConstant.CD,
+                    NotesConstant.E
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
             },
             {
-                name: 'Triqueen',
-                rootNotes: [5, 10, 5, 9, 0, 2],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
+                name:'New Standard',
+                rootNotes:[
+                    NotesConstant.C,
+                    NotesConstant.G,
+                    NotesConstant.D,
+                    NotesConstant.A,
+                    NotesConstant.E,
+                    NotesConstant.G
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
             },
             {
-                name: 'Minor Sixths',
-                rootNotes: [3, 11, 7, 3, 11, 7],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
+                name:'Resophonic',
+                rootNotes:[
+                    NotesConstant.G,
+                    NotesConstant.B,
+                    NotesConstant.D,
+                    NotesConstant.G,
+                    NotesConstant.B,
+                    NotesConstant.D
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
             },
             {
-                name: 'Major Sixths',
-                rootNotes: [3, 0, 9, 6, 3, 0],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
+                name:'Tenor',
+                rootNotes:[
+                    NotesConstant.C,
+                    NotesConstant.G,
+                    NotesConstant.D,
+                    NotesConstant.A
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
             },
             {
-                name: 'Mandoguitar',
-                rootNotes: [3, 10, 5, 0, 7, 2],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
+                name:'Open A',
+                rootNotes:[
+                    NotesConstant.E,
+                    NotesConstant.A,
+                    NotesConstant.CD,
+                    NotesConstant.E,
+                    NotesConstant.A,
+                    NotesConstant.E
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
             },
             {
-                name: 'Pentatonic',
-                rootNotes: [0, 3, 5, 7, 10, 0],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
+                name:'Open B',
+                rootNotes:[
+                    NotesConstant.B,
+                    NotesConstant.FG,
+                    NotesConstant.B,
+                    NotesConstant.FG,
+                    NotesConstant.B,
+                    NotesConstant.DE
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
             },
             {
-                name: 'Overtone',
-                rootNotes: [3, 7, 10, 1, 3, 5],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
+                name:'Open C',
+                rootNotes:[
+                    NotesConstant.C,
+                    NotesConstant.G,
+                    NotesConstant.C,
+                    NotesConstant.G,
+                    NotesConstant.C,
+                    NotesConstant.E
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
             },
             {
-                name: 'Lefty',
-                rootNotes: [7, 2, 10, 5, 0, 7],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
+                name:'Open D',
+                rootNotes:[
+                    NotesConstant.D,
+                    NotesConstant.A,
+                    NotesConstant.D,
+                    NotesConstant.FG,
+                    NotesConstant.A,
+                    NotesConstant.D
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
             },
             {
-                name: 'Cittern',
-                rootNotes: [3, 8, 3, 10, 3, 5],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
+                name:'Modal D',
+                rootNotes:[
+                    NotesConstant.D,
+                    NotesConstant.A,
+                    NotesConstant.D,
+                    NotesConstant.G,
+                    NotesConstant.A,
+                    NotesConstant.D
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
             },
             {
-                name: 'Cittern (Alternative)',
-                rootNotes: [3, 10, 3, 10, 3, 10],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
+                name:'Open D Minor',
+                rootNotes:[
+                    NotesConstant.D,
+                    NotesConstant.A,
+                    NotesConstant.D,
+                    NotesConstant.F,
+                    NotesConstant.A,
+                    NotesConstant.D
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
             },
             {
-                name: 'Balalaika',
-                rootNotes: [7, 0, 5, 7, 7, 0],
-                type: InstrumentTypeConstant.ALTERNATE_TUNING
+                name:'Open E',
+                rootNotes:[
+                    NotesConstant.E,
+                    NotesConstant.B,
+                    NotesConstant.E,
+                    NotesConstant.GA,
+                    NotesConstant.B,
+                    NotesConstant.E
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
+            },
+            {
+                name:'Open F',
+                rootNotes:[
+                    NotesConstant.F,
+                    NotesConstant.A,
+                    NotesConstant.C,
+                    NotesConstant.F,
+                    NotesConstant.A,
+                    NotesConstant.C
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
+            },
+            {
+                name:'Open G',
+                rootNotes:[
+                    NotesConstant.D,
+                    NotesConstant.G,
+                    NotesConstant.D,
+                    NotesConstant.G,
+                    NotesConstant.B,
+                    NotesConstant.D
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
+            },
+            {
+                name:'Modal G',
+                rootNotes:[
+                    NotesConstant.D,
+                    NotesConstant.G,
+                    NotesConstant.D,
+                    NotesConstant.G,
+                    NotesConstant.B,
+                    NotesConstant.D
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
+            },
+            {
+                name:'Open G Minor',
+                rootNotes:[
+                    NotesConstant.E,
+                    NotesConstant.A,
+                    NotesConstant.CD,
+                    NotesConstant.E,
+                    NotesConstant.A,
+                    NotesConstant.E
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
+            },
+            {
+                name:'Admiral',
+                rootNotes:[
+                    NotesConstant.C,
+                    NotesConstant.G,
+                    NotesConstant.D,
+                    NotesConstant.G,
+                    NotesConstant.B,
+                    NotesConstant.C
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
+            },
+            {
+                name:'Buzzard',
+                rootNotes:[
+                    NotesConstant.C,
+                    NotesConstant.F,
+                    NotesConstant.C,
+                    NotesConstant.G,
+                    NotesConstant.AB,
+                    NotesConstant.F
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
+            },
+            {
+                name:'Face',
+                rootNotes:[
+                    NotesConstant.C,
+                    NotesConstant.G,
+                    NotesConstant.D,
+                    NotesConstant.G,
+                    NotesConstant.A,
+                    NotesConstant.D
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
+            },
+            {
+                name:'Four and Twenty',
+                rootNotes:[
+                    NotesConstant.D,
+                    NotesConstant.A,
+                    NotesConstant.D,
+                    NotesConstant.D,
+                    NotesConstant.A,
+                    NotesConstant.D
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
+            },
+            {
+                name:'Hot Type',
+                rootNotes:[
+                    NotesConstant.A,
+                    NotesConstant.B,
+                    NotesConstant.E,
+                    NotesConstant.FG,
+                    NotesConstant.A,
+                    NotesConstant.D
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
+            },
+            {
+                name:'Layover',
+                rootNotes:[
+                    NotesConstant.D,
+                    NotesConstant.A,
+                    NotesConstant.C,
+                    NotesConstant.G,
+                    NotesConstant.C,
+                    NotesConstant.E
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
+            },
+            {
+                name:'Magic Farmer',
+                rootNotes:[
+                    NotesConstant.C,
+                    NotesConstant.F,
+                    NotesConstant.C,
+                    NotesConstant.G,
+                    NotesConstant.A,
+                    NotesConstant.E
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
+            },
+            {
+                name:'Pelican',
+                rootNotes:[
+                    NotesConstant.D,
+                    NotesConstant.A,
+                    NotesConstant.D,
+                    NotesConstant.E,
+                    NotesConstant.A,
+                    NotesConstant.D
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
+            },
+            {
+                name:'Processional',
+                rootNotes:[
+                    NotesConstant.D,
+                    NotesConstant.G,
+                    NotesConstant.D,
+                    NotesConstant.F,
+                    NotesConstant.A,
+                    NotesConstant.AB
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
+            },
+            {
+                name:'Slow Motion',
+                rootNotes:[
+                    NotesConstant.D,
+                    NotesConstant.G,
+                    NotesConstant.D,
+                    NotesConstant.F,
+                    NotesConstant.C,
+                    NotesConstant.D
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
+            },
+            {
+                name:'Spirit',
+                rootNotes:[
+                    NotesConstant.CD,
+                    NotesConstant.A,
+                    NotesConstant.CD,
+                    NotesConstant.GA,
+                    NotesConstant.A,
+                    NotesConstant.E
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
+            },
+            {
+                name:'Tarboulton',
+                rootNotes:[
+                    NotesConstant.C,
+                    NotesConstant.AB,
+                    NotesConstant.C,
+                    NotesConstant.F,
+                    NotesConstant.AB,
+                    NotesConstant.F
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
+            },
+            {
+                name:'Toulouse',
+                rootNotes:[
+                    NotesConstant.E,
+                    NotesConstant.C,
+                    NotesConstant.D,
+                    NotesConstant.F,
+                    NotesConstant.A,
+                    NotesConstant.D
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
+            },
+            {
+                name:'Triqueen',
+                rootNotes:[
+                    NotesConstant.D,
+                    NotesConstant.G,
+                    NotesConstant.D,
+                    NotesConstant.FG,
+                    NotesConstant.A,
+                    NotesConstant.B
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
+            },
+            {
+                name:'Minor Sixths',
+                rootNotes:[
+                    NotesConstant.C,
+                    NotesConstant.GA,
+                    NotesConstant.E,
+                    NotesConstant.C,
+                    NotesConstant.GA,
+                    NotesConstant.E
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
+            },
+            {
+                name:'Major Sixths',
+                rootNotes:[
+                    NotesConstant.C,
+                    NotesConstant.A,
+                    NotesConstant.FG,
+                    NotesConstant.DE,
+                    NotesConstant.C,
+                    NotesConstant.A
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
+            },
+            {
+                name:'Mandoguitar',
+                rootNotes:[
+                    NotesConstant.C,
+                    NotesConstant.G,
+                    NotesConstant.D,
+                    NotesConstant.A,
+                    NotesConstant.E,
+                    NotesConstant.B
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
+            },
+            {
+                name:'Pentatonic',
+                rootNotes:[
+                    NotesConstant.A,
+                    NotesConstant.C,
+                    NotesConstant.D,
+                    NotesConstant.E,
+                    NotesConstant.G,
+                    NotesConstant.A
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
+            },
+            {
+                name:'Overtone',
+                rootNotes:[
+                    NotesConstant.C,
+                    NotesConstant.E,
+                    NotesConstant.G,
+                    NotesConstant.AB,
+                    NotesConstant.C,
+                    NotesConstant.D
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
+            },
+            {
+                name:'Lefty',
+                rootNotes:[
+                    NotesConstant.E,
+                    NotesConstant.B,
+                    NotesConstant.G,
+                    NotesConstant.D,
+                    NotesConstant.A,
+                    NotesConstant.E
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
+            },
+            {
+                name:'Cittern',
+                rootNotes:[
+                    NotesConstant.C,
+                    NotesConstant.F,
+                    NotesConstant.C,
+                    NotesConstant.G,
+                    NotesConstant.C,
+                    NotesConstant.D
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
+            },
+            {
+                name:'Cittern (Alternative)',
+                rootNotes:[
+                    NotesConstant.C,
+                    NotesConstant.G,
+                    NotesConstant.C,
+                    NotesConstant.G,
+                    NotesConstant.C,
+                    NotesConstant.G
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
+            },
+            {
+                name:'Balalaika',
+                rootNotes:[
+                    NotesConstant.E,
+                    NotesConstant.A,
+                    NotesConstant.D,
+                    NotesConstant.E,
+                    NotesConstant.E,
+                    NotesConstant.A
+                ],
+                type:InstrumentTypeConstant.ALTERNATE_TUNING
             }
         ];
         // sort the list alphabetically
@@ -468,7 +1062,7 @@ export class InstrumentsData {
                 _.union(instruments, tunings),
                 (instrument: InstrumentInterface, index: number) => {
                     return {
-                        ...instrument, id: (index + 1) // start from 1 instead of 0
+                        ...instrument, id: (index + 1) // start from NotesConstant.AB instead of NotesConstant.A
                     }
                 }
             ),
