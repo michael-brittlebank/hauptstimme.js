@@ -8,15 +8,25 @@ var ScalePrimitivesData = /** @class */ (function () {
     }
     ScalePrimitivesData.compileScalePrimitivesIntoScales = function () {
         var scalePrimitives = this.getAvailableScalePrimitives();
+        var noteLength = util_services_1.UtilServices.getLengthOfEnum(note_constant_1.NoteConstant);
         var scales = [];
         var scaleNotes;
         var assembledScales = [];
         var rootNote;
-        for (var i = 0; i < util_services_1.UtilServices.getLengthOfEnum(note_constant_1.NoteConstant); i++) {
-            rootNote = parseInt(note_constant_1.NoteConstant[note_constant_1.NoteConstant[i]]);
+        var noteIndex;
+        var _loop_1 = function (i) {
+            rootNote = util_services_1.UtilServices.getEnumFromStringKey(note_constant_1.NoteConstant, note_constant_1.NoteConstant[i]);
+            // compile each scale for the given root note
             assembledScales = _.map(scalePrimitives, function (scalePrimitive) {
-                scaleNotes = [];
-                scaleNotes.push();
+                noteIndex = i;
+                scaleNotes = [rootNote];
+                // use the steps to determine the correct note sequence
+                _.each(scalePrimitive.steps, function (step, index) {
+                    noteIndex = (noteIndex + parseInt(step, 10)) % noteLength;
+                    scaleNotes.push(util_services_1.UtilServices.getEnumFromStringKey(note_constant_1.NoteConstant, note_constant_1.NoteConstant[noteIndex]));
+                });
+                // remove last element in array as it is the same as the first (root) note
+                scaleNotes.splice(-1, 1);
                 return {
                     name: [util_services_1.UtilServices.getFormattedNoteString(rootNote), scalePrimitive.name].join(' '),
                     notes: scaleNotes,
@@ -24,6 +34,10 @@ var ScalePrimitivesData = /** @class */ (function () {
                 };
             });
             scales = scales.concat(assembledScales);
+        };
+        // loop through each possible root note
+        for (var i = 0; i < noteLength; i++) {
+            _loop_1(i);
         }
         return scales;
     };

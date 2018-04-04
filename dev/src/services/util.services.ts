@@ -34,4 +34,8 @@ export class UtilServices {
         }
         return formattedNote;
     }
+
+    public static getEnumFromStringKey(enumConstant: any, key: string): number {
+       return parseInt(enumConstant[<any>key]);
+    }
 }

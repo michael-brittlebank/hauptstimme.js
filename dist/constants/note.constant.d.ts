@@ -1,4 +1,4 @@
-export declare enum NotesConstant {
+export declare enum NoteConstant {
     A = 0,
     AB = 1,
     B = 2,

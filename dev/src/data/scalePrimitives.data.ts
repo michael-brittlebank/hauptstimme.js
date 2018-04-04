@@ -7,18 +7,28 @@ import { UtilServices } from '../services/util.services';
 
 export class ScalePrimitivesData {
 
-
     public static compileScalePrimitivesIntoScales(): ScaleInterface[] {
         const scalePrimitives: ChordOrScalePrimitiveInterface[] = this.getAvailableScalePrimitives();
+        const noteLength: number = UtilServices.getLengthOfEnum(NoteConstant);
         let scales: ScaleInterface[] = [];
         let scaleNotes: NoteConstant[];
         let assembledScales: ScaleInterface[] = [];
         let rootNote: NoteConstant;
-        for(let i: number = 0; i < UtilServices.getLengthOfEnum(NoteConstant); i++) {
-            rootNote = parseInt(NoteConstant[<any>NoteConstant[i]]);
+        let noteIndex: number;
+        // loop through each possible root note
+        for(let i: number = 0; i < noteLength; i++) {
+            rootNote = UtilServices.getEnumFromStringKey(NoteConstant, NoteConstant[i]);
+            // compile each scale for the given root note
             assembledScales = _.map(scalePrimitives, (scalePrimitive: ChordOrScalePrimitiveInterface): ScaleInterface => {
-                scaleNotes = [];
-                scaleNotes.push();
+                noteIndex = i;
+                scaleNotes = [rootNote];
+                // use the steps to determine the correct note sequence
+                _.each(scalePrimitive.steps, (step: string, index: number) => {
+                    noteIndex = (noteIndex + parseInt(step, 10)) % noteLength;
+                    scaleNotes.push(UtilServices.getEnumFromStringKey(NoteConstant, NoteConstant[noteIndex]));
+                });
+                // remove last element in array as it is the same as the first (root) note
+                scaleNotes.splice(-1,1);
                 return {
                     name: [UtilServices.getFormattedNoteString(rootNote), scalePrimitive.name].join(' '),
                     notes: scaleNotes,
