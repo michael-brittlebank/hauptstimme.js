@@ -1,4 +1,4 @@
-export * from './constants/notes.constant';
+export * from './constants/note.constant';
 export * from './interfaces/instrument.interface';
 export * from './src/hauptstimme';
 export * from './src/data/chords.data';

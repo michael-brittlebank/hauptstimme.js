@@ -1,7 +1,81 @@
 import { ChordOrScalePrimitiveInterface } from '../../interfaces/chordOrScalePrimitiveInterface';
 import { ChordOrScaleTypeConstant } from '../../constants/chordOrScaleType.constant';
+import { ChordInterface } from '../../interfaces/chord.interface';
+import { UtilService } from '../services/util.service';
+import { NoteConstant } from '../..';
+import * as _ from 'lodash';
+import { ScaleInterface } from '../../interfaces/scale.interface';
+import { ScalesData } from './scales.data';
 
 export class ChordPrimitivesData {
+
+    private static moduloNoteIndex(noteIndex: number, step: number) {
+        return (noteIndex + step) % UtilService.getLengthOfEnum(NoteConstant);
+    }
+
+    public static compileChordPrimitivesIntoChords(): ChordInterface[] {
+        const chordPrimitives: ChordOrScalePrimitiveInterface[] = this.getAvailableChordPrimitives();
+        const noteLength: number = UtilService.getLengthOfEnum(NoteConstant);
+        const scales: ScaleInterface[] = ScalesData.getAvailableScales();
+        let chords: ChordInterface[] = [];
+        let chordNotes: NoteConstant[];
+        let assembledChords: ChordInterface[] = [];
+        let rootNote: NoteConstant;
+        let noteIndex: number;
+        let rootScale: ScaleInterface | undefined;
+        // loop through each possible root note
+        for(let i: number = 0; i < noteLength; i++) {
+            rootNote = UtilService.getEnumFromStringKey(NoteConstant, NoteConstant[i]);
+            // compile each scale for the given root note
+            assembledChords = _.map(chordPrimitives, (chordPrimitive: ChordOrScalePrimitiveInterface): ChordInterface => {
+                noteIndex = i;
+                chordNotes = [rootNote];
+                if (chordPrimitive.type === ChordOrScaleTypeConstant.MINOR) {
+                    // use minor scale as basis for selecting notes
+                    rootScale = _.find(scales, (scale: ScaleInterface) => {
+                        return scale.name.toLowerCase().indexOf('aeolian') !== -1 && scale.notes[0] === rootNote;
+                    })
+                } else {
+                    // use major scale as basis for selecting notes
+                    rootScale = _.find(scales, (scale: ScaleInterface) => {
+                        return scale.name.toLowerCase().indexOf('ionian') !== -1 && scale.notes[0] === rootNote;
+                    })
+                }
+                console.log('root scale', rootScale);
+                // use the steps to determine the correct note sequence
+                _.each(chordPrimitive.steps, (step: string) => {
+                    if (step.indexOf('b') !== -1) {
+                        if (step.indexOf('bb') !== -1) {
+                            noteIndex = this.moduloNoteIndex(noteIndex, parseInt(step.substr(2, step.length), 10)) - 2;
+                            chordNotes.push(rootScale.notes[noteIndex]);
+                        } else {
+                            noteIndex = this.moduloNoteIndex(noteIndex, parseInt(step.substr(1, step.length), 10)) - 1;
+                            chordNotes.push(rootScale.notes[noteIndex]);
+                        }
+                    } else if (step.indexOf('#') !== -1) {
+                        noteIndex = this.moduloNoteIndex(noteIndex, parseInt(step.substr(1, step.length), 10)) + 1;
+                        chordNotes.push(rootScale.notes[noteIndex]);
+                    } else if (step.indexOf('(') !== -1) {
+                        noteIndex = this.moduloNoteIndex(noteIndex, parseInt(step.substr(1, step.length - 1), 10));
+                        chordNotes.push(rootScale.notes[noteIndex]);
+                    } else {
+                        noteIndex = this.moduloNoteIndex(noteIndex, parseInt(step, 10));
+                        chordNotes.push(rootScale.notes[noteIndex]);
+                    }
+                });
+                // remove last element in array as it is the same as the first (root) note
+                chordNotes.splice(-1,1);
+                return {
+                    name: [UtilService.getFormattedNoteString(rootNote), chordPrimitive.name].join(' '),
+                    notes: chordNotes,
+                    type: chordPrimitive.type
+                };
+            });
+            chords = chords.concat(assembledChords);
+        }
+        return chords;
+    }
+
     private static getAvailableChordPrimitives(): ChordOrScalePrimitiveInterface[] {
         return [
             {
@@ -259,6 +333,6 @@ export class ChordPrimitivesData {
                 steps:  ['1', '5', '#11'],
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             }
-       ];
+        ];
     }
 }

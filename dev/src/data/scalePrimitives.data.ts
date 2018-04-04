@@ -2,14 +2,14 @@ import { ChordOrScalePrimitiveInterface } from '../../interfaces/chordOrScalePri
 import { ChordOrScaleTypeConstant } from '../../constants/chordOrScaleType.constant';
 import { ScaleInterface } from '../../interfaces/scale.interface';
 import * as _ from 'lodash';
-import { NoteConstant } from '../../constants/note.constant';
-import { UtilServices } from '../services/util.services';
+import { NoteConstant } from '../..';
+import { UtilService } from '../services/util.service';
 
 export class ScalePrimitivesData {
 
     public static compileScalePrimitivesIntoScales(): ScaleInterface[] {
         const scalePrimitives: ChordOrScalePrimitiveInterface[] = this.getAvailableScalePrimitives();
-        const noteLength: number = UtilServices.getLengthOfEnum(NoteConstant);
+        const noteLength: number = UtilService.getLengthOfEnum(NoteConstant);
         let scales: ScaleInterface[] = [];
         let scaleNotes: NoteConstant[];
         let assembledScales: ScaleInterface[] = [];
@@ -17,20 +17,20 @@ export class ScalePrimitivesData {
         let noteIndex: number;
         // loop through each possible root note
         for(let i: number = 0; i < noteLength; i++) {
-            rootNote = UtilServices.getEnumFromStringKey(NoteConstant, NoteConstant[i]);
+            rootNote = UtilService.getEnumFromStringKey(NoteConstant, NoteConstant[i]);
             // compile each scale for the given root note
             assembledScales = _.map(scalePrimitives, (scalePrimitive: ChordOrScalePrimitiveInterface): ScaleInterface => {
                 noteIndex = i;
                 scaleNotes = [rootNote];
                 // use the steps to determine the correct note sequence
-                _.each(scalePrimitive.steps, (step: string, index: number) => {
+                _.each(scalePrimitive.steps, (step: string) => {
                     noteIndex = (noteIndex + parseInt(step, 10)) % noteLength;
-                    scaleNotes.push(UtilServices.getEnumFromStringKey(NoteConstant, NoteConstant[noteIndex]));
+                    scaleNotes.push(UtilService.getEnumFromStringKey(NoteConstant, NoteConstant[noteIndex]));
                 });
                 // remove last element in array as it is the same as the first (root) note
                 scaleNotes.splice(-1,1);
                 return {
-                    name: [UtilServices.getFormattedNoteString(rootNote), scalePrimitive.name].join(' '),
+                    name: [UtilService.getFormattedNoteString(rootNote), scalePrimitive.name].join(' '),
                     notes: scaleNotes,
                     type: scalePrimitive.type
                 };

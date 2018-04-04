@@ -1,5 +1,5 @@
 // constants
-export * from './constants/notes.constant';
+export * from './constants/note.constant';
 
 // interfaces
 export * from './interfaces/instrument.interface';

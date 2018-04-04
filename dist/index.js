@@ -4,7 +4,7 @@ function __export(m) {
 }
 exports.__esModule = true;
 // constants
-__export(require("./constants/notes.constant"));
+__export(require("./constants/note.constant"));
 // src
 __export(require("./src/hauptstimme"));
 // src/data

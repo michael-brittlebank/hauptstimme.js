@@ -1,6 +1,6 @@
 import { NoteConstant } from '../../constants/note.constant';
 
-export class UtilServices {
+export class UtilService {
 
     public static getLengthOfEnum(enumConstant: any): number {
        return Object.keys(enumConstant).filter(key => typeof enumConstant[key as any] === 'number').length

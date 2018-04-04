@@ -1,7 +1,7 @@
 "use strict";
 exports.__esModule = true;
 var instruments_data_1 = require("./data/instruments.data");
-var scalePrimitives_data_1 = require("./data/scalePrimitives.data");
+var chordPrimitives_data_1 = require("./data/chordPrimitives.data");
 var HauptstimmeJs = /** @class */ (function () {
     function HauptstimmeJs() {
     }
@@ -12,7 +12,7 @@ var HauptstimmeJs = /** @class */ (function () {
         return instruments_data_1.InstrumentsData.getAvailableInstruments();
     };
     HauptstimmeJs.demo = function () {
-        return JSON.stringify(scalePrimitives_data_1.ScalePrimitivesData.compileScalePrimitivesIntoScales());
+        return JSON.stringify(chordPrimitives_data_1.ChordPrimitivesData.compileChordPrimitivesIntoChords());
     };
     return HauptstimmeJs;
 }());

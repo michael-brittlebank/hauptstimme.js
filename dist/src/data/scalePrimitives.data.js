@@ -1,34 +1,34 @@
 "use strict";
 exports.__esModule = true;
 var _ = require("lodash");
-var note_constant_1 = require("../../constants/note.constant");
-var util_services_1 = require("../services/util.services");
+var __1 = require("../..");
+var util_service_1 = require("../services/util.service");
 var ScalePrimitivesData = /** @class */ (function () {
     function ScalePrimitivesData() {
     }
     ScalePrimitivesData.compileScalePrimitivesIntoScales = function () {
         var scalePrimitives = this.getAvailableScalePrimitives();
-        var noteLength = util_services_1.UtilServices.getLengthOfEnum(note_constant_1.NoteConstant);
+        var noteLength = util_service_1.UtilService.getLengthOfEnum(__1.NoteConstant);
         var scales = [];
         var scaleNotes;
         var assembledScales = [];
         var rootNote;
         var noteIndex;
         var _loop_1 = function (i) {
-            rootNote = util_services_1.UtilServices.getEnumFromStringKey(note_constant_1.NoteConstant, note_constant_1.NoteConstant[i]);
+            rootNote = util_service_1.UtilService.getEnumFromStringKey(__1.NoteConstant, __1.NoteConstant[i]);
             // compile each scale for the given root note
             assembledScales = _.map(scalePrimitives, function (scalePrimitive) {
                 noteIndex = i;
                 scaleNotes = [rootNote];
                 // use the steps to determine the correct note sequence
-                _.each(scalePrimitive.steps, function (step, index) {
+                _.each(scalePrimitive.steps, function (step) {
                     noteIndex = (noteIndex + parseInt(step, 10)) % noteLength;
-                    scaleNotes.push(util_services_1.UtilServices.getEnumFromStringKey(note_constant_1.NoteConstant, note_constant_1.NoteConstant[noteIndex]));
+                    scaleNotes.push(util_service_1.UtilService.getEnumFromStringKey(__1.NoteConstant, __1.NoteConstant[noteIndex]));
                 });
                 // remove last element in array as it is the same as the first (root) note
                 scaleNotes.splice(-1, 1);
                 return {
-                    name: [util_services_1.UtilServices.getFormattedNoteString(rootNote), scalePrimitive.name].join(' '),
+                    name: [util_service_1.UtilService.getFormattedNoteString(rootNote), scalePrimitive.name].join(' '),
                     notes: scaleNotes,
                     type: scalePrimitive.type
                 };

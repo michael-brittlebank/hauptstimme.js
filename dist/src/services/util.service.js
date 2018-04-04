@@ -1,13 +1,13 @@
 "use strict";
 exports.__esModule = true;
 var note_constant_1 = require("../../constants/note.constant");
-var UtilServices = /** @class */ (function () {
-    function UtilServices() {
+var UtilService = /** @class */ (function () {
+    function UtilService() {
     }
-    UtilServices.getLengthOfEnum = function (enumConstant) {
+    UtilService.getLengthOfEnum = function (enumConstant) {
         return Object.keys(enumConstant).filter(function (key) { return typeof enumConstant[key] === 'number'; }).length;
     };
-    UtilServices.getFormattedNoteString = function (note) {
+    UtilService.getFormattedNoteString = function (note) {
         var sharpEntity = '&#9839;';
         var flatEntity = '&#9837;';
         var formattedNote = note_constant_1.NoteConstant[note];
@@ -35,9 +35,9 @@ var UtilServices = /** @class */ (function () {
         }
         return formattedNote;
     };
-    UtilServices.getEnumFromStringKey = function (enumConstant, key) {
+    UtilService.getEnumFromStringKey = function (enumConstant, key) {
         return parseInt(enumConstant[key]);
     };
-    return UtilServices;
+    return UtilService;
 }());
-exports.UtilServices = UtilServices;
+exports.UtilService = UtilService;

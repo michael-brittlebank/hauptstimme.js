@@ -1,6 +1,6 @@
 import { ScaleInterface } from '../../interfaces/scale.interface';
 import { ChordOrScaleTypeConstant } from '../../constants/chordOrScaleType.constant';
-import { NoteConstant } from '../../constants/note.constant';
+import { NoteConstant } from '../../';
 
 export class ScalesData {
     public static getAvailableScales(): ScaleInterface[] {
@@ -341,7 +341,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'B&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Major Ionian',
+                name: 'B&#9837; Major Ionian',
                 notes: [
                     NoteConstant.AB,
                     NoteConstant.C,
@@ -354,7 +354,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'B&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Dorian',
+                name: 'B&#9837; Dorian',
                 notes: [
                     NoteConstant.AB,
                     NoteConstant.C,
@@ -367,7 +367,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'B&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Phrygian',
+                name: 'B&#9837; Phrygian',
                 notes: [
                     NoteConstant.AB,
                     NoteConstant.B,
@@ -380,7 +380,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'B&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Lydian',
+                name: 'B&#9837; Lydian',
                 notes: [
                     NoteConstant.AB,
                     NoteConstant.C,
@@ -393,7 +393,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'B&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Mixolydian',
+                name: 'B&#9837; Mixolydian',
                 notes: [
                     NoteConstant.AB,
                     NoteConstant.C,
@@ -406,7 +406,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'B&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Minor Aeolian',
+                name: 'B&#9837; Minor Aeolian',
                 notes: [
                     NoteConstant.AB,
                     NoteConstant.C,
@@ -419,7 +419,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'B&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Locrian',
+                name: 'B&#9837; Locrian',
                 notes: [
                     NoteConstant.AB,
                     NoteConstant.B,
@@ -432,7 +432,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'B&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Major Pentatonic',
+                name: 'B&#9837; Major Pentatonic',
                 notes: [
                     NoteConstant.AB,
                     NoteConstant.C,
@@ -443,7 +443,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'B&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Minor Pentatonic',
+                name: 'B&#9837; Minor Pentatonic',
                 notes: [
                     NoteConstant.AB,
                     NoteConstant.CD,
@@ -454,7 +454,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'B&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Harmonic Minor',
+                name: 'B&#9837; Harmonic Minor',
                 notes: [
                     NoteConstant.AB,
                     NoteConstant.C,
@@ -467,7 +467,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'B&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Melodic Minor',
+                name: 'B&#9837; Melodic Minor',
                 notes: [
                     NoteConstant.AB,
                     NoteConstant.C,
@@ -480,7 +480,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'B&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Blues',
+                name: 'B&#9837; Blues',
                 notes: [
                     NoteConstant.AB,
                     NoteConstant.CD,
@@ -492,7 +492,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'B&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Mixo Blues',
+                name: 'B&#9837; Mixo Blues',
                 notes: [
                     NoteConstant.AB,
                     NoteConstant.C,
@@ -507,7 +507,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'B&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Diminished Whole Half',
+                name: 'B&#9837; Diminished Whole Half',
                 notes: [
                     NoteConstant.AB,
                     NoteConstant.C,
@@ -521,7 +521,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'B&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Diminished Half Whole',
+                name: 'B&#9837; Diminished Half Whole',
                 notes: [
                     NoteConstant.AB,
                     NoteConstant.B,
@@ -535,7 +535,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'B&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Whole Tone',
+                name: 'B&#9837; Whole Tone',
                 notes: [
                     NoteConstant.AB,
                     NoteConstant.C,
@@ -547,7 +547,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'B&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Hungarian Minor',
+                name: 'B&#9837; Hungarian Minor',
                 notes: [
                     NoteConstant.AB,
                     NoteConstant.C,
@@ -560,7 +560,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'B&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Hungarian Gypsy',
+                name: 'B&#9837; Hungarian Gypsy',
                 notes: [
                     NoteConstant.AB,
                     NoteConstant.C,
@@ -573,7 +573,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'B&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Double Harmonic',
+                name: 'B&#9837; Double Harmonic',
                 notes: [
                     NoteConstant.AB,
                     NoteConstant.B,
@@ -586,7 +586,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'B&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Enigmatic',
+                name: 'B&#9837; Enigmatic',
                 notes: [
                     NoteConstant.AB,
                     NoteConstant.B,
@@ -599,7 +599,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'B&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Altered',
+                name: 'B&#9837; Altered',
                 notes: [
                     NoteConstant.AB,
                     NoteConstant.B,
@@ -612,7 +612,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'B&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Major Neapolitan',
+                name: 'B&#9837; Major Neapolitan',
                 notes: [
                     NoteConstant.AB,
                     NoteConstant.B,
@@ -625,7 +625,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'B&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Minor Neapolitan',
+                name: 'B&#9837; Minor Neapolitan',
                 notes: [
                     NoteConstant.AB,
                     NoteConstant.B,
@@ -638,7 +638,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'B&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Persian',
+                name: 'B&#9837; Persian',
                 notes: [
                     NoteConstant.AB,
                     NoteConstant.B,
@@ -651,7 +651,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'B&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Ukranian Dorian',
+                name: 'B&#9837; Ukranian Dorian',
                 notes: [
                     NoteConstant.AB,
                     NoteConstant.C,
@@ -664,7 +664,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'B&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Yo',
+                name: 'B&#9837; Yo',
                 notes: [
                     NoteConstant.AB,
                     NoteConstant.C,
@@ -1343,7 +1343,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'C&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Major Ionian',
+                name: 'C&#9839; Major Ionian',
                 notes: [
                     NoteConstant.CD,
                     NoteConstant.DE,
@@ -1356,7 +1356,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'C&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Dorian',
+                name: 'C&#9839; Dorian',
                 notes: [
                     NoteConstant.CD,
                     NoteConstant.DE,
@@ -1369,7 +1369,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'C&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Phrygian',
+                name: 'C&#9839; Phrygian',
                 notes: [
                     NoteConstant.CD,
                     NoteConstant.D,
@@ -1382,7 +1382,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'C&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Lydian',
+                name: 'C&#9839; Lydian',
                 notes: [
                     NoteConstant.CD,
                     NoteConstant.DE,
@@ -1395,7 +1395,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'C&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Mixolydian',
+                name: 'C&#9839; Mixolydian',
                 notes: [
                     NoteConstant.CD,
                     NoteConstant.DE,
@@ -1408,7 +1408,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'C&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Minor Aeolian',
+                name: 'C&#9839; Minor Aeolian',
                 notes: [
                     NoteConstant.CD,
                     NoteConstant.DE,
@@ -1421,7 +1421,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'C&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Locrian',
+                name: 'C&#9839; Locrian',
                 notes: [
                     NoteConstant.CD,
                     NoteConstant.D,
@@ -1434,7 +1434,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'C&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Major Pentatonic',
+                name: 'C&#9839; Major Pentatonic',
                 notes: [
                     NoteConstant.CD,
                     NoteConstant.DE,
@@ -1445,7 +1445,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'C&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Minor Pentatonic',
+                name: 'C&#9839; Minor Pentatonic',
                 notes: [
                     NoteConstant.CD,
                     NoteConstant.E,
@@ -1456,7 +1456,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'C&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Harmonic Minor',
+                name: 'C&#9839; Harmonic Minor',
                 notes: [
                     NoteConstant.CD,
                     NoteConstant.DE,
@@ -1469,7 +1469,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'C&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Melodic Minor',
+                name: 'C&#9839; Melodic Minor',
                 notes: [
                     NoteConstant.CD,
                     NoteConstant.DE,
@@ -1482,7 +1482,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'C&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Blues',
+                name: 'C&#9839; Blues',
                 notes: [
                     NoteConstant.CD,
                     NoteConstant.E,
@@ -1494,7 +1494,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'C&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Mixo Blues',
+                name: 'C&#9839; Mixo Blues',
                 notes: [
                     NoteConstant.CD,
                     NoteConstant.DE,
@@ -1509,7 +1509,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'C&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Diminished Whole Half',
+                name: 'C&#9839; Diminished Whole Half',
                 notes: [
                     NoteConstant.CD,
                     NoteConstant.DE,
@@ -1523,7 +1523,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'C&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Diminished Half Whole',
+                name: 'C&#9839; Diminished Half Whole',
                 notes: [
                     NoteConstant.CD,
                     NoteConstant.D,
@@ -1537,7 +1537,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'C&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Whole Tone',
+                name: 'C&#9839; Whole Tone',
                 notes: [
                     NoteConstant.CD,
                     NoteConstant.DE,
@@ -1549,7 +1549,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'C&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Hungarian Minor',
+                name: 'C&#9839; Hungarian Minor',
                 notes: [
                     NoteConstant.CD,
                     NoteConstant.DE,
@@ -1562,7 +1562,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'C&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Hungarian Gypsy',
+                name: 'C&#9839; Hungarian Gypsy',
                 notes: [
                     NoteConstant.CD,
                     NoteConstant.DE,
@@ -1575,7 +1575,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'C&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Double Harmonic',
+                name: 'C&#9839; Double Harmonic',
                 notes: [
                     NoteConstant.CD,
                     NoteConstant.D,
@@ -1588,7 +1588,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'C&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Enigmatic',
+                name: 'C&#9839; Enigmatic',
                 notes: [
                     NoteConstant.CD,
                     NoteConstant.D,
@@ -1601,7 +1601,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'C&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Altered',
+                name: 'C&#9839; Altered',
                 notes: [
                     NoteConstant.CD,
                     NoteConstant.D,
@@ -1614,7 +1614,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'C&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Major Neapolitan',
+                name: 'C&#9839; Major Neapolitan',
                 notes: [
                     NoteConstant.CD,
                     NoteConstant.D,
@@ -1627,7 +1627,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'C&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Minor Neapolitan',
+                name: 'C&#9839; Minor Neapolitan',
                 notes: [
                     NoteConstant.CD,
                     NoteConstant.D,
@@ -1640,7 +1640,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'C&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Persian',
+                name: 'C&#9839; Persian',
                 notes: [
                     NoteConstant.CD,
                     NoteConstant.D,
@@ -1653,7 +1653,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'C&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Ukranian Dorian',
+                name: 'C&#9839; Ukranian Dorian',
                 notes: [
                     NoteConstant.CD,
                     NoteConstant.DE,
@@ -1666,7 +1666,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'C&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Yo',
+                name: 'C&#9839; Yo',
                 notes: [
                     NoteConstant.CD,
                     NoteConstant.DE,
@@ -2011,7 +2011,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'E&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Major Ionian',
+                name: 'E&#9837; Major Ionian',
                 notes: [
                     NoteConstant.DE,
                     NoteConstant.F,
@@ -2024,7 +2024,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'E&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Dorian',
+                name: 'E&#9837; Dorian',
                 notes: [
                     NoteConstant.DE,
                     NoteConstant.F,
@@ -2037,7 +2037,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'E&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Phrygian',
+                name: 'E&#9837; Phrygian',
                 notes: [
                     NoteConstant.DE,
                     NoteConstant.E,
@@ -2050,7 +2050,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'E&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Lydian',
+                name: 'E&#9837; Lydian',
                 notes: [
                     NoteConstant.DE,
                     NoteConstant.F,
@@ -2063,7 +2063,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'E&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Mixolydian',
+                name: 'E&#9837; Mixolydian',
                 notes: [
                     NoteConstant.DE,
                     NoteConstant.F,
@@ -2076,7 +2076,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'E&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Minor Aeolian',
+                name: 'E&#9837; Minor Aeolian',
                 notes: [
                     NoteConstant.DE,
                     NoteConstant.F,
@@ -2089,7 +2089,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'E&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Locrian',
+                name: 'E&#9837; Locrian',
                 notes: [
                     NoteConstant.DE,
                     NoteConstant.E,
@@ -2102,7 +2102,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'E&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Major Pentatonic',
+                name: 'E&#9837; Major Pentatonic',
                 notes: [
                     NoteConstant.DE,
                     NoteConstant.F,
@@ -2113,7 +2113,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'E&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Minor Pentatonic',
+                name: 'E&#9837; Minor Pentatonic',
                 notes: [
                     NoteConstant.DE,
                     NoteConstant.FG,
@@ -2124,7 +2124,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'E&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Harmonic Minor',
+                name: 'E&#9837; Harmonic Minor',
                 notes: [
                     NoteConstant.DE,
                     NoteConstant.F,
@@ -2137,7 +2137,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'E&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Melodic Minor',
+                name: 'E&#9837; Melodic Minor',
                 notes: [
                     NoteConstant.DE,
                     NoteConstant.F,
@@ -2150,7 +2150,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'E&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Blues',
+                name: 'E&#9837; Blues',
                 notes: [
                     NoteConstant.DE,
                     NoteConstant.FG,
@@ -2162,7 +2162,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'E&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Mixo Blues',
+                name: 'E&#9837; Mixo Blues',
                 notes: [
                     NoteConstant.DE,
                     NoteConstant.F,
@@ -2177,7 +2177,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'E&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Diminished Whole Half',
+                name: 'E&#9837; Diminished Whole Half',
                 notes: [
                     NoteConstant.DE,
                     NoteConstant.F,
@@ -2191,7 +2191,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'E&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Diminished Half Whole',
+                name: 'E&#9837; Diminished Half Whole',
                 notes: [
                     NoteConstant.DE,
                     NoteConstant.E,
@@ -2205,7 +2205,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'E&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Whole Tone',
+                name: 'E&#9837; Whole Tone',
                 notes: [
                     NoteConstant.DE,
                     NoteConstant.F,
@@ -2217,7 +2217,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'E&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Hungarian Minor',
+                name: 'E&#9837; Hungarian Minor',
                 notes: [
                     NoteConstant.DE,
                     NoteConstant.F,
@@ -2230,7 +2230,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'E&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Hungarian Gypsy',
+                name: 'E&#9837; Hungarian Gypsy',
                 notes: [
                     NoteConstant.DE,
                     NoteConstant.F,
@@ -2243,7 +2243,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'E&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Double Harmonic',
+                name: 'E&#9837; Double Harmonic',
                 notes: [
                     NoteConstant.DE,
                     NoteConstant.E,
@@ -2256,7 +2256,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'E&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Enigmatic',
+                name: 'E&#9837; Enigmatic',
                 notes: [
                     NoteConstant.DE,
                     NoteConstant.E,
@@ -2269,7 +2269,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'E&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Altered',
+                name: 'E&#9837; Altered',
                 notes: [
                     NoteConstant.DE,
                     NoteConstant.E,
@@ -2282,7 +2282,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'E&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Major Neapolitan',
+                name: 'E&#9837; Major Neapolitan',
                 notes: [
                     NoteConstant.DE,
                     NoteConstant.E,
@@ -2295,7 +2295,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'E&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Minor Neapolitan',
+                name: 'E&#9837; Minor Neapolitan',
                 notes: [
                     NoteConstant.DE,
                     NoteConstant.E,
@@ -2308,7 +2308,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'E&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Persian',
+                name: 'E&#9837; Persian',
                 notes: [
                     NoteConstant.DE,
                     NoteConstant.E,
@@ -2321,7 +2321,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'E&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Ukranian Dorian',
+                name: 'E&#9837; Ukranian Dorian',
                 notes: [
                     NoteConstant.DE,
                     NoteConstant.F,
@@ -2334,7 +2334,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'E&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Yo',
+                name: 'E&#9837; Yo',
                 notes: [
                     NoteConstant.DE,
                     NoteConstant.F,
@@ -3013,7 +3013,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'F&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Major Ionian',
+                name: 'F&#9839; Major Ionian',
                 notes: [
                     NoteConstant.FG,
                     NoteConstant.GA,
@@ -3026,7 +3026,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'F&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Dorian',
+                name: 'F&#9839; Dorian',
                 notes: [
                     NoteConstant.FG,
                     NoteConstant.GA,
@@ -3039,7 +3039,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'F&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Phrygian',
+                name: 'F&#9839; Phrygian',
                 notes: [
                     NoteConstant.FG,
                     NoteConstant.G,
@@ -3052,7 +3052,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'F&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Lydian',
+                name: 'F&#9839; Lydian',
                 notes: [
                     NoteConstant.FG,
                     NoteConstant.GA,
@@ -3065,7 +3065,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'F&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Mixolydian',
+                name: 'F&#9839; Mixolydian',
                 notes: [
                     NoteConstant.FG,
                     NoteConstant.GA,
@@ -3078,7 +3078,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'F&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Minor Aeolian',
+                name: 'F&#9839; Minor Aeolian',
                 notes: [
                     NoteConstant.FG,
                     NoteConstant.GA,
@@ -3091,7 +3091,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'F&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Locrian',
+                name: 'F&#9839; Locrian',
                 notes: [
                     NoteConstant.FG,
                     NoteConstant.G,
@@ -3104,7 +3104,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'F&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Major Pentatonic',
+                name: 'F&#9839; Major Pentatonic',
                 notes: [
                     NoteConstant.FG,
                     NoteConstant.GA,
@@ -3115,7 +3115,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'F&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Minor Pentatonic',
+                name: 'F&#9839; Minor Pentatonic',
                 notes: [
                     NoteConstant.FG,
                     NoteConstant.A,
@@ -3126,7 +3126,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'F&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Harmonic Minor',
+                name: 'F&#9839; Harmonic Minor',
                 notes: [
                     NoteConstant.FG,
                     NoteConstant.GA,
@@ -3139,7 +3139,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'F&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Melodic Minor',
+                name: 'F&#9839; Melodic Minor',
                 notes: [
                     NoteConstant.FG,
                     NoteConstant.GA,
@@ -3152,7 +3152,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'F&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Blues',
+                name: 'F&#9839; Blues',
                 notes: [
                     NoteConstant.FG,
                     NoteConstant.A,
@@ -3164,7 +3164,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'F&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Mixo Blues',
+                name: 'F&#9839; Mixo Blues',
                 notes: [
                     NoteConstant.FG,
                     NoteConstant.GA,
@@ -3179,7 +3179,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'F&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Diminished Whole Half',
+                name: 'F&#9839; Diminished Whole Half',
                 notes: [
                     NoteConstant.FG,
                     NoteConstant.GA,
@@ -3193,7 +3193,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'F&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Diminished Half Whole',
+                name: 'F&#9839; Diminished Half Whole',
                 notes: [
                     NoteConstant.FG,
                     NoteConstant.G,
@@ -3207,7 +3207,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'F&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Whole Tone',
+                name: 'F&#9839; Whole Tone',
                 notes: [
                     NoteConstant.FG,
                     NoteConstant.GA,
@@ -3219,7 +3219,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'F&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Hungarian Minor',
+                name: 'F&#9839; Hungarian Minor',
                 notes: [
                     NoteConstant.FG,
                     NoteConstant.GA,
@@ -3232,7 +3232,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'F&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Hungarian Gypsy',
+                name: 'F&#9839; Hungarian Gypsy',
                 notes: [
                     NoteConstant.FG,
                     NoteConstant.GA,
@@ -3245,7 +3245,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'F&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Double Harmonic',
+                name: 'F&#9839; Double Harmonic',
                 notes: [
                     NoteConstant.FG,
                     NoteConstant.G,
@@ -3258,7 +3258,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'F&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Enigmatic',
+                name: 'F&#9839; Enigmatic',
                 notes: [
                     NoteConstant.FG,
                     NoteConstant.G,
@@ -3271,7 +3271,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'F&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Altered',
+                name: 'F&#9839; Altered',
                 notes: [
                     NoteConstant.FG,
                     NoteConstant.G,
@@ -3284,7 +3284,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'F&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Major Neapolitan',
+                name: 'F&#9839; Major Neapolitan',
                 notes: [
                     NoteConstant.FG,
                     NoteConstant.G,
@@ -3297,7 +3297,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'F&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Minor Neapolitan',
+                name: 'F&#9839; Minor Neapolitan',
                 notes: [
                     NoteConstant.FG,
                     NoteConstant.G,
@@ -3310,7 +3310,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'F&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Persian',
+                name: 'F&#9839; Persian',
                 notes: [
                     NoteConstant.FG,
                     NoteConstant.G,
@@ -3323,7 +3323,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'F&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Ukranian Dorian',
+                name: 'F&#9839; Ukranian Dorian',
                 notes: [
                     NoteConstant.FG,
                     NoteConstant.GA,
@@ -3336,7 +3336,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'F&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.FG; Yo',
+                name: 'F&#9839; Yo',
                 notes: [
                     NoteConstant.FG,
                     NoteConstant.GA,
@@ -3681,7 +3681,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'A&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Major Ionian',
+                name: 'A&#9837; Major Ionian',
                 notes: [
                     NoteConstant.GA,
                     NoteConstant.AB,
@@ -3694,7 +3694,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'A&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Dorian',
+                name: 'A&#9837; Dorian',
                 notes: [
                     NoteConstant.GA,
                     NoteConstant.AB,
@@ -3707,7 +3707,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'A&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Phrygian',
+                name: 'A&#9837; Phrygian',
                 notes: [
                     NoteConstant.GA,
                     NoteConstant.A,
@@ -3720,7 +3720,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'A&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Lydian',
+                name: 'A&#9837; Lydian',
                 notes: [
                     NoteConstant.GA,
                     NoteConstant.AB,
@@ -3733,7 +3733,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'A&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Mixolydian',
+                name: 'A&#9837; Mixolydian',
                 notes: [
                     NoteConstant.GA,
                     NoteConstant.AB,
@@ -3746,7 +3746,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'A&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Minor Aeolian',
+                name: 'A&#9837; Minor Aeolian',
                 notes: [
                     NoteConstant.GA,
                     NoteConstant.AB,
@@ -3759,7 +3759,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'A&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Locrian',
+                name: 'A&#9837; Locrian',
                 notes: [
                     NoteConstant.GA,
                     NoteConstant.A,
@@ -3772,7 +3772,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'A&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Major Pentatonic',
+                name: 'A&#9837; Major Pentatonic',
                 notes: [
                     NoteConstant.GA,
                     NoteConstant.AB,
@@ -3783,7 +3783,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'A&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Minor Pentatonic',
+                name: 'A&#9837; Minor Pentatonic',
                 notes: [
                     NoteConstant.GA,
                     NoteConstant.B,
@@ -3794,7 +3794,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'A&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Harmonic Minor',
+                name: 'A&#9837; Harmonic Minor',
                 notes: [
                     NoteConstant.GA,
                     NoteConstant.AB,
@@ -3807,7 +3807,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'A&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Melodic Minor',
+                name: 'A&#9837; Melodic Minor',
                 notes: [
                     NoteConstant.GA,
                     NoteConstant.AB,
@@ -3820,7 +3820,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'A&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Blues',
+                name: 'A&#9837; Blues',
                 notes: [
                     NoteConstant.GA,
                     NoteConstant.B,
@@ -3832,7 +3832,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'A&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Mixo Blues',
+                name: 'A&#9837; Mixo Blues',
                 notes: [
                     NoteConstant.GA,
                     NoteConstant.AB,
@@ -3847,7 +3847,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MAIN
             },
             {
-                name: 'A&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Diminished Whole Half',
+                name: 'A&#9837; Diminished Whole Half',
                 notes: [
                     NoteConstant.GA,
                     NoteConstant.AB,
@@ -3861,7 +3861,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'A&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Diminished Half Whole',
+                name: 'A&#9837; Diminished Half Whole',
                 notes: [
                     NoteConstant.GA,
                     NoteConstant.A,
@@ -3875,7 +3875,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'A&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Whole Tone',
+                name: 'A&#9837; Whole Tone',
                 notes: [
                     NoteConstant.GA,
                     NoteConstant.AB,
@@ -3887,7 +3887,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'A&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Hungarian Minor',
+                name: 'A&#9837; Hungarian Minor',
                 notes: [
                     NoteConstant.GA,
                     NoteConstant.AB,
@@ -3900,7 +3900,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'A&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Hungarian Gypsy',
+                name: 'A&#9837; Hungarian Gypsy',
                 notes: [
                     NoteConstant.GA,
                     NoteConstant.AB,
@@ -3913,7 +3913,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'A&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Double Harmonic',
+                name: 'A&#9837; Double Harmonic',
                 notes: [
                     NoteConstant.GA,
                     NoteConstant.A,
@@ -3926,7 +3926,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'A&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Enigmatic',
+                name: 'A&#9837; Enigmatic',
                 notes: [
                     NoteConstant.GA,
                     NoteConstant.A,
@@ -3939,7 +3939,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'A&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Altered',
+                name: 'A&#9837; Altered',
                 notes: [
                     NoteConstant.GA,
                     NoteConstant.A,
@@ -3952,7 +3952,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'A&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Major Neapolitan',
+                name: 'A&#9837; Major Neapolitan',
                 notes: [
                     NoteConstant.GA,
                     NoteConstant.A,
@@ -3965,7 +3965,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'A&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Minor Neapolitan',
+                name: 'A&#9837; Minor Neapolitan',
                 notes: [
                     NoteConstant.GA,
                     NoteConstant.A,
@@ -3978,7 +3978,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'A&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Persian',
+                name: 'A&#9837; Persian',
                 notes: [
                     NoteConstant.GA,
                     NoteConstant.A,
@@ -3991,7 +3991,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'A&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Ukranian Dorian',
+                name: 'A&#9837; Ukranian Dorian',
                 notes: [
                     NoteConstant.GA,
                     NoteConstant.AB,
@@ -4004,7 +4004,7 @@ export class ScalesData {
                 type: ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
-                name: 'A&#NoteConstant.FGNoteConstant.FNoteConstant.CNoteConstant.E; Yo',
+                name: 'A&#9837; Yo',
                 notes: [
                     NoteConstant.GA,
                     NoteConstant.AB,
