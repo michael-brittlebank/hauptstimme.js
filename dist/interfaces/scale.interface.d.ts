@@ -1,4 +1,7 @@
+import { NotesConstant } from '..';
+import { ChordOrScaleTypeConstant } from '../constants/chordOrScaleType.constant';
 export interface ScaleInterface {
     name: string;
-    steps: number[];
+    notes: NotesConstant[];
+    type: ChordOrScaleTypeConstant;
 }
