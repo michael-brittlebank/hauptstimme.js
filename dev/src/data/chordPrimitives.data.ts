@@ -2,7 +2,7 @@ import { ChordOrScalePrimitiveInterface } from '../../interfaces/chordOrScalePri
 import { ChordOrScaleTypeConstant } from '../../constants/chordOrScaleType.constant';
 
 export class ChordPrimitivesData {
-    public static getAvailableChordPrimitives(): ChordOrScalePrimitiveInterface[] {
+    private static getAvailableChordPrimitives(): ChordOrScalePrimitiveInterface[] {
         return [
             {
                 name: 'Major',

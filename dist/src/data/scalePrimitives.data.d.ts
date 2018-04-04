@@ -1,4 +1,5 @@
-import { ChordOrScalePrimitiveInterface } from '../../interfaces/chordOrScalePrimitiveInterface';
+import { ScaleInterface } from '../../interfaces/scale.interface';
 export declare class ScalePrimitivesData {
-    static getAvailableChordPrimitives(): ChordOrScalePrimitiveInterface[];
+    static compileScalePrimitivesIntoScales(): ScaleInterface[];
+    private static getAvailableScalePrimitives();
 }

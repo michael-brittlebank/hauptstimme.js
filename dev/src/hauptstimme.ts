@@ -1,5 +1,6 @@
 import { InstrumentsData } from './data/instruments.data';
 import { InstrumentInterface } from '..';
+import { ScalePrimitivesData } from './data/scalePrimitives.data';
 
 export class HauptstimmeJs {
     /**
@@ -10,7 +11,7 @@ export class HauptstimmeJs {
     }
 
     public static demo(): any {
-        return JSON.stringify({});
+        return JSON.stringify(ScalePrimitivesData.compileScalePrimitivesIntoScales());
     }
 
 }

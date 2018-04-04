@@ -1,4 +1,4 @@
-export enum NotesConstant {
+export enum NoteConstant {
     A,
     AB,
     B,

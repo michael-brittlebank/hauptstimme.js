@@ -1,4 +1,4 @@
-export enum InstrumentTypeConstant {
+export const enum InstrumentTypeConstant {
     INSTRUMENT,
     ALTERNATE_TUNING
 }

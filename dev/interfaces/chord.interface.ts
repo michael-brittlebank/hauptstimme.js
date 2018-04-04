@@ -1,8 +1,8 @@
 import { ChordOrScaleTypeConstant } from '../constants/chordOrScaleType.constant';
-import { NotesConstant } from '..';
+import { NoteConstant } from '../constants/note.constant';
 
 export interface ChordInterface {
     name: string;
-    notes: NotesConstant[];
+    notes: NoteConstant[];
     type: ChordOrScaleTypeConstant
 }
