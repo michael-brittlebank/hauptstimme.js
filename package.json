@@ -18,7 +18,7 @@
     "start": "tsc --watch",
     "typedoc": "typedoc --out ./docs --mode modules --tsconfig ./tsconfig.json ./dev/src/",
     "posttypedoc": "shx cp .nojekyll docs/.nojekyll",
-    "test": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec dev/test/*"
+    "test": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec dev/tests/*.test.js dev/tests/**/*.test.js"
   },
   "devDependencies": {
     "@types/chai": "4.1.2",
