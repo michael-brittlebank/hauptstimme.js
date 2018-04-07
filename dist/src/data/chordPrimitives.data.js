@@ -22,6 +22,11 @@ var ChordPrimitivesData = /** @class */ (function () {
         var noteIndex;
         var rootScale;
         var rootScaleLength;
+        var defaultScale = {
+            name: 'Empty Scale',
+            notes: [],
+            type: 4 /* MISCELLANEOUS */
+        };
         // loop through each possible root note
         for (var i = 0; i < noteLength; i++) {
             rootNote = util_service_1.UtilService.getEnumFromStringKey(__1.NoteConstant, __1.NoteConstant[i]);
@@ -32,46 +37,55 @@ var ChordPrimitivesData = /** @class */ (function () {
                     // use minor scale as basis for selecting notes
                     rootScale = _.find(scales, function (scale) {
                         return scale.name.toLowerCase().indexOf('aeolian') !== -1 && scale.notes[0] === rootNote;
-                    });
+                    }) || defaultScale;
                 }
                 else {
                     // use major scale as basis for selecting notes
                     rootScale = _.find(scales, function (scale) {
                         return scale.name.toLowerCase().indexOf('ionian') !== -1 && scale.notes[0] === rootNote;
-                    });
+                    }) || defaultScale;
                 }
-                rootScaleLength = rootScale.notes.length;
-                // use the steps to determine the correct note sequence
-                _.each(chordPrimitive.steps, function (step) {
-                    if (step.indexOf('b') !== -1) {
-                        // todo, verify note generation is correct for non-major chords
-                        if (step.indexOf('bb') !== -1) {
-                            noteIndex = _this.moduloChordNoteIndex(parseInt(step.substr(2, step.length), 10), rootScaleLength) - 2;
+                if (!!rootScale) {
+                    rootScaleLength = rootScale.notes.length;
+                    // use the steps to determine the correct note sequence
+                    _.each(chordPrimitive.steps, function (step) {
+                        if (step.indexOf('b') !== -1) {
+                            // todo, verify note generation is correct for non-major chords
+                            if (step.indexOf('bb') !== -1) {
+                                noteIndex = _this.moduloChordNoteIndex(parseInt(step.substr(2, step.length), 10), rootScaleLength) - 2;
+                                chordNotes.push(rootScale.notes[noteIndex]);
+                            }
+                            else {
+                                noteIndex = _this.moduloChordNoteIndex(parseInt(step.substr(1, step.length), 10), rootScaleLength) - 1;
+                                chordNotes.push(rootScale.notes[noteIndex]);
+                            }
+                        }
+                        else if (step.indexOf('#') !== -1) {
+                            noteIndex = _this.moduloChordNoteIndex(parseInt(step.substr(1, step.length), 10), rootScaleLength) + 1;
+                            chordNotes.push(rootScale.notes[noteIndex]);
+                        }
+                        else if (step.indexOf('(') !== -1) {
+                            noteIndex = _this.moduloChordNoteIndex(parseInt(step.substr(1, step.length - 1), 10), rootScaleLength);
                             chordNotes.push(rootScale.notes[noteIndex]);
                         }
                         else {
-                            noteIndex = _this.moduloChordNoteIndex(parseInt(step.substr(1, step.length), 10), rootScaleLength) - 1;
+                            noteIndex = _this.moduloChordNoteIndex(parseInt(step, 10), rootScaleLength);
                             chordNotes.push(rootScale.notes[noteIndex]);
                         }
-                    }
-                    else if (step.indexOf('#') !== -1) {
-                        noteIndex = _this.moduloChordNoteIndex(parseInt(step.substr(1, step.length), 10), rootScaleLength) + 1;
-                        chordNotes.push(rootScale.notes[noteIndex]);
-                    }
-                    else if (step.indexOf('(') !== -1) {
-                        noteIndex = _this.moduloChordNoteIndex(parseInt(step.substr(1, step.length - 1), 10), rootScaleLength);
-                        chordNotes.push(rootScale.notes[noteIndex]);
-                    }
-                    else {
-                        noteIndex = _this.moduloChordNoteIndex(parseInt(step, 10), rootScaleLength);
-                        chordNotes.push(rootScale.notes[noteIndex]);
-                    }
-                });
-                return {
-                    name: [util_service_1.UtilService.getFormattedNoteString(rootNote), chordPrimitive.name].join(' '),
-                    notes: _.sortBy(_.uniq(chordNotes)),
-                    type: chordPrimitive.type
-                };
+                    });
+                    return {
+                        name: [util_service_1.UtilService.getFormattedNoteString(rootNote), chordPrimitive.name].join(' '),
+                        notes: _.sortBy(_.uniq(chordNotes)),
+                        type: chordPrimitive.type
+                    };
+                }
+                else {
+                    return {
+                        name: [util_service_1.UtilService.getFormattedNoteString(rootNote), chordPrimitive.name].join(' '),
+                        notes: [],
+                        type: chordPrimitive.type
+                    };
+                }
             });
             chords = chords.concat(assembledChords);
         }

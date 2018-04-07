@@ -4,6 +4,7 @@ var instruments_data_1 = require("./data/instruments.data");
 var search_service_1 = require("./services/search.service");
 var scales_data_1 = require("./data/scales.data");
 var chords_data_1 = require("./data/chords.data");
+var Promise = require("bluebird");
 var HauptstimmeJs = /** @class */ (function () {
     function HauptstimmeJs() {
     }

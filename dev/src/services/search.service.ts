@@ -3,6 +3,7 @@ import { ScaleInterface } from '../../';
 import * as _ from 'lodash';
 import { ChordInterface } from '../../';
 import { SearchResponseInterface } from '../../';
+import * as Promise from 'bluebird';
 
 export class SearchService {
 

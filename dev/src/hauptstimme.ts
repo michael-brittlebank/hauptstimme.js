@@ -9,6 +9,7 @@ import {
 import { SearchService } from './services/search.service';
 import { ScalesData } from './data/scales.data';
 import { ChordsData } from './data/chords.data';
+import * as Promise from 'bluebird';
 
 export class HauptstimmeJs {
     /**

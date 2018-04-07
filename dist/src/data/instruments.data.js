@@ -14,7 +14,7 @@ var InstrumentsData = /** @class */ (function () {
     function InstrumentsData() {
     }
     InstrumentsData.getAvailableInstruments = function () {
-        return [
+        var instruments = [
             {
                 name: 'Guitar',
                 rootNotes: [

@@ -4,7 +4,7 @@ import * as _ from 'lodash';
 
 export class InstrumentsData {
     public static getAvailableInstruments(): InstrumentInterface[] {
-        return [
+        const instruments: InstrumentInterface[] = [
             {
                 name:'Guitar',
                 rootNotes:[

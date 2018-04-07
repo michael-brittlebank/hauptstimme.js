@@ -1,4 +1,6 @@
+/// <reference types="bluebird" />
 import { ChordInterface, InstrumentInterface, NoteConstant, ScaleInterface, SearchResponseInterface } from '..';
+import * as Promise from 'bluebird';
 export declare class HauptstimmeJs {
     /**
      * This class provides a entry point for helper functions used in the module
