@@ -11,13 +11,19 @@ var HauptstimmeJs = /** @class */ (function () {
      * This class provides a entry point for helper functions used in the module
      */
     HauptstimmeJs.getAvailableInstruments = function () {
-        return instruments_data_1.InstrumentsData.getAvailableInstruments();
+        return new Promise(function (resolve, reject) {
+            resolve(instruments_data_1.InstrumentsData.getAvailableInstruments());
+        });
     };
     HauptstimmeJs.getAvailableScales = function () {
-        return scales_data_1.ScalesData.getAvailableScales();
+        return new Promise(function (resolve, reject) {
+            resolve(scales_data_1.ScalesData.getAvailableScales());
+        });
     };
     HauptstimmeJs.getAvailableChords = function () {
-        return chords_data_1.ChordsData.getAvailableChords();
+        return new Promise(function (resolve, reject) {
+            resolve(chords_data_1.ChordsData.getAvailableChords());
+        });
     };
     HauptstimmeJs.search = function (notesArray) {
         return search_service_1.SearchService.getChordsAndScalesByNotes(notesArray);

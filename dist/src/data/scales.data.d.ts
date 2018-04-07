@@ -1,4 +1,4 @@
 import { ScaleInterface } from '../../interfaces/scale.interface';
 export declare class ScalesData {
-    static getAvailableScales(): Promise<ScaleInterface[]>;
+    static getAvailableScales(): ScaleInterface[];
 }

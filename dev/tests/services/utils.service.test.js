@@ -10,3 +10,17 @@ describe('#UtilService.getLengthOfEnum', function() {
         expect(result).to.be.an('number');
     });
 });
+
+describe('#UtilService.getFormattedNoteString', function() {
+    it('should return a formatted string from an enum', function() {
+        const result = UtilService.getFormattedNoteString(NoteConstant.GA);
+        expect(result).to.equal('A&#9837;');
+    });
+});
+
+describe('#UtilService.getEnumFromStringKey', function() {
+    it('should return an enum value from a stringified index', function() {
+        const result = UtilService.getEnumFromStringKey(NoteConstant, NoteConstant[3]);
+        expect(result).to.equal(NoteConstant.C);
+    });
+});
