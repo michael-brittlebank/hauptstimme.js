@@ -1,4 +1,4 @@
-import { NoteConstant } from '../../constants/note.constant';
+import { NoteConstant } from '../../';
 export declare class UtilService {
     static getLengthOfEnum(enumConstant: any): number;
     static getFormattedNoteString(note: NoteConstant): string;

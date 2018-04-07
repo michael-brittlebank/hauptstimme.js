@@ -1,7 +1,6 @@
 import { InstrumentsData } from './data/instruments.data';
 import { InstrumentInterface } from '..';
-import { ScalePrimitivesData } from './data/scalePrimitives.data';
-import { ChordPrimitivesData } from './data/chordPrimitives.data';
+import { SearchService } from './services/search.service';
 
 export class HauptstimmeJs {
     /**
@@ -12,7 +11,7 @@ export class HauptstimmeJs {
     }
 
     public static demo(): any {
-        return JSON.stringify(ChordPrimitivesData.compileChordPrimitivesIntoChords());
+        return JSON.stringify(SearchService.getChordsAndScalesByNotes([0,5]));
     }
 
 }

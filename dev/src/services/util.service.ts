@@ -1,4 +1,4 @@
-import { NoteConstant } from '../../constants/note.constant';
+import { NoteConstant } from '../../';
 
 export class UtilService {
 
