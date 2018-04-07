@@ -4,10 +4,8 @@ function __export(m) {
 }
 exports.__esModule = true;
 // constants
-__export(require("./constants/note.constant"));
+__export(require("./exports/constants.exports"));
 // src
 __export(require("./src/hauptstimme"));
 // src/data
-__export(require("./src/data/chords.data"));
-__export(require("./src/data/instruments.data"));
-__export(require("./src/data/scales.data"));
+__export(require("./exports/data.exports"));

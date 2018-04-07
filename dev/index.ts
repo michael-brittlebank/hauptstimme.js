@@ -1,13 +1,11 @@
 // constants
-export * from './constants/note.constant';
+export * from './exports/constants.exports';
 
 // interfaces
-export * from './interfaces/instrument.interface';
+export * from './exports/interfaces.exports';
 
 // src
 export * from './src/hauptstimme';
 
 // src/data
-export * from './src/data/chords.data';
-export * from './src/data/instruments.data';
-export * from './src/data/scales.data';
+export * from './exports/data.exports';

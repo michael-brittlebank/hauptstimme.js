@@ -1,4 +1,4 @@
-import { ChordInterface } from '../../interfaces/chord.interface';
+import { ChordInterface } from '../../';
 export declare class ChordPrimitivesData {
     private static moduloChordNoteIndex(noteIndex, lengthOfScale);
     static compileChordPrimitivesIntoChords(): ChordInterface[];

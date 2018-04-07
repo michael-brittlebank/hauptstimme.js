@@ -1,10 +1,10 @@
 import { ChordOrScalePrimitiveInterface } from '../../interfaces/chordOrScalePrimitiveInterface';
-import { ChordOrScaleTypeConstant } from '../../constants/chordOrScaleType.constant';
-import { ChordInterface } from '../../interfaces/chord.interface';
+import { ChordOrScaleTypeConstant } from '../../';
+import { ChordInterface } from '../../';
 import { UtilService } from '../services/util.service';
 import { NoteConstant } from '../..';
 import * as _ from 'lodash';
-import { ScaleInterface } from '../../interfaces/scale.interface';
+import { ScaleInterface } from '../../';
 import { ScalesData } from './scales.data';
 
 export class ChordPrimitivesData {
@@ -22,7 +22,7 @@ export class ChordPrimitivesData {
         let assembledChords: ChordInterface[] = [];
         let rootNote: NoteConstant;
         let noteIndex: number;
-        let rootScale: ScaleInterface | undefined;
+        let rootScale: ScaleInterface;
         let rootScaleLength: number;
         // loop through each possible root note
         for(let i: number = 0; i < noteLength; i++) {

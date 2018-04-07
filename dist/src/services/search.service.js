@@ -6,34 +6,46 @@ var SearchService = /** @class */ (function () {
     function SearchService() {
     }
     SearchService.getScalesByNotes = function (notesArray) {
-        var availableScales = _1.ScalesData.getAvailableScales();
-        return _.filter(availableScales, function (scale) {
-            for (var i = 0; i < notesArray.length; i++) {
-                if (scale.notes.indexOf(notesArray[i]) === -1) {
-                    return false;
+        return new Promise(function (resolve, reject) {
+            var availableScales = _.filter(_1.ScalesData.getAvailableScales(), function (scale) {
+                for (var i = 0; i < notesArray.length; i++) {
+                    if (scale.notes.indexOf(notesArray[i]) === -1) {
+                        return false;
+                    }
                 }
-            }
-            return true;
+                return true;
+            });
+            resolve(availableScales);
         });
     };
     SearchService.getChordsByNotes = function (notesArray) {
-        var availableChords = _1.ChordsData.getAvailableChords();
-        return _.filter(availableChords, function (chord) {
-            for (var i = 0; i < notesArray.length; i++) {
-                if (chord.notes.indexOf(notesArray[i]) === -1) {
-                    return false;
+        return new Promise(function (resolve, reject) {
+            var availableChords = _.filter(_1.ChordsData.getAvailableChords(), function (chord) {
+                for (var i = 0; i < notesArray.length; i++) {
+                    if (chord.notes.indexOf(notesArray[i]) === -1) {
+                        return false;
+                    }
                 }
-            }
-            return true;
+                return true;
+            });
+            resolve(availableChords);
         });
     };
     SearchService.getChordsAndScalesByNotes = function (notesArray) {
-        var availableChords = this.getChordsByNotes(notesArray);
-        var availableScales = this.getScalesByNotes(notesArray);
-        return {
-            chords: availableChords,
-            scales: availableScales
-        };
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            return Promise.all([
+                _this.getChordsByNotes(notesArray),
+                _this.getScalesByNotes(notesArray)
+            ])
+                .then(function (response) {
+                var searchResults = {
+                    chords: response[0],
+                    scales: response[1]
+                };
+                resolve(searchResults);
+            });
+        });
     };
     return SearchService;
 }());
