@@ -8,15 +8,15 @@ export class HauptstimmeJs {
     /**
      * This class provides a entry point for helper functions used in the module
      */
-    public static getAvailableInstruments(): InstrumentInterface[] {
+    public static getAvailableInstruments(): Promise<InstrumentInterface[]> {
         return InstrumentsData.getAvailableInstruments();
     }
 
-    public static getAvailableScales(): ScaleInterface[] {
+    public static getAvailableScales(): Promise<ScaleInterface[]> {
         return ScalesData.getAvailableScales();
     }
 
-    public static getAvailableChords(): ChordInterface[] {
+    public static getAvailableChords(): Promise<ChordInterface[]> {
         return ChordsData.getAvailableChords();
     }
 

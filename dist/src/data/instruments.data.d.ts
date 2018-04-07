@@ -1,4 +1,4 @@
 import { InstrumentInterface } from '../..';
 export declare class InstrumentsData {
-    static getAvailableInstruments(): InstrumentInterface[];
+    static getAvailableInstruments(): Promise<InstrumentInterface[]>;
 }

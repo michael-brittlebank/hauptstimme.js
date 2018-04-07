@@ -6,7 +6,7 @@ export class UtilService {
        return Object.keys(enumConstant).filter(key => typeof enumConstant[key as any] === 'number').length
     }
 
-    public static getFormattedNoteString(note: NoteConstant){
+    public static getFormattedNoteString(note: NoteConstant) {
         const sharpEntity: string = '&#9839;';
         const flatEntity: string = '&#9837;';
         let formattedNote: string = NoteConstant[note];
