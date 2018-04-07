@@ -1,5 +1,11 @@
 import { InstrumentsData } from './data/instruments.data';
-import { ChordInterface, InstrumentInterface, NoteConstant, ScaleInterface, SearchResponseInterface } from '..';
+import {
+    ChordInterface,
+    InstrumentInterface,
+    NoteConstant,
+    ScaleInterface,
+    SearchResponseInterface
+} from '..';
 import { SearchService } from './services/search.service';
 import { ScalesData } from './data/scales.data';
 import { ChordsData } from './data/chords.data';
