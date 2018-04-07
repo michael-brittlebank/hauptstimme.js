@@ -7,8 +7,8 @@ var scales_data_1 = require("./scales.data");
 var ChordPrimitivesData = /** @class */ (function () {
     function ChordPrimitivesData() {
     }
-    ChordPrimitivesData.moduloNoteIndex = function (noteIndex, step) {
-        return (noteIndex + step) % util_service_1.UtilService.getLengthOfEnum(__1.NoteConstant);
+    ChordPrimitivesData.moduloChordNoteIndex = function (noteIndex, lengthOfScale) {
+        return (noteIndex - 1) % lengthOfScale; // correlate step to 0-indexed scale note array
     };
     ChordPrimitivesData.compileChordPrimitivesIntoChords = function () {
         var _this = this;
@@ -21,12 +21,13 @@ var ChordPrimitivesData = /** @class */ (function () {
         var rootNote;
         var noteIndex;
         var rootScale;
-        var _loop_1 = function (i) {
+        var rootScaleLength;
+        // loop through each possible root note
+        for (var i = 0; i < noteLength; i++) {
             rootNote = util_service_1.UtilService.getEnumFromStringKey(__1.NoteConstant, __1.NoteConstant[i]);
             // compile each scale for the given root note
             assembledChords = _.map(chordPrimitives, function (chordPrimitive) {
-                noteIndex = i;
-                chordNotes = [rootNote];
+                chordNotes = [];
                 if (chordPrimitive.type === 1 /* MINOR */) {
                     // use minor scale as basis for selecting notes
                     rootScale = _.find(scales, function (scale) {
@@ -39,45 +40,40 @@ var ChordPrimitivesData = /** @class */ (function () {
                         return scale.name.toLowerCase().indexOf('ionian') !== -1 && scale.notes[0] === rootNote;
                     });
                 }
-                console.log('root scale', rootScale);
+                rootScaleLength = rootScale.notes.length;
                 // use the steps to determine the correct note sequence
                 _.each(chordPrimitive.steps, function (step) {
                     if (step.indexOf('b') !== -1) {
+                        // todo, verify note generation is correct for non-major chords
                         if (step.indexOf('bb') !== -1) {
-                            noteIndex = _this.moduloNoteIndex(noteIndex, parseInt(step.substr(2, step.length), 10)) - 2;
+                            noteIndex = _this.moduloChordNoteIndex(parseInt(step.substr(2, step.length), 10), rootScaleLength) - 2;
                             chordNotes.push(rootScale.notes[noteIndex]);
                         }
                         else {
-                            noteIndex = _this.moduloNoteIndex(noteIndex, parseInt(step.substr(1, step.length), 10)) - 1;
+                            noteIndex = _this.moduloChordNoteIndex(parseInt(step.substr(1, step.length), 10), rootScaleLength) - 1;
                             chordNotes.push(rootScale.notes[noteIndex]);
                         }
                     }
                     else if (step.indexOf('#') !== -1) {
-                        noteIndex = _this.moduloNoteIndex(noteIndex, parseInt(step.substr(1, step.length), 10)) + 1;
+                        noteIndex = _this.moduloChordNoteIndex(parseInt(step.substr(1, step.length), 10), rootScaleLength) + 1;
                         chordNotes.push(rootScale.notes[noteIndex]);
                     }
                     else if (step.indexOf('(') !== -1) {
-                        noteIndex = _this.moduloNoteIndex(noteIndex, parseInt(step.substr(1, step.length - 1), 10));
+                        noteIndex = _this.moduloChordNoteIndex(parseInt(step.substr(1, step.length - 1), 10), rootScaleLength);
                         chordNotes.push(rootScale.notes[noteIndex]);
                     }
                     else {
-                        noteIndex = _this.moduloNoteIndex(noteIndex, parseInt(step, 10));
+                        noteIndex = _this.moduloChordNoteIndex(parseInt(step, 10), rootScaleLength);
                         chordNotes.push(rootScale.notes[noteIndex]);
                     }
                 });
-                // remove last element in array as it is the same as the first (root) note
-                chordNotes.splice(-1, 1);
                 return {
                     name: [util_service_1.UtilService.getFormattedNoteString(rootNote), chordPrimitive.name].join(' '),
-                    notes: chordNotes,
+                    notes: _.sortBy(_.uniq(chordNotes)),
                     type: chordPrimitive.type
                 };
             });
             chords = chords.concat(assembledChords);
-        };
-        // loop through each possible root note
-        for (var i = 0; i < noteLength; i++) {
-            _loop_1(i);
         }
         return chords;
     };

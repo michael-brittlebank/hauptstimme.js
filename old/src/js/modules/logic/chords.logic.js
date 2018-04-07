@@ -56,7 +56,7 @@
                                     if (typeof rawChordStep === 'string') {
                                         //special interval value
                                         if (rawChordStep.indexOf('b') !== -1) {
-                                            if (rawChordStep.indexOf('bb') !== -1){
+                                            if (rawChordStep.indexOf('bb') !== -1) {
                                                 //double flat notes
                                                 cleanChordStep = parseInt(rawChordStep.substr(2, rawChordStep.length));
                                                 scaleTone = majorScale.tones[that.convertFromScaleDegreeToArrayIndex(cleanChordStep)];
