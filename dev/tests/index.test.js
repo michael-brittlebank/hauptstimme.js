@@ -32,7 +32,7 @@ describe('#HauptstimmeJs.getAvailableChords', function() {
 
 describe('#HauptstimmeJs.getAvailableInstruments', function() {
     it('should return an array of search', function() {
-        HauptstimmeJs.search([0, 4, 5,])
+        HauptstimmeJs.search({rootNote: 0, notes: [4, 5,]})
             .then((response) => {
                 expect(response).to.be.an('object');
             });
