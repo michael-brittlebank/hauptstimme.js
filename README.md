@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/mike-stumpf/chorus.js.svg?branch=master)](https://travis-ci.org/mike-stumpf/chorus.js)
-[![Coverage Status](https://coveralls.io/repos/github/mike-stumpf/chorus.js/badge.svg?branch=master)](https://coveralls.io/github/mike-stumpf/chorus.js?branch=master)
+[![Build Status](https://travis-ci.org/mike-stumpf/hauptstimme.js.svg?branch=master)](https://travis-ci.org/mike-stumpf/hauptstimme.js)
+[![Coverage Status](https://coveralls.io/repos/github/mike-stumpf/hauptstimme.js/badge.svg?branch=master)](https://coveralls.io/github/mike-stumpf/hauptstimme.js?branch=master)
 
 
 # Hauptstimme.js
