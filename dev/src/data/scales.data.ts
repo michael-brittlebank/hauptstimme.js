@@ -1,6 +1,6 @@
 import { ScaleInterface } from '../../interfaces/scale.interface';
 import { ChordOrScaleTypeConstant } from '../../constants/chordOrScaleType.constant';
-import { NoteConstant } from '../../';
+import { NoteConstant } from '../../constants/note.constant';
 
 export class ScalesData {
     public static getAvailableScales(): ScaleInterface[] {

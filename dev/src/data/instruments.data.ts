@@ -1,4 +1,5 @@
-import { InstrumentInterface, NoteConstant } from '../..';
+import { InstrumentInterface } from '../../interfaces/instrument.interface';
+import { NoteConstant} from '../../constants/note.constant';
 import { InstrumentTypeConstant } from '../../constants/instrumentType.constant';
 import * as _ from 'lodash';
 

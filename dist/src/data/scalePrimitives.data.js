@@ -1,27 +1,27 @@
 "use strict";
 exports.__esModule = true;
 var _ = require("lodash");
-var __1 = require("../..");
+var note_constant_1 = require("../../constants/note.constant");
 var util_service_1 = require("../services/util.service");
 var ScalePrimitivesData = (function () {
     function ScalePrimitivesData() {
     }
     ScalePrimitivesData.compileScalePrimitivesIntoScales = function () {
         var scalePrimitives = this.getAvailableScalePrimitives();
-        var noteLength = util_service_1.UtilService.getLengthOfEnum(__1.NoteConstant);
+        var noteLength = util_service_1.UtilService.getLengthOfEnum(note_constant_1.NoteConstant);
         var scales = [];
         var scaleNotes;
         var assembledScales = [];
         var rootNote;
         var noteIndex;
         var _loop_1 = function (i) {
-            rootNote = util_service_1.UtilService.getEnumFromStringKey(__1.NoteConstant, __1.NoteConstant[i]);
+            rootNote = util_service_1.UtilService.getEnumFromStringKey(note_constant_1.NoteConstant, note_constant_1.NoteConstant[i]);
             assembledScales = _.map(scalePrimitives, function (scalePrimitive) {
                 noteIndex = i;
                 scaleNotes = [rootNote];
                 _.each(scalePrimitive.steps, function (step) {
                     noteIndex = (noteIndex + parseInt(step, 10)) % noteLength;
-                    scaleNotes.push(util_service_1.UtilService.getEnumFromStringKey(__1.NoteConstant, __1.NoteConstant[noteIndex]));
+                    scaleNotes.push(util_service_1.UtilService.getEnumFromStringKey(note_constant_1.NoteConstant, note_constant_1.NoteConstant[noteIndex]));
                 });
                 scaleNotes.splice(-1, 1);
                 return {

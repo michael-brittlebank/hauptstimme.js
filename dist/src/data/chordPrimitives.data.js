@@ -1,7 +1,7 @@
 "use strict";
 exports.__esModule = true;
 var util_service_1 = require("../services/util.service");
-var __1 = require("../..");
+var note_constant_1 = require("../../constants/note.constant");
 var _ = require("lodash");
 var scales_data_1 = require("./scales.data");
 var ChordPrimitivesData = (function () {
@@ -13,7 +13,7 @@ var ChordPrimitivesData = (function () {
     ChordPrimitivesData.compileChordPrimitivesIntoChords = function () {
         var _this = this;
         var chordPrimitives = this.getAvailableChordPrimitives();
-        var noteLength = util_service_1.UtilService.getLengthOfEnum(__1.NoteConstant);
+        var noteLength = util_service_1.UtilService.getLengthOfEnum(note_constant_1.NoteConstant);
         var scales = scales_data_1.ScalesData.getAvailableScales();
         var chords = [];
         var chordNotes;
@@ -28,7 +28,7 @@ var ChordPrimitivesData = (function () {
             type: 4
         };
         for (var i = 0; i < noteLength; i++) {
-            rootNote = util_service_1.UtilService.getEnumFromStringKey(__1.NoteConstant, __1.NoteConstant[i]);
+            rootNote = util_service_1.UtilService.getEnumFromStringKey(note_constant_1.NoteConstant, note_constant_1.NoteConstant[i]);
             assembledChords = _.map(chordPrimitives, function (chordPrimitive) {
                 chordNotes = [];
                 if (chordPrimitive.type === 1) {

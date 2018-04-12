@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-var _1 = require("../../");
+var note_constant_1 = require("../../constants/note.constant");
 var UtilService = (function () {
     function UtilService() {
     }
@@ -10,21 +10,21 @@ var UtilService = (function () {
     UtilService.getFormattedNoteString = function (note) {
         var sharpEntity = '&#9839;';
         var flatEntity = '&#9837;';
-        var formattedNote = _1.NoteConstant[note];
+        var formattedNote = note_constant_1.NoteConstant[note];
         switch (note) {
-            case _1.NoteConstant.AB:
+            case note_constant_1.NoteConstant.AB:
                 formattedNote = ['B', flatEntity].join('');
                 break;
-            case _1.NoteConstant.CD:
+            case note_constant_1.NoteConstant.CD:
                 formattedNote = ['C', sharpEntity].join('');
                 break;
-            case _1.NoteConstant.DE:
+            case note_constant_1.NoteConstant.DE:
                 formattedNote = ['E', flatEntity].join('');
                 break;
-            case _1.NoteConstant.FG:
+            case note_constant_1.NoteConstant.FG:
                 formattedNote = ['F', sharpEntity].join('');
                 break;
-            case _1.NoteConstant.GA:
+            case note_constant_1.NoteConstant.GA:
                 formattedNote = ['A', flatEntity].join('');
                 break;
         }

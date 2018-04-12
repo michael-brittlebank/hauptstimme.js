@@ -1,14 +1,15 @@
 "use strict";
 exports.__esModule = true;
-var _1 = require("../../");
+var scales_data_1 = require("../data/scales.data");
 var _ = require("lodash");
 var Promise = require("bluebird");
+var chords_data_1 = require("../data/chords.data");
 var SearchService = (function () {
     function SearchService() {
     }
     SearchService.getScalesByNotes = function (notesArray) {
         return new Promise(function (resolve, reject) {
-            var availableScales = _.filter(_1.ScalesData.getAvailableScales(), function (scale) {
+            var availableScales = _.filter(scales_data_1.ScalesData.getAvailableScales(), function (scale) {
                 for (var i = 0; i < notesArray.length; i++) {
                     if (scale.notes.indexOf(notesArray[i]) === -1) {
                         return false;
@@ -21,7 +22,7 @@ var SearchService = (function () {
     };
     SearchService.getChordsByNotes = function (notesArray) {
         return new Promise(function (resolve, reject) {
-            var availableChords = _.filter(_1.ChordsData.getAvailableChords(), function (chord) {
+            var availableChords = _.filter(chords_data_1.ChordsData.getAvailableChords(), function (chord) {
                 for (var i = 0; i < notesArray.length; i++) {
                     if (chord.notes.indexOf(notesArray[i]) === -1) {
                         return false;

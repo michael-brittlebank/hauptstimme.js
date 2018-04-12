@@ -1,9 +1,11 @@
-import { ChordsData, NoteConstant, ScalesData } from '../../';
-import { ScaleInterface } from '../../';
+import { ScalesData } from '../data/scales.data';
+import { NoteConstant } from '../../constants/note.constant';
+import { ScaleInterface } from '../../interfaces/scale.interface';
 import * as _ from 'lodash';
-import { ChordInterface } from '../../';
-import { SearchResponseInterface } from '../../';
+import { ChordInterface } from '../../interfaces/chord.interface';
+import { SearchResponseInterface } from '../../interfaces/searchResponse.interface';
 import * as Promise from 'bluebird';
+import { ChordsData } from '../data/chords.data';
 
 export class SearchService {
 

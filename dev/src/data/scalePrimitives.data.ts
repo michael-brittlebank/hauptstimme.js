@@ -2,7 +2,7 @@ import { ChordOrScalePrimitiveInterface } from '../../interfaces/chordOrScalePri
 import { ChordOrScaleTypeConstant } from '../../constants/chordOrScaleType.constant';
 import { ScaleInterface } from '../../interfaces/scale.interface';
 import * as _ from 'lodash';
-import { NoteConstant } from '../..';
+import { NoteConstant } from '../../constants/note.constant';
 import { UtilService } from '../services/util.service';
 
 export class ScalePrimitivesData {
