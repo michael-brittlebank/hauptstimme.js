@@ -3,7 +3,7 @@ exports.__esModule = true;
 var _1 = require("../../");
 var _ = require("lodash");
 var Promise = require("bluebird");
-var SearchService = /** @class */ (function () {
+var SearchService = (function () {
     function SearchService() {
     }
     SearchService.getScalesByNotes = function (notesArray) {
@@ -51,3 +51,4 @@ var SearchService = /** @class */ (function () {
     return SearchService;
 }());
 exports.SearchService = SearchService;
+//# sourceMappingURL=search.service.js.map

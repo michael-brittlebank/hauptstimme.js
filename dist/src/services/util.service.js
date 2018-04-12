@@ -1,7 +1,7 @@
 "use strict";
 exports.__esModule = true;
 var _1 = require("../../");
-var UtilService = /** @class */ (function () {
+var UtilService = (function () {
     function UtilService() {
     }
     UtilService.getLengthOfEnum = function (enumConstant) {
@@ -13,23 +13,18 @@ var UtilService = /** @class */ (function () {
         var formattedNote = _1.NoteConstant[note];
         switch (note) {
             case _1.NoteConstant.AB:
-                // b flat
                 formattedNote = ['B', flatEntity].join('');
                 break;
             case _1.NoteConstant.CD:
-                // c sharp
                 formattedNote = ['C', sharpEntity].join('');
                 break;
             case _1.NoteConstant.DE:
-                // e flat
                 formattedNote = ['E', flatEntity].join('');
                 break;
             case _1.NoteConstant.FG:
-                // f sharp
                 formattedNote = ['F', sharpEntity].join('');
                 break;
             case _1.NoteConstant.GA:
-                // a flat
                 formattedNote = ['A', flatEntity].join('');
                 break;
         }
@@ -41,3 +36,4 @@ var UtilService = /** @class */ (function () {
     return UtilService;
 }());
 exports.UtilService = UtilService;
+//# sourceMappingURL=util.service.js.map

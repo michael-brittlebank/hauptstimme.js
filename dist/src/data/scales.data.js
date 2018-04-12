@@ -1,11 +1,10 @@
 "use strict";
 exports.__esModule = true;
 var _1 = require("../../");
-var ScalesData = /** @class */ (function () {
+var ScalesData = (function () {
     function ScalesData() {
     }
     ScalesData.getAvailableScales = function () {
-        // do not directly modify. this data is compiled from the primitives array for ease of use/searching
         return [
             {
                 name: 'A Major Ionian',
@@ -18,7 +17,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.FG,
                     _1.NoteConstant.GA
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'A Dorian',
@@ -31,7 +30,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.FG,
                     _1.NoteConstant.G
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'A Phrygian',
@@ -44,7 +43,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.F,
                     _1.NoteConstant.G
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'A Lydian',
@@ -57,7 +56,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.FG,
                     _1.NoteConstant.GA
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'A Mixolydian',
@@ -70,7 +69,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.FG,
                     _1.NoteConstant.G
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'A Minor Aeolian',
@@ -83,7 +82,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.F,
                     _1.NoteConstant.G
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'A Locrian',
@@ -96,7 +95,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.F,
                     _1.NoteConstant.G
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'A Major Pentatonic',
@@ -107,7 +106,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.E,
                     _1.NoteConstant.FG
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'A Minor Pentatonic',
@@ -118,7 +117,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.E,
                     _1.NoteConstant.G
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'A Harmonic Minor',
@@ -131,7 +130,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.F,
                     _1.NoteConstant.GA
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'A Melodic Minor',
@@ -144,7 +143,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.FG,
                     _1.NoteConstant.GA
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'A Blues',
@@ -156,7 +155,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.E,
                     _1.NoteConstant.G
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'A Mixo Blues',
@@ -171,7 +170,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.FG,
                     _1.NoteConstant.G
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'A Diminished Whole Half',
@@ -185,7 +184,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.FG,
                     _1.NoteConstant.GA
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'A Diminished Half Whole',
@@ -199,7 +198,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.FG,
                     _1.NoteConstant.G
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'A Whole Tone',
@@ -211,7 +210,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.F,
                     _1.NoteConstant.G
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'A Hungarian Minor',
@@ -224,7 +223,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.F,
                     _1.NoteConstant.GA
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'A Hungarian Gypsy',
@@ -237,7 +236,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.F,
                     _1.NoteConstant.G
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'A Double Harmonic',
@@ -250,7 +249,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.F,
                     _1.NoteConstant.GA
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'A Enigmatic',
@@ -263,7 +262,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.G,
                     _1.NoteConstant.GA
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'A Altered',
@@ -276,7 +275,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.F,
                     _1.NoteConstant.G
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'A Major Neapolitan',
@@ -289,7 +288,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.FG,
                     _1.NoteConstant.GA
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'A Minor Neapolitan',
@@ -302,7 +301,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.F,
                     _1.NoteConstant.GA
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'A Persian',
@@ -315,7 +314,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.F,
                     _1.NoteConstant.GA
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'A Ukranian Dorian',
@@ -328,7 +327,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.FG,
                     _1.NoteConstant.G
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'A Yo',
@@ -339,7 +338,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.E,
                     _1.NoteConstant.FG
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'B&#9837; Major Ionian',
@@ -352,7 +351,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.G,
                     _1.NoteConstant.A
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'B&#9837; Dorian',
@@ -365,7 +364,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.G,
                     _1.NoteConstant.GA
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'B&#9837; Phrygian',
@@ -378,7 +377,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.FG,
                     _1.NoteConstant.GA
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'B&#9837; Lydian',
@@ -391,7 +390,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.G,
                     _1.NoteConstant.A
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'B&#9837; Mixolydian',
@@ -404,7 +403,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.G,
                     _1.NoteConstant.GA
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'B&#9837; Minor Aeolian',
@@ -417,7 +416,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.FG,
                     _1.NoteConstant.GA
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'B&#9837; Locrian',
@@ -430,7 +429,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.FG,
                     _1.NoteConstant.GA
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'B&#9837; Major Pentatonic',
@@ -441,7 +440,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.F,
                     _1.NoteConstant.G
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'B&#9837; Minor Pentatonic',
@@ -452,7 +451,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.F,
                     _1.NoteConstant.GA
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'B&#9837; Harmonic Minor',
@@ -465,7 +464,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.FG,
                     _1.NoteConstant.A
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'B&#9837; Melodic Minor',
@@ -478,7 +477,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.G,
                     _1.NoteConstant.A
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'B&#9837; Blues',
@@ -490,7 +489,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.F,
                     _1.NoteConstant.GA
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'B&#9837; Mixo Blues',
@@ -505,7 +504,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.G,
                     _1.NoteConstant.GA
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'B&#9837; Diminished Whole Half',
@@ -519,7 +518,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.G,
                     _1.NoteConstant.A
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'B&#9837; Diminished Half Whole',
@@ -533,7 +532,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.G,
                     _1.NoteConstant.GA
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'B&#9837; Whole Tone',
@@ -545,7 +544,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.FG,
                     _1.NoteConstant.GA
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'B&#9837; Hungarian Minor',
@@ -558,7 +557,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.FG,
                     _1.NoteConstant.A
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'B&#9837; Hungarian Gypsy',
@@ -571,7 +570,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.FG,
                     _1.NoteConstant.GA
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'B&#9837; Double Harmonic',
@@ -584,7 +583,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.FG,
                     _1.NoteConstant.A
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'B&#9837; Enigmatic',
@@ -597,7 +596,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.GA,
                     _1.NoteConstant.A
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'B&#9837; Altered',
@@ -610,7 +609,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.FG,
                     _1.NoteConstant.GA
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'B&#9837; Major Neapolitan',
@@ -623,7 +622,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.G,
                     _1.NoteConstant.A
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'B&#9837; Minor Neapolitan',
@@ -636,7 +635,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.FG,
                     _1.NoteConstant.A
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'B&#9837; Persian',
@@ -649,7 +648,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.FG,
                     _1.NoteConstant.A
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'B&#9837; Ukranian Dorian',
@@ -662,7 +661,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.G,
                     _1.NoteConstant.GA
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'B&#9837; Yo',
@@ -673,7 +672,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.F,
                     _1.NoteConstant.G
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'B Major Ionian',
@@ -686,7 +685,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.GA,
                     _1.NoteConstant.AB
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'B Dorian',
@@ -699,7 +698,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.GA,
                     _1.NoteConstant.A
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'B Phrygian',
@@ -712,7 +711,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.G,
                     _1.NoteConstant.A
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'B Lydian',
@@ -725,7 +724,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.GA,
                     _1.NoteConstant.AB
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'B Mixolydian',
@@ -738,7 +737,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.GA,
                     _1.NoteConstant.A
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'B Minor Aeolian',
@@ -751,7 +750,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.G,
                     _1.NoteConstant.A
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'B Locrian',
@@ -764,7 +763,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.G,
                     _1.NoteConstant.A
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'B Major Pentatonic',
@@ -775,7 +774,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.FG,
                     _1.NoteConstant.GA
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'B Minor Pentatonic',
@@ -786,7 +785,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.FG,
                     _1.NoteConstant.A
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'B Harmonic Minor',
@@ -799,7 +798,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.G,
                     _1.NoteConstant.AB
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'B Melodic Minor',
@@ -812,7 +811,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.GA,
                     _1.NoteConstant.AB
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'B Blues',
@@ -824,7 +823,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.FG,
                     _1.NoteConstant.A
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'B Mixo Blues',
@@ -839,7 +838,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.GA,
                     _1.NoteConstant.A
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'B Diminished Whole Half',
@@ -853,7 +852,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.GA,
                     _1.NoteConstant.AB
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'B Diminished Half Whole',
@@ -867,7 +866,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.GA,
                     _1.NoteConstant.A
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'B Whole Tone',
@@ -879,7 +878,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.G,
                     _1.NoteConstant.A
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'B Hungarian Minor',
@@ -892,7 +891,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.G,
                     _1.NoteConstant.AB
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'B Hungarian Gypsy',
@@ -905,7 +904,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.G,
                     _1.NoteConstant.A
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'B Double Harmonic',
@@ -918,7 +917,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.G,
                     _1.NoteConstant.AB
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'B Enigmatic',
@@ -931,7 +930,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.A,
                     _1.NoteConstant.AB
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'B Altered',
@@ -944,7 +943,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.G,
                     _1.NoteConstant.A
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'B Major Neapolitan',
@@ -957,7 +956,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.GA,
                     _1.NoteConstant.AB
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'B Minor Neapolitan',
@@ -970,7 +969,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.G,
                     _1.NoteConstant.AB
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'B Persian',
@@ -983,7 +982,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.G,
                     _1.NoteConstant.AB
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'B Ukranian Dorian',
@@ -996,7 +995,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.GA,
                     _1.NoteConstant.A
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'B Yo',
@@ -1007,7 +1006,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.FG,
                     _1.NoteConstant.GA
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'C Major Ionian',
@@ -1020,7 +1019,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.A,
                     _1.NoteConstant.B
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'C Dorian',
@@ -1033,7 +1032,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.A,
                     _1.NoteConstant.AB
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'C Phrygian',
@@ -1046,7 +1045,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.GA,
                     _1.NoteConstant.AB
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'C Lydian',
@@ -1059,7 +1058,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.A,
                     _1.NoteConstant.B
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'C Mixolydian',
@@ -1072,7 +1071,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.A,
                     _1.NoteConstant.AB
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'C Minor Aeolian',
@@ -1085,7 +1084,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.GA,
                     _1.NoteConstant.AB
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'C Locrian',
@@ -1098,7 +1097,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.GA,
                     _1.NoteConstant.AB
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'C Major Pentatonic',
@@ -1109,7 +1108,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.G,
                     _1.NoteConstant.A
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'C Minor Pentatonic',
@@ -1120,7 +1119,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.G,
                     _1.NoteConstant.AB
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'C Harmonic Minor',
@@ -1133,7 +1132,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.GA,
                     _1.NoteConstant.B
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'C Melodic Minor',
@@ -1146,7 +1145,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.A,
                     _1.NoteConstant.B
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'C Blues',
@@ -1158,7 +1157,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.G,
                     _1.NoteConstant.AB
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'C Mixo Blues',
@@ -1173,7 +1172,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.A,
                     _1.NoteConstant.AB
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'C Diminished Whole Half',
@@ -1187,7 +1186,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.A,
                     _1.NoteConstant.B
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'C Diminished Half Whole',
@@ -1201,7 +1200,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.A,
                     _1.NoteConstant.AB
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'C Whole Tone',
@@ -1213,7 +1212,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.GA,
                     _1.NoteConstant.AB
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'C Hungarian Minor',
@@ -1226,7 +1225,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.GA,
                     _1.NoteConstant.B
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'C Hungarian Gypsy',
@@ -1239,7 +1238,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.GA,
                     _1.NoteConstant.AB
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'C Double Harmonic',
@@ -1252,7 +1251,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.GA,
                     _1.NoteConstant.B
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'C Enigmatic',
@@ -1265,7 +1264,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.AB,
                     _1.NoteConstant.B
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'C Altered',
@@ -1278,7 +1277,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.GA,
                     _1.NoteConstant.AB
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'C Major Neapolitan',
@@ -1291,7 +1290,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.A,
                     _1.NoteConstant.B
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'C Minor Neapolitan',
@@ -1304,7 +1303,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.GA,
                     _1.NoteConstant.B
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'C Persian',
@@ -1317,7 +1316,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.GA,
                     _1.NoteConstant.B
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'C Ukranian Dorian',
@@ -1330,7 +1329,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.A,
                     _1.NoteConstant.AB
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'C Yo',
@@ -1341,7 +1340,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.G,
                     _1.NoteConstant.A
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'C&#9839; Major Ionian',
@@ -1354,7 +1353,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.AB,
                     _1.NoteConstant.C
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'C&#9839; Dorian',
@@ -1367,7 +1366,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.AB,
                     _1.NoteConstant.B
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'C&#9839; Phrygian',
@@ -1380,7 +1379,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.A,
                     _1.NoteConstant.B
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'C&#9839; Lydian',
@@ -1393,7 +1392,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.AB,
                     _1.NoteConstant.C
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'C&#9839; Mixolydian',
@@ -1406,7 +1405,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.AB,
                     _1.NoteConstant.B
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'C&#9839; Minor Aeolian',
@@ -1419,7 +1418,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.A,
                     _1.NoteConstant.B
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'C&#9839; Locrian',
@@ -1432,7 +1431,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.A,
                     _1.NoteConstant.B
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'C&#9839; Major Pentatonic',
@@ -1443,7 +1442,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.GA,
                     _1.NoteConstant.AB
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'C&#9839; Minor Pentatonic',
@@ -1454,7 +1453,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.GA,
                     _1.NoteConstant.B
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'C&#9839; Harmonic Minor',
@@ -1467,7 +1466,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.A,
                     _1.NoteConstant.C
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'C&#9839; Melodic Minor',
@@ -1480,7 +1479,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.AB,
                     _1.NoteConstant.C
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'C&#9839; Blues',
@@ -1492,7 +1491,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.GA,
                     _1.NoteConstant.B
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'C&#9839; Mixo Blues',
@@ -1507,7 +1506,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.AB,
                     _1.NoteConstant.B
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'C&#9839; Diminished Whole Half',
@@ -1521,7 +1520,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.AB,
                     _1.NoteConstant.C
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'C&#9839; Diminished Half Whole',
@@ -1535,7 +1534,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.AB,
                     _1.NoteConstant.B
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'C&#9839; Whole Tone',
@@ -1547,7 +1546,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.A,
                     _1.NoteConstant.B
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'C&#9839; Hungarian Minor',
@@ -1560,7 +1559,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.A,
                     _1.NoteConstant.C
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'C&#9839; Hungarian Gypsy',
@@ -1573,7 +1572,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.A,
                     _1.NoteConstant.B
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'C&#9839; Double Harmonic',
@@ -1586,7 +1585,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.A,
                     _1.NoteConstant.C
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'C&#9839; Enigmatic',
@@ -1599,7 +1598,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.B,
                     _1.NoteConstant.C
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'C&#9839; Altered',
@@ -1612,7 +1611,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.A,
                     _1.NoteConstant.B
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'C&#9839; Major Neapolitan',
@@ -1625,7 +1624,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.AB,
                     _1.NoteConstant.C
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'C&#9839; Minor Neapolitan',
@@ -1638,7 +1637,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.A,
                     _1.NoteConstant.C
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'C&#9839; Persian',
@@ -1651,7 +1650,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.A,
                     _1.NoteConstant.C
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'C&#9839; Ukranian Dorian',
@@ -1664,7 +1663,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.AB,
                     _1.NoteConstant.B
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'C&#9839; Yo',
@@ -1675,7 +1674,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.GA,
                     _1.NoteConstant.AB
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'D Major Ionian',
@@ -1688,7 +1687,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.B,
                     _1.NoteConstant.CD
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'D Dorian',
@@ -1701,7 +1700,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.B,
                     _1.NoteConstant.C
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'D Phrygian',
@@ -1714,7 +1713,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.AB,
                     _1.NoteConstant.C
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'D Lydian',
@@ -1727,7 +1726,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.B,
                     _1.NoteConstant.CD
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'D Mixolydian',
@@ -1740,7 +1739,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.B,
                     _1.NoteConstant.C
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'D Minor Aeolian',
@@ -1753,7 +1752,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.AB,
                     _1.NoteConstant.C
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'D Locrian',
@@ -1766,7 +1765,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.AB,
                     _1.NoteConstant.C
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'D Major Pentatonic',
@@ -1777,7 +1776,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.A,
                     _1.NoteConstant.B
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'D Minor Pentatonic',
@@ -1788,7 +1787,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.A,
                     _1.NoteConstant.C
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'D Harmonic Minor',
@@ -1801,7 +1800,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.AB,
                     _1.NoteConstant.CD
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'D Melodic Minor',
@@ -1814,7 +1813,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.B,
                     _1.NoteConstant.CD
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'D Blues',
@@ -1826,7 +1825,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.A,
                     _1.NoteConstant.C
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'D Mixo Blues',
@@ -1841,7 +1840,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.B,
                     _1.NoteConstant.C
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'D Diminished Whole Half',
@@ -1855,7 +1854,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.B,
                     _1.NoteConstant.CD
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'D Diminished Half Whole',
@@ -1869,7 +1868,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.B,
                     _1.NoteConstant.C
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'D Whole Tone',
@@ -1881,7 +1880,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.AB,
                     _1.NoteConstant.C
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'D Hungarian Minor',
@@ -1894,7 +1893,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.AB,
                     _1.NoteConstant.CD
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'D Hungarian Gypsy',
@@ -1907,7 +1906,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.AB,
                     _1.NoteConstant.C
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'D Double Harmonic',
@@ -1920,7 +1919,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.AB,
                     _1.NoteConstant.CD
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'D Enigmatic',
@@ -1933,7 +1932,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.C,
                     _1.NoteConstant.CD
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'D Altered',
@@ -1946,7 +1945,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.AB,
                     _1.NoteConstant.C
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'D Major Neapolitan',
@@ -1959,7 +1958,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.B,
                     _1.NoteConstant.CD
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'D Minor Neapolitan',
@@ -1972,7 +1971,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.AB,
                     _1.NoteConstant.CD
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'D Persian',
@@ -1985,7 +1984,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.AB,
                     _1.NoteConstant.CD
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'D Ukranian Dorian',
@@ -1998,7 +1997,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.B,
                     _1.NoteConstant.C
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'D Yo',
@@ -2009,7 +2008,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.A,
                     _1.NoteConstant.B
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'E&#9837; Major Ionian',
@@ -2022,7 +2021,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.C,
                     _1.NoteConstant.D
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'E&#9837; Dorian',
@@ -2035,7 +2034,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.C,
                     _1.NoteConstant.CD
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'E&#9837; Phrygian',
@@ -2048,7 +2047,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.B,
                     _1.NoteConstant.CD
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'E&#9837; Lydian',
@@ -2061,7 +2060,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.C,
                     _1.NoteConstant.D
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'E&#9837; Mixolydian',
@@ -2074,7 +2073,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.C,
                     _1.NoteConstant.CD
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'E&#9837; Minor Aeolian',
@@ -2087,7 +2086,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.B,
                     _1.NoteConstant.CD
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'E&#9837; Locrian',
@@ -2100,7 +2099,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.B,
                     _1.NoteConstant.CD
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'E&#9837; Major Pentatonic',
@@ -2111,7 +2110,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.AB,
                     _1.NoteConstant.C
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'E&#9837; Minor Pentatonic',
@@ -2122,7 +2121,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.AB,
                     _1.NoteConstant.CD
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'E&#9837; Harmonic Minor',
@@ -2135,7 +2134,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.B,
                     _1.NoteConstant.D
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'E&#9837; Melodic Minor',
@@ -2148,7 +2147,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.C,
                     _1.NoteConstant.D
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'E&#9837; Blues',
@@ -2160,7 +2159,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.AB,
                     _1.NoteConstant.CD
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'E&#9837; Mixo Blues',
@@ -2175,7 +2174,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.C,
                     _1.NoteConstant.CD
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'E&#9837; Diminished Whole Half',
@@ -2189,7 +2188,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.C,
                     _1.NoteConstant.D
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'E&#9837; Diminished Half Whole',
@@ -2203,7 +2202,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.C,
                     _1.NoteConstant.CD
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'E&#9837; Whole Tone',
@@ -2215,7 +2214,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.B,
                     _1.NoteConstant.CD
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'E&#9837; Hungarian Minor',
@@ -2228,7 +2227,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.B,
                     _1.NoteConstant.D
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'E&#9837; Hungarian Gypsy',
@@ -2241,7 +2240,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.B,
                     _1.NoteConstant.CD
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'E&#9837; Double Harmonic',
@@ -2254,7 +2253,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.B,
                     _1.NoteConstant.D
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'E&#9837; Enigmatic',
@@ -2267,7 +2266,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.CD,
                     _1.NoteConstant.D
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'E&#9837; Altered',
@@ -2280,7 +2279,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.B,
                     _1.NoteConstant.CD
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'E&#9837; Major Neapolitan',
@@ -2293,7 +2292,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.C,
                     _1.NoteConstant.D
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'E&#9837; Minor Neapolitan',
@@ -2306,7 +2305,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.B,
                     _1.NoteConstant.D
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'E&#9837; Persian',
@@ -2319,7 +2318,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.B,
                     _1.NoteConstant.D
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'E&#9837; Ukranian Dorian',
@@ -2332,7 +2331,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.C,
                     _1.NoteConstant.CD
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'E&#9837; Yo',
@@ -2343,7 +2342,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.AB,
                     _1.NoteConstant.C
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'E Major Ionian',
@@ -2356,7 +2355,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.CD,
                     _1.NoteConstant.DE
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'E Dorian',
@@ -2369,7 +2368,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.CD,
                     _1.NoteConstant.D
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'E Phrygian',
@@ -2382,7 +2381,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.C,
                     _1.NoteConstant.D
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'E Lydian',
@@ -2395,7 +2394,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.CD,
                     _1.NoteConstant.DE
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'E Mixolydian',
@@ -2408,7 +2407,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.CD,
                     _1.NoteConstant.D
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'E Minor Aeolian',
@@ -2421,7 +2420,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.C,
                     _1.NoteConstant.D
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'E Locrian',
@@ -2434,7 +2433,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.C,
                     _1.NoteConstant.D
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'E Major Pentatonic',
@@ -2445,7 +2444,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.B,
                     _1.NoteConstant.CD
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'E Minor Pentatonic',
@@ -2456,7 +2455,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.B,
                     _1.NoteConstant.D
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'E Harmonic Minor',
@@ -2469,7 +2468,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.C,
                     _1.NoteConstant.DE
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'E Melodic Minor',
@@ -2482,7 +2481,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.CD,
                     _1.NoteConstant.DE
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'E Blues',
@@ -2494,7 +2493,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.B,
                     _1.NoteConstant.D
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'E Mixo Blues',
@@ -2509,7 +2508,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.CD,
                     _1.NoteConstant.D
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'E Diminished Whole Half',
@@ -2523,7 +2522,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.CD,
                     _1.NoteConstant.DE
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'E Diminished Half Whole',
@@ -2537,7 +2536,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.CD,
                     _1.NoteConstant.D
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'E Whole Tone',
@@ -2549,7 +2548,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.C,
                     _1.NoteConstant.D
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'E Hungarian Minor',
@@ -2562,7 +2561,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.C,
                     _1.NoteConstant.DE
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'E Hungarian Gypsy',
@@ -2575,7 +2574,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.C,
                     _1.NoteConstant.D
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'E Double Harmonic',
@@ -2588,7 +2587,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.C,
                     _1.NoteConstant.DE
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'E Enigmatic',
@@ -2601,7 +2600,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.D,
                     _1.NoteConstant.DE
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'E Altered',
@@ -2614,7 +2613,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.C,
                     _1.NoteConstant.D
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'E Major Neapolitan',
@@ -2627,7 +2626,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.CD,
                     _1.NoteConstant.DE
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'E Minor Neapolitan',
@@ -2640,7 +2639,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.C,
                     _1.NoteConstant.DE
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'E Persian',
@@ -2653,7 +2652,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.C,
                     _1.NoteConstant.DE
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'E Ukranian Dorian',
@@ -2666,7 +2665,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.CD,
                     _1.NoteConstant.D
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'E Yo',
@@ -2677,7 +2676,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.B,
                     _1.NoteConstant.CD
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'F Major Ionian',
@@ -2690,7 +2689,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.D,
                     _1.NoteConstant.E
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'F Dorian',
@@ -2703,7 +2702,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.D,
                     _1.NoteConstant.DE
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'F Phrygian',
@@ -2716,7 +2715,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.CD,
                     _1.NoteConstant.DE
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'F Lydian',
@@ -2729,7 +2728,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.D,
                     _1.NoteConstant.E
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'F Mixolydian',
@@ -2742,7 +2741,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.D,
                     _1.NoteConstant.DE
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'F Minor Aeolian',
@@ -2755,7 +2754,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.CD,
                     _1.NoteConstant.DE
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'F Locrian',
@@ -2768,7 +2767,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.CD,
                     _1.NoteConstant.DE
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'F Major Pentatonic',
@@ -2779,7 +2778,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.C,
                     _1.NoteConstant.D
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'F Minor Pentatonic',
@@ -2790,7 +2789,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.C,
                     _1.NoteConstant.DE
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'F Harmonic Minor',
@@ -2803,7 +2802,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.CD,
                     _1.NoteConstant.E
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'F Melodic Minor',
@@ -2816,7 +2815,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.D,
                     _1.NoteConstant.E
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'F Blues',
@@ -2828,7 +2827,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.C,
                     _1.NoteConstant.DE
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'F Mixo Blues',
@@ -2843,7 +2842,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.D,
                     _1.NoteConstant.DE
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'F Diminished Whole Half',
@@ -2857,7 +2856,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.D,
                     _1.NoteConstant.E
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'F Diminished Half Whole',
@@ -2871,7 +2870,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.D,
                     _1.NoteConstant.DE
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'F Whole Tone',
@@ -2883,7 +2882,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.CD,
                     _1.NoteConstant.DE
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'F Hungarian Minor',
@@ -2896,7 +2895,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.CD,
                     _1.NoteConstant.E
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'F Hungarian Gypsy',
@@ -2909,7 +2908,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.CD,
                     _1.NoteConstant.DE
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'F Double Harmonic',
@@ -2922,7 +2921,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.CD,
                     _1.NoteConstant.E
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'F Enigmatic',
@@ -2935,7 +2934,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.DE,
                     _1.NoteConstant.E
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'F Altered',
@@ -2948,7 +2947,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.CD,
                     _1.NoteConstant.DE
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'F Major Neapolitan',
@@ -2961,7 +2960,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.D,
                     _1.NoteConstant.E
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'F Minor Neapolitan',
@@ -2974,7 +2973,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.CD,
                     _1.NoteConstant.E
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'F Persian',
@@ -2987,7 +2986,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.CD,
                     _1.NoteConstant.E
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'F Ukranian Dorian',
@@ -3000,7 +2999,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.D,
                     _1.NoteConstant.DE
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'F Yo',
@@ -3011,7 +3010,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.C,
                     _1.NoteConstant.D
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'F&#9839; Major Ionian',
@@ -3024,7 +3023,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.DE,
                     _1.NoteConstant.F
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'F&#9839; Dorian',
@@ -3037,7 +3036,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.DE,
                     _1.NoteConstant.E
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'F&#9839; Phrygian',
@@ -3050,7 +3049,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.D,
                     _1.NoteConstant.E
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'F&#9839; Lydian',
@@ -3063,7 +3062,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.DE,
                     _1.NoteConstant.F
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'F&#9839; Mixolydian',
@@ -3076,7 +3075,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.DE,
                     _1.NoteConstant.E
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'F&#9839; Minor Aeolian',
@@ -3089,7 +3088,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.D,
                     _1.NoteConstant.E
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'F&#9839; Locrian',
@@ -3102,7 +3101,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.D,
                     _1.NoteConstant.E
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'F&#9839; Major Pentatonic',
@@ -3113,7 +3112,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.CD,
                     _1.NoteConstant.DE
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'F&#9839; Minor Pentatonic',
@@ -3124,7 +3123,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.CD,
                     _1.NoteConstant.E
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'F&#9839; Harmonic Minor',
@@ -3137,7 +3136,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.D,
                     _1.NoteConstant.F
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'F&#9839; Melodic Minor',
@@ -3150,7 +3149,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.DE,
                     _1.NoteConstant.F
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'F&#9839; Blues',
@@ -3162,7 +3161,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.CD,
                     _1.NoteConstant.E
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'F&#9839; Mixo Blues',
@@ -3177,7 +3176,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.DE,
                     _1.NoteConstant.E
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'F&#9839; Diminished Whole Half',
@@ -3191,7 +3190,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.DE,
                     _1.NoteConstant.F
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'F&#9839; Diminished Half Whole',
@@ -3205,7 +3204,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.DE,
                     _1.NoteConstant.E
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'F&#9839; Whole Tone',
@@ -3217,7 +3216,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.D,
                     _1.NoteConstant.E
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'F&#9839; Hungarian Minor',
@@ -3230,7 +3229,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.D,
                     _1.NoteConstant.F
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'F&#9839; Hungarian Gypsy',
@@ -3243,7 +3242,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.D,
                     _1.NoteConstant.E
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'F&#9839; Double Harmonic',
@@ -3256,7 +3255,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.D,
                     _1.NoteConstant.F
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'F&#9839; Enigmatic',
@@ -3269,7 +3268,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.E,
                     _1.NoteConstant.F
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'F&#9839; Altered',
@@ -3282,7 +3281,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.D,
                     _1.NoteConstant.E
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'F&#9839; Major Neapolitan',
@@ -3295,7 +3294,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.DE,
                     _1.NoteConstant.F
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'F&#9839; Minor Neapolitan',
@@ -3308,7 +3307,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.D,
                     _1.NoteConstant.F
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'F&#9839; Persian',
@@ -3321,7 +3320,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.D,
                     _1.NoteConstant.F
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'F&#9839; Ukranian Dorian',
@@ -3334,7 +3333,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.DE,
                     _1.NoteConstant.E
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'F&#9839; Yo',
@@ -3345,7 +3344,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.CD,
                     _1.NoteConstant.DE
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'G Major Ionian',
@@ -3358,7 +3357,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.E,
                     _1.NoteConstant.FG
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'G Dorian',
@@ -3371,7 +3370,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.E,
                     _1.NoteConstant.F
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'G Phrygian',
@@ -3384,7 +3383,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.DE,
                     _1.NoteConstant.F
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'G Lydian',
@@ -3397,7 +3396,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.E,
                     _1.NoteConstant.FG
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'G Mixolydian',
@@ -3410,7 +3409,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.E,
                     _1.NoteConstant.F
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'G Minor Aeolian',
@@ -3423,7 +3422,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.DE,
                     _1.NoteConstant.F
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'G Locrian',
@@ -3436,7 +3435,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.DE,
                     _1.NoteConstant.F
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'G Major Pentatonic',
@@ -3447,7 +3446,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.D,
                     _1.NoteConstant.E
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'G Minor Pentatonic',
@@ -3458,7 +3457,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.D,
                     _1.NoteConstant.F
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'G Harmonic Minor',
@@ -3471,7 +3470,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.DE,
                     _1.NoteConstant.FG
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'G Melodic Minor',
@@ -3484,7 +3483,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.E,
                     _1.NoteConstant.FG
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'G Blues',
@@ -3496,7 +3495,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.D,
                     _1.NoteConstant.F
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'G Mixo Blues',
@@ -3511,7 +3510,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.E,
                     _1.NoteConstant.F
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'G Diminished Whole Half',
@@ -3525,7 +3524,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.E,
                     _1.NoteConstant.FG
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'G Diminished Half Whole',
@@ -3539,7 +3538,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.E,
                     _1.NoteConstant.F
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'G Whole Tone',
@@ -3551,7 +3550,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.DE,
                     _1.NoteConstant.F
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'G Hungarian Minor',
@@ -3564,7 +3563,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.DE,
                     _1.NoteConstant.FG
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'G Hungarian Gypsy',
@@ -3577,7 +3576,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.DE,
                     _1.NoteConstant.F
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'G Double Harmonic',
@@ -3590,7 +3589,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.DE,
                     _1.NoteConstant.FG
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'G Enigmatic',
@@ -3603,7 +3602,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.F,
                     _1.NoteConstant.FG
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'G Altered',
@@ -3616,7 +3615,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.DE,
                     _1.NoteConstant.F
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'G Major Neapolitan',
@@ -3629,7 +3628,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.E,
                     _1.NoteConstant.FG
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'G Minor Neapolitan',
@@ -3642,7 +3641,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.DE,
                     _1.NoteConstant.FG
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'G Persian',
@@ -3655,7 +3654,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.DE,
                     _1.NoteConstant.FG
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'G Ukranian Dorian',
@@ -3668,7 +3667,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.E,
                     _1.NoteConstant.F
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'G Yo',
@@ -3679,7 +3678,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.D,
                     _1.NoteConstant.E
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'A&#9837; Major Ionian',
@@ -3692,7 +3691,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.F,
                     _1.NoteConstant.G
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'A&#9837; Dorian',
@@ -3705,7 +3704,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.F,
                     _1.NoteConstant.FG
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'A&#9837; Phrygian',
@@ -3718,7 +3717,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.E,
                     _1.NoteConstant.FG
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'A&#9837; Lydian',
@@ -3731,7 +3730,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.F,
                     _1.NoteConstant.G
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'A&#9837; Mixolydian',
@@ -3744,7 +3743,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.F,
                     _1.NoteConstant.FG
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'A&#9837; Minor Aeolian',
@@ -3757,7 +3756,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.E,
                     _1.NoteConstant.FG
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'A&#9837; Locrian',
@@ -3770,7 +3769,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.E,
                     _1.NoteConstant.FG
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'A&#9837; Major Pentatonic',
@@ -3781,7 +3780,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.DE,
                     _1.NoteConstant.F
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'A&#9837; Minor Pentatonic',
@@ -3792,7 +3791,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.DE,
                     _1.NoteConstant.FG
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'A&#9837; Harmonic Minor',
@@ -3805,7 +3804,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.E,
                     _1.NoteConstant.G
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'A&#9837; Melodic Minor',
@@ -3818,7 +3817,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.F,
                     _1.NoteConstant.G
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'A&#9837; Blues',
@@ -3830,7 +3829,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.DE,
                     _1.NoteConstant.FG
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'A&#9837; Mixo Blues',
@@ -3845,7 +3844,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.F,
                     _1.NoteConstant.FG
                 ],
-                type: 5 /* MAIN */
+                type: 5
             },
             {
                 name: 'A&#9837; Diminished Whole Half',
@@ -3859,7 +3858,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.F,
                     _1.NoteConstant.G
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'A&#9837; Diminished Half Whole',
@@ -3873,7 +3872,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.F,
                     _1.NoteConstant.FG
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'A&#9837; Whole Tone',
@@ -3885,7 +3884,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.E,
                     _1.NoteConstant.FG
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'A&#9837; Hungarian Minor',
@@ -3898,7 +3897,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.E,
                     _1.NoteConstant.G
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'A&#9837; Hungarian Gypsy',
@@ -3911,7 +3910,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.E,
                     _1.NoteConstant.FG
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'A&#9837; Double Harmonic',
@@ -3924,7 +3923,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.E,
                     _1.NoteConstant.G
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'A&#9837; Enigmatic',
@@ -3937,7 +3936,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.FG,
                     _1.NoteConstant.G
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'A&#9837; Altered',
@@ -3950,7 +3949,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.E,
                     _1.NoteConstant.FG
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'A&#9837; Major Neapolitan',
@@ -3963,7 +3962,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.F,
                     _1.NoteConstant.G
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'A&#9837; Minor Neapolitan',
@@ -3976,7 +3975,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.E,
                     _1.NoteConstant.G
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'A&#9837; Persian',
@@ -3989,7 +3988,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.E,
                     _1.NoteConstant.G
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'A&#9837; Ukranian Dorian',
@@ -4002,7 +4001,7 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.F,
                     _1.NoteConstant.FG
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             },
             {
                 name: 'A&#9837; Yo',
@@ -4013,10 +4012,11 @@ var ScalesData = /** @class */ (function () {
                     _1.NoteConstant.DE,
                     _1.NoteConstant.F
                 ],
-                type: 4 /* MISCELLANEOUS */
+                type: 4
             }
         ];
     };
     return ScalesData;
 }());
 exports.ScalesData = ScalesData;
+//# sourceMappingURL=scales.data.js.map

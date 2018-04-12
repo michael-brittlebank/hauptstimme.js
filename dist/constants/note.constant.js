@@ -15,3 +15,4 @@ var NoteConstant;
     NoteConstant[NoteConstant["G"] = 10] = "G";
     NoteConstant[NoteConstant["GA"] = 11] = "GA";
 })(NoteConstant = exports.NoteConstant || (exports.NoteConstant = {}));
+//# sourceMappingURL=note.constant.js.map

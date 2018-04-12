@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-var LayoutService = /** @class */ (function () {
+var LayoutService = (function () {
     function LayoutService() {
     }
     LayoutService.getDefaultLayoutSettings = function () {
@@ -16,3 +16,4 @@ var LayoutService = /** @class */ (function () {
     return LayoutService;
 }());
 exports.LayoutService = LayoutService;
+//# sourceMappingURL=layout.service.js.map

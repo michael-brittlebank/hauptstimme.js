@@ -37,4 +37,8 @@ export class HauptstimmeJs {
         return SearchService.getChordsAndScalesByNotes(notesArray);
     }
 
+    public static demo(): string {
+        return 'demo';
+    }
+
 }

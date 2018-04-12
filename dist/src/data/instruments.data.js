@@ -10,7 +10,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 exports.__esModule = true;
 var __1 = require("../..");
 var _ = require("lodash");
-var InstrumentsData = /** @class */ (function () {
+var InstrumentsData = (function () {
     function InstrumentsData() {
     }
     InstrumentsData.getAvailableInstruments = function () {
@@ -25,7 +25,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.B,
                     __1.NoteConstant.E
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Bass Guitar',
@@ -35,7 +35,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.D,
                     __1.NoteConstant.G
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Bass Guitar - 5 String',
@@ -45,7 +45,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.D,
                     __1.NoteConstant.G
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Violin',
@@ -55,7 +55,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.A,
                     __1.NoteConstant.E
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Violin - Tenor',
@@ -65,7 +65,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.A,
                     __1.NoteConstant.E
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Mandolin',
@@ -75,7 +75,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.A,
                     __1.NoteConstant.E
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Ukulele - Baritone',
@@ -85,7 +85,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.B,
                     __1.NoteConstant.E
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Ukulele - Concert',
@@ -95,7 +95,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.E,
                     __1.NoteConstant.A
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Ukulele - Soprano',
@@ -105,7 +105,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.FG,
                     __1.NoteConstant.B
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Ukulele - Tenor',
@@ -115,7 +115,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.E,
                     __1.NoteConstant.A
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Cello',
@@ -125,7 +125,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.D,
                     __1.NoteConstant.A
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Viola',
@@ -135,7 +135,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.D,
                     __1.NoteConstant.A
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Banjo - Plectrum',
@@ -145,7 +145,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.B,
                     __1.NoteConstant.D
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Banjo - Tenor (Jazz)',
@@ -155,7 +155,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.D,
                     __1.NoteConstant.A
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Banjo - Tenor (Irish)',
@@ -165,7 +165,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.A,
                     __1.NoteConstant.E
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Lyre',
@@ -179,7 +179,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.FG,
                     __1.NoteConstant.A
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Bajo Sexto',
@@ -191,7 +191,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.B,
                     __1.NoteConstant.F
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Balalaika - Alto',
@@ -200,7 +200,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.A,
                     __1.NoteConstant.D
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Balalaika - Soprano',
@@ -209,7 +209,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.E,
                     __1.NoteConstant.A
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Cuatro',
@@ -220,7 +220,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.D,
                     __1.NoteConstant.G
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Cuatro - Cubano',
@@ -230,7 +230,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.E,
                     __1.NoteConstant.A
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Dulcimer',
@@ -240,7 +240,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.C,
                     __1.NoteConstant.C
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Dulcimer (Alternative)',
@@ -250,7 +250,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.A,
                     __1.NoteConstant.D
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Mandola',
@@ -260,7 +260,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.D,
                     __1.NoteConstant.A
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Sitar',
@@ -273,7 +273,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.C,
                     __1.NoteConstant.F
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Solo Bass',
@@ -283,7 +283,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.E,
                     __1.NoteConstant.A
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Dobro',
@@ -295,7 +295,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.B,
                     __1.NoteConstant.D
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Guitarron',
@@ -307,7 +307,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.E,
                     __1.NoteConstant.A
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Bouzouki',
@@ -321,7 +321,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.D,
                     __1.NoteConstant.D
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Bouzouki (Alternative)',
@@ -333,7 +333,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.D,
                     __1.NoteConstant.D
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Bouzouki - Irish',
@@ -343,7 +343,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.A,
                     __1.NoteConstant.D
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Bouzouki - Irish (Alternative)',
@@ -353,7 +353,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.A,
                     __1.NoteConstant.D
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Fiddle',
@@ -363,7 +363,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.A,
                     __1.NoteConstant.E
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Vihuela',
@@ -374,7 +374,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.B,
                     __1.NoteConstant.E
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Banduria',
@@ -386,7 +386,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.E,
                     __1.NoteConstant.A
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Charango',
@@ -397,7 +397,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.A,
                     __1.NoteConstant.E
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Oud',
@@ -409,7 +409,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.A,
                     __1.NoteConstant.D
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Oud (Alternative)',
@@ -421,7 +421,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.A,
                     __1.NoteConstant.D
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Requinto',
@@ -433,7 +433,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.E,
                     __1.NoteConstant.A
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Lute',
@@ -451,7 +451,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.G,
                     __1.NoteConstant.G
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Zither',
@@ -462,7 +462,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.G,
                     __1.NoteConstant.C
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Guitar - Russian',
@@ -475,7 +475,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.B,
                     __1.NoteConstant.D
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Pedal Steel Guitar',
@@ -491,7 +491,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.DE,
                     __1.NoteConstant.FG
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             },
             {
                 name: 'Pedal Steel Guitar (Alternative)',
@@ -507,7 +507,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.E,
                     __1.NoteConstant.D
                 ],
-                type: 0 /* INSTRUMENT */
+                type: 0
             }
         ];
         var tunings = [
@@ -521,7 +521,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.G,
                     __1.NoteConstant.AB
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Minor Thirds',
@@ -533,7 +533,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.C,
                     __1.NoteConstant.DE
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Major Thirds',
@@ -545,7 +545,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.GA,
                     __1.NoteConstant.C
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'All Fourths',
@@ -557,7 +557,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.C,
                     __1.NoteConstant.F
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Augmented Fourths',
@@ -569,7 +569,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.C,
                     __1.NoteConstant.FG
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'All Fifths',
@@ -581,7 +581,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.E,
                     __1.NoteConstant.B
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Baritone',
@@ -593,7 +593,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.FG,
                     __1.NoteConstant.B
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Baritone (Alternative)',
@@ -605,7 +605,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.E,
                     __1.NoteConstant.A
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Hawaiian',
@@ -617,7 +617,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.CD,
                     __1.NoteConstant.E
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'New Standard',
@@ -629,7 +629,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.E,
                     __1.NoteConstant.G
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Resophonic',
@@ -641,7 +641,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.B,
                     __1.NoteConstant.D
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Tenor',
@@ -651,7 +651,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.D,
                     __1.NoteConstant.A
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Open A',
@@ -663,7 +663,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.A,
                     __1.NoteConstant.E
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Open B',
@@ -675,7 +675,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.B,
                     __1.NoteConstant.DE
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Open C',
@@ -687,7 +687,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.C,
                     __1.NoteConstant.E
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Open D',
@@ -699,7 +699,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.A,
                     __1.NoteConstant.D
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Modal D',
@@ -711,7 +711,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.A,
                     __1.NoteConstant.D
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Open D Minor',
@@ -723,7 +723,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.A,
                     __1.NoteConstant.D
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Open E',
@@ -735,7 +735,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.B,
                     __1.NoteConstant.E
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Open F',
@@ -747,7 +747,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.A,
                     __1.NoteConstant.C
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Open G',
@@ -759,7 +759,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.B,
                     __1.NoteConstant.D
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Modal G',
@@ -771,7 +771,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.B,
                     __1.NoteConstant.D
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Open G Minor',
@@ -783,7 +783,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.A,
                     __1.NoteConstant.E
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Admiral',
@@ -795,7 +795,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.B,
                     __1.NoteConstant.C
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Buzzard',
@@ -807,7 +807,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.AB,
                     __1.NoteConstant.F
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Face',
@@ -819,7 +819,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.A,
                     __1.NoteConstant.D
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Four and Twenty',
@@ -831,7 +831,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.A,
                     __1.NoteConstant.D
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Hot Type',
@@ -843,7 +843,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.A,
                     __1.NoteConstant.D
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Layover',
@@ -855,7 +855,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.C,
                     __1.NoteConstant.E
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Magic Farmer',
@@ -867,7 +867,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.A,
                     __1.NoteConstant.E
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Pelican',
@@ -879,7 +879,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.A,
                     __1.NoteConstant.D
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Processional',
@@ -891,7 +891,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.A,
                     __1.NoteConstant.AB
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Slow Motion',
@@ -903,7 +903,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.C,
                     __1.NoteConstant.D
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Spirit',
@@ -915,7 +915,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.A,
                     __1.NoteConstant.E
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Tarboulton',
@@ -927,7 +927,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.AB,
                     __1.NoteConstant.F
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Toulouse',
@@ -939,7 +939,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.A,
                     __1.NoteConstant.D
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Triqueen',
@@ -951,7 +951,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.A,
                     __1.NoteConstant.B
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Minor Sixths',
@@ -963,7 +963,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.GA,
                     __1.NoteConstant.E
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Major Sixths',
@@ -975,7 +975,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.C,
                     __1.NoteConstant.A
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Mandoguitar',
@@ -987,7 +987,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.E,
                     __1.NoteConstant.B
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Pentatonic',
@@ -999,7 +999,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.G,
                     __1.NoteConstant.A
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Overtone',
@@ -1011,7 +1011,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.C,
                     __1.NoteConstant.D
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Lefty',
@@ -1023,7 +1023,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.A,
                     __1.NoteConstant.E
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Cittern',
@@ -1035,7 +1035,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.C,
                     __1.NoteConstant.D
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Cittern (Alternative)',
@@ -1047,7 +1047,7 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.C,
                     __1.NoteConstant.G
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             },
             {
                 name: 'Balalaika',
@@ -1059,19 +1059,14 @@ var InstrumentsData = /** @class */ (function () {
                     __1.NoteConstant.E,
                     __1.NoteConstant.A
                 ],
-                type: 1 /* ALTERNATE_TUNING */
+                type: 1
             }
         ];
-        // sort the list alphabetically
-        return _.sortBy(
-        // use auto-incremented ids to prevent developer error
-        _.map(
-        // join the lists together
-        _.union(instruments, tunings), function (instrument, index) {
-            return __assign({}, instrument, { id: (index + 1) // start from NoteConstant.AB instead of NoteConstant.A
-             });
+        return _.sortBy(_.map(_.union(instruments, tunings), function (instrument, index) {
+            return __assign({}, instrument, { id: (index + 1) });
         }), 'name');
     };
     return InstrumentsData;
 }());
 exports.InstrumentsData = InstrumentsData;
+//# sourceMappingURL=instruments.data.js.map
