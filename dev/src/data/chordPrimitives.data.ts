@@ -24,6 +24,7 @@ export class ChordPrimitivesData {
         let noteIndex: number;
         let rootScale: ScaleInterface;
         let rootScaleLength: number;
+        let chordDescription: string[];
         const defaultScale: ScaleInterface = {
             name: 'Empty Scale',
             notes: [],
@@ -36,6 +37,7 @@ export class ChordPrimitivesData {
             // compile each scale for the given root note
             assembledChords = _.map(chordPrimitives, (chordPrimitive: ChordOrScalePrimitiveInterface): ChordInterface => {
                 chordNotes = [];
+                chordDescription = [];
                 if (chordPrimitive.type === ChordOrScaleTypeConstant.MINOR) {
                     // use minor scale as basis for selecting notes
                     rootScale = _.find(scales, (scale: ScaleInterface) => {
@@ -54,32 +56,31 @@ export class ChordPrimitivesData {
                         if (step.indexOf('b') !== -1) {
                             if (step.indexOf('bb') !== -1) {
                                 noteIndex = this.moduloChordNoteIndex(parseInt(step.substr(2, step.length), 10), rootScaleLength) - 2;
-                                chordNotes.push(rootScale.notes[noteIndex]);
                             } else {
                                 noteIndex = this.moduloChordNoteIndex(parseInt(step.substr(1, step.length), 10), rootScaleLength) - 1;
-                                chordNotes.push(rootScale.notes[noteIndex]);
                             }
                         } else if (step.indexOf('#') !== -1) {
                             noteIndex = this.moduloChordNoteIndex(parseInt(step.substr(1, step.length), 10), rootScaleLength) + 1;
-                            chordNotes.push(rootScale.notes[noteIndex]);
                         } else if (step.indexOf('(') !== -1) {
                             noteIndex = this.moduloChordNoteIndex(parseInt(step.substr(1, step.length - 1), 10), rootScaleLength);
-                            chordNotes.push(rootScale.notes[noteIndex]);
                         } else {
                             noteIndex = this.moduloChordNoteIndex(parseInt(step, 10), rootScaleLength);
-                            chordNotes.push(rootScale.notes[noteIndex]);
                         }
+                        chordDescription.push(UtilService.getFormattedNoteString(UtilService.getEnumFromStringKey(NoteConstant, NoteConstant[rootScale.notes[noteIndex]])));
+                        chordNotes.push(rootScale.notes[noteIndex]);
                     });
                     return {
                         name: [UtilService.getFormattedNoteString(rootNote), chordPrimitive.name].join(' '),
                         notes: _.sortBy(_.uniq(chordNotes)), // remove duplicates and sort by asc value
-                        type: chordPrimitive.type
+                        type: chordPrimitive.type,
+                        description: _.sortBy(_.uniq(chordDescription)).join(', ')
                     };
                 } else {
                     return {
                         name: [UtilService.getFormattedNoteString(rootNote), chordPrimitive.name].join(' '),
                         notes: [], // error finding root scale
-                        type: chordPrimitive.type
+                        type: chordPrimitive.type,
+                        description: _.sortBy(_.uniq(chordDescription)).join(', ')
                     };
                 }
             });

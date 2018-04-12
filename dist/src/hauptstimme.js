@@ -4,7 +4,7 @@ var Promise = require("bluebird");
 var instruments_data_1 = require("./data/instruments.data");
 var search_service_1 = require("./services/search.service");
 var scales_data_1 = require("./data/scales.data");
-var chords_data_1 = require("./data/chords.data");
+var chordPrimitives_data_1 = require("./data/chordPrimitives.data");
 var HauptstimmeJs = (function () {
     function HauptstimmeJs() {
     }
@@ -20,7 +20,7 @@ var HauptstimmeJs = (function () {
     };
     HauptstimmeJs.getAvailableChords = function () {
         return new Promise(function (resolve, reject) {
-            resolve(chords_data_1.ChordsData.getAvailableChords());
+            resolve(chordPrimitives_data_1.ChordPrimitivesData.compileChordPrimitivesIntoChords());
         });
     };
     HauptstimmeJs.search = function (searchRequest) {

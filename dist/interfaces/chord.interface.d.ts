@@ -4,4 +4,5 @@ export interface ChordInterface {
     name: string;
     notes: NoteConstant[];
     type: ChordOrScaleTypeConstant;
+    description: string;
 }
