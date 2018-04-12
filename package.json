@@ -14,11 +14,11 @@
   "main": "./dist/src/exports.js",
   "typings": "./dist/src/exports.d.js",
   "scripts": {
-    "start": "npm-run-all --parallel watch-ts",
+    "start": " tsc --watch",
     "typedoc": "typedoc --out ./docs --mode modules --tsconfig ./tsconfig.json ./dev/src/",
     "posttypedoc": "shx cp .nojekyll docs/.nojekyll",
     "test": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec dev/tests/*.test.js dev/tests/**/*.test.js",
-    "build-ts": "tsc",
+    "build-ts": "tsc && npm run typedoc",
     "postbuild-ts": "browserify ./dist/exports.js --standalone HauptstimmeJS --debug | uglifyjs --source-map --output ./dist/bundle.js > ./dist/bundle.js",
     "watch-ts": "chokidar './dev/**/*.ts' -c 'npm run build-ts'"
   },

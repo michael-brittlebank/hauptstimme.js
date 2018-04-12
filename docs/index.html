@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ChorusJS</title>
+	<title>hauptstimme-js</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">ChorusJS</a>
+					<a href="index.html" class="title">hauptstimme-js</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -56,7 +56,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1> ChorusJS</h1>
+			<h1> hauptstimme-js</h1>
 		</div>
 	</div>
 </header>
@@ -64,51 +64,10 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<p><a href="https://travis-ci.org/mike-stumpf/chorus.js"><img src="https://travis-ci.org/mike-stumpf/chorus.js.svg?branch=master" alt="Build Status"></a>
-				<a href="https://coveralls.io/github/mike-stumpf/chorus.js?branch=master"><img src="https://coveralls.io/repos/github/mike-stumpf/chorus.js/badge.svg?branch=master" alt="Coverage Status"></a></p>
-				<h1 id="chorus-js">Chorus.js</h1>
+				<p><a href="https://travis-ci.org/mike-stumpf/hauptstimme.js"><img src="https://travis-ci.org/mike-stumpf/hauptstimme.js.svg?branch=master" alt="Build Status"></a>
+				<a href="https://coveralls.io/github/mike-stumpf/hauptstimme.js?branch=master"><img src="https://coveralls.io/repos/github/mike-stumpf/hauptstimme.js/badge.svg?branch=master" alt="Coverage Status"></a></p>
+				<h1 id="hauptstimme-js">Hauptstimme.js</h1>
 				<p>A JavaScript library for visualizing music theory</p>
-				<h2 id="quickstart">Quickstart</h2>
-				<p>Chorus.JS is built in native JavaScript.  It relies on sending and receiving custom events which can be accessed via native JS</p>
-				<pre><code><span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">'chorusSearchComplete'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>{
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'listening'</span>);
-});
-</code></pre><p>or via JavaScript libraries like jQuery</p>
-				<pre><code>$(<span class="hljs-built_in">document</span>).on(<span class="hljs-string">'chorusSearchComplete'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'listening'</span>);
-});
-</code></pre><h3 id="full-example">Full Example</h3>
-				<pre><code><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Chorus.js Quickstart<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/chorus.min.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/chorus.min.css"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/chorus.min.css.map"</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"my-container-name"</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"chorus-standard-font"</span>&gt;</span>Results: Scales<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"results-scales"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"results-container"</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"chorus-standard-font"</span>&gt;</span>Results: Chords<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"results-chords"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"results-container"</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
-    <span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">'DOMContentLoaded'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>{
-        config = {
-            <span class="hljs-attr">layoutInstrument</span>: [<span class="hljs-string">'guitar'</span>],
-            <span class="hljs-attr">chorusDebug</span>:<span class="hljs-string">'console'</span>
-        };
-        _chorus.init(<span class="hljs-string">'my-container-name'</span>, config);
-    });
-    <span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">'chorusSearchComplete'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>{
-        setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-            _chorus.populateLists(<span class="hljs-string">'results-scales'</span>,<span class="hljs-string">'results-chords'</span>);
-        },<span class="hljs-number">100</span>);
-    });
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
-</code></pre><p>For more examples, look in <a href="https://github.com/mike-stumpf/chorus.js/blob/master/dist/index.html">/dist/index.html</a></p>
 				<h2 id="further-information">Further Information</h2>
 				<p>Please visit the <a href="https://github.com/mike-stumpf/chorus.js/wiki">wiki</a> to see the documentation and submit any issues you have to this repository&#39;s <a href="https://github.com/mike-stumpf/chorus.js/issues">issue tracker</a>.</p>
 			</div>
@@ -119,8 +78,59 @@
 					<li class="globals  ">
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
+					<li class="label tsd-is-external">
+						<span>Internals</span>
+					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_index_.html">"index"</a>
+						<a href="modules/_src_data_chordprimitives_data_.html">"src/data/chord<wbr>Primitives.data"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_src_data_chords_data_.html">"src/data/chords.data"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_src_data_instruments_data_.html">"src/data/instruments.data"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_src_data_scaleprimitives_data_.html">"src/data/scale<wbr>Primitives.data"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_src_data_scales_data_.html">"src/data/scales.data"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_src_hauptstimme_.html">"src/hauptstimme"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_src_services_search_service_.html">"src/services/search.service"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_src_services_util_service_.html">"src/services/util.service"</a>
+					</li>
+					<li class="label tsd-is-external">
+						<span>Externals</span>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_constants_chordorscaletype_constant_.html">"constants/chord<wbr>OrScale<wbr>Type.constant"</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_constants_instrumenttype_constant_.html">"constants/instrument<wbr>Type.constant"</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_constants_note_constant_.html">"constants/note.constant"</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_interfaces_chord_interface_.html">"interfaces/chord.interface"</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_interfaces_chordorscaleprimitiveinterface_.html">"interfaces/chord<wbr>OrScale<wbr>Primitive<wbr>Interface"</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_interfaces_instrument_interface_.html">"interfaces/instrument.interface"</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_interfaces_scale_interface_.html">"interfaces/scale.interface"</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_interfaces_searchresponse_interface_.html">"interfaces/search<wbr>Response.interface"</a>
 					</li>
 				</ul>
 			</nav>
