@@ -6,8 +6,8 @@ import { ChordsData } from './data/chords.data';
 import { InstrumentInterface } from '../interfaces/instrument.interface';
 import { ScaleInterface } from '../interfaces/scale.interface';
 import { ChordInterface } from '../interfaces/chord.interface';
-import { NoteConstant } from '../constants/note.constant';
 import { SearchResponseInterface } from '../interfaces/searchResponse.interface';
+import { SearchRequestInterface } from '../interfaces/searchRequest.interface';
 
 export class HauptstimmeJs {
     /**
@@ -31,8 +31,8 @@ export class HauptstimmeJs {
         });
     }
 
-    public static search(notesArray: NoteConstant[]): Promise<SearchResponseInterface> {
-        return SearchService.getChordsAndScalesByNotes(notesArray);
+    public static search(searchRequest: SearchRequestInterface): Promise<SearchResponseInterface> {
+        return SearchService.getChordsAndScalesByNotes(searchRequest);
     }
 
 }

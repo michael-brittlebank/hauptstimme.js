@@ -23,8 +23,8 @@ var HauptstimmeJs = (function () {
             resolve(chords_data_1.ChordsData.getAvailableChords());
         });
     };
-    HauptstimmeJs.search = function (notesArray) {
-        return search_service_1.SearchService.getChordsAndScalesByNotes(notesArray);
+    HauptstimmeJs.search = function (searchRequest) {
+        return search_service_1.SearchService.getChordsAndScalesByNotes(searchRequest);
     };
     return HauptstimmeJs;
 }());
