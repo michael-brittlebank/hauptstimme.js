@@ -8,6 +8,9 @@ describe('#HauptstimmeJs.getAvailableInstruments', function() {
         HauptstimmeJs.getAvailableInstruments()
             .then((response) => {
                 expect(response).to.be.an('array');
+            })
+            .catch((error) => {
+                console.warn(error);
             });
     });
 });
@@ -17,6 +20,9 @@ describe('#HauptstimmeJs.getAvailableScales', function() {
         HauptstimmeJs.getAvailableScales()
             .then((response) => {
                 expect(response).to.be.an('array');
+            })
+            .catch((error) => {
+                console.warn(error);
             });
     });
 });
@@ -26,6 +32,9 @@ describe('#HauptstimmeJs.getAvailableChords', function() {
         HauptstimmeJs.getAvailableChords()
             .then((response) => {
                 expect(response).to.be.an('array');
+            })
+            .catch((error) => {
+                console.warn(error);
             });
     });
 });
@@ -35,6 +44,9 @@ describe('#HauptstimmeJs.getAvailableInstruments', function() {
         HauptstimmeJs.search({rootNote: 0, notes: [4, 5,]})
             .then((response) => {
                 expect(response).to.be.an('object');
+            })
+            .catch((error) => {
+                console.warn(error);
             });
     });
 });

@@ -56,6 +56,9 @@ export class SearchService {
                         scales: response[1]
                     };
                     resolve(searchResults);
+                })
+                .catch((error: any) => {
+                    console.warn(error);
                 });
         });
     }

@@ -7,14 +7,14 @@ const UtilService = require('../../../dist/src/services/util.service').UtilServi
 describe('#UtilService.getLengthOfEnum', function() {
     it('should return an number length of enum', function() {
         const result = UtilService.getLengthOfEnum(NoteConstant);
-        expect(result).to.be.an('number');
+        expect(result).to.equal(12);
     });
 });
 
 describe('#UtilService.getFormattedNoteString', function() {
     it('should return a formatted string from an enum', function() {
         const result = UtilService.getFormattedNoteString(NoteConstant.GA);
-        expect(result).to.equal('A&#9837;');
+        expect(result).to.equal('A♭');
     });
 });
 
