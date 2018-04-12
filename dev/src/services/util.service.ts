@@ -7,8 +7,8 @@ export class UtilService {
     }
 
     public static getFormattedNoteString(note: NoteConstant) {
-        const sharpEntity: string = '&#9839;';
-        const flatEntity: string = '&#9837;';
+        const sharpEntity: string = '♯';
+        const flatEntity: string = '♭';
         let formattedNote: string = NoteConstant[note];
         switch (note) {
             case NoteConstant.AB:

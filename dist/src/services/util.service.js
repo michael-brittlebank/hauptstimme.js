@@ -8,8 +8,8 @@ var UtilService = (function () {
         return Object.keys(enumConstant).filter(function (key) { return typeof enumConstant[key] === 'number'; }).length;
     };
     UtilService.getFormattedNoteString = function (note) {
-        var sharpEntity = '&#9839;';
-        var flatEntity = '&#9837;';
+        var sharpEntity = '♯';
+        var flatEntity = '♭';
         var formattedNote = note_constant_1.NoteConstant[note];
         switch (note) {
             case note_constant_1.NoteConstant.AB:

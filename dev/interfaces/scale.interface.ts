@@ -5,4 +5,5 @@ export interface ScaleInterface {
     name: string;
     notes: NoteConstant[];
     type: ChordOrScaleTypeConstant;
+    description: string;
 }

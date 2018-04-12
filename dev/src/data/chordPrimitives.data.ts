@@ -27,7 +27,8 @@ export class ChordPrimitivesData {
         const defaultScale: ScaleInterface = {
             name: 'Empty Scale',
             notes: [],
-            type: ChordOrScaleTypeConstant.MISCELLANEOUS
+            type: ChordOrScaleTypeConstant.MISCELLANEOUS,
+            description: ''
         };
         // loop through each possible root note
         for(let i: number = 0; i < noteLength; i++) {
@@ -51,7 +52,6 @@ export class ChordPrimitivesData {
                     // use the steps to determine the correct note sequence
                     _.each(chordPrimitive.steps, (step: string) => {
                         if (step.indexOf('b') !== -1) {
-                            // todo, verify note generation is correct for non-major chords
                             if (step.indexOf('bb') !== -1) {
                                 noteIndex = this.moduloChordNoteIndex(parseInt(step.substr(2, step.length), 10), rootScaleLength) - 2;
                                 chordNotes.push(rootScale.notes[noteIndex]);

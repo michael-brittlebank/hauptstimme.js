@@ -25,7 +25,8 @@ var ChordPrimitivesData = (function () {
         var defaultScale = {
             name: 'Empty Scale',
             notes: [],
-            type: 4
+            type: 4,
+            description: ''
         };
         for (var i = 0; i < noteLength; i++) {
             rootNote = util_service_1.UtilService.getEnumFromStringKey(note_constant_1.NoteConstant, note_constant_1.NoteConstant[i]);
