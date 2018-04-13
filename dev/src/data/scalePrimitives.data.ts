@@ -15,6 +15,7 @@ export class ScalePrimitivesData {
         let assembledScales: ScaleInterface[] = [];
         let rootNote: NoteConstant;
         let noteIndex: number;
+        let scaleDescription: string[] = [];
         // loop through each possible root note
         for(let i: number = 0; i < noteLength; i++) {
             rootNote = UtilService.getEnumFromStringKey(NoteConstant, NoteConstant[i]);
@@ -22,17 +23,21 @@ export class ScalePrimitivesData {
             assembledScales = _.map(scalePrimitives, (scalePrimitive: ChordOrScalePrimitiveInterface): ScaleInterface => {
                 noteIndex = i;
                 scaleNotes = [rootNote];
+                scaleDescription = [UtilService.getFormattedNoteString(UtilService.getEnumFromStringKey(NoteConstant, NoteConstant[rootNote]))];
                 // use the steps to determine the correct note sequence
                 _.each(scalePrimitive.steps, (step: string) => {
                     noteIndex = (noteIndex + parseInt(step, 10)) % noteLength;
                     scaleNotes.push(UtilService.getEnumFromStringKey(NoteConstant, NoteConstant[noteIndex]));
+                    scaleDescription.push(UtilService.getFormattedNoteString(UtilService.getEnumFromStringKey(NoteConstant, NoteConstant[noteIndex])));
                 });
                 // remove last element in array as it is the same as the first (root) note
                 scaleNotes.splice(-1,1);
+                scaleDescription.splice(-1,1);
                 return {
                     name: [UtilService.getFormattedNoteString(rootNote), scalePrimitive.name].join(' '),
                     notes: scaleNotes,
-                    type: scalePrimitive.type
+                    type: scalePrimitive.type,
+                    description: scaleDescription.join(', ')
                 };
             });
             scales = scales.concat(assembledScales);

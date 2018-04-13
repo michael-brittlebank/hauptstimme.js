@@ -7,4 +7,6 @@
 A JavaScript library for visualizing music theory
 
 ## Further Information
-Please visit the [wiki](https://github.com/mike-stumpf/chorus.js/wiki) to see the documentation and submit any issues you have to this repository's [issue tracker](https://github.com/mike-stumpf/chorus.js/issues).
+Documentation is available via the [API](http://mike-stumpf.github.io/hauptstimme.js/) and [wiki](https://github.com/mike-stumpf/chorus.js/wiki). 
+
+Submit any issues you have to this repository's [issue tracker](https://github.com/mike-stumpf/chorus.js/issues).

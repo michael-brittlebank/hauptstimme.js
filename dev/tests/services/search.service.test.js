@@ -9,6 +9,9 @@ describe('#SearchService.getScalesByNotes', function() {
         SearchService.getScalesByNotes([0,3,4])
             .then((response) => {
                 expect(response).to.be.an('array');
+            })
+            .catch((error) => {
+                console.warn(error);
             });
     });
 });
@@ -18,15 +21,21 @@ describe('#SearchService.getChordsByNotes', function() {
         SearchService.getChordsByNotes([0,4,5])
             .then((response) => {
                 expect(response).to.be.an('array');
+            })
+            .catch((error) => {
+                console.warn(error);
             });
     });
 });
 
 describe('#SearchService.getChordsAndScalesByNotes', function() {
     it('should return an search response object with arrays of chords and scales containing the corresponding notes', function() {
-        SearchService.getChordsAndScalesByNotes([0,4,5])
+        SearchService.getChordsAndScalesByNotes({rootNote: 0, notes: [4,5]})
             .then((response) => {
                 expect(response).to.be.an('object');
+            })
+            .catch((error) => {
+                console.warn(error);
             });
     });
 });

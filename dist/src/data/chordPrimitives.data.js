@@ -7,8 +7,8 @@ var scales_data_1 = require("./scales.data");
 var ChordPrimitivesData = (function () {
     function ChordPrimitivesData() {
     }
-    ChordPrimitivesData.moduloChordNoteIndex = function (noteIndex, lengthOfScale) {
-        return (noteIndex - 1) % lengthOfScale;
+    ChordPrimitivesData.getScaleNoteIndex = function (step, rootScaleLength) {
+        return util_service_1.UtilService.modulo(parseInt(step, 10) - 1, rootScaleLength);
     };
     ChordPrimitivesData.compileChordPrimitivesIntoChords = function () {
         var _this = this;
@@ -19,18 +19,22 @@ var ChordPrimitivesData = (function () {
         var chordNotes;
         var assembledChords = [];
         var rootNote;
-        var noteIndex;
+        var scaleNoteIndex;
+        var noteToAdd;
         var rootScale;
         var rootScaleLength;
+        var chordDescription;
         var defaultScale = {
             name: 'Empty Scale',
             notes: [],
-            type: 4
+            type: 4,
+            description: ''
         };
         for (var i = 0; i < noteLength; i++) {
             rootNote = util_service_1.UtilService.getEnumFromStringKey(note_constant_1.NoteConstant, note_constant_1.NoteConstant[i]);
             assembledChords = _.map(chordPrimitives, function (chordPrimitive) {
                 chordNotes = [];
+                chordDescription = [];
                 if (chordPrimitive.type === 1) {
                     rootScale = _.find(scales, function (scale) {
                         return scale.name.toLowerCase().indexOf('aeolian') !== -1 && scale.notes[0] === rootNote;
@@ -46,38 +50,63 @@ var ChordPrimitivesData = (function () {
                     _.each(chordPrimitive.steps, function (step) {
                         if (step.indexOf('b') !== -1) {
                             if (step.indexOf('bb') !== -1) {
-                                noteIndex = _this.moduloChordNoteIndex(parseInt(step.substr(2, step.length), 10), rootScaleLength) - 2;
-                                chordNotes.push(rootScale.notes[noteIndex]);
+                                scaleNoteIndex = _this.getScaleNoteIndex(step.substr(2, step.length), rootScaleLength);
+                                noteToAdd = util_service_1.UtilService.modulo(rootScale.notes[scaleNoteIndex] - 2, noteLength);
                             }
                             else {
-                                noteIndex = _this.moduloChordNoteIndex(parseInt(step.substr(1, step.length), 10), rootScaleLength) - 1;
-                                chordNotes.push(rootScale.notes[noteIndex]);
+                                scaleNoteIndex = _this.getScaleNoteIndex(step.substr(1, step.length), rootScaleLength);
+                                noteToAdd = util_service_1.UtilService.modulo(rootScale.notes[scaleNoteIndex] - 1, noteLength);
                             }
                         }
                         else if (step.indexOf('#') !== -1) {
-                            noteIndex = _this.moduloChordNoteIndex(parseInt(step.substr(1, step.length), 10), rootScaleLength) + 1;
-                            chordNotes.push(rootScale.notes[noteIndex]);
+                            scaleNoteIndex = _this.getScaleNoteIndex(step.substr(1, step.length), rootScaleLength);
+                            noteToAdd = util_service_1.UtilService.modulo(rootScale.notes[scaleNoteIndex] + 1, noteLength);
                         }
                         else if (step.indexOf('(') !== -1) {
-                            noteIndex = _this.moduloChordNoteIndex(parseInt(step.substr(1, step.length - 1), 10), rootScaleLength);
-                            chordNotes.push(rootScale.notes[noteIndex]);
+                            scaleNoteIndex = _this.getScaleNoteIndex(step.substr(1, step.length), rootScaleLength);
+                            noteToAdd = rootScale.notes[scaleNoteIndex];
                         }
                         else {
-                            noteIndex = _this.moduloChordNoteIndex(parseInt(step, 10), rootScaleLength);
-                            chordNotes.push(rootScale.notes[noteIndex]);
+                            scaleNoteIndex = _this.getScaleNoteIndex(step, rootScaleLength);
+                            noteToAdd = rootScale.notes[scaleNoteIndex];
+                        }
+                        var noteDescription = util_service_1.UtilService.getFormattedNoteString(util_service_1.UtilService.getEnumFromStringKey(note_constant_1.NoteConstant, note_constant_1.NoteConstant[noteToAdd]), chordNotes);
+                        if (step.indexOf('(') !== -1) {
+                            noteDescription = ['(', noteDescription, ')'].join('');
+                        }
+                        chordDescription.push(noteDescription);
+                        chordNotes.push(noteToAdd);
+                    });
+                    var chordDescriptionArray_1 = _.sortBy(_.uniq(chordDescription), function (noteDescription) {
+                        if (noteDescription.indexOf('(') !== -1) {
+                            return noteDescription.substr(1, noteDescription.length);
+                        }
+                        else {
+                            return noteDescription;
                         }
                     });
+                    chordDescriptionArray_1 = _.filter(chordDescriptionArray_1, function (noteDescription) {
+                        if (noteDescription.indexOf('(') === -1) {
+                            return chordDescriptionArray_1.indexOf(['(', noteDescription, ')'].join('')) === -1;
+                        }
+                        else {
+                            return true;
+                        }
+                    });
+                    var firstPortionOfChordDescription = chordDescriptionArray_1.splice(chordDescriptionArray_1.indexOf(util_service_1.UtilService.getFormattedNoteString(rootNote)));
                     return {
                         name: [util_service_1.UtilService.getFormattedNoteString(rootNote), chordPrimitive.name].join(' '),
                         notes: _.sortBy(_.uniq(chordNotes)),
-                        type: chordPrimitive.type
+                        type: chordPrimitive.type,
+                        description: firstPortionOfChordDescription.concat(chordDescriptionArray_1).join(', ')
                     };
                 }
                 else {
                     return {
                         name: [util_service_1.UtilService.getFormattedNoteString(rootNote), chordPrimitive.name].join(' '),
                         notes: [],
-                        type: chordPrimitive.type
+                        type: chordPrimitive.type,
+                        description: _.sortBy(_.uniq(chordDescription)).join(', ')
                     };
                 }
             });

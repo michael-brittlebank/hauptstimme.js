@@ -4,5 +4,6 @@ import { NoteConstant } from '../constants/note.constant';
 export interface ChordInterface {
     name: string;
     notes: NoteConstant[];
-    type: ChordOrScaleTypeConstant
+    type: ChordOrScaleTypeConstant;
+    description: string;
 }

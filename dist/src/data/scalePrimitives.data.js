@@ -14,20 +14,25 @@ var ScalePrimitivesData = (function () {
         var assembledScales = [];
         var rootNote;
         var noteIndex;
+        var scaleDescription = [];
         var _loop_1 = function (i) {
             rootNote = util_service_1.UtilService.getEnumFromStringKey(note_constant_1.NoteConstant, note_constant_1.NoteConstant[i]);
             assembledScales = _.map(scalePrimitives, function (scalePrimitive) {
                 noteIndex = i;
                 scaleNotes = [rootNote];
+                scaleDescription = [util_service_1.UtilService.getFormattedNoteString(util_service_1.UtilService.getEnumFromStringKey(note_constant_1.NoteConstant, note_constant_1.NoteConstant[rootNote]))];
                 _.each(scalePrimitive.steps, function (step) {
                     noteIndex = (noteIndex + parseInt(step, 10)) % noteLength;
                     scaleNotes.push(util_service_1.UtilService.getEnumFromStringKey(note_constant_1.NoteConstant, note_constant_1.NoteConstant[noteIndex]));
+                    scaleDescription.push(util_service_1.UtilService.getFormattedNoteString(util_service_1.UtilService.getEnumFromStringKey(note_constant_1.NoteConstant, note_constant_1.NoteConstant[noteIndex])));
                 });
                 scaleNotes.splice(-1, 1);
+                scaleDescription.splice(-1, 1);
                 return {
                     name: [util_service_1.UtilService.getFormattedNoteString(rootNote), scalePrimitive.name].join(' '),
                     notes: scaleNotes,
-                    type: scalePrimitive.type
+                    type: scalePrimitive.type,
+                    description: scaleDescription.join(', ')
                 };
             });
             scales = scales.concat(assembledScales);
