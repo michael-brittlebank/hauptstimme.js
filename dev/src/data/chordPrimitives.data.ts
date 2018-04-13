@@ -9,8 +9,13 @@ import { ScalesData } from './scales.data';
 
 export class ChordPrimitivesData {
 
-    private static moduloChordNoteIndex(noteIndex: number, lengthOfScale: number) {
-        return (noteIndex - 1) % lengthOfScale; // correlate step to 0-indexed scale note array
+    private static getScaleNoteIndex(step: string, rootScaleLength: number): number {
+        // subtract one to match step with 0-indexed scale note array
+        return UtilService.modulo(parseInt(step, 10) - 1, rootScaleLength);
+    }
+
+    private static getNoteToAdd(note: NoteConstant, adjustment: number, rootScaleLength: number): number {
+        return UtilService.modulo(note + adjustment, rootScaleLength);
     }
 
     public static compileChordPrimitivesIntoChords(): ChordInterface[] {
@@ -21,7 +26,8 @@ export class ChordPrimitivesData {
         let chordNotes: NoteConstant[];
         let assembledChords: ChordInterface[] = [];
         let rootNote: NoteConstant;
-        let noteIndex: number;
+        let scaleNoteIndex: number;
+        let noteToAdd: NoteConstant;
         let rootScale: ScaleInterface;
         let rootScaleLength: number;
         let chordDescription: string[];
@@ -32,7 +38,8 @@ export class ChordPrimitivesData {
             description: ''
         };
         // loop through each possible root note
-        for(let i: number = 0; i < noteLength; i++) {
+        for(let i: number = 0; i < 1; i++) {
+            // for(let i: number = 0; i < noteLength; i++) {
             rootNote = UtilService.getEnumFromStringKey(NoteConstant, NoteConstant[i]);
             // compile each scale for the given root note
             assembledChords = _.map(chordPrimitives, (chordPrimitive: ChordOrScalePrimitiveInterface): ChordInterface => {
@@ -55,19 +62,24 @@ export class ChordPrimitivesData {
                     _.each(chordPrimitive.steps, (step: string) => {
                         if (step.indexOf('b') !== -1) {
                             if (step.indexOf('bb') !== -1) {
-                                noteIndex = this.moduloChordNoteIndex(parseInt(step.substr(2, step.length), 10), rootScaleLength) - 2;
+                                scaleNoteIndex = this.getScaleNoteIndex(step.substr(2, step.length), rootScaleLength);
+                                noteToAdd = rootScale.notes[this.getNoteToAdd(scaleNoteIndex, -2, rootScaleLength)];
                             } else {
-                                noteIndex = this.moduloChordNoteIndex(parseInt(step.substr(1, step.length), 10), rootScaleLength) - 1;
+                                scaleNoteIndex = this.getScaleNoteIndex(step.substr(1, step.length), rootScaleLength);
+                                noteToAdd = rootScale.notes[this.getNoteToAdd(scaleNoteIndex, -1, rootScaleLength)];
                             }
                         } else if (step.indexOf('#') !== -1) {
-                            noteIndex = this.moduloChordNoteIndex(parseInt(step.substr(1, step.length), 10), rootScaleLength) + 1;
+                            scaleNoteIndex = this.getScaleNoteIndex(step.substr(1, step.length), rootScaleLength);
+                            noteToAdd = rootScale.notes[this.getNoteToAdd(scaleNoteIndex, 1, rootScaleLength)];
                         } else if (step.indexOf('(') !== -1) {
-                            noteIndex = this.moduloChordNoteIndex(parseInt(step.substr(1, step.length - 1), 10), rootScaleLength);
+                            scaleNoteIndex = this.getScaleNoteIndex(step.substr(1, step.length), rootScaleLength);
+                            noteToAdd = rootScale.notes[scaleNoteIndex];
                         } else {
-                            noteIndex = this.moduloChordNoteIndex(parseInt(step, 10), rootScaleLength);
+                            scaleNoteIndex = this.getScaleNoteIndex(step, rootScaleLength);
+                            noteToAdd = rootScale.notes[scaleNoteIndex];
                         }
-                        chordDescription.push(UtilService.getFormattedNoteString(UtilService.getEnumFromStringKey(NoteConstant, NoteConstant[rootScale.notes[noteIndex]])));
-                        chordNotes.push(rootScale.notes[noteIndex]);
+                        chordDescription.push(UtilService.getFormattedNoteString(UtilService.getEnumFromStringKey(NoteConstant, NoteConstant[noteToAdd])));
+                        chordNotes.push(noteToAdd);
                     });
                     return {
                         name: [UtilService.getFormattedNoteString(rootNote), chordPrimitive.name].join(' '),

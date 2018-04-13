@@ -52,6 +52,8 @@ var SearchService = (function () {
                     scales: response[1]
                 };
                 resolve(searchResults);
+            })["catch"](function (error) {
+                console.warn(error);
             });
         });
     };

@@ -38,4 +38,8 @@ export class UtilService {
     public static getEnumFromStringKey(enumConstant: any, key: string): number {
        return parseInt(enumConstant[<any>key]);
     }
+
+    public static modulo(number: number, modulus: number) {
+        return ((number % modulus) + modulus) % modulus;
+    };
 }
