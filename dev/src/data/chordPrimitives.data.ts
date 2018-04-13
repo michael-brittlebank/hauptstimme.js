@@ -14,10 +14,6 @@ export class ChordPrimitivesData {
         return UtilService.modulo(parseInt(step, 10) - 1, rootScaleLength);
     }
 
-    private static getNoteToAdd(note: NoteConstant, adjustment: number, rootScaleLength: number): number {
-        return UtilService.modulo(note + adjustment, rootScaleLength);
-    }
-
     public static compileChordPrimitivesIntoChords(): ChordInterface[] {
         const chordPrimitives: ChordOrScalePrimitiveInterface[] = this.getAvailableChordPrimitives();
         const noteLength: number = UtilService.getLengthOfEnum(NoteConstant);
@@ -38,8 +34,7 @@ export class ChordPrimitivesData {
             description: ''
         };
         // loop through each possible root note
-        for(let i: number = 0; i < 1; i++) {
-            // for(let i: number = 0; i < noteLength; i++) {
+        for(let i: number = 0; i < noteLength; i++) {
             rootNote = UtilService.getEnumFromStringKey(NoteConstant, NoteConstant[i]);
             // compile each scale for the given root note
             assembledChords = _.map(chordPrimitives, (chordPrimitive: ChordOrScalePrimitiveInterface): ChordInterface => {
@@ -63,14 +58,14 @@ export class ChordPrimitivesData {
                         if (step.indexOf('b') !== -1) {
                             if (step.indexOf('bb') !== -1) {
                                 scaleNoteIndex = this.getScaleNoteIndex(step.substr(2, step.length), rootScaleLength);
-                                noteToAdd = rootScale.notes[this.getNoteToAdd(scaleNoteIndex, -2, rootScaleLength)];
+                                noteToAdd = UtilService.modulo(rootScale.notes[scaleNoteIndex] - 2, noteLength);
                             } else {
                                 scaleNoteIndex = this.getScaleNoteIndex(step.substr(1, step.length), rootScaleLength);
-                                noteToAdd = rootScale.notes[this.getNoteToAdd(scaleNoteIndex, -1, rootScaleLength)];
+                                noteToAdd = UtilService.modulo(rootScale.notes[scaleNoteIndex] - 1, noteLength);
                             }
                         } else if (step.indexOf('#') !== -1) {
                             scaleNoteIndex = this.getScaleNoteIndex(step.substr(1, step.length), rootScaleLength);
-                            noteToAdd = rootScale.notes[this.getNoteToAdd(scaleNoteIndex, 1, rootScaleLength)];
+                            noteToAdd = UtilService.modulo(rootScale.notes[scaleNoteIndex] + 1, noteLength);
                         } else if (step.indexOf('(') !== -1) {
                             scaleNoteIndex = this.getScaleNoteIndex(step.substr(1, step.length), rootScaleLength);
                             noteToAdd = rootScale.notes[scaleNoteIndex];
@@ -78,14 +73,24 @@ export class ChordPrimitivesData {
                             scaleNoteIndex = this.getScaleNoteIndex(step, rootScaleLength);
                             noteToAdd = rootScale.notes[scaleNoteIndex];
                         }
-                        chordDescription.push(UtilService.getFormattedNoteString(UtilService.getEnumFromStringKey(NoteConstant, NoteConstant[noteToAdd]), chordNotes));
+                        let noteDescription: string = UtilService.getFormattedNoteString(UtilService.getEnumFromStringKey(NoteConstant, NoteConstant[noteToAdd]), chordNotes);
+                        if (step.indexOf('(') !== -1) {
+                            noteDescription = ['(', noteDescription, ')'].join('');
+                        }
+                        chordDescription.push(noteDescription);
                         chordNotes.push(noteToAdd);
                     });
                     return {
                         name: [UtilService.getFormattedNoteString(rootNote), chordPrimitive.name].join(' '),
                         notes: _.sortBy(_.uniq(chordNotes)), // remove duplicates and sort by asc value
                         type: chordPrimitive.type,
-                        description: _.sortBy(_.uniq(chordDescription)).join(', ')
+                        description: _.sortBy(_.uniq(chordDescription), (noteDescription: string) => {
+                            if (noteDescription.indexOf('(') !== -1) {
+                                return noteDescription.substr(1, noteDescription.length);
+                            } else {
+                                return noteDescription;
+                            }
+                        }).join(', ')
                     };
                 } else {
                     return {
