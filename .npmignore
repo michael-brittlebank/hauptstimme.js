@@ -5,3 +5,5 @@ dev/
 docs/
 dist/test/
 .npmignore
+.idea/
+coverage/
