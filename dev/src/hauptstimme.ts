@@ -8,7 +8,6 @@ import { ScaleInterface } from '../interfaces/scale.interface';
 import { ChordInterface } from '../interfaces/chord.interface';
 import { SearchResponseInterface } from '../interfaces/searchResponse.interface';
 import { SearchRequestInterface } from '../interfaces/searchRequest.interface';
-import { ChordPrimitivesData } from './data/chordPrimitives.data';
 
 export class HauptstimmeJs {
     /**
@@ -28,7 +27,7 @@ export class HauptstimmeJs {
 
     public static getAvailableChords(): Promise<ChordInterface[]> {
         return new Promise((resolve, reject) => {
-            resolve(ChordPrimitivesData.compileChordPrimitivesIntoChords());
+            resolve(ChordsData.getAvailableChords());
         });
     }
 
