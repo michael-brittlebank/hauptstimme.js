@@ -1,11 +1,23 @@
 import { NoteConstant } from '../../constants/note.constant';
 
+/**
+ * Class for utility methods
+ */
 export class UtilService {
 
+    /**
+     * @param enumConstant any given enum
+     * @returns length of given enum
+     */
     public static getLengthOfEnum(enumConstant: any): number {
        return Object.keys(enumConstant).filter(key => typeof enumConstant[key as any] === 'number').length
     }
 
+    /**
+     * @param note the note to stringify
+     * @param noteArray optional param to help determine whether to sharpen or flatten intermediate notes
+     * @returns string representation of note constant
+     */
     public static getFormattedNoteString(note: NoteConstant, noteArray: NoteConstant[] = []) {
         const sharpEntity: string = '♯';
         const flatEntity: string = '♭';
@@ -60,10 +72,20 @@ export class UtilService {
         return formattedNote;
     }
 
+    /**
+     * @param enumConstant enum containing key
+     * @param key stringified enum key
+     * @returns enum value from string key
+     */
     public static getEnumFromStringKey(enumConstant: any, key: string): number {
        return parseInt(enumConstant[<any>key]);
     }
 
+    /**
+     * @param number number to modulate
+     * @param modulus number to modulate over
+     * @returns modulo number consistent with other programming languages
+     */
     public static modulo(number: number, modulus: number) {
         return ((number % modulus) + modulus) % modulus;
     };

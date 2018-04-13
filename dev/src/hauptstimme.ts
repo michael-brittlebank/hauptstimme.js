@@ -9,9 +9,12 @@ import { ChordInterface } from '../interfaces/chord.interface';
 import { SearchResponseInterface } from '../interfaces/searchResponse.interface';
 import { SearchRequestInterface } from '../interfaces/searchRequest.interface';
 
+/**
+ * Entry point for exposed public API methods
+ */
 export class HauptstimmeJs {
     /**
-     * This class provides a entry point for helper functions used in the module
+     * @returns list of available instruments
      */
     public static getAvailableInstruments(): Promise<InstrumentInterface[]> {
         return new Promise((resolve, reject) => {
@@ -19,18 +22,28 @@ export class HauptstimmeJs {
         });
     }
 
+    /**
+     * @returns list of available scales
+     */
     public static getAvailableScales(): Promise<ScaleInterface[]> {
         return new Promise((resolve, reject) => {
             resolve(ScalesData.getAvailableScales());
         });
     }
 
+    /**
+     * @returns list of available chords
+     */
     public static getAvailableChords(): Promise<ChordInterface[]> {
         return new Promise((resolve, reject) => {
             resolve(ChordsData.getAvailableChords());
         });
     }
 
+    /**
+     * @param searchRequest selected notes and optional root note to search for
+     * @returns list of scales and chords that match the search request parameters
+     */
     public static search(searchRequest: SearchRequestInterface): Promise<SearchResponseInterface> {
         return SearchService.getChordsAndScalesByNotes(searchRequest);
     }

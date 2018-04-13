@@ -1,3 +1,6 @@
+/**
+ * Constant for notes
+ */
 export enum NoteConstant {
     A,
     AB,

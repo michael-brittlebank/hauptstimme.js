@@ -7,13 +7,24 @@ import * as _ from 'lodash';
 import { ScaleInterface } from '../../interfaces/scale.interface';
 import { ScalesData } from './scales.data';
 
+/**
+ * Class for holding and compiling chord primitives
+ */
 export class ChordPrimitivesData {
 
+    /**
+     * @param step 1-indexed step representation
+     * @param rootScaleLength length of scale to modulate over
+     * @returns a 0-indexed scale note index given a 1-indexed step and the root scale length
+     */
     private static getScaleNoteIndex(step: string, rootScaleLength: number): number {
         // subtract one to match step with 0-indexed scale note array
         return UtilService.modulo(parseInt(step, 10) - 1, rootScaleLength);
     }
 
+    /**
+     * @returns list of compiled chords
+     */
     public static compileChordPrimitivesIntoChords(): ChordInterface[] {
         const chordPrimitives: ChordOrScalePrimitiveInterface[] = this.getAvailableChordPrimitives();
         const noteLength: number = UtilService.getLengthOfEnum(NoteConstant);
@@ -117,6 +128,9 @@ export class ChordPrimitivesData {
         return chords;
     }
 
+    /**
+     * @returns list of chord primitives
+     */
     private static getAvailableChordPrimitives(): ChordOrScalePrimitiveInterface[] {
         return [
             {

@@ -3,7 +3,13 @@ import { NoteConstant} from '../../constants/note.constant';
 import { InstrumentTypeConstant } from '../../constants/instrumentType.constant';
 import * as _ from 'lodash';
 
+/**
+ * Class for holding instrument data
+ */
 export class InstrumentsData {
+    /**
+     * @returns list of available instruments
+     */
     public static getAvailableInstruments(): InstrumentInterface[] {
         const instruments: InstrumentInterface[] = [
             {

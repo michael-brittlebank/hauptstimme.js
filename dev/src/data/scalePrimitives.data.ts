@@ -5,8 +5,14 @@ import * as _ from 'lodash';
 import { NoteConstant } from '../../constants/note.constant';
 import { UtilService } from '../services/util.service';
 
+/**
+ * Class for holding and compiling scale primitives
+ */
 export class ScalePrimitivesData {
 
+    /**
+     * @returns list of compiled scales
+     */
     public static compileScalePrimitivesIntoScales(): ScaleInterface[] {
         const scalePrimitives: ChordOrScalePrimitiveInterface[] = this.getAvailableScalePrimitives();
         const noteLength: number = UtilService.getLengthOfEnum(NoteConstant);
@@ -45,6 +51,9 @@ export class ScalePrimitivesData {
         return scales;
     }
 
+    /**
+     * @returns list of scale primitives
+     */
     private static getAvailableScalePrimitives(): ChordOrScalePrimitiveInterface[] {
         return [
             {

@@ -8,8 +8,14 @@ import * as Promise from 'bluebird';
 import { ChordsData } from '../data/chords.data';
 import { SearchRequestInterface } from '../../interfaces/searchRequest.interface';
 
+/**
+ * Class for search-related methods
+ */
 export class SearchService {
 
+    /**
+     * @returns list of available instruments
+     */
     public static getScalesByNotes(notesArray: NoteConstant[], rootNote?: NoteConstant): Promise<ScaleInterface[]> {
         return new Promise((resolve, reject) => {
             const availableScales: ScaleInterface[] = _.filter(ScalesData.getAvailableScales(), (scale: ScaleInterface) => {

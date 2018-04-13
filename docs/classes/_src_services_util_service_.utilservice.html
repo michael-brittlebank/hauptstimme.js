@@ -87,6 +87,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_src_services_util_service_.utilservice.html#getenumfromstringkey" class="tsd-kind-icon">get<wbr>Enum<wbr>From<wbr>String<wbr>Key</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_src_services_util_service_.utilservice.html#getformattednotestring" class="tsd-kind-icon">get<wbr>Formatted<wbr>Note<wbr>String</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_src_services_util_service_.utilservice.html#getlengthofenum" class="tsd-kind-icon">get<wbr>Length<wbr>OfEnum</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_src_services_util_service_.utilservice.html#modulo" class="tsd-kind-icon">modulo</a></li>
 							</ul>
 						</section>
 					</div>
@@ -104,7 +105,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/mike-stumpf/hauptstimme.js/blob/7a09865/dev/src/services/util.service.ts#L38">src/services/util.service.ts:38</a></li>
+									<li>Defined in <a href="https://github.com/mike-stumpf/hauptstimme.js/blob/50f5c40/dev/src/services/util.service.ts#L63">src/services/util.service.ts:63</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -124,19 +125,22 @@
 					<a name="getformattednotestring" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Formatted<wbr>Note<wbr>String</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Formatted<wbr>Note<wbr>String<span class="tsd-signature-symbol">(</span>note<span class="tsd-signature-symbol">: </span><a href="../enums/_constants_note_constant_.noteconstant.html" class="tsd-signature-type">NoteConstant</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Formatted<wbr>Note<wbr>String<span class="tsd-signature-symbol">(</span>note<span class="tsd-signature-symbol">: </span><a href="../enums/_constants_note_constant_.noteconstant.html" class="tsd-signature-type">NoteConstant</a>, noteArray<span class="tsd-signature-symbol">?: </span><a href="../enums/_constants_note_constant_.noteconstant.html" class="tsd-signature-type">NoteConstant</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/mike-stumpf/hauptstimme.js/blob/7a09865/dev/src/services/util.service.ts#L9">src/services/util.service.ts:9</a></li>
+									<li>Defined in <a href="https://github.com/mike-stumpf/hauptstimme.js/blob/50f5c40/dev/src/services/util.service.ts#L9">src/services/util.service.ts:9</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>note: <a href="../enums/_constants_note_constant_.noteconstant.html" class="tsd-signature-type">NoteConstant</a></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> noteArray: <a href="../enums/_constants_note_constant_.noteconstant.html" class="tsd-signature-type">NoteConstant</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -153,13 +157,39 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/mike-stumpf/hauptstimme.js/blob/7a09865/dev/src/services/util.service.ts#L5">src/services/util.service.ts:5</a></li>
+									<li>Defined in <a href="https://github.com/mike-stumpf/hauptstimme.js/blob/50f5c40/dev/src/services/util.service.ts#L5">src/services/util.service.ts:5</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>enumConstant: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="modulo" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> modulo</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">modulo<span class="tsd-signature-symbol">(</span>number<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, modulus<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mike-stumpf/hauptstimme.js/blob/50f5c40/dev/src/services/util.service.ts#L67">src/services/util.service.ts:67</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>number: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>modulus: <span class="tsd-signature-type">number</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -226,6 +256,9 @@
 						<a href="../modules/_interfaces_scale_interface_.html">"interfaces/scale.interface"</a>
 					</li>
 					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="../modules/_interfaces_searchrequest_interface_.html">"interfaces/search<wbr>Request.interface"</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
 						<a href="../modules/_interfaces_searchresponse_interface_.html">"interfaces/search<wbr>Response.interface"</a>
 					</li>
 				</ul>
@@ -245,6 +278,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 								<a href="_src_services_util_service_.utilservice.html#getlengthofenum" class="tsd-kind-icon">get<wbr>Length<wbr>OfEnum</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="_src_services_util_service_.utilservice.html#modulo" class="tsd-kind-icon">modulo</a>
 							</li>
 						</ul>
 					</li>
