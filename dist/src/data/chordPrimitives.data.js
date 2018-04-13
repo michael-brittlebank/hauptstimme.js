@@ -73,7 +73,7 @@ var ChordPrimitivesData = (function () {
                             scaleNoteIndex = _this.getScaleNoteIndex(step, rootScaleLength);
                             noteToAdd = rootScale.notes[scaleNoteIndex];
                         }
-                        chordDescription.push(util_service_1.UtilService.getFormattedNoteString(util_service_1.UtilService.getEnumFromStringKey(note_constant_1.NoteConstant, note_constant_1.NoteConstant[noteToAdd])));
+                        chordDescription.push(util_service_1.UtilService.getFormattedNoteString(util_service_1.UtilService.getEnumFromStringKey(note_constant_1.NoteConstant, note_constant_1.NoteConstant[noteToAdd]), chordNotes));
                         chordNotes.push(noteToAdd);
                     });
                     return {

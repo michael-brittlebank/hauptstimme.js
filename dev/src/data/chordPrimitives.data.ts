@@ -78,7 +78,7 @@ export class ChordPrimitivesData {
                             scaleNoteIndex = this.getScaleNoteIndex(step, rootScaleLength);
                             noteToAdd = rootScale.notes[scaleNoteIndex];
                         }
-                        chordDescription.push(UtilService.getFormattedNoteString(UtilService.getEnumFromStringKey(NoteConstant, NoteConstant[noteToAdd])));
+                        chordDescription.push(UtilService.getFormattedNoteString(UtilService.getEnumFromStringKey(NoteConstant, NoteConstant[noteToAdd]), chordNotes));
                         chordNotes.push(noteToAdd);
                     });
                     return {

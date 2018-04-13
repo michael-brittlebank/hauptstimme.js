@@ -7,25 +7,51 @@ var UtilService = (function () {
     UtilService.getLengthOfEnum = function (enumConstant) {
         return Object.keys(enumConstant).filter(function (key) { return typeof enumConstant[key] === 'number'; }).length;
     };
-    UtilService.getFormattedNoteString = function (note) {
+    UtilService.getFormattedNoteString = function (note, noteArray) {
+        if (noteArray === void 0) { noteArray = []; }
         var sharpEntity = '♯';
         var flatEntity = '♭';
         var formattedNote = note_constant_1.NoteConstant[note];
         switch (note) {
             case note_constant_1.NoteConstant.AB:
-                formattedNote = ['B', flatEntity].join('');
+                if (noteArray.indexOf(note_constant_1.NoteConstant.B) !== -1) {
+                    formattedNote = ['A', sharpEntity].join('');
+                }
+                else {
+                    formattedNote = ['B', flatEntity].join('');
+                }
                 break;
             case note_constant_1.NoteConstant.CD:
-                formattedNote = ['C', sharpEntity].join('');
+                if (noteArray.indexOf(note_constant_1.NoteConstant.C) !== -1) {
+                    formattedNote = ['D', flatEntity].join('');
+                }
+                else {
+                    formattedNote = ['C', sharpEntity].join('');
+                }
                 break;
             case note_constant_1.NoteConstant.DE:
-                formattedNote = ['E', flatEntity].join('');
+                if (noteArray.indexOf(note_constant_1.NoteConstant.E) !== -1) {
+                    formattedNote = ['D', sharpEntity].join('');
+                }
+                else {
+                    formattedNote = ['E', flatEntity].join('');
+                }
                 break;
             case note_constant_1.NoteConstant.FG:
-                formattedNote = ['F', sharpEntity].join('');
+                if (noteArray.indexOf(note_constant_1.NoteConstant.F) !== -1) {
+                    formattedNote = ['G', flatEntity].join('');
+                }
+                else {
+                    formattedNote = ['F', sharpEntity].join('');
+                }
                 break;
             case note_constant_1.NoteConstant.GA:
-                formattedNote = ['A', flatEntity].join('');
+                if (noteArray.indexOf(note_constant_1.NoteConstant.A) !== -1) {
+                    formattedNote = ['G', sharpEntity].join('');
+                }
+                else {
+                    formattedNote = ['A', flatEntity].join('');
+                }
                 break;
         }
         return formattedNote;

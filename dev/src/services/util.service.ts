@@ -6,30 +6,55 @@ export class UtilService {
        return Object.keys(enumConstant).filter(key => typeof enumConstant[key as any] === 'number').length
     }
 
-    public static getFormattedNoteString(note: NoteConstant) {
+    public static getFormattedNoteString(note: NoteConstant, noteArray: NoteConstant[] = []) {
         const sharpEntity: string = '♯';
         const flatEntity: string = '♭';
         let formattedNote: string = NoteConstant[note];
         switch (note) {
             case NoteConstant.AB:
-                // b flat
-                formattedNote = ['B', flatEntity].join('');
+                if (noteArray.indexOf(NoteConstant.B) !== -1) {
+                    // a sharp
+                    formattedNote = ['A', sharpEntity].join('');
+                } else {
+                    // b flat
+                    formattedNote = ['B', flatEntity].join('');
+                }
                 break;
             case NoteConstant.CD:
-                // c sharp
-                formattedNote = ['C', sharpEntity].join('');
+                if (noteArray.indexOf(NoteConstant.C) !== -1) {
+                    // d flat
+                    formattedNote = ['D', flatEntity].join('');
+                } else {
+                    // c sharp
+                    formattedNote = ['C', sharpEntity].join('');
+                }
                 break;
             case NoteConstant.DE:
-                // e flat
-                formattedNote = ['E', flatEntity].join('');
+                if (noteArray.indexOf(NoteConstant.E) !== -1) {
+                    // d sharp
+                    formattedNote = ['D', sharpEntity].join('');
+                } else {
+                    // e flat
+                    formattedNote = ['E', flatEntity].join('');
+                }
                 break;
             case NoteConstant.FG:
-                // f sharp
-                formattedNote = ['F', sharpEntity].join('');
+                if (noteArray.indexOf(NoteConstant.F) !== -1) {
+                    // a sharp
+                    formattedNote = ['G', flatEntity].join('');
+                } else {
+                    // f sharp
+                    formattedNote = ['F', sharpEntity].join('');
+                }
                 break;
             case NoteConstant.GA:
-                // a flat
-                formattedNote = ['A', flatEntity].join('');
+                if (noteArray.indexOf(NoteConstant.A) !== -1) {
+                    // a sharp
+                    formattedNote = ['G', sharpEntity].join('');
+                } else {
+                    // a flat
+                    formattedNote = ['A', flatEntity].join('');
+                }
                 break;
         }
         return formattedNote;
