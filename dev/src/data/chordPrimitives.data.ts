@@ -80,17 +80,28 @@ export class ChordPrimitivesData {
                         chordDescription.push(noteDescription);
                         chordNotes.push(noteToAdd);
                     });
+                    let chordDescriptionArray: string[] = _.sortBy(_.uniq(chordDescription), (noteDescription: string) => {
+                        // sort by note and do not include optional parentheses
+                        if (noteDescription.indexOf('(') !== -1) {
+                            return noteDescription.substr(1, noteDescription.length);
+                        } else {
+                            return noteDescription;
+                        }
+                    });
+                    chordDescriptionArray = _.filter(chordDescriptionArray, (noteDescription: string) => {
+                        if (noteDescription.indexOf('(') === -1) {
+                            // check to see if note is optional elsewhere in array
+                            return chordDescriptionArray.indexOf(['(', noteDescription, ')'].join('')) === -1;
+                        } else {
+                            return true;
+                        }
+                    });
+                    const firstPortionOfChordDescription = chordDescriptionArray.splice(chordDescriptionArray.indexOf(UtilService.getFormattedNoteString(rootNote)));
                     return {
                         name: [UtilService.getFormattedNoteString(rootNote), chordPrimitive.name].join(' '),
                         notes: _.sortBy(_.uniq(chordNotes)), // remove duplicates and sort by asc value
                         type: chordPrimitive.type,
-                        description: _.sortBy(_.uniq(chordDescription), (noteDescription: string) => {
-                            if (noteDescription.indexOf('(') !== -1) {
-                                return noteDescription.substr(1, noteDescription.length);
-                            } else {
-                                return noteDescription;
-                            }
-                        }).join(', ')
+                        description: firstPortionOfChordDescription.concat(chordDescriptionArray).join(', ')
                     };
                 } else {
                     return {

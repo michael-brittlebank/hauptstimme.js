@@ -77,18 +77,28 @@ var ChordPrimitivesData = (function () {
                         chordDescription.push(noteDescription);
                         chordNotes.push(noteToAdd);
                     });
+                    var chordDescriptionArray_1 = _.sortBy(_.uniq(chordDescription), function (noteDescription) {
+                        if (noteDescription.indexOf('(') !== -1) {
+                            return noteDescription.substr(1, noteDescription.length);
+                        }
+                        else {
+                            return noteDescription;
+                        }
+                    });
+                    chordDescriptionArray_1 = _.filter(chordDescriptionArray_1, function (noteDescription) {
+                        if (noteDescription.indexOf('(') === -1) {
+                            return chordDescriptionArray_1.indexOf(['(', noteDescription, ')'].join('')) === -1;
+                        }
+                        else {
+                            return true;
+                        }
+                    });
+                    var firstPortionOfChordDescription = chordDescriptionArray_1.splice(chordDescriptionArray_1.indexOf(util_service_1.UtilService.getFormattedNoteString(rootNote)));
                     return {
                         name: [util_service_1.UtilService.getFormattedNoteString(rootNote), chordPrimitive.name].join(' '),
                         notes: _.sortBy(_.uniq(chordNotes)),
                         type: chordPrimitive.type,
-                        description: _.sortBy(_.uniq(chordDescription), function (noteDescription) {
-                            if (noteDescription.indexOf('(') !== -1) {
-                                return noteDescription.substr(1, noteDescription.length);
-                            }
-                            else {
-                                return noteDescription;
-                            }
-                        }).join(', ')
+                        description: firstPortionOfChordDescription.concat(chordDescriptionArray_1).join(', ')
                     };
                 }
                 else {
