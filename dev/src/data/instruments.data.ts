@@ -13,6 +13,23 @@ export class InstrumentsData {
     public static getAvailableInstruments(): InstrumentInterface[] {
         const instruments: InstrumentInterface[] = [
             {
+                name:'Piano',
+                rootNotes:[
+                    NoteConstant.C,
+                    NoteConstant.CD,
+                    NoteConstant.D,
+                    NoteConstant.DE,
+                    NoteConstant.E,
+                    NoteConstant.F,
+                    NoteConstant.G,
+                    NoteConstant.GA,
+                    NoteConstant.A,
+                    NoteConstant.AB,
+                    NoteConstant.B
+                ],
+                type:InstrumentTypeConstant.KEYED_INSTRUMENT
+            },
+            {
                 name:'Guitar',
                 rootNotes:[
                     NoteConstant.E,
@@ -22,7 +39,7 @@ export class InstrumentsData {
                     NoteConstant.B,
                     NoteConstant.E
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Bass Guitar',
@@ -32,7 +49,7 @@ export class InstrumentsData {
                     NoteConstant.D,
                     NoteConstant.G
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Bass Guitar - 5 String',
@@ -42,7 +59,7 @@ export class InstrumentsData {
                     NoteConstant.D,
                     NoteConstant.G
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Violin',
@@ -52,7 +69,7 @@ export class InstrumentsData {
                     NoteConstant.A,
                     NoteConstant.E
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Violin - Tenor',
@@ -62,7 +79,7 @@ export class InstrumentsData {
                     NoteConstant.A,
                     NoteConstant.E
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Mandolin',
@@ -72,7 +89,7 @@ export class InstrumentsData {
                     NoteConstant.A,
                     NoteConstant.E
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Ukulele - Baritone',
@@ -82,7 +99,7 @@ export class InstrumentsData {
                     NoteConstant.B,
                     NoteConstant.E
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Ukulele - Concert',
@@ -92,7 +109,7 @@ export class InstrumentsData {
                     NoteConstant.E,
                     NoteConstant.A
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Ukulele - Soprano',
@@ -102,7 +119,7 @@ export class InstrumentsData {
                     NoteConstant.FG,
                     NoteConstant.B
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Ukulele - Tenor',
@@ -112,7 +129,7 @@ export class InstrumentsData {
                     NoteConstant.E,
                     NoteConstant.A
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Cello',
@@ -122,7 +139,7 @@ export class InstrumentsData {
                     NoteConstant.D,
                     NoteConstant.A
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Viola',
@@ -132,7 +149,7 @@ export class InstrumentsData {
                     NoteConstant.D,
                     NoteConstant.A
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Banjo - Plectrum',
@@ -142,7 +159,7 @@ export class InstrumentsData {
                     NoteConstant.B,
                     NoteConstant.D
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Banjo - Tenor (Jazz)',
@@ -152,7 +169,7 @@ export class InstrumentsData {
                     NoteConstant.D,
                     NoteConstant.A
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Banjo - Tenor (Irish)',
@@ -162,7 +179,7 @@ export class InstrumentsData {
                     NoteConstant.A,
                     NoteConstant.E
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Lyre',
@@ -176,7 +193,7 @@ export class InstrumentsData {
                     NoteConstant.FG,
                     NoteConstant.A
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Bajo Sexto',
@@ -188,7 +205,7 @@ export class InstrumentsData {
                     NoteConstant.B,
                     NoteConstant.F
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Balalaika - Alto',
@@ -197,7 +214,7 @@ export class InstrumentsData {
                     NoteConstant.A,
                     NoteConstant.D
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Balalaika - Soprano',
@@ -206,7 +223,7 @@ export class InstrumentsData {
                     NoteConstant.E,
                     NoteConstant.A
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Cuatro',
@@ -217,7 +234,7 @@ export class InstrumentsData {
                     NoteConstant.D,
                     NoteConstant.G
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Cuatro - Cubano',
@@ -227,7 +244,7 @@ export class InstrumentsData {
                     NoteConstant.E,
                     NoteConstant.A
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Dulcimer',
@@ -237,7 +254,7 @@ export class InstrumentsData {
                     NoteConstant.C,
                     NoteConstant.C
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Dulcimer (Alternative)',
@@ -247,7 +264,7 @@ export class InstrumentsData {
                     NoteConstant.A,
                     NoteConstant.D
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Mandola',
@@ -257,7 +274,7 @@ export class InstrumentsData {
                     NoteConstant.D,
                     NoteConstant.A
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Sitar',
@@ -270,7 +287,7 @@ export class InstrumentsData {
                     NoteConstant.C,
                     NoteConstant.F
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Solo Bass',
@@ -280,7 +297,7 @@ export class InstrumentsData {
                     NoteConstant.E,
                     NoteConstant.A
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Dobro',
@@ -292,7 +309,7 @@ export class InstrumentsData {
                     NoteConstant.B,
                     NoteConstant.D
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Guitarron',
@@ -304,7 +321,7 @@ export class InstrumentsData {
                     NoteConstant.E,
                     NoteConstant.A
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Bouzouki',
@@ -318,7 +335,7 @@ export class InstrumentsData {
                     NoteConstant.D,
                     NoteConstant.D
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Bouzouki (Alternative)',
@@ -330,7 +347,7 @@ export class InstrumentsData {
                     NoteConstant.D,
                     NoteConstant.D
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Bouzouki - Irish',
@@ -340,7 +357,7 @@ export class InstrumentsData {
                     NoteConstant.A,
                     NoteConstant.D
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Bouzouki - Irish (Alternative)',
@@ -350,7 +367,7 @@ export class InstrumentsData {
                     NoteConstant.A,
                     NoteConstant.D
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Fiddle',
@@ -360,7 +377,7 @@ export class InstrumentsData {
                     NoteConstant.A,
                     NoteConstant.E
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Vihuela',
@@ -371,7 +388,7 @@ export class InstrumentsData {
                     NoteConstant.B,
                     NoteConstant.E
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Banduria',
@@ -383,7 +400,7 @@ export class InstrumentsData {
                     NoteConstant.E,
                     NoteConstant.A
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Charango',
@@ -394,7 +411,7 @@ export class InstrumentsData {
                     NoteConstant.A,
                     NoteConstant.E
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Oud',
@@ -406,7 +423,7 @@ export class InstrumentsData {
                     NoteConstant.A,
                     NoteConstant.D
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Oud (Alternative)',
@@ -418,7 +435,7 @@ export class InstrumentsData {
                     NoteConstant.A,
                     NoteConstant.D
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Requinto',
@@ -430,7 +447,7 @@ export class InstrumentsData {
                     NoteConstant.E,
                     NoteConstant.A
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Lute',
@@ -448,7 +465,7 @@ export class InstrumentsData {
                     NoteConstant.G,
                     NoteConstant.G
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Zither',
@@ -459,7 +476,7 @@ export class InstrumentsData {
                     NoteConstant.G,
                     NoteConstant.C
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Guitar - Russian',
@@ -472,7 +489,7 @@ export class InstrumentsData {
                     NoteConstant.B,
                     NoteConstant.D
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Pedal Steel Guitar',
@@ -488,7 +505,7 @@ export class InstrumentsData {
                     NoteConstant.DE,
                     NoteConstant.FG
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
                 name:'Pedal Steel Guitar (Alternative)',
@@ -504,7 +521,7 @@ export class InstrumentsData {
                     NoteConstant.E,
                     NoteConstant.D
                 ],
-                type:InstrumentTypeConstant.INSTRUMENT
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             }
         ];
         const tunings:InstrumentInterface[] = [

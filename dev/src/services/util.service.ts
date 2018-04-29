@@ -82,11 +82,11 @@ export class UtilService {
     }
 
     /**
-     * @param number number to modulate
+     * @param integer number to modulate
      * @param modulus number to modulate over
      * @returns modulo number consistent with other programming languages
      */
-    public static modulo(number: number, modulus: number) {
-        return ((number % modulus) + modulus) % modulus;
+    public static modulo(integer: number, modulus: number) {
+        return ((integer % modulus) + modulus) % modulus;
     };
 }

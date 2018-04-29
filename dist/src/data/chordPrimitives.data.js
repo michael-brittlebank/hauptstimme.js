@@ -1,5 +1,6 @@
 "use strict";
 exports.__esModule = true;
+var chordOrScaleType_constant_1 = require("../../constants/chordOrScaleType.constant");
 var util_service_1 = require("../services/util.service");
 var note_constant_1 = require("../../constants/note.constant");
 var _ = require("lodash");
@@ -27,7 +28,7 @@ var ChordPrimitivesData = (function () {
         var defaultScale = {
             name: 'Empty Scale',
             notes: [],
-            type: 4,
+            type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MISCELLANEOUS,
             description: ''
         };
         for (var i = 0; i < noteLength; i++) {
@@ -35,7 +36,7 @@ var ChordPrimitivesData = (function () {
             assembledChords = _.map(chordPrimitives, function (chordPrimitive) {
                 chordNotes = [];
                 chordDescription = [];
-                if (chordPrimitive.type === 1) {
+                if (chordPrimitive.type === chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MINOR) {
                     rootScale = _.find(scales, function (scale) {
                         return scale.name.toLowerCase().indexOf('aeolian') !== -1 && scale.notes[0] === rootNote;
                     }) || defaultScale;
@@ -119,257 +120,257 @@ var ChordPrimitivesData = (function () {
             {
                 name: 'Major',
                 steps: ['1', '3', '5'],
-                type: 0
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MAJOR
             },
             {
                 name: 'Major Sixth',
                 steps: ['1', '3', '5', '6'],
-                type: 0
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MAJOR
             },
             {
                 name: 'Six Nine',
                 steps: ['1', '3', '5', '6', '9'],
-                type: 0
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MAJOR
             },
             {
                 name: 'Added Ninth',
                 steps: ['1', '3', '5', '9'],
-                type: 0
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MAJOR
             },
             {
                 name: 'Major Seventh',
                 steps: ['1', '3', '5', '7'],
-                type: 0
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MAJOR
             },
             {
                 name: 'Major Seventh Flat Five',
                 steps: ['1', '3', 'b5', '7'],
-                type: 0
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MAJOR
             },
             {
                 name: 'Major Seventh Sharp Five',
                 steps: ['1', '3', '#5', '7'],
-                type: 0
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MAJOR
             },
             {
                 name: 'Major Ninth',
                 steps: ['1', '3', '5', '7', '9'],
-                type: 0
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MAJOR
             },
             {
                 name: 'Major Eleventh',
                 steps: ['1', '3', '5', '7', '(9)', '11'],
-                type: 0
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MAJOR
             },
             {
                 name: 'Major Thirteenth',
                 steps: ['1', '3', '5', '7', '(9)', '(11)', '13'],
-                type: 0
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MAJOR
             },
             {
                 name: 'Major Seven Sharp Eleventh',
                 steps: ['1', '3', '5', '7', '#11'],
-                type: 0
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MAJOR
             },
             {
                 name: 'Major Flat Five',
                 steps: ['1', '3', 'b5'],
-                type: 0
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MAJOR
             },
             {
                 name: 'Minor',
                 steps: ['1', 'b3', '5'],
-                type: 1
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MINOR
             },
             {
                 name: 'Minor Sixth',
                 steps: ['1', 'b3', '5', '6'],
-                type: 1
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MINOR
             },
             {
                 name: 'Minor Seventh',
                 steps: ['1', 'b3', '5', 'b7'],
-                type: 1
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MINOR
             },
             {
                 name: 'Minor Added Ninth',
                 steps: ['1', 'b3', '5', '9'],
-                type: 1
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MINOR
             },
             {
                 name: 'Minor Six Add Nine',
                 steps: ['1', 'b3', '5', '6', '9'],
-                type: 1
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MINOR
             },
             {
                 name: 'Minor Ninth',
                 steps: ['1', 'b3', '5', 'b7', '9'],
-                type: 1
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MINOR
             },
             {
                 name: 'Minor Eleventh',
                 steps: ['1', 'b3', '5', 'b7', '(9)', '11'],
-                type: 1
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MINOR
             },
             {
                 name: 'Minor Thirteenth',
                 steps: ['1', 'b3', '5', 'b7', '(9)', '(11)', '13'],
-                type: 1
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MINOR
             },
             {
                 name: 'Minor Major Seventh',
                 steps: ['1', 'b3', '5', '7'],
-                type: 1
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MINOR
             },
             {
                 name: 'Minor Major Ninth',
                 steps: ['1', 'b3', '5', '7', '9'],
-                type: 1
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MINOR
             },
             {
                 name: 'Minor Major Eleventh',
                 steps: ['1', 'b3', '5', '7', '(9)', '11'],
-                type: 1
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MINOR
             },
             {
                 name: 'Minor Major Thirteenth',
                 steps: ['1', 'b3', '5', '7', '(9)', '(11)', '13'],
-                type: 1
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MINOR
             },
             {
                 name: 'Minor Seven Flat Fifth',
                 steps: ['1', 'b3', 'b5', 'b7'],
-                type: 1
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MINOR
             },
             {
                 name: 'Seventh',
                 steps: ['1', '3', '5', 'b7'],
-                type: 2
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.DOMINANT
             },
             {
                 name: 'Ninth',
                 steps: ['1', '3', '5', 'b7', '9'],
-                type: 2
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.DOMINANT
             },
             {
                 name: 'Eleventh',
                 steps: ['1', '(3)', '5', 'b7', '(9)', '11'],
-                type: 2
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.DOMINANT
             },
             {
                 name: 'Thirteenth',
                 steps: ['1', '3', '5', 'b7', '(9)', '(11)', '13'],
-                type: 2
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.DOMINANT
             },
             {
                 name: 'Seven Sharp Five',
                 steps: ['1', '3', '#5', 'b7'],
-                type: 2
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.DOMINANT
             },
             {
                 name: 'Seven Flat Five',
                 steps: ['1', '3', 'b5', 'b7'],
-                type: 2
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.DOMINANT
             },
             {
                 name: 'Seven Flat Ninth',
                 steps: ['1', '3', '5', 'b7', 'b9'],
-                type: 2
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.DOMINANT
             },
             {
                 name: 'Seven Sharp Ninth',
                 steps: ['1', '3', '5', 'b7', '#9'],
-                type: 2
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.DOMINANT
             },
             {
                 name: 'Nine Sharp Five',
                 steps: ['1', '3', '#5', 'b7', '9'],
-                type: 2
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.DOMINANT
             },
             {
                 name: 'Nine Flat Five',
                 steps: ['1', '3', 'b5', 'b7', '9'],
-                type: 2
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.DOMINANT
             },
             {
                 name: 'Seven Sharp Five Sharp Nine',
                 steps: ['1', '3', '#5', 'b7', '#9'],
-                type: 2
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.DOMINANT
             },
             {
                 name: 'Seven Sharp Five Flat Nine',
                 steps: ['1', '3', '#5', 'b7', 'b9'],
-                type: 2
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.DOMINANT
             },
             {
                 name: 'Seven Flat Five Sharp Nine',
                 steps: ['1', '3', 'b5', 'b7', '#9'],
-                type: 2
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.DOMINANT
             },
             {
                 name: 'Seven Flat Five Flat Nine',
                 steps: ['1', '3', 'b5', 'b7', 'b9'],
-                type: 2
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.DOMINANT
             },
             {
                 name: 'Seven Sharp Eleven',
                 steps: ['1', '3', '5', 'b7', '#11'],
-                type: 2
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.DOMINANT
             },
             {
                 name: 'Diminished',
                 steps: ['1', 'b3', 'b5'],
-                type: 3
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.SYMMETRICAL
             },
             {
                 name: 'Diminished Seventh',
                 steps: ['1', 'b3', 'b5', 'bb7'],
-                type: 3
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.SYMMETRICAL
             },
             {
                 name: 'Half Diminished',
                 steps: ['1', 'b3', 'b5', 'b7'],
-                type: 3
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.SYMMETRICAL
             },
             {
                 name: 'Augmented',
                 steps: ['1', '3', '#5'],
-                type: 3
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.SYMMETRICAL
             },
             {
                 name: 'Augmented Seventh',
                 steps: ['1', '3', '#5', 'b7'],
-                type: 3
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.SYMMETRICAL
             },
             {
                 name: 'Fifth',
                 steps: ['1', '5'],
-                type: 4
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
                 name: 'Flat Fifth',
                 steps: ['1', 'b5'],
-                type: 4
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
                 name: 'Suspended Fourth',
                 steps: ['1', '4', '5'],
-                type: 4
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
                 name: 'Suspended Second',
                 steps: ['1', '2', '5', '(9)'],
-                type: 4
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
                 name: 'Suspended Seventh',
                 steps: ['1', '4', '5', 'b7'],
-                type: 4
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MISCELLANEOUS
             },
             {
                 name: 'Sharp Eleven',
                 steps: ['1', '5', '#11'],
-                type: 4
+                type: chordOrScaleType_constant_1.ChordOrScaleTypeConstant.MISCELLANEOUS
             }
         ];
     };

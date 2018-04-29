@@ -1,6 +1,6 @@
 {
   "name": "hauptstimme-js",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "A JavaScript library for music theory",
   "author": "mike-stumpf",
   "license": "MIT",
@@ -40,6 +40,7 @@
   },
   "dependencies": {
     "@types/bluebird-global": "3.5.5",
+    "@types/node": "8.0.0",
     "bluebird": "3.5.1",
     "lodash": "4.17.5"
   }

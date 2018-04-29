@@ -1,4 +1,4 @@
-export declare const enum ChordOrScaleTypeConstant {
+export declare enum ChordOrScaleTypeConstant {
     MAJOR = 0,
     MINOR = 1,
     DOMINANT = 2,

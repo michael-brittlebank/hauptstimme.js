@@ -1,7 +1,7 @@
 /**
  * Constant for chord or scale type
  */
-export const enum ChordOrScaleTypeConstant {
+export enum ChordOrScaleTypeConstant {
     MAJOR,
     MINOR,
     DOMINANT,

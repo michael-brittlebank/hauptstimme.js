@@ -3,5 +3,5 @@ export declare class UtilService {
     static getLengthOfEnum(enumConstant: any): number;
     static getFormattedNoteString(note: NoteConstant, noteArray?: NoteConstant[]): string;
     static getEnumFromStringKey(enumConstant: any, key: string): number;
-    static modulo(number: number, modulus: number): number;
+    static modulo(integer: number, modulus: number): number;
 }
