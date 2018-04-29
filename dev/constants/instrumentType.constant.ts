@@ -1,7 +1,8 @@
 /**
  * Constant for instrument type
  */
-export const enum InstrumentTypeConstant {
-    INSTRUMENT,
+export enum InstrumentTypeConstant {
+    FRETTED_INSTRUMENT,
+    KEYED_INSTRUMENT,
     ALTERNATE_TUNING
 }

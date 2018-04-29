@@ -1,4 +1,5 @@
-export declare const enum InstrumentTypeConstant {
-    INSTRUMENT = 0,
-    ALTERNATE_TUNING = 1,
+export declare enum InstrumentTypeConstant {
+    FRETTED_INSTRUMENT = 0,
+    KEYED_INSTRUMENT = 1,
+    ALTERNATE_TUNING = 2,
 }

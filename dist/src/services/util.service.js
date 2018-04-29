@@ -59,8 +59,8 @@ var UtilService = (function () {
     UtilService.getEnumFromStringKey = function (enumConstant, key) {
         return parseInt(enumConstant[key]);
     };
-    UtilService.modulo = function (number, modulus) {
-        return ((number % modulus) + modulus) % modulus;
+    UtilService.modulo = function (integer, modulus) {
+        return ((integer % modulus) + modulus) % modulus;
     };
     ;
     return UtilService;
