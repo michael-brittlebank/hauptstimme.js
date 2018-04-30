@@ -25,6 +25,7 @@ var InstrumentsData = (function () {
                     note_constant_1.NoteConstant.DE,
                     note_constant_1.NoteConstant.E,
                     note_constant_1.NoteConstant.F,
+                    note_constant_1.NoteConstant.FG,
                     note_constant_1.NoteConstant.G,
                     note_constant_1.NoteConstant.GA,
                     note_constant_1.NoteConstant.A,

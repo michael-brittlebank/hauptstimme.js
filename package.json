@@ -1,6 +1,6 @@
 {
   "name": "hauptstimme-js",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "A JavaScript library for music theory",
   "author": "mike-stumpf",
   "license": "MIT",
@@ -11,6 +11,16 @@
     "type": "git",
     "url": "https://github.com/mike-stumpf/hauptstimme.js"
   },
+  "keywords": [
+    "music",
+    "theory",
+    "guitar",
+    "piano",
+    "scale",
+    "chord",
+    "tone",
+    "note"
+  ],
   "main": "./dist/exports.js",
   "typings": "./dist/exports.d.js",
   "scripts": {

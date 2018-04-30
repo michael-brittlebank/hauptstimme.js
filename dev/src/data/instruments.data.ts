@@ -21,6 +21,7 @@ export class InstrumentsData {
                     NoteConstant.DE,
                     NoteConstant.E,
                     NoteConstant.F,
+                    NoteConstant.FG,
                     NoteConstant.G,
                     NoteConstant.GA,
                     NoteConstant.A,
