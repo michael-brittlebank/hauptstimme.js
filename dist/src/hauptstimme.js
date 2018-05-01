@@ -31,6 +31,12 @@ var HauptstimmeJs = (function () {
         if (noteArray === void 0) { noteArray = []; }
         return util_service_1.UtilService.getFormattedNoteString(note, noteArray);
     };
+    HauptstimmeJs.addHalfStepsToNote = function (note, halfSteps) {
+        return util_service_1.UtilService.addHalfStepsToNote(note, halfSteps);
+    };
+    HauptstimmeJs.subtractHalfStepsFromNote = function (note, halfSteps) {
+        return util_service_1.UtilService.subtractHalfStepsFromNote(note, halfSteps);
+    };
     return HauptstimmeJs;
 }());
 exports.HauptstimmeJs = HauptstimmeJs;

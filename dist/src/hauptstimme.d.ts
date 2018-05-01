@@ -12,4 +12,6 @@ export declare class HauptstimmeJs {
     static getAvailableChords(): Promise<ChordInterface[]>;
     static search(searchRequest: SearchRequestInterface): Promise<SearchResponseInterface>;
     static getFormattedNoteString(note: NoteConstant, noteArray?: NoteConstant[]): string;
+    static addHalfStepsToNote(note: NoteConstant, halfSteps: number): NoteConstant;
+    static subtractHalfStepsFromNote(note: NoteConstant, halfSteps: number): NoteConstant;
 }

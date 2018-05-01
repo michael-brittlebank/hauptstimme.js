@@ -59,4 +59,22 @@ export class HauptstimmeJs {
         return UtilService.getFormattedNoteString(note, noteArray);
     }
 
+    /**
+     * @param note note to modulate
+     * @param halfSteps number of half steps to add to note
+     * @returns noteConstant after adding half steps
+     */
+    public static addHalfStepsToNote(note: NoteConstant, halfSteps: number): NoteConstant {
+        return UtilService.addHalfStepsToNote(note, halfSteps);
+    }
+
+    /**
+     * @param note note to modulate
+     * @param halfSteps number of half steps to add to note
+     * @returns noteConstant after adding half steps
+     */
+    public static subtractHalfStepsFromNote(note: NoteConstant, halfSteps: number): NoteConstant {
+        return UtilService.subtractHalfStepsFromNote(note, halfSteps);
+    }
+
 }

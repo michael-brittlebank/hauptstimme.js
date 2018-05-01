@@ -24,3 +24,17 @@ describe('#UtilService.getEnumFromStringKey', function() {
         expect(result).to.equal(NoteConstant.C);
     });
 });
+
+describe('#UtilService.addHalfStepsToNote', function() {
+    it('should return an adjusted note constant after adding half steps', function() {
+        const result = UtilService.addHalfStepsToNote(NoteConstant.A, 12);
+        expect(result).to.equal(NoteConstant.A);
+    });
+});
+
+describe('#UtilService.subtractHalfStepsFromNote', function() {
+    it('should return an adjusted note constant after adding half steps', function() {
+        const result = UtilService.subtractHalfStepsFromNote(NoteConstant.DE, 4);
+        expect(result).to.equal(NoteConstant.B);
+    });
+});

@@ -63,6 +63,14 @@ var UtilService = (function () {
         return ((integer % modulus) + modulus) % modulus;
     };
     ;
+    UtilService.addHalfStepsToNote = function (note, halfSteps) {
+        var noteLength = UtilService.getLengthOfEnum(note_constant_1.NoteConstant);
+        return UtilService.getEnumFromStringKey(note_constant_1.NoteConstant, note_constant_1.NoteConstant[UtilService.modulo(note + halfSteps, noteLength)]);
+    };
+    UtilService.subtractHalfStepsFromNote = function (note, halfSteps) {
+        var noteLength = UtilService.getLengthOfEnum(note_constant_1.NoteConstant);
+        return UtilService.getEnumFromStringKey(note_constant_1.NoteConstant, note_constant_1.NoteConstant[UtilService.modulo(note - halfSteps, noteLength)]);
+    };
     return UtilService;
 }());
 exports.UtilService = UtilService;
