@@ -1,1 +1,3 @@
 update readme & wiki
+
+fix chord results, order by root note

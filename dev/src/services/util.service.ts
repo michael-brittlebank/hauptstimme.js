@@ -18,7 +18,7 @@ export class UtilService {
      * @param noteArray optional param to help determine whether to sharpen or flatten intermediate notes
      * @returns string representation of note constant
      */
-    public static getFormattedNoteString(note: NoteConstant, noteArray: NoteConstant[] = []) {
+    public static getFormattedNoteString(note: NoteConstant, noteArray: NoteConstant[] = []): string {
         const sharpEntity: string = '♯';
         const flatEntity: string = '♭';
         let formattedNote: string = NoteConstant[note];
@@ -86,7 +86,7 @@ export class UtilService {
      * @param modulus number to modulate over
      * @returns modulo number consistent with other programming languages
      */
-    public static modulo(integer: number, modulus: number) {
+    public static modulo(integer: number, modulus: number): number {
         return ((integer % modulus) + modulus) % modulus;
     };
 }

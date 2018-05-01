@@ -8,6 +8,8 @@ import { ScaleInterface } from '../interfaces/scale.interface';
 import { ChordInterface } from '../interfaces/chord.interface';
 import { SearchResponseInterface } from '../interfaces/searchResponse.interface';
 import { SearchRequestInterface } from '../interfaces/searchRequest.interface';
+import { NoteConstant } from '../constants/note.constant';
+import { UtilService } from './services/util.service';
 
 /**
  * Entry point for exposed public API methods
@@ -46,6 +48,17 @@ export class HauptstimmeJs {
      */
     public static search(searchRequest: SearchRequestInterface): Promise<SearchResponseInterface> {
         return SearchService.getChordsAndScalesByNotes(searchRequest);
+    }
+
+    /**
+     * @param note the note to stringify
+     * @param noteArray optional param to help determine whether to sharpen or flatten intermediate notes
+     * @returns string representation of note constant
+     */
+    public static getFormattedNoteString(note: NoteConstant, noteArray: NoteConstant[] = []): Promise<string> {
+        return new Promise((resolve, reject) => {
+            resolve(UtilService.getFormattedNoteString(note, noteArray));
+        });
     }
 
 }
