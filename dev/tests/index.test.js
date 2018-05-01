@@ -54,12 +54,6 @@ describe('#HauptstimmeJs.getAvailableInstruments', function() {
 
 describe('#HauptstimmeJs.getFormattedNoteString', function() {
     it('should return a formatted string for ambiguous note values', function() {
-        HauptstimmeJs.getFormattedNoteString(NoteConstant.GA, [NoteConstant.A, NoteConstant.G])
-            .then((response) => {
-                expect(response).to.equal('G♯');
-            })
-            .catch((error) => {
-                console.warn(error);
-            });
+        expect(HauptstimmeJs.getFormattedNoteString(NoteConstant.GA, [NoteConstant.A, NoteConstant.G])).to.equal('G♯');
     });
 });

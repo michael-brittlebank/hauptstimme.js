@@ -55,10 +55,8 @@ export class HauptstimmeJs {
      * @param noteArray optional param to help determine whether to sharpen or flatten intermediate notes
      * @returns string representation of note constant
      */
-    public static getFormattedNoteString(note: NoteConstant, noteArray: NoteConstant[] = []): Promise<string> {
-        return new Promise((resolve, reject) => {
-            resolve(UtilService.getFormattedNoteString(note, noteArray));
-        });
+    public static getFormattedNoteString(note: NoteConstant, noteArray: NoteConstant[] = []): string {
+        return UtilService.getFormattedNoteString(note, noteArray);
     }
 
 }

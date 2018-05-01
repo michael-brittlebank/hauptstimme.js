@@ -29,9 +29,7 @@ var HauptstimmeJs = (function () {
     };
     HauptstimmeJs.getFormattedNoteString = function (note, noteArray) {
         if (noteArray === void 0) { noteArray = []; }
-        return new Promise(function (resolve, reject) {
-            resolve(util_service_1.UtilService.getFormattedNoteString(note, noteArray));
-        });
+        return util_service_1.UtilService.getFormattedNoteString(note, noteArray);
     };
     return HauptstimmeJs;
 }());
