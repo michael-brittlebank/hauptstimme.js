@@ -1,5 +1,3 @@
-/// <reference types="bluebird" />
-import * as Promise from 'bluebird';
 import { InstrumentInterface } from '../interfaces/instrument.interface';
 import { ScaleInterface } from '../interfaces/scale.interface';
 import { ChordInterface } from '../interfaces/chord.interface';

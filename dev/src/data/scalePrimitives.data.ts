@@ -1,9 +1,10 @@
 import { ChordOrScalePrimitiveInterface } from '../../interfaces/chordOrScalePrimitiveInterface';
 import { ChordOrScaleTypeConstant } from '../../constants/chordOrScaleType.constant';
 import { ScaleInterface } from '../../interfaces/scale.interface';
-import * as _ from 'lodash';
 import { NoteConstant } from '../../constants/note.constant';
 import { UtilService } from '../services/util.service';
+import map = require('lodash/map')
+import each = require('lodash/each')
 
 /**
  * Class for holding and compiling scale primitives
@@ -26,12 +27,12 @@ export class ScalePrimitivesData {
         for(let i: number = 0; i < noteLength; i++) {
             rootNote = UtilService.getEnumFromStringKey(NoteConstant, NoteConstant[i]);
             // compile each scale for the given root note
-            assembledScales = _.map(scalePrimitives, (scalePrimitive: ChordOrScalePrimitiveInterface): ScaleInterface => {
+            assembledScales = map(scalePrimitives, (scalePrimitive: ChordOrScalePrimitiveInterface): ScaleInterface => {
                 noteIndex = i;
                 scaleNotes = [rootNote];
                 scaleDescription = [UtilService.getFormattedNoteString(UtilService.getEnumFromStringKey(NoteConstant, NoteConstant[rootNote]))];
                 // use the steps to determine the correct note sequence
-                _.each(scalePrimitive.steps, (step: string) => {
+                each(scalePrimitive.steps, (step: string) => {
                     noteIndex = (noteIndex + parseInt(step, 10)) % noteLength;
                     scaleNotes.push(UtilService.getEnumFromStringKey(NoteConstant, NoteConstant[noteIndex]));
                     scaleDescription.push(UtilService.getFormattedNoteString(UtilService.getEnumFromStringKey(NoteConstant, NoteConstant[noteIndex])));

@@ -1,17 +1,14 @@
 "use strict";
-exports.__esModule = true;
-var note_constant_1 = require("../../constants/note.constant");
-var UtilService = (function () {
-    function UtilService() {
+Object.defineProperty(exports, "__esModule", { value: true });
+const note_constant_1 = require("../../constants/note.constant");
+class UtilService {
+    static getLengthOfEnum(enumConstant) {
+        return Object.keys(enumConstant).filter(key => typeof enumConstant[key] === 'number').length;
     }
-    UtilService.getLengthOfEnum = function (enumConstant) {
-        return Object.keys(enumConstant).filter(function (key) { return typeof enumConstant[key] === 'number'; }).length;
-    };
-    UtilService.getFormattedNoteString = function (note, noteArray) {
-        if (noteArray === void 0) { noteArray = []; }
-        var sharpEntity = '♯';
-        var flatEntity = '♭';
-        var formattedNote = note_constant_1.NoteConstant[note];
+    static getFormattedNoteString(note, noteArray = []) {
+        const sharpEntity = '♯';
+        const flatEntity = '♭';
+        let formattedNote = note_constant_1.NoteConstant[note];
         switch (note) {
             case note_constant_1.NoteConstant.AB:
                 if (noteArray.indexOf(note_constant_1.NoteConstant.B) !== -1) {
@@ -55,23 +52,22 @@ var UtilService = (function () {
                 break;
         }
         return formattedNote;
-    };
-    UtilService.getEnumFromStringKey = function (enumConstant, key) {
+    }
+    static getEnumFromStringKey(enumConstant, key) {
         return parseInt(enumConstant[key]);
-    };
-    UtilService.modulo = function (integer, modulus) {
+    }
+    static modulo(integer, modulus) {
         return ((integer % modulus) + modulus) % modulus;
-    };
+    }
     ;
-    UtilService.addHalfStepsToNote = function (note, halfSteps) {
-        var noteLength = UtilService.getLengthOfEnum(note_constant_1.NoteConstant);
+    static addHalfStepsToNote(note, halfSteps) {
+        const noteLength = UtilService.getLengthOfEnum(note_constant_1.NoteConstant);
         return UtilService.getEnumFromStringKey(note_constant_1.NoteConstant, note_constant_1.NoteConstant[UtilService.modulo(note + halfSteps, noteLength)]);
-    };
-    UtilService.subtractHalfStepsFromNote = function (note, halfSteps) {
-        var noteLength = UtilService.getLengthOfEnum(note_constant_1.NoteConstant);
+    }
+    static subtractHalfStepsFromNote(note, halfSteps) {
+        const noteLength = UtilService.getLengthOfEnum(note_constant_1.NoteConstant);
         return UtilService.getEnumFromStringKey(note_constant_1.NoteConstant, note_constant_1.NoteConstant[UtilService.modulo(note - halfSteps, noteLength)]);
-    };
-    return UtilService;
-}());
+    }
+}
 exports.UtilService = UtilService;
 //# sourceMappingURL=util.service.js.map

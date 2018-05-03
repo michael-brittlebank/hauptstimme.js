@@ -1,7 +1,9 @@
 import { InstrumentInterface } from '../../interfaces/instrument.interface';
 import { NoteConstant} from '../../constants/note.constant';
 import { InstrumentTypeConstant } from '../../constants/instrumentType.constant';
-import * as _ from 'lodash';
+import sortBy = require ('lodash/sortBy');
+import map = require('lodash/map')
+import union = require('lodash/union')
 
 /**
  * Class for holding instrument data
@@ -1090,11 +1092,11 @@ export class InstrumentsData {
             }
         ];
         // sort the list alphabetically
-        return _.sortBy(
+        return sortBy(
             // use auto-incremented ids to prevent developer error
-            _.map(
+            map(
                 // join the lists together
-                _.union(instruments, tunings),
+                union(instruments, tunings),
                 (instrument: InstrumentInterface, index: number) => {
                     return {
                         ...instrument, id: (index + 1) // start from NoteConstant.AB instead of NoteConstant.A

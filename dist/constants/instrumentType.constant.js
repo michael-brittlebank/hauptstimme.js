@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var InstrumentTypeConstant;
 (function (InstrumentTypeConstant) {
     InstrumentTypeConstant[InstrumentTypeConstant["FRETTED_INSTRUMENT"] = 0] = "FRETTED_INSTRUMENT";
