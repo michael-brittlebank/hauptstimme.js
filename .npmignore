@@ -7,3 +7,4 @@ dist/test/
 .npmignore
 .idea/
 coverage/
+todo.txt
