@@ -1,6 +1,5 @@
 "use strict";
-exports.__esModule = true;
-var Promise = require("bluebird");
+Object.defineProperty(exports, "__esModule", { value: true });
 var instruments_data_1 = require("./data/instruments.data");
 var search_service_1 = require("./services/search.service");
 var scales_data_1 = require("./data/scales.data");

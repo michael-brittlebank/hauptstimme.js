@@ -1,4 +1,3 @@
-import * as Promise from 'bluebird';
 import { InstrumentsData } from './data/instruments.data';
 import { SearchService } from './services/search.service';
 import { ScalesData } from './data/scales.data';

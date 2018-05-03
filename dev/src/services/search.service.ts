@@ -1,12 +1,11 @@
 import { ScalesData } from '../data/scales.data';
 import { NoteConstant } from '../../constants/note.constant';
 import { ScaleInterface } from '../../interfaces/scale.interface';
-import * as _ from 'lodash';
 import { ChordInterface } from '../../interfaces/chord.interface';
 import { SearchResponseInterface } from '../../interfaces/searchResponse.interface';
-import * as Promise from 'bluebird';
 import { ChordsData } from '../data/chords.data';
 import { SearchRequestInterface } from '../../interfaces/searchRequest.interface';
+import filter = require('lodash/filter')
 
 /**
  * Class for search-related methods
@@ -18,7 +17,7 @@ export class SearchService {
      */
     public static getScalesByNotes(notesArray: NoteConstant[], rootNote?: NoteConstant): Promise<ScaleInterface[]> {
         return new Promise((resolve, reject) => {
-            const availableScales: ScaleInterface[] = _.filter(ScalesData.getAvailableScales(), (scale: ScaleInterface) => {
+            const availableScales: ScaleInterface[] = filter(ScalesData.getAvailableScales(), (scale: ScaleInterface) => {
                 if (typeof rootNote === 'number' && scale.notes[0] !== rootNote) {
                     return false;
                 }
@@ -35,7 +34,7 @@ export class SearchService {
 
     public static getChordsByNotes(notesArray: NoteConstant[], rootNote?: NoteConstant): Promise<ChordInterface[]> {
         return new Promise((resolve, reject) => {
-            const availableChords: ChordInterface[] = _.filter(ChordsData.getAvailableChords(), (chord: ChordInterface) => {
+            const availableChords: ChordInterface[] = filter(ChordsData.getAvailableChords(), (chord: ChordInterface) => {
                 if (typeof rootNote === 'number' && chord.notes[0] !== rootNote) {
                     return false;
                 }

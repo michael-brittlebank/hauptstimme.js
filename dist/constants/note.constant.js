@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var NoteConstant;
 (function (NoteConstant) {
     NoteConstant[NoteConstant["A"] = 0] = "A";

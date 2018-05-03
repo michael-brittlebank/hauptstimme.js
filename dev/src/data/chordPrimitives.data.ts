@@ -3,9 +3,14 @@ import { ChordOrScaleTypeConstant } from '../../constants/chordOrScaleType.const
 import { ChordInterface } from '../../interfaces/chord.interface';
 import { UtilService } from '../services/util.service';
 import { NoteConstant } from '../../constants/note.constant';
-import * as _ from 'lodash';
 import { ScaleInterface } from '../../interfaces/scale.interface';
 import { ScalesData } from './scales.data';
+import map = require('lodash/map')
+import find = require('lodash/find')
+import each = require('lodash/each')
+import uniq = require('lodash/uniq')
+import filter = require('lodash/filter')
+import sortBy = require('lodash/sortBy')
 
 /**
  * Class for holding and compiling chord primitives
@@ -48,24 +53,24 @@ export class ChordPrimitivesData {
         for(let i: number = 0; i < noteLength; i++) {
             rootNote = UtilService.getEnumFromStringKey(NoteConstant, NoteConstant[i]);
             // compile each scale for the given root note
-            assembledChords = _.map(chordPrimitives, (chordPrimitive: ChordOrScalePrimitiveInterface): ChordInterface => {
+            assembledChords = map(chordPrimitives, (chordPrimitive: ChordOrScalePrimitiveInterface): ChordInterface => {
                 chordNotes = [];
                 chordDescription = [];
                 if (chordPrimitive.type === ChordOrScaleTypeConstant.MINOR) {
                     // use minor scale as basis for selecting notes
-                    rootScale = _.find(scales, (scale: ScaleInterface) => {
+                    rootScale = find(scales, (scale: ScaleInterface) => {
                         return scale.name.toLowerCase().indexOf('aeolian') !== -1 && scale.notes[0] === rootNote;
                     }) || defaultScale;
                 } else {
                     // use major scale as basis for selecting notes
-                    rootScale = _.find(scales, (scale: ScaleInterface) => {
+                    rootScale = find(scales, (scale: ScaleInterface) => {
                         return scale.name.toLowerCase().indexOf('ionian') !== -1 && scale.notes[0] === rootNote;
                     }) || defaultScale;
                 }
                 if (!!rootScale) {
                     rootScaleLength = rootScale.notes.length;
                     // use the steps to determine the correct note sequence
-                    _.each(chordPrimitive.steps, (step: string) => {
+                    each(chordPrimitive.steps, (step: string) => {
                         if (step.indexOf('b') !== -1) {
                             if (step.indexOf('bb') !== -1) {
                                 scaleNoteIndex = this.getScaleNoteIndex(step.substr(2, step.length), rootScaleLength);
@@ -91,7 +96,7 @@ export class ChordPrimitivesData {
                         chordDescription.push(noteDescription);
                         chordNotes.push(noteToAdd);
                     });
-                    let chordDescriptionArray: string[] = _.sortBy(_.uniq(chordDescription), (noteDescription: string) => {
+                    let chordDescriptionArray: string[] = sortBy(uniq(chordDescription), (noteDescription: string) => {
                         // sort by note and do not include optional parentheses
                         if (noteDescription.indexOf('(') !== -1) {
                             return noteDescription.substr(1, noteDescription.length);
@@ -99,7 +104,7 @@ export class ChordPrimitivesData {
                             return noteDescription;
                         }
                     });
-                    chordDescriptionArray = _.filter(chordDescriptionArray, (noteDescription: string) => {
+                    chordDescriptionArray = filter(chordDescriptionArray, (noteDescription: string) => {
                         if (noteDescription.indexOf('(') === -1) {
                             // check to see if note is optional elsewhere in array
                             return chordDescriptionArray.indexOf(['(', noteDescription, ')'].join('')) === -1;
@@ -109,7 +114,7 @@ export class ChordPrimitivesData {
                     });
                     // order description and notes array starting from the root note
                     const firstPortionOfChordDescription = chordDescriptionArray.splice(chordDescriptionArray.indexOf(UtilService.getFormattedNoteString(rootNote)));
-                    const chordNoteArray: NoteConstant[] = _.uniq(chordNotes);
+                    const chordNoteArray: NoteConstant[] = uniq(chordNotes);
                     const firstPortionOfNotes: NoteConstant[] = chordNoteArray.splice(chordNoteArray.indexOf(rootNote));
                     return {
                         name: [UtilService.getFormattedNoteString(rootNote), chordPrimitive.name].join(' '),
@@ -122,7 +127,7 @@ export class ChordPrimitivesData {
                         name: [UtilService.getFormattedNoteString(rootNote), chordPrimitive.name].join(' '),
                         notes: [], // error finding root scale
                         type: chordPrimitive.type,
-                        description: _.sortBy(_.uniq(chordDescription)).join(', ')
+                        description: sortBy(uniq(chordDescription)).join(', ')
                     };
                 }
             });

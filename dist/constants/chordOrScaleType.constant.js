@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var ChordOrScaleTypeConstant;
 (function (ChordOrScaleTypeConstant) {
     ChordOrScaleTypeConstant[ChordOrScaleTypeConstant["MAJOR"] = 0] = "MAJOR";

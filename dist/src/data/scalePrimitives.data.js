@@ -1,9 +1,10 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var chordOrScaleType_constant_1 = require("../../constants/chordOrScaleType.constant");
-var _ = require("lodash");
 var note_constant_1 = require("../../constants/note.constant");
 var util_service_1 = require("../services/util.service");
+var map = require("lodash/map");
+var each = require("lodash/each");
 var ScalePrimitivesData = (function () {
     function ScalePrimitivesData() {
     }
@@ -18,11 +19,11 @@ var ScalePrimitivesData = (function () {
         var scaleDescription = [];
         var _loop_1 = function (i) {
             rootNote = util_service_1.UtilService.getEnumFromStringKey(note_constant_1.NoteConstant, note_constant_1.NoteConstant[i]);
-            assembledScales = _.map(scalePrimitives, function (scalePrimitive) {
+            assembledScales = map(scalePrimitives, function (scalePrimitive) {
                 noteIndex = i;
                 scaleNotes = [rootNote];
                 scaleDescription = [util_service_1.UtilService.getFormattedNoteString(util_service_1.UtilService.getEnumFromStringKey(note_constant_1.NoteConstant, note_constant_1.NoteConstant[rootNote]))];
-                _.each(scalePrimitive.steps, function (step) {
+                each(scalePrimitive.steps, function (step) {
                     noteIndex = (noteIndex + parseInt(step, 10)) % noteLength;
                     scaleNotes.push(util_service_1.UtilService.getEnumFromStringKey(note_constant_1.NoteConstant, note_constant_1.NoteConstant[noteIndex]));
                     scaleDescription.push(util_service_1.UtilService.getFormattedNoteString(util_service_1.UtilService.getEnumFromStringKey(note_constant_1.NoteConstant, note_constant_1.NoteConstant[noteIndex])));

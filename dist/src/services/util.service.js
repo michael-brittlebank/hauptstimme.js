@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var note_constant_1 = require("../../constants/note.constant");
 var UtilService = (function () {
     function UtilService() {

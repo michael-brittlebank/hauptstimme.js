@@ -1,15 +1,14 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var scales_data_1 = require("../data/scales.data");
-var _ = require("lodash");
-var Promise = require("bluebird");
 var chords_data_1 = require("../data/chords.data");
+var filter = require("lodash/filter");
 var SearchService = (function () {
     function SearchService() {
     }
     SearchService.getScalesByNotes = function (notesArray, rootNote) {
         return new Promise(function (resolve, reject) {
-            var availableScales = _.filter(scales_data_1.ScalesData.getAvailableScales(), function (scale) {
+            var availableScales = filter(scales_data_1.ScalesData.getAvailableScales(), function (scale) {
                 if (typeof rootNote === 'number' && scale.notes[0] !== rootNote) {
                     return false;
                 }
@@ -25,7 +24,7 @@ var SearchService = (function () {
     };
     SearchService.getChordsByNotes = function (notesArray, rootNote) {
         return new Promise(function (resolve, reject) {
-            var availableChords = _.filter(chords_data_1.ChordsData.getAvailableChords(), function (chord) {
+            var availableChords = filter(chords_data_1.ChordsData.getAvailableChords(), function (chord) {
                 if (typeof rootNote === 'number' && chord.notes[0] !== rootNote) {
                     return false;
                 }
@@ -52,7 +51,8 @@ var SearchService = (function () {
                     scales: response[1]
                 };
                 resolve(searchResults);
-            })["catch"](function (error) {
+            })
+                .catch(function (error) {
                 console.warn(error);
             });
         });

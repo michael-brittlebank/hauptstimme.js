@@ -7,10 +7,12 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var note_constant_1 = require("../../constants/note.constant");
 var instrumentType_constant_1 = require("../../constants/instrumentType.constant");
-var _ = require("lodash");
+var sortBy = require("lodash/sortBy");
+var map = require("lodash/map");
+var union = require("lodash/union");
 var InstrumentsData = (function () {
     function InstrumentsData() {
     }
@@ -1093,7 +1095,7 @@ var InstrumentsData = (function () {
                 type: instrumentType_constant_1.InstrumentTypeConstant.ALTERNATE_TUNING
             }
         ];
-        return _.sortBy(_.map(_.union(instruments, tunings), function (instrument, index) {
+        return sortBy(map(union(instruments, tunings), function (instrument, index) {
             return __assign({}, instrument, { id: (index + 1) });
         }), 'name');
     };
