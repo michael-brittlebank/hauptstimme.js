@@ -10,7 +10,7 @@ var SearchService = (function () {
     SearchService.getScalesByNotes = function (notesArray, rootNote) {
         return new Promise(function (resolve, reject) {
             var availableScales = _.filter(scales_data_1.ScalesData.getAvailableScales(), function (scale) {
-                if (typeof rootNote === "number" && scale.notes[0] !== rootNote) {
+                if (typeof rootNote === 'number' && scale.notes[0] !== rootNote) {
                     return false;
                 }
                 for (var i = 0; i < notesArray.length; i++) {
@@ -26,7 +26,7 @@ var SearchService = (function () {
     SearchService.getChordsByNotes = function (notesArray, rootNote) {
         return new Promise(function (resolve, reject) {
             var availableChords = _.filter(chords_data_1.ChordsData.getAvailableChords(), function (chord) {
-                if (typeof rootNote === "number" && chord.notes[0] !== rootNote) {
+                if (typeof rootNote === 'number' && chord.notes[0] !== rootNote) {
                     return false;
                 }
                 for (var i = 0; i < notesArray.length; i++) {

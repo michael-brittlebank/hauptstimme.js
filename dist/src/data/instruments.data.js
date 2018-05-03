@@ -329,7 +329,7 @@ var InstrumentsData = (function () {
                 type: instrumentType_constant_1.InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
-                name: 'Bouzouki',
+                name: 'Bouzouki (Four-Course)',
                 rootNotes: [
                     note_constant_1.NoteConstant.C,
                     note_constant_1.NoteConstant.C,
@@ -343,7 +343,7 @@ var InstrumentsData = (function () {
                 type: instrumentType_constant_1.InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
-                name: 'Bouzouki (Alternative)',
+                name: 'Bouzouki (Three-Course)',
                 rootNotes: [
                     note_constant_1.NoteConstant.D,
                     note_constant_1.NoteConstant.D,
@@ -527,7 +527,19 @@ var InstrumentsData = (function () {
                     note_constant_1.NoteConstant.D
                 ],
                 type: instrumentType_constant_1.InstrumentTypeConstant.FRETTED_INSTRUMENT
-            }
+            },
+            {
+                name: 'Baglamas',
+                rootNotes: [
+                    note_constant_1.NoteConstant.D,
+                    note_constant_1.NoteConstant.D,
+                    note_constant_1.NoteConstant.A,
+                    note_constant_1.NoteConstant.A,
+                    note_constant_1.NoteConstant.D,
+                    note_constant_1.NoteConstant.D
+                ],
+                type: instrumentType_constant_1.InstrumentTypeConstant.FRETTED_INSTRUMENT
+            },
         ];
         var tunings = [
             {

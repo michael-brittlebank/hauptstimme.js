@@ -19,7 +19,7 @@ export class SearchService {
     public static getScalesByNotes(notesArray: NoteConstant[], rootNote?: NoteConstant): Promise<ScaleInterface[]> {
         return new Promise((resolve, reject) => {
             const availableScales: ScaleInterface[] = _.filter(ScalesData.getAvailableScales(), (scale: ScaleInterface) => {
-                if (typeof rootNote === "number" && scale.notes[0] !== rootNote) {
+                if (typeof rootNote === 'number' && scale.notes[0] !== rootNote) {
                     return false;
                 }
                 for (let i: number = 0; i < notesArray.length; i++) {
@@ -36,7 +36,7 @@ export class SearchService {
     public static getChordsByNotes(notesArray: NoteConstant[], rootNote?: NoteConstant): Promise<ChordInterface[]> {
         return new Promise((resolve, reject) => {
             const availableChords: ChordInterface[] = _.filter(ChordsData.getAvailableChords(), (chord: ChordInterface) => {
-                if (typeof rootNote === "number" && chord.notes[0] !== rootNote) {
+                if (typeof rootNote === 'number' && chord.notes[0] !== rootNote) {
                     return false;
                 }
                 for (let i: number = 0; i < notesArray.length; i++) {

@@ -325,7 +325,7 @@ export class InstrumentsData {
                 type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
-                name:'Bouzouki (Four-Course',
+                name:'Bouzouki (Four-Course)',
                 rootNotes:[
                     NoteConstant.C,
                     NoteConstant.C,
