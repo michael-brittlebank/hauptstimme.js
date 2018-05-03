@@ -1,13 +1,23 @@
 "use strict";
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const note_constant_1 = require("../../constants/note.constant");
-const instrumentType_constant_1 = require("../../constants/instrumentType.constant");
-const sortBy = require("lodash/sortBy");
-const map = require("lodash/map");
-const union = require("lodash/union");
-class InstrumentsData {
-    static getAvailableInstruments() {
-        const instruments = [
+var note_constant_1 = require("../../constants/note.constant");
+var instrumentType_constant_1 = require("../../constants/instrumentType.constant");
+var sortBy = require("lodash/sortBy");
+var map = require("lodash/map");
+var union = require("lodash/union");
+var InstrumentsData = (function () {
+    function InstrumentsData() {
+    }
+    InstrumentsData.getAvailableInstruments = function () {
+        var instruments = [
             {
                 name: 'Piano',
                 rootNotes: [
@@ -533,7 +543,7 @@ class InstrumentsData {
                 type: instrumentType_constant_1.InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
         ];
-        const tunings = [
+        var tunings = [
             {
                 name: 'Major Seconds',
                 rootNotes: [
@@ -1085,10 +1095,11 @@ class InstrumentsData {
                 type: instrumentType_constant_1.InstrumentTypeConstant.ALTERNATE_TUNING
             }
         ];
-        return sortBy(map(union(instruments, tunings), (instrument, index) => {
-            return Object.assign({}, instrument, { id: (index + 1) });
+        return sortBy(map(union(instruments, tunings), function (instrument, index) {
+            return __assign({}, instrument, { id: (index + 1) });
         }), 'name');
-    }
-}
+    };
+    return InstrumentsData;
+}());
 exports.InstrumentsData = InstrumentsData;
 //# sourceMappingURL=instruments.data.js.map
