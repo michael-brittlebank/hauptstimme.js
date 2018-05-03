@@ -107,10 +107,13 @@ export class ChordPrimitivesData {
                             return true;
                         }
                     });
+                    // order description and notes array starting from the root note
                     const firstPortionOfChordDescription = chordDescriptionArray.splice(chordDescriptionArray.indexOf(UtilService.getFormattedNoteString(rootNote)));
+                    const chordNoteArray: NoteConstant[] = _.uniq(chordNotes);
+                    const firstPortionOfNotes: NoteConstant[] = chordNoteArray.splice(chordNoteArray.indexOf(rootNote));
                     return {
                         name: [UtilService.getFormattedNoteString(rootNote), chordPrimitive.name].join(' '),
-                        notes: _.sortBy(_.uniq(chordNotes)), // remove duplicates and sort by asc value
+                        notes: firstPortionOfNotes.concat(chordNoteArray),
                         type: chordPrimitive.type,
                         description: firstPortionOfChordDescription.concat(chordDescriptionArray).join(', ')
                     };

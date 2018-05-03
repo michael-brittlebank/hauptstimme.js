@@ -95,9 +95,11 @@ var ChordPrimitivesData = (function () {
                         }
                     });
                     var firstPortionOfChordDescription = chordDescriptionArray_1.splice(chordDescriptionArray_1.indexOf(util_service_1.UtilService.getFormattedNoteString(rootNote)));
+                    var chordNoteArray = _.uniq(chordNotes);
+                    var firstPortionOfNotes = chordNoteArray.splice(chordNoteArray.indexOf(rootNote));
                     return {
                         name: [util_service_1.UtilService.getFormattedNoteString(rootNote), chordPrimitive.name].join(' '),
-                        notes: _.sortBy(_.uniq(chordNotes)),
+                        notes: firstPortionOfNotes.concat(chordNoteArray),
                         type: chordPrimitive.type,
                         description: firstPortionOfChordDescription.concat(chordDescriptionArray_1).join(', ')
                     };

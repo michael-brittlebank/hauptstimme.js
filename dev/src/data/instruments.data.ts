@@ -325,7 +325,7 @@ export class InstrumentsData {
                 type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
-                name:'Bouzouki',
+                name:'Bouzouki (Four-Course)',
                 rootNotes:[
                     NoteConstant.C,
                     NoteConstant.C,
@@ -339,7 +339,7 @@ export class InstrumentsData {
                 type:InstrumentTypeConstant.FRETTED_INSTRUMENT
             },
             {
-                name:'Bouzouki (Alternative)',
+                name:'Bouzouki (Three-Course)',
                 rootNotes:[
                     NoteConstant.D,
                     NoteConstant.D,
@@ -523,7 +523,19 @@ export class InstrumentsData {
                     NoteConstant.D
                 ],
                 type:InstrumentTypeConstant.FRETTED_INSTRUMENT
-            }
+            },
+            {
+                name:'Baglamas',
+                rootNotes:[
+                    NoteConstant.D,
+                    NoteConstant.D,
+                    NoteConstant.A,
+                    NoteConstant.A,
+                    NoteConstant.D,
+                    NoteConstant.D
+                ],
+                type:InstrumentTypeConstant.FRETTED_INSTRUMENT
+            },
         ];
         const tunings:InstrumentInterface[] = [
             {

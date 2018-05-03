@@ -2,6 +2,7 @@
 
 const expect = require('chai').expect;
 const HauptstimmeJs = require('../../dist/src/hauptstimme').HauptstimmeJs;
+const NoteConstant = require('../../dist/constants/note.constant').NoteConstant;
 
 describe('#HauptstimmeJs.getAvailableInstruments', function() {
     it('should return an array of instruments', function() {
@@ -48,5 +49,26 @@ describe('#HauptstimmeJs.getAvailableInstruments', function() {
             .catch((error) => {
                 console.warn(error);
             });
+    });
+});
+
+describe('#HauptstimmeJs.getFormattedNoteString', function() {
+    it('should return a formatted string for ambiguous note values', function() {
+        const result = HauptstimmeJs.getFormattedNoteString(NoteConstant.GA, [NoteConstant.A, NoteConstant.G]);
+        expect(result).to.equal('G♯');
+    });
+});
+
+describe('#HauptstimmeJs.addHalfStepsToNote', function() {
+    it('should return an adjusted note constant after adding half steps', function() {
+        const result = HauptstimmeJs.addHalfStepsToNote(NoteConstant.GA, 3);
+        expect(result).to.equal(NoteConstant.B);
+    });
+});
+
+describe('#HauptstimmeJs.subtractHalfStepsFromNote', function() {
+    it('should return an adjusted note constant after subtracting half steps', function() {
+        const result = HauptstimmeJs.subtractHalfStepsFromNote(NoteConstant.A, 9);
+        expect(result).to.equal(NoteConstant.C);
     });
 });
