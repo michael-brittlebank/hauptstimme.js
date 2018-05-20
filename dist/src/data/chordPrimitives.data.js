@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var chordOrScaleType_constant_1 = require("../../constants/chordOrScaleType.constant");
 var util_service_1 = require("../services/util.service");
 var note_constant_1 = require("../../constants/note.constant");
-var scales_data_1 = require("./scales.data");
 var map = require("lodash/map");
 var find = require("lodash/find");
 var each = require("lodash/each");
@@ -16,11 +15,10 @@ var ChordPrimitivesData = (function () {
     ChordPrimitivesData.getScaleNoteIndex = function (step, rootScaleLength) {
         return util_service_1.UtilService.modulo(parseInt(step, 10) - 1, rootScaleLength);
     };
-    ChordPrimitivesData.compileChordPrimitivesIntoChords = function () {
+    ChordPrimitivesData.compileChordPrimitivesIntoChords = function (scales) {
         var _this = this;
         var chordPrimitives = this.getAvailableChordPrimitives();
         var noteLength = util_service_1.UtilService.getLengthOfEnum(note_constant_1.NoteConstant);
-        var scales = scales_data_1.ScalesData.getAvailableScales();
         var chords = [];
         var chordNotes;
         var assembledChords = [];

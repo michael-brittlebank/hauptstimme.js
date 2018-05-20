@@ -6,7 +6,9 @@ const NoteConstant = require('../../dist/constants/note.constant').NoteConstant;
 
 describe('#HauptstimmeJs.getAvailableInstruments', function() {
     it('should return an array of instruments', function() {
-        HauptstimmeJs.getAvailableInstruments()
+        const hauptstimme = new HauptstimmeJs();
+        // console.log('hauptstimme', typeof hauptstimme, hauptstimme);
+        hauptstimme.getAvailableInstruments()
             .then((response) => {
                 expect(response).to.be.an('array');
             })
@@ -18,7 +20,8 @@ describe('#HauptstimmeJs.getAvailableInstruments', function() {
 
 describe('#HauptstimmeJs.getAvailableScales', function() {
     it('should return an array of scales', function() {
-        HauptstimmeJs.getAvailableScales()
+        const hauptstimme = new HauptstimmeJs();
+        hauptstimme.getAvailableScales()
             .then((response) => {
                 expect(response).to.be.an('array');
             })
@@ -30,7 +33,8 @@ describe('#HauptstimmeJs.getAvailableScales', function() {
 
 describe('#HauptstimmeJs.getAvailableChords', function() {
     it('should return an array of chords', function() {
-        HauptstimmeJs.getAvailableChords()
+        const hauptstimme = new HauptstimmeJs();
+        hauptstimme.getAvailableChords()
             .then((response) => {
                 expect(response).to.be.an('array');
             })
@@ -42,7 +46,8 @@ describe('#HauptstimmeJs.getAvailableChords', function() {
 
 describe('#HauptstimmeJs.getAvailableInstruments', function() {
     it('should return an array of search', function() {
-        HauptstimmeJs.search({rootNote: 0, notes: [4, 5,]})
+        const hauptstimme = new HauptstimmeJs();
+        hauptstimme.search({rootNote: 0, notes: [4, 5,]})
             .then((response) => {
                 expect(response).to.be.an('object');
             })

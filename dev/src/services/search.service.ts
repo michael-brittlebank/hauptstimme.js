@@ -1,9 +1,7 @@
-import { ScalesData } from '../data/scales.data';
 import { NoteConstant } from '../../constants/note.constant';
 import { ScaleInterface } from '../../interfaces/scale.interface';
 import { ChordInterface } from '../../interfaces/chord.interface';
 import { SearchResponseInterface } from '../../interfaces/searchResponse.interface';
-import { ChordsData } from '../data/chords.data';
 import { SearchRequestInterface } from '../../interfaces/searchRequest.interface';
 import filter = require('lodash/filter')
 
@@ -15,9 +13,9 @@ export class SearchService {
     /**
      * @returns list of available instruments
      */
-    public static getScalesByNotes(notesArray: NoteConstant[], rootNote?: NoteConstant): Promise<ScaleInterface[]> {
+    public static getScalesByNotes(availableScales: ScaleInterface[], notesArray: NoteConstant[], rootNote?: NoteConstant): Promise<ScaleInterface[]> {
         return new Promise((resolve, reject) => {
-            const availableScales: ScaleInterface[] = filter(ScalesData.getAvailableScales(), (scale: ScaleInterface) => {
+            const filteredScales: ScaleInterface[] = filter(availableScales, (scale: ScaleInterface) => {
                 if (typeof rootNote === 'number' && scale.notes[0] !== rootNote) {
                     return false;
                 }
@@ -28,13 +26,13 @@ export class SearchService {
                 }
                 return true;
             });
-            resolve(availableScales);
+            resolve(filteredScales);
         });
     }
 
-    public static getChordsByNotes(notesArray: NoteConstant[], rootNote?: NoteConstant): Promise<ChordInterface[]> {
+    public static getChordsByNotes(availableChords: ChordInterface[], notesArray: NoteConstant[], rootNote?: NoteConstant): Promise<ChordInterface[]> {
         return new Promise((resolve, reject) => {
-            const availableChords: ChordInterface[] = filter(ChordsData.getAvailableChords(), (chord: ChordInterface) => {
+            const filteredChords: ChordInterface[] = filter(availableChords, (chord: ChordInterface) => {
                 if (typeof rootNote === 'number' && chord.notes[0] !== rootNote) {
                     return false;
                 }
@@ -45,15 +43,15 @@ export class SearchService {
                 }
                 return true;
             });
-            resolve(availableChords);
+            resolve(filteredChords);
         });
     }
 
-    public static getChordsAndScalesByNotes(searchRequest: SearchRequestInterface): Promise<SearchResponseInterface> {
+    public static getChordsAndScalesByNotes(searchRequest: SearchRequestInterface, availableScales: ScaleInterface[], availableChords: ChordInterface[]): Promise<SearchResponseInterface> {
         return new Promise((resolve, reject) => {
             return Promise.all([
-                this.getChordsByNotes(searchRequest.notes, searchRequest.rootNote),
-                this.getScalesByNotes(searchRequest.notes, searchRequest.rootNote)
+                this.getChordsByNotes(availableChords, searchRequest.notes, searchRequest.rootNote),
+                this.getScalesByNotes(availableScales, searchRequest.notes, searchRequest.rootNote)
             ])
                 .then((response: any[]) => {
                     const searchResults: SearchResponseInterface = {

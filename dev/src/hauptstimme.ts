@@ -1,7 +1,5 @@
 import { InstrumentsData } from './data/instruments.data';
 import { SearchService } from './services/search.service';
-import { ScalesData } from './data/scales.data';
-import { ChordsData } from './data/chords.data';
 import { InstrumentInterface } from '../interfaces/instrument.interface';
 import { ScaleInterface } from '../interfaces/scale.interface';
 import { ChordInterface } from '../interfaces/chord.interface';
@@ -9,35 +7,48 @@ import { SearchResponseInterface } from '../interfaces/searchResponse.interface'
 import { SearchRequestInterface } from '../interfaces/searchRequest.interface';
 import { NoteConstant } from '../constants/note.constant';
 import { UtilService } from './services/util.service';
+import { ChordPrimitivesData } from './data/chordPrimitives.data';
+import { ScalePrimitivesData } from './data/scalePrimitives.data';
 
 /**
  * Entry point for exposed public API methods
  */
 export class HauptstimmeJs {
+
+    private availableScales: ScaleInterface[] = [];
+    private availableChords: ChordInterface[] = [];
+    private availableInstruments: InstrumentInterface[] = [];
+
+    constructor() {
+        this.availableScales = ScalePrimitivesData.compileScalePrimitivesIntoScales();
+        this.availableChords = ChordPrimitivesData.compileChordPrimitivesIntoChords(this.availableScales);
+        this.availableInstruments = InstrumentsData.getAvailableInstruments();
+    }
+
     /**
      * @returns list of available instruments
      */
-    public static getAvailableInstruments(): Promise<InstrumentInterface[]> {
+    public getAvailableInstruments(): Promise<InstrumentInterface[]> {
         return new Promise((resolve, reject) => {
-            resolve(InstrumentsData.getAvailableInstruments());
+            resolve(this.availableInstruments);
         });
     }
 
     /**
      * @returns list of available scales
      */
-    public static getAvailableScales(): Promise<ScaleInterface[]> {
+    public getAvailableScales(): Promise<ScaleInterface[]> {
         return new Promise((resolve, reject) => {
-            resolve(ScalesData.getAvailableScales());
+            resolve(this.availableScales);
         });
     }
 
     /**
      * @returns list of available chords
      */
-    public static getAvailableChords(): Promise<ChordInterface[]> {
+    public getAvailableChords(): Promise<ChordInterface[]> {
         return new Promise((resolve, reject) => {
-            resolve(ChordsData.getAvailableChords());
+            resolve(this.availableChords);
         });
     }
 
@@ -45,8 +56,8 @@ export class HauptstimmeJs {
      * @param searchRequest selected notes and optional root note to search for
      * @returns list of scales and chords that match the search request parameters
      */
-    public static search(searchRequest: SearchRequestInterface): Promise<SearchResponseInterface> {
-        return SearchService.getChordsAndScalesByNotes(searchRequest);
+    public search(searchRequest: SearchRequestInterface): Promise<SearchResponseInterface> {
+        return SearchService.getChordsAndScalesByNotes(searchRequest, this.availableScales, this.availableChords);
     }
 
     /**
