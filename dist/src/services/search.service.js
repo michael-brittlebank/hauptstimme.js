@@ -1,14 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var scales_data_1 = require("../data/scales.data");
-var chords_data_1 = require("../data/chords.data");
 var filter = require("lodash/filter");
 var SearchService = (function () {
     function SearchService() {
     }
-    SearchService.getScalesByNotes = function (notesArray, rootNote) {
+    SearchService.getScalesByNotes = function (availableScales, notesArray, rootNote) {
         return new Promise(function (resolve, reject) {
-            var availableScales = filter(scales_data_1.ScalesData.getAvailableScales(), function (scale) {
+            var filteredScales = filter(availableScales, function (scale) {
                 if (typeof rootNote === 'number' && scale.notes[0] !== rootNote) {
                     return false;
                 }
@@ -19,12 +17,12 @@ var SearchService = (function () {
                 }
                 return true;
             });
-            resolve(availableScales);
+            resolve(filteredScales);
         });
     };
-    SearchService.getChordsByNotes = function (notesArray, rootNote) {
+    SearchService.getChordsByNotes = function (availableChords, notesArray, rootNote) {
         return new Promise(function (resolve, reject) {
-            var availableChords = filter(chords_data_1.ChordsData.getAvailableChords(), function (chord) {
+            var filteredChords = filter(availableChords, function (chord) {
                 if (typeof rootNote === 'number' && chord.notes[0] !== rootNote) {
                     return false;
                 }
@@ -35,15 +33,15 @@ var SearchService = (function () {
                 }
                 return true;
             });
-            resolve(availableChords);
+            resolve(filteredChords);
         });
     };
-    SearchService.getChordsAndScalesByNotes = function (searchRequest) {
+    SearchService.getChordsAndScalesByNotes = function (searchRequest, availableScales, availableChords) {
         var _this = this;
         return new Promise(function (resolve, reject) {
             return Promise.all([
-                _this.getChordsByNotes(searchRequest.notes, searchRequest.rootNote),
-                _this.getScalesByNotes(searchRequest.notes, searchRequest.rootNote)
+                _this.getChordsByNotes(availableChords, searchRequest.notes, searchRequest.rootNote),
+                _this.getScalesByNotes(availableScales, searchRequest.notes, searchRequest.rootNote)
             ])
                 .then(function (response) {
                 var searchResults = {

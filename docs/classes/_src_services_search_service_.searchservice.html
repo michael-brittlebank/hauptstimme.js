@@ -105,19 +105,25 @@
 					<a name="getchordsandscalesbynotes" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Chords<wbr>And<wbr>Scales<wbr>ByNotes</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Chords<wbr>And<wbr>Scales<wbr>ByNotes<span class="tsd-signature-symbol">(</span>searchRequest<span class="tsd-signature-symbol">: </span><a href="../interfaces/_interfaces_searchrequest_interface_.searchrequestinterface.html" class="tsd-signature-type">SearchRequestInterface</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_searchresponse_interface_.searchresponseinterface.html" class="tsd-signature-type">SearchResponseInterface</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Chords<wbr>And<wbr>Scales<wbr>ByNotes<span class="tsd-signature-symbol">(</span>searchRequest<span class="tsd-signature-symbol">: </span><a href="../interfaces/_interfaces_searchrequest_interface_.searchrequestinterface.html" class="tsd-signature-type">SearchRequestInterface</a>, availableScales<span class="tsd-signature-symbol">: </span><a href="../interfaces/_interfaces_scale_interface_.scaleinterface.html" class="tsd-signature-type">ScaleInterface</a><span class="tsd-signature-symbol">[]</span>, availableChords<span class="tsd-signature-symbol">: </span><a href="../interfaces/_interfaces_chord_interface_.chordinterface.html" class="tsd-signature-type">ChordInterface</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_searchresponse_interface_.searchresponseinterface.html" class="tsd-signature-type">SearchResponseInterface</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/mike-stumpf/hauptstimme.js/blob/d0cf95d/dev/src/services/search.service.ts#L52">src/services/search.service.ts:52</a></li>
+									<li>Defined in <a href="https://github.com/mike-stumpf/hauptstimme.js/blob/94b7dbb/dev/src/services/search.service.ts#L50">src/services/search.service.ts:50</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>searchRequest: <a href="../interfaces/_interfaces_searchrequest_interface_.searchrequestinterface.html" class="tsd-signature-type">SearchRequestInterface</a></h5>
+								</li>
+								<li>
+									<h5>availableScales: <a href="../interfaces/_interfaces_scale_interface_.scaleinterface.html" class="tsd-signature-type">ScaleInterface</a><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+								<li>
+									<h5>availableChords: <a href="../interfaces/_interfaces_chord_interface_.chordinterface.html" class="tsd-signature-type">ChordInterface</a><span class="tsd-signature-symbol">[]</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_searchresponse_interface_.searchresponseinterface.html" class="tsd-signature-type">SearchResponseInterface</a><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -128,17 +134,20 @@
 					<a name="getchordsbynotes" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Chords<wbr>ByNotes</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Chords<wbr>ByNotes<span class="tsd-signature-symbol">(</span>notesArray<span class="tsd-signature-symbol">: </span><a href="../enums/_constants_note_constant_.noteconstant.html" class="tsd-signature-type">NoteConstant</a><span class="tsd-signature-symbol">[]</span>, rootNote<span class="tsd-signature-symbol">?: </span><a href="../enums/_constants_note_constant_.noteconstant.html" class="tsd-signature-type">NoteConstant</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_chord_interface_.chordinterface.html" class="tsd-signature-type">ChordInterface</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Chords<wbr>ByNotes<span class="tsd-signature-symbol">(</span>availableChords<span class="tsd-signature-symbol">: </span><a href="../interfaces/_interfaces_chord_interface_.chordinterface.html" class="tsd-signature-type">ChordInterface</a><span class="tsd-signature-symbol">[]</span>, notesArray<span class="tsd-signature-symbol">: </span><a href="../enums/_constants_note_constant_.noteconstant.html" class="tsd-signature-type">NoteConstant</a><span class="tsd-signature-symbol">[]</span>, rootNote<span class="tsd-signature-symbol">?: </span><a href="../enums/_constants_note_constant_.noteconstant.html" class="tsd-signature-type">NoteConstant</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_chord_interface_.chordinterface.html" class="tsd-signature-type">ChordInterface</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/mike-stumpf/hauptstimme.js/blob/d0cf95d/dev/src/services/search.service.ts#L35">src/services/search.service.ts:35</a></li>
+									<li>Defined in <a href="https://github.com/mike-stumpf/hauptstimme.js/blob/94b7dbb/dev/src/services/search.service.ts#L33">src/services/search.service.ts:33</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
+								<li>
+									<h5>availableChords: <a href="../interfaces/_interfaces_chord_interface_.chordinterface.html" class="tsd-signature-type">ChordInterface</a><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
 								<li>
 									<h5>notesArray: <a href="../enums/_constants_note_constant_.noteconstant.html" class="tsd-signature-type">NoteConstant</a><span class="tsd-signature-symbol">[]</span></h5>
 								</li>
@@ -154,19 +163,22 @@
 					<a name="getscalesbynotes" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Scales<wbr>ByNotes</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Scales<wbr>ByNotes<span class="tsd-signature-symbol">(</span>notesArray<span class="tsd-signature-symbol">: </span><a href="../enums/_constants_note_constant_.noteconstant.html" class="tsd-signature-type">NoteConstant</a><span class="tsd-signature-symbol">[]</span>, rootNote<span class="tsd-signature-symbol">?: </span><a href="../enums/_constants_note_constant_.noteconstant.html" class="tsd-signature-type">NoteConstant</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_scale_interface_.scaleinterface.html" class="tsd-signature-type">ScaleInterface</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Scales<wbr>ByNotes<span class="tsd-signature-symbol">(</span>availableScales<span class="tsd-signature-symbol">: </span><a href="../interfaces/_interfaces_scale_interface_.scaleinterface.html" class="tsd-signature-type">ScaleInterface</a><span class="tsd-signature-symbol">[]</span>, notesArray<span class="tsd-signature-symbol">: </span><a href="../enums/_constants_note_constant_.noteconstant.html" class="tsd-signature-type">NoteConstant</a><span class="tsd-signature-symbol">[]</span>, rootNote<span class="tsd-signature-symbol">?: </span><a href="../enums/_constants_note_constant_.noteconstant.html" class="tsd-signature-type">NoteConstant</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_scale_interface_.scaleinterface.html" class="tsd-signature-type">ScaleInterface</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/mike-stumpf/hauptstimme.js/blob/d0cf95d/dev/src/services/search.service.ts#L18">src/services/search.service.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/mike-stumpf/hauptstimme.js/blob/94b7dbb/dev/src/services/search.service.ts#L16">src/services/search.service.ts:16</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
+								<li>
+									<h5>availableScales: <a href="../interfaces/_interfaces_scale_interface_.scaleinterface.html" class="tsd-signature-type">ScaleInterface</a><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
 								<li>
 									<h5>notesArray: <a href="../enums/_constants_note_constant_.noteconstant.html" class="tsd-signature-type">NoteConstant</a><span class="tsd-signature-symbol">[]</span></h5>
 								</li>
@@ -194,16 +206,10 @@
 						<a href="../modules/_src_data_chordprimitives_data_.html">"src/data/chord<wbr>Primitives.data"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_src_data_chords_data_.html">"src/data/chords.data"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
 						<a href="../modules/_src_data_instruments_data_.html">"src/data/instruments.data"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_src_data_scaleprimitives_data_.html">"src/data/scale<wbr>Primitives.data"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_src_data_scales_data_.html">"src/data/scales.data"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_src_hauptstimme_.html">"src/hauptstimme"</a>

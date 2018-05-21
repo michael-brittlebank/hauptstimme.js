@@ -4,7 +4,6 @@ import { ChordInterface } from '../../interfaces/chord.interface';
 import { UtilService } from '../services/util.service';
 import { NoteConstant } from '../../constants/note.constant';
 import { ScaleInterface } from '../../interfaces/scale.interface';
-import { ScalesData } from './scales.data';
 import map = require('lodash/map')
 import find = require('lodash/find')
 import each = require('lodash/each')
@@ -30,10 +29,9 @@ export class ChordPrimitivesData {
     /**
      * @returns list of compiled chords
      */
-    public static compileChordPrimitivesIntoChords(): ChordInterface[] {
+    public static compileChordPrimitivesIntoChords(scales: ScaleInterface[]): ChordInterface[] {
         const chordPrimitives: ChordOrScalePrimitiveInterface[] = this.getAvailableChordPrimitives();
         const noteLength: number = UtilService.getLengthOfEnum(NoteConstant);
-        const scales: ScaleInterface[] = ScalesData.getAvailableScales();
         let chords: ChordInterface[] = [];
         let chordNotes: NoteConstant[];
         let assembledChords: ChordInterface[] = [];

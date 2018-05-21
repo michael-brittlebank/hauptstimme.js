@@ -2,29 +2,38 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var instruments_data_1 = require("./data/instruments.data");
 var search_service_1 = require("./services/search.service");
-var scales_data_1 = require("./data/scales.data");
-var chords_data_1 = require("./data/chords.data");
 var util_service_1 = require("./services/util.service");
+var chordPrimitives_data_1 = require("./data/chordPrimitives.data");
+var scalePrimitives_data_1 = require("./data/scalePrimitives.data");
 var HauptstimmeJs = (function () {
     function HauptstimmeJs() {
+        this.availableScales = [];
+        this.availableChords = [];
+        this.availableInstruments = [];
+        this.availableScales = scalePrimitives_data_1.ScalePrimitivesData.compileScalePrimitivesIntoScales();
+        this.availableChords = chordPrimitives_data_1.ChordPrimitivesData.compileChordPrimitivesIntoChords(this.availableScales);
+        this.availableInstruments = instruments_data_1.InstrumentsData.getAvailableInstruments();
     }
-    HauptstimmeJs.getAvailableInstruments = function () {
+    HauptstimmeJs.prototype.getAvailableInstruments = function () {
+        var _this = this;
         return new Promise(function (resolve, reject) {
-            resolve(instruments_data_1.InstrumentsData.getAvailableInstruments());
+            resolve(_this.availableInstruments);
         });
     };
-    HauptstimmeJs.getAvailableScales = function () {
+    HauptstimmeJs.prototype.getAvailableScales = function () {
+        var _this = this;
         return new Promise(function (resolve, reject) {
-            resolve(scales_data_1.ScalesData.getAvailableScales());
+            resolve(_this.availableScales);
         });
     };
-    HauptstimmeJs.getAvailableChords = function () {
+    HauptstimmeJs.prototype.getAvailableChords = function () {
+        var _this = this;
         return new Promise(function (resolve, reject) {
-            resolve(chords_data_1.ChordsData.getAvailableChords());
+            resolve(_this.availableChords);
         });
     };
-    HauptstimmeJs.search = function (searchRequest) {
-        return search_service_1.SearchService.getChordsAndScalesByNotes(searchRequest);
+    HauptstimmeJs.prototype.search = function (searchRequest) {
+        return search_service_1.SearchService.getChordsAndScalesByNotes(searchRequest, this.availableScales, this.availableChords);
     };
     HauptstimmeJs.getFormattedNoteString = function (note, noteArray) {
         if (noteArray === void 0) { noteArray = []; }
