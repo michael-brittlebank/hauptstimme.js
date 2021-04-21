@@ -25,6 +25,6 @@
   "dependencies": {
   },
   "scripts": {
-    "test": "NODE_OUTPUTMODE=short jest ./test/"
+    "test": "NODE_OUTPUTMODE=short jest"
   }
 }
