@@ -6,5 +6,3 @@ bower_components/
 coverage/
 npm-debug.log
 *.tgz
-package-lock.json
-yarn.lock
