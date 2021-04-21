@@ -7,8 +7,6 @@
 .travis.yml
 package-lock.json
 README.md
-todo.txt
-tsconfig.json
 yarn.lock
 
 coverage/
