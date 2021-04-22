@@ -1,12 +1,12 @@
-const {compileScalePrimitivesIntoScales} = require('./data/scales.data.test')
-const {compileChordPrimitivesIntoChords} = require('./data/chords.data.test')
-const {getAvailableInstruments} = require('./data/instruments.data.test')
+const {compileScalePrimitivesIntoScales} = require('./data/scales.data')
+const {compileChordPrimitivesIntoChords} = require('./data/chords.data')
+const {getAvailableInstruments} = require('./data/instruments.data')
 const {getChordsAndScalesByNotes} = require('./services/search.service')
 
 const getAvailableData = () => {
  return new Promise((resolve, reject) => {
   const scales = compileScalePrimitivesIntoScales();
-  const chords = compileChordPrimitivesIntoChords(scales);
+  const chords = compileChordPrimitivesIntoChords({scales});
   const instruments = getAvailableInstruments();
   resolve({
    chords,
