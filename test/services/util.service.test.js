@@ -1,18 +1,10 @@
-const { getLengthOfEnum,
- getFormattedLetterFromNote,
- getEnumFromStringKey,
+const { getFormattedLetterFromNote,
+ getLetterFromNote,
  modulo,
- addHalfStepsToNote,
- subtractHalfStepsFromNote} = require('../../src/services/util.service');
+ adjustNoteBySteps} = require('../../src/services/util.service');
 const {noteConstant, letterConstant, flatEntity, sharpEntity} = require('../../src/constants')
 
 describe('./src/services/util.service', () => {
- describe('#getLengthOfEnum', () => {
-  it('gets length of enum', () => {
-   expect(getLengthOfEnum(noteConstant)).toEqual(12);
-  });
- })
-
  describe('#getFormattedLetterFromNote', () => {
   it('gets correct sharp/flat when AB - no note array', () => {
    expect(getFormattedLetterFromNote(noteConstant.AB)).toEqual(`${letterConstant.B}${flatEntity}`);
@@ -27,9 +19,13 @@ describe('./src/services/util.service', () => {
   });
  })
 
- describe('#getEnumFromStringKey', () => {
+ describe('#getLetterFromNote', () => {
   it('translates numerical value into letter key', () => {
-   expect(getEnumFromStringKey(noteConstant, noteConstant.A)).toEqual(letterConstant.A);
+   expect(getLetterFromNote(noteConstant.A)).toEqual(letterConstant.A);
+  });
+
+  it('translates numerical value into letter key', () => {
+   expect(getLetterFromNote(noteConstant.DE)).toEqual(letterConstant.DE);
   });
  })
 
@@ -47,25 +43,18 @@ describe('./src/services/util.service', () => {
   });
  })
 
- describe('#addHalfStepsToNote', () => {
+ describe('#adjustNoteBySteps', () => {
   it('adds whole step to note', () => {
-   const noteKey = addHalfStepsToNote(noteConstant.AB, 2)
-   expect(noteConstant[noteKey]).toEqual(noteConstant.C);
+   expect(adjustNoteBySteps(noteConstant.AB, 2)).toEqual(noteConstant.C);
   });
   it('adds half step to note and modulos over the end of the note array', () => {
-   const noteKey = addHalfStepsToNote(noteConstant.GA, 1)
-   expect(noteConstant[noteKey]).toEqual(noteConstant.A);
+   expect(adjustNoteBySteps(noteConstant.GA, 1)).toEqual(noteConstant.A);
   });
- })
-
- describe('#subtractHalfStepsFromNote', () => {
   it('subtracts whole step from note', () => {
-   const noteKey = subtractHalfStepsFromNote(noteConstant.D, 2)
-   expect(noteConstant[noteKey]).toEqual(noteConstant.C);
+   expect(adjustNoteBySteps(noteConstant.D, -2)).toEqual(noteConstant.C);
   });
   it('subtracts half step from note and modulos over the end of the note array', () => {
-   const noteKey = subtractHalfStepsFromNote(noteConstant.A, 1)
-   expect(noteConstant[noteKey]).toEqual(noteConstant.GA);
+   expect(adjustNoteBySteps(noteConstant.A, -1)).toEqual(noteConstant.GA);
   });
  })
 });
