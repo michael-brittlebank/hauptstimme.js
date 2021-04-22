@@ -82,31 +82,17 @@ const modulo = (integer, modulus) => {
 };
 
 /**
- * @param note note to modulate
- * @param halfSteps number of half steps to add to note
- * @returns noteConstant after adding half steps
+ * @param int note to modulate
+ * @param int number of half steps to add to note
+ * @returns int after adding half steps
  */
-const addHalfStepsToNote = (note, halfSteps) => {
- return adjustNoteByHalfSteps(note + halfSteps);
-}
-
-/**
- * @param note note to modulate
- * @param halfSteps number of half steps to remove from note
- * @returns noteConstant after subtracting half steps
- */
-const subtractHalfStepsFromNote = (note, halfSteps) => {
- return adjustNoteByHalfSteps(note - halfSteps);
-}
-
-const adjustNoteByHalfSteps = (adjustedIndex) => {
- return getLetterFromNote(modulo(adjustedIndex, noteLength))
+const adjustNoteBySteps = (note, halfSteps) => {
+ return modulo((note+halfSteps), noteLength)
 }
 
 module.exports = {
  getFormattedLetterFromNote,
  getLetterFromNote,
  modulo,
- addHalfStepsToNote,
- subtractHalfStepsFromNote,
+ adjustNoteBySteps,
 };

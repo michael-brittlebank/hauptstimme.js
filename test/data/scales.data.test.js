@@ -5,8 +5,8 @@ describe('./src/data/scales.data', () => {
  describe('#should check all data is in valid format', () => {
   test.each(scalePrimitives)(
     'should match scale primitive data types when %s',
-    (instrument) => {
-     expect(instrument).toEqual({
+    (scale) => {
+     expect(scale).toEqual({
       name: expect.any(String),
       steps: expect.any(Array),
       type: expect.any(String),
@@ -15,13 +15,8 @@ describe('./src/data/scales.data', () => {
  })
 
  describe('#compileScalePrimitivesIntoScales', () => {
-  let scales;
-  let scale
-
-  beforeEach(() => {
-   scales = compileScalePrimitivesIntoScales();
-   const testme = 8
-  })
+  let scales = compileScalePrimitivesIntoScales();
+  let scale;
 
   describe(('A Major Scale'), () => {
    beforeEach(() => {
@@ -62,15 +57,15 @@ describe('./src/data/scales.data', () => {
    });
 
    it('should return elements with a description property', () => {
-    const aMajorScaleLetters = [letterConstant.F, letterConstant.G, `${letterConstant.A}${flatEntity}`,
+    const fMinorScaleLetters = [letterConstant.F, letterConstant.G, `${letterConstant.A}${flatEntity}`,
      `${letterConstant.B}${flatEntity}`, letterConstant.C, `${letterConstant.D}${flatEntity}`, `${letterConstant.E}${flatEntity}`]
-    expect(scale).toHaveProperty('description', aMajorScaleLetters.join(', '));
+    expect(scale).toHaveProperty('description', fMinorScaleLetters.join(', '));
    });
 
    it('should return elements with a notes property', () => {
-    const aMajorScaleNotes = [noteConstant.F, noteConstant.G, noteConstant.GA, noteConstant.AB,
+    const fMinorScaleNotes = [noteConstant.F, noteConstant.G, noteConstant.GA, noteConstant.AB,
      noteConstant.C, noteConstant.CD, noteConstant.DE]
-    expect(scale).toHaveProperty('notes', aMajorScaleNotes);
+    expect(scale).toHaveProperty('notes', fMinorScaleNotes);
    });
   });
 
