@@ -6,6 +6,10 @@
 
 A JavaScript library for visualizing music theory
 
+# Versions
+* v4.0 - ES6 vanilla JS
+* v3.2.0 - [Typescript](https://www.typescriptlang.org/)
+
 ## Further Information
 Documentation is available via the [API](http://mike-stumpf.github.io/hauptstimme.js/) and [wiki](https://github.com/mike-stumpf/chorus.js/wiki). 
 
