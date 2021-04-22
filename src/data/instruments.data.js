@@ -1,4 +1,4 @@
-const { noteConstant, instrumentTypeConstant} = require('./constants');
+const { noteConstant, instrumentTypeConstant} = require('../constants');
 
 const instruments = [
  {
@@ -1079,7 +1079,7 @@ const tunings = [
  }
 ];
 /**
- * @returns list of available instruments
+ * @returns list of available instrumentsData
  */
 const getAvailableInstruments = () => {
  return [...instruments, ...tunings]

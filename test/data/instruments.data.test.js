@@ -1,6 +1,6 @@
-const {instruments, tunings, getAvailableInstruments} = require('../src/instruments');
+const {instruments, tunings, getAvailableInstruments} = require('../../src/data/instruments.data');
 
-describe('./src/instruments', () => {
+describe('./src/data/instruments.data', () => {
  describe('#should check all data is in valid format', () => {
   test.each([...instruments, ...tunings])(
     'should match instruments and tuning data types when %s',
