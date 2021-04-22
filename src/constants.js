@@ -43,9 +43,16 @@ const letterConstant = {
  GA: 'GA'
 }
 
+const sharpEntity = '♯';
+const flatEntity = '♭';
+const noteLength = Object.keys(noteConstant).length
+
 module.exports = {
  chordOrScaleTypeConstant,
  instrumentTypeConstant,
  noteConstant,
  letterConstant,
+ sharpEntity,
+ flatEntity,
+ noteLength
 };

@@ -1,86 +1,75 @@
-const { noteConstant, letterConstant } = require('../constants');
-
-/**
- * @param enumConstant any given enum
- * @returns length of given enum
- */
-const getLengthOfEnum = (enumConstant) => {
- return Object.keys(enumConstant).length
-}
+const { noteConstant, letterConstant, sharpEntity, flatEntity, noteLength } = require('../constants');
 
 /**
  * @param note the note to stringify
  * @param noteArray optional param to help determine whether to sharpen or flatten intermediate notes
  * @returns string representation of note constant
  */
-const getFormattedNoteString = (note, noteArray = []) => {
- const sharpEntity = '♯';
- const flatEntity = '♭';
- let formattedNote = noteConstant[note];
+const getFormattedLetterFromNote = (note, noteArray = []) => {
+ let formattedLetter = getLetterFromNote(note);
  switch (note) {
   case noteConstant.AB:
    if (noteArray.indexOf(noteConstant.B) !== -1) {
     // a sharp
-    formattedNote = [letterConstant.A, sharpEntity].join('');
+    formattedLetter = [letterConstant.A, sharpEntity].join('');
    } else {
     // b flat
-    formattedNote = [letterConstant.B, flatEntity].join('');
+    formattedLetter = [letterConstant.B, flatEntity].join('');
    }
    break;
   case noteConstant.CD:
    if (noteArray.indexOf(noteConstant.C) !== -1) {
     // d flat
-    formattedNote = [letterConstant.D, flatEntity].join('');
+    formattedLetter = [letterConstant.D, flatEntity].join('');
    } else {
     // c sharp
-    formattedNote = [letterConstant.C, sharpEntity].join('');
+    formattedLetter = [letterConstant.C, sharpEntity].join('');
    }
    break;
   case noteConstant.DE:
    if (noteArray.indexOf(noteConstant.E) !== -1) {
     // d sharp
-    formattedNote = [letterConstant.D, sharpEntity].join('');
+    formattedLetter = [letterConstant.D, sharpEntity].join('');
    } else {
     // e flat
-    formattedNote = [letterConstant.E, flatEntity].join('');
+    formattedLetter = [letterConstant.E, flatEntity].join('');
    }
    break;
   case noteConstant.FG:
    if (noteArray.indexOf(noteConstant.F) !== -1) {
-    // a sharp
-    formattedNote = [letterConstant.G, flatEntity].join('');
+    // g flat
+    formattedLetter = [letterConstant.G, flatEntity].join('');
    } else {
     // f sharp
-    formattedNote = [letterConstant.F, sharpEntity].join('');
+    formattedLetter = [letterConstant.F, sharpEntity].join('');
    }
    break;
   case noteConstant.GA:
    if (noteArray.indexOf(noteConstant.A) !== -1) {
-    // a sharp
-    formattedNote = [letterConstant.G, sharpEntity].join('');
+    // g sharp
+    formattedLetter = [letterConstant.G, sharpEntity].join('');
    } else {
     // a flat
-    formattedNote = [letterConstant.A, flatEntity].join('');
+    formattedLetter = [letterConstant.A, flatEntity].join('');
    }
    break;
  }
- return formattedNote;
+ return formattedLetter;
 }
 
 /**
- * @param enumConstant enum containing key
- * @param valueToMatch stringified enum value
- * @returns enum value from string key
+ * @param int note value
+ * @returns string letter key
  */
-const getEnumFromIntegerValue = (enumConstant, valueToMatch) => {
- let enumKey = null;
- for (const [key, value] of Object.entries(enumConstant)) {
-  if (value === valueToMatch) {
-   enumKey = key;
+const getLetterFromNote = (note) => {
+ let letter = null;
+ for (const [key, value] of Object.entries(noteConstant)) {
+  if (value === note) {
+   letter = key;
    break;
   }
  }
- return enumKey;
+ return letter;
 }
 
 /**
@@ -111,14 +100,12 @@ const subtractHalfStepsFromNote = (note, halfSteps) => {
 }
 
 const adjustNoteByHalfSteps = (adjustedIndex) => {
- const noteLength = getLengthOfEnum(noteConstant);
- return getEnumFromIntegerValue(noteConstant, modulo(adjustedIndex, noteLength))
+ return getLetterFromNote(modulo(adjustedIndex, noteLength))
 }
 
 module.exports = {
- getLengthOfEnum,
- getFormattedNoteString,
- getEnumFromStringKey: getEnumFromIntegerValue,
+ getFormattedLetterFromNote,
+ getLetterFromNote,
  modulo,
  addHalfStepsToNote,
  subtractHalfStepsFromNote,

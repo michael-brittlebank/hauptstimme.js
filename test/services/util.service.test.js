@@ -1,10 +1,10 @@
 const { getLengthOfEnum,
- getFormattedNoteString,
+ getFormattedLetterFromNote,
  getEnumFromStringKey,
  modulo,
  addHalfStepsToNote,
  subtractHalfStepsFromNote} = require('../../src/services/util.service');
-const {noteConstant, letterConstant} = require('../../src/constants')
+const {noteConstant, letterConstant, flatEntity, sharpEntity} = require('../../src/constants')
 
 describe('./src/services/util.service', () => {
  describe('#getLengthOfEnum', () => {
@@ -13,17 +13,17 @@ describe('./src/services/util.service', () => {
   });
  })
 
- describe('#getFormattedNoteString', () => {
+ describe('#getFormattedLetterFromNote', () => {
   it('gets correct sharp/flat when AB - no note array', () => {
-   expect(getFormattedNoteString(noteConstant.AB)).toEqual(`${letterConstant.B}♭`);
+   expect(getFormattedLetterFromNote(noteConstant.AB)).toEqual(`${letterConstant.B}${flatEntity}`);
   });
 
   it('gets correct sharp/flat when AB - when array has A', () => {
-   expect(getFormattedNoteString(noteConstant.AB, [noteConstant.A])).toEqual(`${letterConstant.B}♭`);
+   expect(getFormattedLetterFromNote(noteConstant.AB, [noteConstant.A])).toEqual(`${letterConstant.B}${flatEntity}`);
   });
 
   it('gets correct sharp/flat when AB - when array has B', () => {
-   expect(getFormattedNoteString(noteConstant.AB, [noteConstant.B])).toEqual(`${letterConstant.A}♯`);
+   expect(getFormattedLetterFromNote(noteConstant.AB, [noteConstant.B])).toEqual(`${letterConstant.A}${sharpEntity}`);
   });
  })
 
