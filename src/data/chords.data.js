@@ -4,7 +4,7 @@ const { chordOrScaleTypeConstant, noteLength } = require('../constants');
 /**
  * @returns list of compiled chords
  */
-const compileChordPrimitivesIntoChords = (scales = []) => {
+const compileChordPrimitivesIntoChords = ({scales = []}) => {
  let chords = [];
  let chordNotes;
  let assembledChords = [];
@@ -60,10 +60,10 @@ const compileChordPrimitivesIntoChords = (scales = []) => {
      }
     }
     parsedInterval = parseInt(parsedInterval, 10);
-    scaleIndex = modulo(parsedInterval - 1, rootScaleLength) // convert from 1 indexed interval to 0 indexed note array
+    scaleIndex = modulo({integer: parsedInterval - 1, modulus: rootScaleLength}) // convert from 1 indexed interval to 0 indexed note array
     chordNote = rootScale.notes[scaleIndex] // get note from root scale
-    modifiedChordNote = adjustNoteBySteps(chordNote, noteModifier); // modify note +/- due to sharps or flats
-    noteDescription = getFormattedLetterFromNote(modifiedChordNote, chordNotes);
+    modifiedChordNote = adjustNoteBySteps({note: chordNote, halfSteps: noteModifier}); // modify note +/- due to sharps or flats
+    noteDescription = getFormattedLetterFromNote({note: modifiedChordNote, noteArray:chordNotes});
     if (isOptionalNote) {
      noteDescription = `(${noteDescription})`;
     }
@@ -71,7 +71,7 @@ const compileChordPrimitivesIntoChords = (scales = []) => {
     chordNotes.push(modifiedChordNote);
    });
    return {
-    name: `${getFormattedLetterFromNote(rootNote)} ${chordPrimitive.name}`,
+    name: `${getFormattedLetterFromNote({note:rootNote})} ${chordPrimitive.name}`,
     notes: chordNotes,
     type: chordPrimitive.type,
     description: chordDescription.join(', '),

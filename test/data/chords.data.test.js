@@ -17,7 +17,7 @@ describe('./src/data/chords.data', () => {
 
  describe('#compileChordPrimitivesIntoChords', () => {
   const scales = compileScalePrimitivesIntoScales();
-  let chords = compileChordPrimitivesIntoChords(scales);
+  let chords = compileChordPrimitivesIntoChords({scales});
   let chord;
 
   describe(('A Major Chord'), () => {

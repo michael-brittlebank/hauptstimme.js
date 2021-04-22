@@ -5,8 +5,8 @@ const { noteConstant, letterConstant, sharpEntity, flatEntity, noteLength } = re
  * @param noteArray optional param to help determine whether to sharpen or flatten intermediate notes
  * @returns string representation of note constant
  */
-const getFormattedLetterFromNote = (note, noteArray = []) => {
- let formattedLetter = getLetterFromNote(note);
+const getFormattedLetterFromNote = ({note, noteArray = []}) => {
+ let formattedLetter = getLetterFromNote({note});
  switch (note) {
   case noteConstant.AB:
    if (noteArray.indexOf(noteConstant.B) !== -1) {
@@ -61,7 +61,7 @@ const getFormattedLetterFromNote = (note, noteArray = []) => {
  * @param int note value
  * @returns string letter key
  */
-const getLetterFromNote = (note) => {
+const getLetterFromNote = ({note}) => {
  let letter = null;
  for (const [key, value] of Object.entries(noteConstant)) {
   if (value === note) {
@@ -77,7 +77,7 @@ const getLetterFromNote = (note) => {
  * @param modulus number to modulate over
  * @returns modulo number consistent with other programming languages
  */
-const modulo = (integer, modulus) => {
+const modulo = ({integer, modulus}) => {
  return ((integer % modulus) + modulus) % modulus;
 };
 
@@ -86,8 +86,8 @@ const modulo = (integer, modulus) => {
  * @param int number of half steps to add to note
  * @returns int after adding half steps
  */
-const adjustNoteBySteps = (note, halfSteps) => {
- return modulo((note+halfSteps), noteLength)
+const adjustNoteBySteps = ({note, halfSteps}) => {
+ return modulo({integer: (note+halfSteps), modulus: noteLength})
 }
 
 module.exports = {

@@ -15,18 +15,18 @@ const compileScalePrimitivesIntoScales = () => {
    rootNote = i;
    noteIndex = i;
    scaleNotes = [rootNote];
-   scaleDescription = [getFormattedLetterFromNote(rootNote)];
+   scaleDescription = [getFormattedLetterFromNote({note: rootNote})];
    // use the steps to determine the correct note sequence
    scalePrimitive.steps.forEach((step) => {
     noteIndex = (noteIndex + step) % noteLength;
     scaleNotes.push(noteIndex);
-    scaleDescription.push(getFormattedLetterFromNote(noteIndex, scaleNotes));
+    scaleDescription.push(getFormattedLetterFromNote({note:noteIndex, noteArray:scaleNotes}));
    });
    // remove last element in array as it is the same as the first (root) note
    scaleNotes.splice(-1,1);
    scaleDescription.splice(-1,1);
    return {
-    name: `${getFormattedLetterFromNote(rootNote)} ${scalePrimitive.name}`,
+    name: `${getFormattedLetterFromNote({note:rootNote})} ${scalePrimitive.name}`,
     notes: scaleNotes,
     type: scalePrimitive.type,
     description: scaleDescription.join(', ')
