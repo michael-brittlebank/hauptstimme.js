@@ -2,11 +2,11 @@
   "name": "hauptstimme-js",
   "version": "4.0.0",
   "description": "A JavaScript library for music theory",
-  "author": "mike-stumpf",
+  "author": "michael-brittlebank",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mike-stumpf/hauptstimme.js"
+    "url": "https://github.com/michael-brittlebank/hauptstimme.js"
   },
   "keywords": [
     "music",
@@ -20,7 +20,7 @@
   ],
   "main": "./src/exports.js",
   "devDependencies": {
-    "jest": "26.6.3"
+    "jest": "30.3.0"
   },
   "dependencies": {
   },
