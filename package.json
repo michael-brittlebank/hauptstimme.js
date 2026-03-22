@@ -1,6 +1,6 @@
 {
   "name": "hauptstimme-js",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "A JavaScript library for music theory",
   "author": "michael-brittlebank",
   "license": "MIT",
@@ -22,8 +22,7 @@
   "devDependencies": {
     "jest": "30.3.0"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "scripts": {
     "test": "NODE_OUTPUTMODE=short jest"
   }
