@@ -107,5 +107,35 @@ describe('./src/service/search.service', () => {
     });
    })
   });
+
+  describe(('D Minor chord with notes of D, F, & A'), () => {
+   beforeEach(() => {
+    searchRequest = {
+     notes: [noteConstant.D, noteConstant.F, noteConstant.A]
+    }
+    getChordsAndScalesByNotes({searchRequest, scales, chords})
+        .then((response) => {
+         result = response
+        });
+   })
+
+   describe(('chords'), () => {
+    it('should return elements with a chords property', () => {
+     expect(result).toHaveProperty('chords');
+    });
+
+    it('should return elements with a specific length', () => {
+     expect(result.chords.length).toEqual(36);
+    });
+
+    it('should return correct description', () => {
+     const chord = chords.find((chord) => {
+      return chord.name.toLowerCase().indexOf('d minor') !== -1;
+     });
+     expect(chord.description).toEqual("D, F, A");
+    });
+   })
+  });
+
  });
 });

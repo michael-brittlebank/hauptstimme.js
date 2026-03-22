@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/michael-brittlebank/hauptstimme.js"
+    "url": "git+https://github.com/michael-brittlebank/hauptstimme.js.git"
   },
   "keywords": [
     "music",

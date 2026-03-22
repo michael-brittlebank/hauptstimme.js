@@ -90,5 +90,26 @@ describe('./src/data/chords.data', () => {
     expect(chord).toHaveProperty('notes', aFlatSharpElevenChordNotes);
    });
   });
+
+  describe(('D Minor Chord'), () => {
+   beforeEach(() => {
+    chord = chords.find((chord) => chord.name === `${letterConstant.D} Minor`)
+   })
+   it('should return elements with a type property', () => {
+    expect(chord).toHaveProperty('type', chordOrScaleTypeConstant.MINOR);
+   });
+
+   it('should return elements with a name property', () => {
+    expect(chord).toHaveProperty('name', 'D Minor');
+   });
+
+   it('should return elements with a description property', () => {
+    expect(chord).toHaveProperty('description', 'D, F, A');
+   });
+
+   it('should return elements with a notes property', () => {
+    expect(chord).toHaveProperty('notes', [5, 8, 0]);
+   });
+  });
  });
 });
